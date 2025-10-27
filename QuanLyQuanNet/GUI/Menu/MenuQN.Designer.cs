@@ -30,16 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuQN));
             panel1 = new Panel();
-            button7 = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnTrack = new Button();
+            btnNV = new Button();
+            btnKho = new Button();
+            btnVoucher = new Button();
+            btnKH = new Button();
+            btnHistory = new Button();
+            btnMay = new Button();
             btnMenu = new Button();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
+            panelTitle = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -48,13 +49,13 @@
             // panel1
             // 
             panel1.BackColor = Color.AliceBlue;
-            panel1.Controls.Add(button7);
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button5);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnTrack);
+            panel1.Controls.Add(btnNV);
+            panel1.Controls.Add(btnKho);
+            panel1.Controls.Add(btnVoucher);
+            panel1.Controls.Add(btnKH);
+            panel1.Controls.Add(btnHistory);
+            panel1.Controls.Add(btnMay);
             panel1.Controls.Add(btnMenu);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Left;
@@ -63,124 +64,131 @@
             panel1.Size = new Size(220, 578);
             panel1.TabIndex = 0;
             // 
-            // button7
+            // btnTrack
             // 
-            button7.Dock = DockStyle.Top;
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(0, 434);
-            button7.Name = "button7";
-            button7.Padding = new Padding(12, 0, 0, 0);
-            button7.Size = new Size(220, 45);
-            button7.TabIndex = 9;
-            button7.Text = "Thống kê ";
-            button7.TextAlign = ContentAlignment.MiddleLeft;
-            button7.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button7.UseVisualStyleBackColor = true;
+            btnTrack.Dock = DockStyle.Top;
+            btnTrack.FlatAppearance.BorderSize = 0;
+            btnTrack.FlatStyle = FlatStyle.Flat;
+            btnTrack.Image = (Image)resources.GetObject("btnTrack.Image");
+            btnTrack.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTrack.Location = new Point(0, 434);
+            btnTrack.Name = "btnTrack";
+            btnTrack.Padding = new Padding(12, 0, 0, 0);
+            btnTrack.Size = new Size(220, 45);
+            btnTrack.TabIndex = 9;
+            btnTrack.Text = "Thống kê ";
+            btnTrack.TextAlign = ContentAlignment.MiddleLeft;
+            btnTrack.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnTrack.UseVisualStyleBackColor = true;
+            btnTrack.Click += btnTrack_Click;
             // 
-            // button6
+            // btnNV
             // 
-            button6.Dock = DockStyle.Top;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(0, 389);
-            button6.Name = "button6";
-            button6.Padding = new Padding(12, 0, 0, 0);
-            button6.Size = new Size(220, 45);
-            button6.TabIndex = 8;
-            button6.Text = "Nhân Viên";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button6.UseVisualStyleBackColor = true;
+            btnNV.Dock = DockStyle.Top;
+            btnNV.FlatAppearance.BorderSize = 0;
+            btnNV.FlatStyle = FlatStyle.Flat;
+            btnNV.Image = (Image)resources.GetObject("btnNV.Image");
+            btnNV.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNV.Location = new Point(0, 389);
+            btnNV.Name = "btnNV";
+            btnNV.Padding = new Padding(12, 0, 0, 0);
+            btnNV.Size = new Size(220, 45);
+            btnNV.TabIndex = 8;
+            btnNV.Text = "Nhân Viên";
+            btnNV.TextAlign = ContentAlignment.MiddleLeft;
+            btnNV.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnNV.UseVisualStyleBackColor = true;
+            btnNV.Click += btnNV_Click;
             // 
-            // button5
+            // btnKho
             // 
-            button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(0, 344);
-            button5.Name = "button5";
-            button5.Padding = new Padding(12, 0, 0, 0);
-            button5.Size = new Size(220, 45);
-            button5.TabIndex = 7;
-            button5.Text = "Kho";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = true;
+            btnKho.Dock = DockStyle.Top;
+            btnKho.FlatAppearance.BorderSize = 0;
+            btnKho.FlatStyle = FlatStyle.Flat;
+            btnKho.Image = (Image)resources.GetObject("btnKho.Image");
+            btnKho.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKho.Location = new Point(0, 344);
+            btnKho.Name = "btnKho";
+            btnKho.Padding = new Padding(12, 0, 0, 0);
+            btnKho.Size = new Size(220, 45);
+            btnKho.TabIndex = 7;
+            btnKho.Text = "Kho";
+            btnKho.TextAlign = ContentAlignment.MiddleLeft;
+            btnKho.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnKho.UseVisualStyleBackColor = true;
+            btnKho.Click += btnKho_Click;
             // 
-            // button4
+            // btnVoucher
             // 
-            button4.Dock = DockStyle.Top;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(0, 299);
-            button4.Name = "button4";
-            button4.Padding = new Padding(12, 0, 0, 0);
-            button4.Size = new Size(220, 45);
-            button4.TabIndex = 6;
-            button4.Text = "Khuyến mãi";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = true;
+            btnVoucher.Dock = DockStyle.Top;
+            btnVoucher.FlatAppearance.BorderSize = 0;
+            btnVoucher.FlatStyle = FlatStyle.Flat;
+            btnVoucher.Image = (Image)resources.GetObject("btnVoucher.Image");
+            btnVoucher.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVoucher.Location = new Point(0, 299);
+            btnVoucher.Name = "btnVoucher";
+            btnVoucher.Padding = new Padding(12, 0, 0, 0);
+            btnVoucher.Size = new Size(220, 45);
+            btnVoucher.TabIndex = 6;
+            btnVoucher.Text = "Khuyến mãi";
+            btnVoucher.TextAlign = ContentAlignment.MiddleLeft;
+            btnVoucher.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnVoucher.UseVisualStyleBackColor = true;
+            btnVoucher.Click += btnVoucher_Click;
             // 
-            // button3
+            // btnKH
             // 
-            button3.Dock = DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(0, 254);
-            button3.Name = "button3";
-            button3.Padding = new Padding(12, 0, 0, 0);
-            button3.Size = new Size(220, 45);
-            button3.TabIndex = 5;
-            button3.Text = "Khách hàng";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = true;
+            btnKH.Dock = DockStyle.Top;
+            btnKH.FlatAppearance.BorderSize = 0;
+            btnKH.FlatStyle = FlatStyle.Flat;
+            btnKH.Image = (Image)resources.GetObject("btnKH.Image");
+            btnKH.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKH.Location = new Point(0, 254);
+            btnKH.Name = "btnKH";
+            btnKH.Padding = new Padding(12, 0, 0, 0);
+            btnKH.Size = new Size(220, 45);
+            btnKH.TabIndex = 5;
+            btnKH.Text = "Khách hàng";
+            btnKH.TextAlign = ContentAlignment.MiddleLeft;
+            btnKH.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnKH.UseVisualStyleBackColor = true;
+            btnKH.Click += btnKH_Click;
             // 
-            // button2
+            // btnHistory
             // 
-            button2.Dock = DockStyle.Top;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(0, 209);
-            button2.Name = "button2";
-            button2.Padding = new Padding(12, 0, 0, 0);
-            button2.Size = new Size(220, 45);
-            button2.TabIndex = 4;
-            button2.Text = "Lịch sử dùng máy";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button2.UseVisualStyleBackColor = true;
+            btnHistory.Dock = DockStyle.Top;
+            btnHistory.FlatAppearance.BorderSize = 0;
+            btnHistory.FlatStyle = FlatStyle.Flat;
+            btnHistory.Image = (Image)resources.GetObject("btnHistory.Image");
+            btnHistory.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHistory.Location = new Point(0, 209);
+            btnHistory.Name = "btnHistory";
+            btnHistory.Padding = new Padding(12, 0, 0, 0);
+            btnHistory.Size = new Size(220, 45);
+            btnHistory.TabIndex = 4;
+            btnHistory.Text = "Lịch sử dùng máy";
+            btnHistory.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistory.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnHistory.UseVisualStyleBackColor = true;
+            btnHistory.Click += btnHistory_Click;
             // 
-            // button1
+            // btnMay
             // 
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 164);
-            button1.Name = "button1";
-            button1.Padding = new Padding(12, 0, 0, 0);
-            button1.Size = new Size(220, 45);
-            button1.TabIndex = 3;
-            button1.Text = "Tình trạng máy";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            btnMay.Dock = DockStyle.Top;
+            btnMay.FlatAppearance.BorderSize = 0;
+            btnMay.FlatStyle = FlatStyle.Flat;
+            btnMay.Image = (Image)resources.GetObject("btnMay.Image");
+            btnMay.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMay.Location = new Point(0, 164);
+            btnMay.Name = "btnMay";
+            btnMay.Padding = new Padding(12, 0, 0, 0);
+            btnMay.Size = new Size(220, 45);
+            btnMay.TabIndex = 3;
+            btnMay.Text = "Tình trạng máy";
+            btnMay.TextAlign = ContentAlignment.MiddleLeft;
+            btnMay.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnMay.UseVisualStyleBackColor = true;
+            btnMay.Click += btnMay_Click;
             // 
             // btnMenu
             // 
@@ -198,6 +206,7 @@
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
             // 
             // panel2
             // 
@@ -217,11 +226,21 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // panelTitle
+            // 
+            panelTitle.BackColor = Color.AliceBlue;
+            panelTitle.Dock = DockStyle.Top;
+            panelTitle.Location = new Point(220, 0);
+            panelTitle.Name = "panelTitle";
+            panelTitle.Size = new Size(836, 119);
+            panelTitle.TabIndex = 10;
+            // 
             // MenuQN
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1056, 578);
+            Controls.Add(panelTitle);
             Controls.Add(panel1);
             ForeColor = Color.MidnightBlue;
             Name = "MenuQN";
@@ -238,12 +257,13 @@
         private PictureBox pictureBox1;
         private Button btnMenu;
         private Panel panel2;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btnTrack;
+        private Button btnNV;
+        private Button btnKho;
+        private Button btnVoucher;
+        private Button btnKH;
+        private Button btnHistory;
+        private Button btnMay;
+        private Panel panelTitle;
     }
 }
