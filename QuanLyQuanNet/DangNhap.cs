@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using QuanLyQuanNet.GUI.Menu;
 
+// ... các using khác ...
+using QuanLyQuanNet.GUI.Menu;
+// Thêm using cho class UserSession nếu nó ở namespace khác
+// Ví dụ: using QuanLyQuanNet.Utils; 
 
 namespace QuanLyQuanNet
 {
@@ -19,56 +15,67 @@ namespace QuanLyQuanNet
         public DangNhap()
         {
             InitializeComponent();
+            // Thiết lập thuộc tính UseSystemPasswordChar cho TextBox mật khẩu
+            txtMatKhau.UseSystemPasswordChar = true;
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            // Lấy tên đăng nhập và mật khẩu từ các TextBox (Giả sử tên là txtTenDangNhap và txtMatKhau)
             string tenDangNhap = txtTenDangNhap.Text.Trim();
             string matKhau = txtMatKhau.Text.Trim();
 
-            // ⚠️ LƯU Ý BẢO MẬT QUAN TRỌNG: Mật khẩu PHẢI được BĂM (Hash) trước khi so sánh.
-            // Dưới đây là ví dụ CHƯA BĂM, bạn phải tự triển khai hàm băm (ví dụ: SHA256)
-            // string matKhauDaBam = HashFunction(matKhau); 
+            // ⚠️ Lưu ý bảo mật: Hãy nhớ triển khai hàm BĂM MẬT KHẨU thực tế!
+            // Ví dụ: string matKhauDaBam = HashFunction(matKhau); 
 
-            // Ở đây, tôi dùng mật khẩu thô để làm ví dụ, nhưng trong thực tế, bạn phải dùng mật khẩu đã băm.
-            if (KiemTraDangNhap(tenDangNhap, matKhau))
+            // Hàm KiemTraDangNhap đã được sửa để vừa kiểm tra và vừa lưu thông tin session.
+            if (KiemTraVaTaoSession(tenDangNhap, matKhau))
             {
-                // 1. Đăng nhập thành công
+                // Đăng nhập thành công
 
-                // 2. Chuyển sang Form MenuQN
-                MenuQN menuForm = new MenuQN();
-                menuForm.Show();
+                // 2. Chuyển sang Form MenuQN (Admin/Nhân viên) hoặc MenuKhach (Khách)
+                if (UserSession.IsAdmin || UserSession.IsNhanVien)
+                {
+                    // Chuyển đến Menu chính cho Quản lý / Nhân viên
+                    MenuQN menuForm = new MenuQN();
+                    menuForm.Show();
+                }
+                else if (UserSession.IsKhach)
+                {
+                    // Chuyển đến Menu cho Khách
+                    // Giả sử bạn có Form tên là MenuKhach
+                    MenuKhach menuKhachForm = new MenuKhach();
+                    menuKhachForm.Show();
+                }
+                else
+                {
+                    // Trường hợp không có quyền nào (Không nên xảy ra nếu DB đúng)
+                    MessageBox.Show("Đăng nhập thành công nhưng không có quyền hạn nào được gán.", "Lỗi Quyền hạn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                // 3. Ẩn hoặc đóng Form Đăng nhập hiện tại
-                this.Hide(); // Ẩn Form hiện tại
-                             // Hoặc: this.Close(); // Đóng Form hiện tại (Cẩn thận nếu đây là Form chính)
+                // 3. Ẩn Form Đăng nhập hiện tại
+                this.Hide();
             }
             else
             {
-                // 1. Đăng nhập thất bại
+                // Đăng nhập thất bại
                 MessageBox.Show("Tên đăng nhập hoặc Mật khẩu không đúng!", "Lỗi Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMatKhau.Clear();
                 txtTenDangNhap.Focus();
             }
         }
-        private bool KiemTraDangNhap(string tenDangNhap, string matKhau)
+
+        // Đổi tên hàm để phản ánh chức năng: kiểm tra và tạo phiên người dùng
+        private bool KiemTraVaTaoSession(string tenDangNhap, string matKhau)
         {
-            // Dùng tham số hóa (@TenDN, @MK) để tránh lỗi SQL Injection 
+            // Lấy tất cả thông tin cần thiết, bao gồm mật khẩu băm và quyền hạn
             string query = "SELECT MatKhau, isAdmin, isNhanVien, isKhach FROM TaiKhoan WHERE TenDangNhap = @TenDN";
 
-            // Nếu bạn đã băm mật khẩu trong C#, thì query sẽ là:
-            // string query = "SELECT isAdmin, isNhanVien, isKhach FROM TaiKhoan WHERE TenDangNhap = @TenDN AND MatKhau = @MK";
-
-            using (SqlConnection connection = new   SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Thêm tham số tên đăng nhập
                     command.Parameters.AddWithValue("@TenDN", tenDangNhap);
-
-                    // ⚠️ Nếu bạn BĂM mật khẩu trên code và so sánh trong query, thêm tham số mật khẩu
-                    // command.Parameters.AddWithValue("@MK", matKhauDaBam); // Mật khẩu đã BĂM
 
                     try
                     {
@@ -77,27 +84,21 @@ namespace QuanLyQuanNet
 
                         if (reader.Read())
                         {
-                            // Lấy mật khẩu đã băm từ DB (Giả sử cột MatKhau)
                             string matKhauDB = reader["MatKhau"].ToString();
 
-                            // ⚠️ BƯỚC QUAN TRỌNG: So sánh mật khẩu
-                            // Thực hiện so sánh mật khẩu BĂM TỪ INPUT với mật khẩu BĂM TỪ DB.
-                            // Nếu bạn dùng thư viện băm (ví dụ: BCrypt.Net), nó sẽ là:
-                            // bool isPasswordValid = BCrypt.Net.BCrypt.Verify(matKhau, matKhauDB);
-
-                            // **VÍ DỤ TẠM THỜI (Dễ bị tấn công): So sánh mật khẩu thô**
-                            // **Trong thực tế, BẠN KHÔNG NÊN làm như thế này!**
+                            // ⚠️ BƯỚC QUAN TRỌNG: So sánh mật khẩu BĂM thực tế.
+                            // **Hiện tại vẫn là so sánh mật khẩu thô - CẦN ĐƯỢC THAY THẾ**
                             bool isPasswordValid = (matKhau == matKhauDB);
 
                             if (isPasswordValid)
                             {
-                                // Đăng nhập thành công, có thể lưu thông tin quyền hạn vào một biến toàn cục
-                                // hoặc đối tượng UserSession
-                                bool isAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"));
-                                bool isNhanVien = reader.GetBoolean(reader.GetOrdinal("isNhanVien"));
-                                // ... và các logic phân quyền khác ...
+                                // Đăng nhập thành công -> LƯU THÔNG TIN SESSION
+                                UserSession.TenDangNhap = tenDangNhap;
+                                UserSession.IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"));
+                                UserSession.IsNhanVien = reader.GetBoolean(reader.GetOrdinal("isNhanVien"));
+                                UserSession.IsKhach = reader.GetBoolean(reader.GetOrdinal("isKhach"));
 
-                                return true;
+                                return true; // Trả về thành công
                             }
                         }
                         return false; // Không tìm thấy tài khoản hoặc mật khẩu không khớp
@@ -112,4 +113,3 @@ namespace QuanLyQuanNet
         }
     }
 }
-

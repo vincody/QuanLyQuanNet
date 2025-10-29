@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuKhach));
             panelMenu = new Panel();
+            btnNapTien = new Button();
+            btnChat = new Button();
+            btnGame = new Button();
+            btnFoods = new Button();
             panelLogo = new Panel();
             pictureBox1 = new PictureBox();
-            btnFoods = new Button();
-            btnGame = new Button();
-            btnChat = new Button();
-            btnNapTien = new Button();
             panelThongTin = new Panel();
             panelTitle = new Panel();
             panelMenu.SuspendLayout();
@@ -57,6 +57,74 @@
             panelMenu.Size = new Size(220, 597);
             panelMenu.TabIndex = 0;
             // 
+            // btnNapTien
+            // 
+            btnNapTien.Dock = DockStyle.Top;
+            btnNapTien.FlatAppearance.BorderSize = 0;
+            btnNapTien.FlatStyle = FlatStyle.Flat;
+            btnNapTien.Image = (Image)resources.GetObject("btnNapTien.Image");
+            btnNapTien.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNapTien.Location = new Point(0, 254);
+            btnNapTien.Name = "btnNapTien";
+            btnNapTien.Size = new Size(220, 45);
+            btnNapTien.TabIndex = 5;
+            btnNapTien.Text = "Nạp tiền ";
+            btnNapTien.TextAlign = ContentAlignment.MiddleLeft;
+            btnNapTien.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnNapTien.UseVisualStyleBackColor = true;
+            btnNapTien.Click += btnNapTien_Click;
+            // 
+            // btnChat
+            // 
+            btnChat.Dock = DockStyle.Top;
+            btnChat.FlatAppearance.BorderSize = 0;
+            btnChat.FlatStyle = FlatStyle.Flat;
+            btnChat.Image = (Image)resources.GetObject("btnChat.Image");
+            btnChat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnChat.Location = new Point(0, 209);
+            btnChat.Name = "btnChat";
+            btnChat.Size = new Size(220, 45);
+            btnChat.TabIndex = 4;
+            btnChat.Text = "Chat với quán";
+            btnChat.TextAlign = ContentAlignment.MiddleLeft;
+            btnChat.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnChat.UseVisualStyleBackColor = true;
+            btnChat.Click += btnChat_Click;
+            // 
+            // btnGame
+            // 
+            btnGame.Dock = DockStyle.Top;
+            btnGame.FlatAppearance.BorderSize = 0;
+            btnGame.FlatStyle = FlatStyle.Flat;
+            btnGame.Image = (Image)resources.GetObject("btnGame.Image");
+            btnGame.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGame.Location = new Point(0, 164);
+            btnGame.Name = "btnGame";
+            btnGame.Size = new Size(220, 45);
+            btnGame.TabIndex = 3;
+            btnGame.Text = "Menu Game";
+            btnGame.TextAlign = ContentAlignment.MiddleLeft;
+            btnGame.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGame.UseVisualStyleBackColor = true;
+            btnGame.Click += btnGame_Click;
+            // 
+            // btnFoods
+            // 
+            btnFoods.Dock = DockStyle.Top;
+            btnFoods.FlatAppearance.BorderSize = 0;
+            btnFoods.FlatStyle = FlatStyle.Flat;
+            btnFoods.Image = (Image)resources.GetObject("btnFoods.Image");
+            btnFoods.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFoods.Location = new Point(0, 119);
+            btnFoods.Name = "btnFoods";
+            btnFoods.Size = new Size(220, 45);
+            btnFoods.TabIndex = 2;
+            btnFoods.Text = "Đặt món";
+            btnFoods.TextAlign = ContentAlignment.MiddleLeft;
+            btnFoods.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnFoods.UseVisualStyleBackColor = true;
+            btnFoods.Click += btnFoods_Click;
+            // 
             // panelLogo
             // 
             panelLogo.Controls.Add(pictureBox1);
@@ -74,70 +142,6 @@
             pictureBox1.Size = new Size(103, 119);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // btnFoods
-            // 
-            btnFoods.Dock = DockStyle.Top;
-            btnFoods.FlatAppearance.BorderSize = 0;
-            btnFoods.FlatStyle = FlatStyle.Flat;
-            btnFoods.Image = (Image)resources.GetObject("btnFoods.Image");
-            btnFoods.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFoods.Location = new Point(0, 119);
-            btnFoods.Name = "btnFoods";
-            btnFoods.Size = new Size(220, 45);
-            btnFoods.TabIndex = 2;
-            btnFoods.Text = "Đặt món";
-            btnFoods.TextAlign = ContentAlignment.MiddleLeft;
-            btnFoods.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnFoods.UseVisualStyleBackColor = true;
-            // 
-            // btnGame
-            // 
-            btnGame.Dock = DockStyle.Top;
-            btnGame.FlatAppearance.BorderSize = 0;
-            btnGame.FlatStyle = FlatStyle.Flat;
-            btnGame.Image = (Image)resources.GetObject("btnGame.Image");
-            btnGame.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGame.Location = new Point(0, 164);
-            btnGame.Name = "btnGame";
-            btnGame.Size = new Size(220, 45);
-            btnGame.TabIndex = 3;
-            btnGame.Text = "Menu Game";
-            btnGame.TextAlign = ContentAlignment.MiddleLeft;
-            btnGame.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnGame.UseVisualStyleBackColor = true;
-            // 
-            // btnChat
-            // 
-            btnChat.Dock = DockStyle.Top;
-            btnChat.FlatAppearance.BorderSize = 0;
-            btnChat.FlatStyle = FlatStyle.Flat;
-            btnChat.Image = (Image)resources.GetObject("btnChat.Image");
-            btnChat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnChat.Location = new Point(0, 209);
-            btnChat.Name = "btnChat";
-            btnChat.Size = new Size(220, 45);
-            btnChat.TabIndex = 4;
-            btnChat.Text = "Chat với quán";
-            btnChat.TextAlign = ContentAlignment.MiddleLeft;
-            btnChat.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnChat.UseVisualStyleBackColor = true;
-            // 
-            // btnNapTien
-            // 
-            btnNapTien.Dock = DockStyle.Top;
-            btnNapTien.FlatAppearance.BorderSize = 0;
-            btnNapTien.FlatStyle = FlatStyle.Flat;
-            btnNapTien.Image = (Image)resources.GetObject("btnNapTien.Image");
-            btnNapTien.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNapTien.Location = new Point(0, 254);
-            btnNapTien.Name = "btnNapTien";
-            btnNapTien.Size = new Size(220, 45);
-            btnNapTien.TabIndex = 5;
-            btnNapTien.Text = "Nạp tiền ";
-            btnNapTien.TextAlign = ContentAlignment.MiddleLeft;
-            btnNapTien.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnNapTien.UseVisualStyleBackColor = true;
             // 
             // panelThongTin
             // 
