@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="GUI\FormNgoai\" />
+    <Folder Include="GUI\FormNgoai\FormKhach\" />
   </ItemGroup>
 
 </Project>

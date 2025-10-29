@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuQN));
             panel1 = new Panel();
+            btnChatAdmin = new Button();
             btnTrack = new Button();
             btnNV = new Button();
             btnKho = new Button();
@@ -41,11 +42,13 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            lblTenDN = new Label();
+            lblTitle = new Label();
             panelCon = new Panel();
-            btnChatAdmin = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelTitle.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -66,6 +69,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(220, 578);
             panel1.TabIndex = 0;
+            // 
+            // btnChatAdmin
+            // 
+            btnChatAdmin.Dock = DockStyle.Top;
+            btnChatAdmin.FlatAppearance.BorderSize = 0;
+            btnChatAdmin.FlatStyle = FlatStyle.Flat;
+            btnChatAdmin.Image = (Image)resources.GetObject("btnChatAdmin.Image");
+            btnChatAdmin.ImageAlign = ContentAlignment.MiddleLeft;
+            btnChatAdmin.Location = new Point(0, 479);
+            btnChatAdmin.Name = "btnChatAdmin";
+            btnChatAdmin.Padding = new Padding(12, 0, 0, 0);
+            btnChatAdmin.Size = new Size(220, 45);
+            btnChatAdmin.TabIndex = 10;
+            btnChatAdmin.Text = "Chat với khách";
+            btnChatAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnChatAdmin.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnChatAdmin.UseVisualStyleBackColor = true;
+            btnChatAdmin.Click += btnChatAdmin_Click;
             // 
             // btnTrack
             // 
@@ -232,11 +253,35 @@
             // panelTitle
             // 
             panelTitle.BackColor = Color.AliceBlue;
+            panelTitle.Controls.Add(lblTenDN);
+            panelTitle.Controls.Add(lblTitle);
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(220, 0);
             panelTitle.Name = "panelTitle";
             panelTitle.Size = new Size(836, 119);
             panelTitle.TabIndex = 10;
+            // 
+            // lblTenDN
+            // 
+            lblTenDN.Anchor = AnchorStyles.None;
+            lblTenDN.AutoSize = true;
+            lblTenDN.Font = new Font("Segoe UI", 20F);
+            lblTenDN.Location = new Point(539, 41);
+            lblTenDN.Name = "lblTenDN";
+            lblTenDN.Size = new Size(90, 37);
+            lblTenDN.TabIndex = 1;
+            lblTenDN.Text = "label1";
+            // 
+            // lblTitle
+            // 
+            lblTitle.Anchor = AnchorStyles.None;
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F);
+            lblTitle.Location = new Point(25, 41);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(173, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Quán net UIT";
             // 
             // panelCon
             // 
@@ -245,24 +290,6 @@
             panelCon.Name = "panelCon";
             panelCon.Size = new Size(836, 459);
             panelCon.TabIndex = 0;
-            // 
-            // btnChatAdmin
-            // 
-            btnChatAdmin.Dock = DockStyle.Top;
-            btnChatAdmin.FlatAppearance.BorderSize = 0;
-            btnChatAdmin.FlatStyle = FlatStyle.Flat;
-            btnChatAdmin.Image = (Image)resources.GetObject("btnChatAdmin.Image");
-            btnChatAdmin.ImageAlign = ContentAlignment.MiddleLeft;
-            btnChatAdmin.Location = new Point(0, 479);
-            btnChatAdmin.Name = "btnChatAdmin";
-            btnChatAdmin.Padding = new Padding(12, 0, 0, 0);
-            btnChatAdmin.Size = new Size(220, 45);
-            btnChatAdmin.TabIndex = 10;
-            btnChatAdmin.Text = "Chat với khách";
-            btnChatAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnChatAdmin.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnChatAdmin.UseVisualStyleBackColor = true;
-            btnChatAdmin.Click += btnChatAdmin_Click;
             // 
             // MenuQN
             // 
@@ -275,9 +302,12 @@
             ForeColor = Color.MidnightBlue;
             Name = "MenuQN";
             Text = "MenuQN";
+            Load += MenuQN_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelTitle.ResumeLayout(false);
+            panelTitle.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -297,5 +327,7 @@
         private Panel panelTitle;
         private Panel panelCon;
         private Button btnChatAdmin;
+        private Label lblTitle;
+        private Label lblTenDN;
     }
 }
