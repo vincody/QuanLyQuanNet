@@ -16,7 +16,7 @@ namespace QuanLyQuanNet.GUI.Menu
         private Button currentButton;
         private Random random;
         private int tempIndex;
-
+        private Form activateForm;
         // Constructor
 
         public MenuQN()
@@ -52,6 +52,22 @@ namespace QuanLyQuanNet.GUI.Menu
                     previousBtn.ForeColor = Color.MidnightBlue;
                 }
             }
+        }
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if(activateForm != null)
+            {
+                activateForm.Close();
+            }
+            ActivateButton(btnSender);
+            activateForm = childForm;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelCon.Controls.Add(childForm);
+            this.panelCon.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            panelTitle.Text = childForm.Text;
         }
 
         private void btnMay_Click(object sender, EventArgs e)

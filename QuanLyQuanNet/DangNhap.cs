@@ -35,7 +35,6 @@ namespace QuanLyQuanNet
             if (KiemTraDangNhap(tenDangNhap, matKhau))
             {
                 // 1. Đăng nhập thành công
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // 2. Chuyển sang Form MenuQN
                 MenuQN menuForm = new MenuQN();

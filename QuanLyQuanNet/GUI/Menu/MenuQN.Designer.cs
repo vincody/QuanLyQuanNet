@@ -41,6 +41,7 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            panelCon = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -235,11 +236,20 @@
             panelTitle.Size = new Size(836, 119);
             panelTitle.TabIndex = 10;
             // 
+            // panelCon
+            // 
+            panelCon.Dock = DockStyle.Fill;
+            panelCon.Location = new Point(220, 119);
+            panelCon.Name = "panelCon";
+            panelCon.Size = new Size(836, 459);
+            panelCon.TabIndex = 0;
+            // 
             // MenuQN
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1056, 578);
+            Controls.Add(panelCon);
             Controls.Add(panelTitle);
             Controls.Add(panel1);
             ForeColor = Color.MidnightBlue;
@@ -265,5 +275,6 @@
         private Button btnHistory;
         private Button btnMay;
         private Panel panelTitle;
+        private Panel panelCon;
     }
 }
