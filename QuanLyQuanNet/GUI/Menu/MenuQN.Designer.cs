@@ -268,9 +268,9 @@
             lblTenDN.Font = new Font("Segoe UI", 20F);
             lblTenDN.Location = new Point(539, 41);
             lblTenDN.Name = "lblTenDN";
-            lblTenDN.Size = new Size(90, 37);
+            lblTenDN.Size = new Size(62, 37);
             lblTenDN.TabIndex = 1;
-            lblTenDN.Text = "label1";
+            lblTenDN.Text = "Test";
             // 
             // lblTitle
             // 
