@@ -54,7 +54,6 @@ namespace QuanLyQuanNet
                 }
 
                 // 3. Ẩn Form Đăng nhập hiện tại
-                this.Hide();
             }
             else
             {
