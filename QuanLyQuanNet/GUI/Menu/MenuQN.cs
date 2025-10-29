@@ -55,7 +55,7 @@ namespace QuanLyQuanNet.GUI.Menu
         }
         private void OpenChildForm(Form childForm, object btnSender)
         {
-            if(activateForm != null)
+            if (activateForm != null)
             {
                 activateForm.Close();
             }
@@ -106,6 +106,11 @@ namespace QuanLyQuanNet.GUI.Menu
         }
 
         private void btnTrack_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void btnChatAdmin_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
         }
