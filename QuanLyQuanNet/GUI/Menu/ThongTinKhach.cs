@@ -15,6 +15,10 @@ namespace QuanLyQuanNet.GUI.Menu
     {
         private Form menuKhachFormInstance;
         private const string connectionString = "Server=VINH; Database=QuanLyQuanNetDB; Integrated Security=True;";
+        //
+        private DateTime thoiGianDangNhap;         // Lưu thời điểm hiện tại khi Form mở
+        private System.Windows.Forms.Timer capNhatTimer;
+        private TimeSpan tongThoiGianChoi;
         public ThongTinKhach()
         {
             InitializeComponent();
@@ -23,6 +27,72 @@ namespace QuanLyQuanNet.GUI.Menu
 
             // Ẩn nút Maximize (Phóng to)
             this.MaximizeBox = false;
+        }
+        private void SetupThongTinMay()
+        {
+            // 1. Gán Giờ Đăng Nhập (theo yêu cầu)
+            thoiGianDangNhap = DateTime.Now; // <<< LƯU THỜI ĐIỂM HIỆN TẠI
+            textBoxGDN.Text = thoiGianDangNhap.ToString("HH:mm:ss dd/MM/yyyy");
+
+            // 2. Hiển thị Số dư tài khoản
+            // Sử dụng định dạng tiền tệ (C0) hoặc tùy chỉnh (N0)
+            textBoxSoDu.Text = UserSession.SoDu.ToString("N0") + " VND";
+
+            // 3. Hiển thị Giá máy hiện tại
+            textBoxGiaMay.Text = UserSession.GiaTheoGio.ToString("N0") + " VND/h";
+
+            // 4. Tính Tổng Thời Gian (hh:mm)
+            // Công thức: Tổng thời gian = (Số dư / Giá/Giờ)
+            if (UserSession.SoDu > 0 && UserSession.GiaTheoGio > 0)
+            {
+                // Tính số giờ chơi (decimal)
+                decimal tongSoGio = UserSession.SoDu / UserSession.GiaTheoGio;
+
+                // Chuyển thành TimeSpan
+                tongThoiGianChoi = TimeSpan.FromHours((double)tongSoGio);
+
+                // Hiển thị Tổng Thời Gian có thể chơi (hh:mm)
+                textBoxTTG.Text = ((int)tongThoiGianChoi.TotalHours).ToString("D2") + ":" + tongThoiGianChoi.Minutes.ToString("D2");
+            }
+            else
+            {
+                textBoxTTG.Text = "00:00";
+                tongThoiGianChoi = TimeSpan.Zero;
+            }
+        }
+        private void SetupTimer()
+        {
+            capNhatTimer = new System.Windows.Forms.Timer();
+            capNhatTimer.Interval = 1000; // Cập nhật mỗi 1 giây
+            capNhatTimer.Tick += CapNhatThoiGian;
+            capNhatTimer.Start();
+        }
+        private void CapNhatThoiGian(object sender, EventArgs e)
+        {
+            // 1. Tính Thời gian sử dụng (TGSD)
+            // Sử dụng biến thoiGianDangNhap đã lưu
+            TimeSpan thoiGianSuDung = DateTime.Now.Subtract(thoiGianDangNhap);
+
+            // 2. Tính Thời gian còn lại (TGCL)
+            TimeSpan thoiGianConLai = tongThoiGianChoi.Subtract(thoiGianSuDung);
+
+            // 3. Định dạng và Hiển thị
+            // Hiển thị TGSD (Chỉ lấy giờ và phút)
+            textBoxTGSD.Text = ((int)thoiGianSuDung.TotalHours).ToString("D2") + ":" + thoiGianSuDung.Minutes.ToString("D2");
+
+            // Hiển thị TGCL
+            if (thoiGianConLai.TotalSeconds > 0)
+            {
+                // Hiển thị TGCL (Chỉ lấy giờ và phút)
+                textBoxTGCL.Text = ((int)thoiGianConLai.TotalHours).ToString("D2") + ":" + thoiGianConLai.Minutes.ToString("D2");
+            }
+            else // Hết giờ chơi
+            {
+                textBoxTGCL.Text = "00:00";
+                capNhatTimer.Stop(); // Dừng Timer
+                MessageBox.Show("Tài khoản của bạn đã hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Tùy chọn: Gọi logic đăng xuất tự động (nếu có)
+            }
         }
         public ThongTinKhach(string tenNguoiDung, string tenMaySuDung, Form menuKhachForm)
         {
@@ -34,7 +104,8 @@ namespace QuanLyQuanNet.GUI.Menu
 
             // 2. Cập nhật Tiêu đề Form (Text)
             this.Text = tenMaySuDung; // Sửa Text của Form thành tên máy
-
+            SetupThongTinMay(); // <<< PHẢI CÓ DÒNG NÀY
+            SetupTimer();
             // 3. Tùy chọn: Ẩn nút nếu cần (như yêu cầu trước)
             this.MaximizeBox = false;
             this.MinimizeBox = false;

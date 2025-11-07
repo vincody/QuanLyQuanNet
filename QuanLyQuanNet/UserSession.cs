@@ -15,6 +15,8 @@ namespace QuanLyQuanNet
         public static string TenMay { get; set; }
         public static int TaiKhoanID { get; set; }
         public static string HoTen { get; set; }
+        public static decimal SoDu { get; set; }           // Số dư hiện tại của khách (lấy từ TaiKhoan)
+        public static decimal GiaTheoGio { get; set; }
         // Thêm các thông tin khác nếu cần, ví dụ: ID người dùng, Tên hiển thị...
     }
 }

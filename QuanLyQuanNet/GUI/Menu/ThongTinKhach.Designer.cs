@@ -35,6 +35,10 @@
             labelTenUser = new Label();
             pictureBox1 = new PictureBox();
             panelThongTin = new Panel();
+            textBoxGiaMay = new TextBox();
+            textBoxSoDu = new TextBox();
+            labelGiaMay = new Label();
+            labelSoDu = new Label();
             textBoxGDN = new TextBox();
             labelGioDangNhap = new Label();
             textBoxTGCL = new TextBox();
@@ -97,7 +101,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 254);
+            pictureBox1.Location = new Point(12, 299);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(329, 79);
             pictureBox1.TabIndex = 2;
@@ -106,6 +110,10 @@
             // panelThongTin
             // 
             panelThongTin.BackColor = Color.AliceBlue;
+            panelThongTin.Controls.Add(textBoxGiaMay);
+            panelThongTin.Controls.Add(textBoxSoDu);
+            panelThongTin.Controls.Add(labelGiaMay);
+            panelThongTin.Controls.Add(labelSoDu);
             panelThongTin.Controls.Add(textBoxGDN);
             panelThongTin.Controls.Add(labelGioDangNhap);
             panelThongTin.Controls.Add(textBoxTGCL);
@@ -116,12 +124,46 @@
             panelThongTin.Controls.Add(labelTongThoiGian);
             panelThongTin.Location = new Point(12, 53);
             panelThongTin.Name = "panelThongTin";
-            panelThongTin.Size = new Size(329, 132);
+            panelThongTin.Size = new Size(329, 177);
             panelThongTin.TabIndex = 3;
+            // 
+            // textBoxGiaMay
+            // 
+            textBoxGiaMay.Location = new Point(141, 146);
+            textBoxGiaMay.Name = "textBoxGiaMay";
+            textBoxGiaMay.ReadOnly = true;
+            textBoxGiaMay.Size = new Size(185, 23);
+            textBoxGiaMay.TabIndex = 12;
+            // 
+            // textBoxSoDu
+            // 
+            textBoxSoDu.Location = new Point(141, 117);
+            textBoxSoDu.Name = "textBoxSoDu";
+            textBoxSoDu.ReadOnly = true;
+            textBoxSoDu.Size = new Size(185, 23);
+            textBoxSoDu.TabIndex = 11;
+            // 
+            // labelGiaMay
+            // 
+            labelGiaMay.AutoSize = true;
+            labelGiaMay.Location = new Point(19, 149);
+            labelGiaMay.Name = "labelGiaMay";
+            labelGiaMay.Size = new Size(114, 15);
+            labelGiaMay.TabIndex = 10;
+            labelGiaMay.Text = "Giá máy đang dùng:";
+            // 
+            // labelSoDu
+            // 
+            labelSoDu.AutoSize = true;
+            labelSoDu.Location = new Point(22, 120);
+            labelSoDu.Name = "labelSoDu";
+            labelSoDu.Size = new Size(92, 15);
+            labelSoDu.TabIndex = 9;
+            labelSoDu.Text = "Số dư tài khoản:";
             // 
             // textBoxGDN
             // 
-            textBoxGDN.Location = new Point(141, 99);
+            textBoxGDN.Location = new Point(141, 91);
             textBoxGDN.Name = "textBoxGDN";
             textBoxGDN.ReadOnly = true;
             textBoxGDN.Size = new Size(185, 23);
@@ -130,7 +172,7 @@
             // labelGioDangNhap
             // 
             labelGioDangNhap.AutoSize = true;
-            labelGioDangNhap.Location = new Point(19, 99);
+            labelGioDangNhap.Location = new Point(19, 94);
             labelGioDangNhap.Name = "labelGioDangNhap";
             labelGioDangNhap.Size = new Size(88, 15);
             labelGioDangNhap.TabIndex = 7;
@@ -191,9 +233,9 @@
             // 
             btnDoiMK.Image = (Image)resources.GetObject("btnDoiMK.Image");
             btnDoiMK.ImageAlign = ContentAlignment.TopCenter;
-            btnDoiMK.Location = new Point(12, 191);
+            btnDoiMK.Location = new Point(9, 236);
             btnDoiMK.Name = "btnDoiMK";
-            btnDoiMK.Size = new Size(75, 57);
+            btnDoiMK.Size = new Size(78, 57);
             btnDoiMK.TabIndex = 1;
             btnDoiMK.Text = "Mật khẩu";
             btnDoiMK.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -202,7 +244,7 @@
             // btnTinNhan
             // 
             btnTinNhan.Image = (Image)resources.GetObject("btnTinNhan.Image");
-            btnTinNhan.Location = new Point(93, 191);
+            btnTinNhan.Location = new Point(93, 236);
             btnTinNhan.Name = "btnTinNhan";
             btnTinNhan.Size = new Size(75, 57);
             btnTinNhan.TabIndex = 4;
@@ -213,7 +255,7 @@
             // btnGoiMon
             // 
             btnGoiMon.Image = (Image)resources.GetObject("btnGoiMon.Image");
-            btnGoiMon.Location = new Point(174, 191);
+            btnGoiMon.Location = new Point(174, 236);
             btnGoiMon.Name = "btnGoiMon";
             btnGoiMon.Size = new Size(83, 57);
             btnGoiMon.TabIndex = 5;
@@ -224,9 +266,9 @@
             // btnDangXuat
             // 
             btnDangXuat.Image = (Image)resources.GetObject("btnDangXuat.Image");
-            btnDangXuat.Location = new Point(266, 191);
+            btnDangXuat.Location = new Point(263, 236);
             btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Size = new Size(75, 57);
+            btnDangXuat.Size = new Size(78, 57);
             btnDangXuat.TabIndex = 6;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -237,7 +279,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(353, 342);
+            ClientSize = new Size(353, 384);
+            ControlBox = false;
             Controls.Add(btnDangXuat);
             Controls.Add(btnGoiMon);
             Controls.Add(btnTinNhan);
@@ -278,5 +321,9 @@
         private Button btnDangXuat;
         private Label labelDaKetNoi;
         private Label labelTenUser;
+        private TextBox textBoxGiaMay;
+        private TextBox textBoxSoDu;
+        private Label labelGiaMay;
+        private Label labelSoDu;
     }
 }

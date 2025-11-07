@@ -100,8 +100,8 @@ namespace QuanLyQuanNet
         // Đổi tên hàm để phản ánh chức năng: kiểm tra và tạo phiên người dùng
         private bool KiemTraVaTaoSession(string tenDangNhap, string matKhau)
         {
-            // Cập nhật Query: Sử dụng TaiKhoanID và HoTen
-            string queryTaiKhoan = "SELECT TaiKhoanID, MatKhau, isAdmin, isNhanVien, isKhach, HoTen FROM TaiKhoan WHERE TenDangNhap = @TenDN";
+            // Cập nhật Query: Thêm cột SoDu vào danh sách SELECT
+            string queryTaiKhoan = "SELECT TaiKhoanID, MatKhau, isAdmin, isNhanVien, isKhach, HoTen, SoDu FROM TaiKhoan WHERE TenDangNhap = @TenDN";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -116,6 +116,7 @@ namespace QuanLyQuanNet
                     bool isKhach = false;
                     int taiKhoanID = 0;
                     string hoTen = string.Empty;
+                    decimal soDu = 0; // Khai báo biến để chứa SoDu
 
                     // 1. THỰC THI QUERY TAI KHOAN
                     using (SqlCommand commandTK = new SqlCommand(queryTaiKhoan, connection, transaction))
@@ -133,13 +134,17 @@ namespace QuanLyQuanNet
                                 taiKhoanID = reader.GetInt32(reader.GetOrdinal("TaiKhoanID"));
                                 hoTen = reader["HoTen"].ToString();
 
+                                // <<< BỔ SUNG LẤY SỐ DƯ >>>
+                                soDu = reader.GetDecimal(reader.GetOrdinal("SoDu"));
+
                                 // Lưu các quyền hạn vào Session ngay lúc này
                                 UserSession.IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"));
                                 UserSession.IsNhanVien = reader.GetBoolean(reader.GetOrdinal("isNhanVien"));
                                 UserSession.IsKhach = isKhach;
                                 UserSession.TaiKhoanID = taiKhoanID;
-                                UserSession.HoTen = hoTen; // LƯU CỘT HỌ TÊN
+                                UserSession.HoTen = hoTen;
                                 UserSession.TenDangNhap = tenDangNhap;
+                                UserSession.SoDu = soDu; // <<< LƯU SỐ DƯ VÀO SESSION
                             }
                         } // reader tự động đóng tại đây
                     }
@@ -157,7 +162,6 @@ namespace QuanLyQuanNet
                     if (isKhach)
                     {
                         // Hàm này sẽ chọn máy ngẫu nhiên, kiểm tra trạng thái và cập nhật CSDL (trong Transaction)
-                        // Hàm này sử dụng 'connection' và 'transaction' đã mở
                         string tenMayDaChon = TimVaGiaHanMay(connection, transaction);
 
                         if (string.IsNullOrEmpty(tenMayDaChon))
@@ -168,7 +172,7 @@ namespace QuanLyQuanNet
                             return false;
                         }
 
-                        // Ghi nhận máy vào Session
+                        // Ghi nhận máy vào Session (TenMay đã được gán GiaTheoGio trong TimVaGiaHanMay)
                         UserSession.TenMay = tenMayDaChon;
                     }
 
@@ -179,8 +183,6 @@ namespace QuanLyQuanNet
                 catch (Exception ex)
                 {
                     // Xảy ra lỗi CSDL, hoàn tác Transaction
-                    // Chỉ cần gọi Rollback nếu Transaction đã được Begin và chưa Commit
-                    // Tuy nhiên, logic try/catch đơn giản này thường đủ.
                     try { if (transaction != null) transaction.Rollback(); } catch { }
                     MessageBox.Show("Lỗi kết nối CSDL hoặc giao dịch: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -191,9 +193,9 @@ namespace QuanLyQuanNet
         private string TimVaGiaHanMay(SqlConnection connection, SqlTransaction transaction)
         {
             string[] danhSachMay = {
-        "MAY01", "MAY02", "MAY03", "MAY04", "MAY05",
-        "MAY06", "MAY07", "MAY08", "MAY09", "MAY10"
-    };
+            "MAY01", "MAY02", "MAY03", "MAY04", "MAY05",
+            "MAY06", "MAY07", "MAY08", "MAY09", "MAY10"
+        };
             Random random = new Random();
 
             // Tối đa 20 lần thử để tìm máy ngẫu nhiên
@@ -202,12 +204,11 @@ namespace QuanLyQuanNet
                 string tenMayChon = danhSachMay[random.Next(0, danhSachMay.Length)];
 
                 // KIỂM TRA MÁY CÓ RẢNH KHÔNG VÀ LẤY GIÁ:
-                // Lấy TinhTrang VÀ GiaTheoGio từ bảng Computers
                 string queryKiemTra = @"
-            SELECT C.TinhTrang, C.GiaTheoGio  -- <<< ĐÃ THÊM GiaTheoGio
-            FROM Computers C
-            LEFT JOIN SuDungMay S ON C.TenMay = S.TenMay AND S.ThoiGianKetThuc IS NULL
-            WHERE C.TenMay = @TenMay AND C.TinhTrang = 'Available' AND S.TenMay IS NULL;";
+                SELECT C.TinhTrang, C.GiaTheoGio
+                FROM Computers C
+                LEFT JOIN SuDungMay S ON C.TenMay = S.TenMay AND S.ThoiGianKetThuc IS NULL
+                WHERE C.TenMay = @TenMay AND C.TinhTrang = 'Available' AND S.TenMay IS NULL;";
 
                 using (SqlCommand commandKiemTra = new SqlCommand(queryKiemTra, connection, transaction))
                 {
@@ -232,16 +233,22 @@ namespace QuanLyQuanNet
 
                             // 2. GHI NHẬN PHIÊN SỬ DỤNG MỚI (INSERT)
                             string queryInsert = @"
-                        INSERT INTO SuDungMay (TenMay, TenDangNhap, ThoiGianBatDau, GiaTheoGio) 
-                        VALUES (@May, @User, GETDATE(), @GiaTheoGio)"; // <<< THÊM GiaTheoGio
-        
-                    using (SqlCommand commandInsert = new SqlCommand(queryInsert, connection, transaction))
+                            INSERT INTO SuDungMay (TenMay, TenDangNhap, ThoiGianBatDau, GiaTheoGio) 
+                            VALUES (@May, @User, GETDATE(), @GiaTheoGio)";
+
+                            using (SqlCommand commandInsert = new SqlCommand(queryInsert, connection, transaction))
                             {
                                 commandInsert.Parameters.AddWithValue("@May", tenMayChon);
                                 commandInsert.Parameters.AddWithValue("@User", UserSession.TenDangNhap);
-                                commandInsert.Parameters.AddWithValue("@GiaTheoGio", giaTheoGio); // <<< TRUYỀN GIÁ TRỊ
+                                commandInsert.Parameters.AddWithValue("@GiaTheoGio", giaTheoGio);
                                 commandInsert.ExecuteNonQuery();
                             }
+
+                            // **********************************************
+                            // <<< BỔ SUNG QUAN TRỌNG: LƯU VÀO SESSION >>>
+                            UserSession.GiaTheoGio = giaTheoGio;
+                            UserSession.TenMay = tenMayChon;
+                            // **********************************************
 
                             return tenMayChon; // Trả về tên máy thành công
                         }
@@ -249,7 +256,6 @@ namespace QuanLyQuanNet
                     }
                 }
             }
-
             return null; // Không tìm thấy máy rảnh sau nhiều lần thử
         }
     }
