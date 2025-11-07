@@ -12,6 +12,9 @@ namespace QuanLyQuanNet
         public static bool IsAdmin { get; set; }
         public static bool IsNhanVien { get; set; }
         public static bool IsKhach { get; set; }
+        public static string TenMay { get; set; }
+        public static int TaiKhoanID { get; set; }
+        public static string HoTen { get; set; }
         // Thêm các thông tin khác nếu cần, ví dụ: ID người dùng, Tên hiển thị...
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Transactions;
+
 
 // ... các using khác ...
 using QuanLyQuanNet.GUI.Menu;
@@ -45,6 +47,37 @@ namespace QuanLyQuanNet
                     // Giả sử bạn có Form tên là MenuKhach
                     MenuKhach menuKhachForm = new MenuKhach();
                     menuKhachForm.Show();
+
+                    ThongTinKhach formThongTin = new ThongTinKhach(
+                    UserSession.TenDangNhap, // Giá trị cho labelTenUser
+                    UserSession.TenMay,     // Giá trị cho tiêu đề Form
+                    menuKhachForm
+                    );
+                    // =============================================================
+                    // *** ĐIỀU CHỈNH VỊ TRÍ FORM MỚI (ThongTinKhach) ***
+
+                    // 1. Đảm bảo Form không tự động canh giữa
+                    formThongTin.StartPosition = FormStartPosition.Manual;
+
+                    // 2. Lấy kích thước màn hình
+                    int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+                    int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+                    // 3. Tính toán vị trí X và Y (góc trên bên phải)
+                    // X = Chiều rộng màn hình - Chiều rộng của Form ThongTinKhach
+                    int x = screenWidth - formThongTin.Width;
+                    // Y = 0 (cho góc trên cùng)
+                    int y = 0;
+
+                    // Nếu bạn muốn có một khoảng lề nhỏ (ví dụ 10 pixels):
+                    // int x = screenWidth - formThongTin.Width - 10;
+                    // int y = 10;
+
+                    // 4. Thiết lập vị trí
+                    formThongTin.Location = new Point(x, y);
+
+                    // 5. Hiển thị Form
+                    formThongTin.Show();
                 }
                 else
                 {
@@ -67,48 +100,157 @@ namespace QuanLyQuanNet
         // Đổi tên hàm để phản ánh chức năng: kiểm tra và tạo phiên người dùng
         private bool KiemTraVaTaoSession(string tenDangNhap, string matKhau)
         {
-            // Lấy tất cả thông tin cần thiết, bao gồm mật khẩu băm và quyền hạn
-            string query = "SELECT MatKhau, isAdmin, isNhanVien, isKhach FROM TaiKhoan WHERE TenDangNhap = @TenDN";
+            // Cập nhật Query: Sử dụng TaiKhoanID và HoTen
+            string queryTaiKhoan = "SELECT TaiKhoanID, MatKhau, isAdmin, isNhanVien, isKhach, HoTen FROM TaiKhoan WHERE TenDangNhap = @TenDN";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                SqlTransaction transaction = null;
+                try
                 {
-                    command.Parameters.AddWithValue("@TenDN", tenDangNhap);
+                    connection.Open();
+                    transaction = connection.BeginTransaction(); // Bắt đầu Transaction
 
-                    try
+                    // Biến để lưu thông tin từ CSDL
+                    string matKhauDB = string.Empty;
+                    bool isKhach = false;
+                    int taiKhoanID = 0;
+                    string hoTen = string.Empty;
+
+                    // 1. THỰC THI QUERY TAI KHOAN
+                    using (SqlCommand commandTK = new SqlCommand(queryTaiKhoan, connection, transaction))
                     {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
+                        commandTK.Parameters.AddWithValue("@TenDN", tenDangNhap);
 
-                        if (reader.Read())
+                        using (SqlDataReader reader = commandTK.ExecuteReader())
                         {
-                            string matKhauDB = reader["MatKhau"].ToString();
-
-                            // ⚠️ BƯỚC QUAN TRỌNG: So sánh mật khẩu BĂM thực tế.
-                            // **Hiện tại vẫn là so sánh mật khẩu thô - CẦN ĐƯỢC THAY THẾ**
-                            bool isPasswordValid = (matKhau == matKhauDB);
-
-                            if (isPasswordValid)
+                            if (reader.Read())
                             {
-                                // Đăng nhập thành công -> LƯU THÔNG TIN SESSION
-                                UserSession.TenDangNhap = tenDangNhap;
+                                matKhauDB = reader["MatKhau"].ToString();
+                                isKhach = reader.GetBoolean(reader.GetOrdinal("isKhach"));
+
+                                // Lấy các giá trị đúng tên cột
+                                taiKhoanID = reader.GetInt32(reader.GetOrdinal("TaiKhoanID"));
+                                hoTen = reader["HoTen"].ToString();
+
+                                // Lưu các quyền hạn vào Session ngay lúc này
                                 UserSession.IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"));
                                 UserSession.IsNhanVien = reader.GetBoolean(reader.GetOrdinal("isNhanVien"));
-                                UserSession.IsKhach = reader.GetBoolean(reader.GetOrdinal("isKhach"));
-
-                                return true; // Trả về thành công
+                                UserSession.IsKhach = isKhach;
+                                UserSession.TaiKhoanID = taiKhoanID;
+                                UserSession.HoTen = hoTen; // LƯU CỘT HỌ TÊN
+                                UserSession.TenDangNhap = tenDangNhap;
                             }
-                        }
-                        return false; // Không tìm thấy tài khoản hoặc mật khẩu không khớp
+                        } // reader tự động đóng tại đây
                     }
-                    catch (Exception ex)
+
+                    // ⚠️ 2. BƯỚC XÁC THỰC MẬT KHẨU (KHÔNG CHỈNH SỬA)
+                    bool isPasswordValid = (matKhau == matKhauDB);
+
+                    if (!isPasswordValid)
                     {
-                        MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        transaction.Rollback();
                         return false;
+                    }
+
+                    // 3. XỬ LÝ CHO TÀI KHOẢN KHÁCH
+                    if (isKhach)
+                    {
+                        // Hàm này sẽ chọn máy ngẫu nhiên, kiểm tra trạng thái và cập nhật CSDL (trong Transaction)
+                        // Hàm này sử dụng 'connection' và 'transaction' đã mở
+                        string tenMayDaChon = TimVaGiaHanMay(connection, transaction);
+
+                        if (string.IsNullOrEmpty(tenMayDaChon))
+                        {
+                            // Không tìm thấy máy trống
+                            MessageBox.Show("Rất tiếc, tất cả các máy đang bận hoặc đang bảo trì.", "Máy bận", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            transaction.Rollback();
+                            return false;
+                        }
+
+                        // Ghi nhận máy vào Session
+                        UserSession.TenMay = tenMayDaChon;
+                    }
+
+                    // Nếu đến đây, mọi thứ thành công
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    // Xảy ra lỗi CSDL, hoàn tác Transaction
+                    // Chỉ cần gọi Rollback nếu Transaction đã được Begin và chưa Commit
+                    // Tuy nhiên, logic try/catch đơn giản này thường đủ.
+                    try { if (transaction != null) transaction.Rollback(); } catch { }
+                    MessageBox.Show("Lỗi kết nối CSDL hoặc giao dịch: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
+        // Đặt hàm này trong class DangNhap
+        private string TimVaGiaHanMay(SqlConnection connection, SqlTransaction transaction)
+        {
+            string[] danhSachMay = {
+        "MAY01", "MAY02", "MAY03", "MAY04", "MAY05",
+        "MAY06", "MAY07", "MAY08", "MAY09", "MAY10"
+    };
+            Random random = new Random();
+
+            // Tối đa 20 lần thử để tìm máy ngẫu nhiên
+            for (int i = 0; i < 20; i++)
+            {
+                string tenMayChon = danhSachMay[random.Next(0, danhSachMay.Length)];
+
+                // KIỂM TRA MÁY CÓ RẢNH KHÔNG VÀ LẤY GIÁ:
+                // Lấy TinhTrang VÀ GiaTheoGio từ bảng Computers
+                string queryKiemTra = @"
+            SELECT C.TinhTrang, C.GiaTheoGio  -- <<< ĐÃ THÊM GiaTheoGio
+            FROM Computers C
+            LEFT JOIN SuDungMay S ON C.TenMay = S.TenMay AND S.ThoiGianKetThuc IS NULL
+            WHERE C.TenMay = @TenMay AND C.TinhTrang = 'Available' AND S.TenMay IS NULL;";
+
+                using (SqlCommand commandKiemTra = new SqlCommand(queryKiemTra, connection, transaction))
+                {
+                    commandKiemTra.Parameters.AddWithValue("@TenMay", tenMayChon);
+
+                    // SỬ DỤNG ExecuteReader để đọc nhiều cột
+                    using (SqlDataReader reader = commandKiemTra.ExecuteReader())
+                    {
+                        if (reader.Read()) // Nếu tìm thấy hàng, tức là máy RẢNH
+                        {
+                            // Lấy Giá Theo Giờ
+                            decimal giaTheoGio = reader.GetDecimal(reader.GetOrdinal("GiaTheoGio"));
+                            reader.Close(); // <<< ĐÓNG READER ĐỂ TIẾP TỤC LỆNH SQL KHÁC
+
+                            // 1. CẬP NHẬT TRẠNG THÁI MÁY THÀNH 'Busy'
+                            string queryUpdate = "UPDATE Computers SET TinhTrang = 'Busy' WHERE TenMay = @TenMay";
+                            using (SqlCommand commandUpdate = new SqlCommand(queryUpdate, connection, transaction))
+                            {
+                                commandUpdate.Parameters.AddWithValue("@TenMay", tenMayChon);
+                                commandUpdate.ExecuteNonQuery();
+                            }
+
+                            // 2. GHI NHẬN PHIÊN SỬ DỤNG MỚI (INSERT)
+                            string queryInsert = @"
+                        INSERT INTO SuDungMay (TenMay, TenDangNhap, ThoiGianBatDau, GiaTheoGio) 
+                        VALUES (@May, @User, GETDATE(), @GiaTheoGio)"; // <<< THÊM GiaTheoGio
+        
+                    using (SqlCommand commandInsert = new SqlCommand(queryInsert, connection, transaction))
+                            {
+                                commandInsert.Parameters.AddWithValue("@May", tenMayChon);
+                                commandInsert.Parameters.AddWithValue("@User", UserSession.TenDangNhap);
+                                commandInsert.Parameters.AddWithValue("@GiaTheoGio", giaTheoGio); // <<< TRUYỀN GIÁ TRỊ
+                                commandInsert.ExecuteNonQuery();
+                            }
+
+                            return tenMayChon; // Trả về tên máy thành công
+                        }
+                        // Nếu reader.Read() là False, reader sẽ tự động đóng
                     }
                 }
             }
+
+            return null; // Không tìm thấy máy rảnh sau nhiều lần thử
         }
     }
 }

@@ -31,17 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinKhach));
             label1 = new Label();
             panel1 = new Panel();
-            MayName = new Label();
+            labelDaKetNoi = new Label();
+            labelTenUser = new Label();
             pictureBox1 = new PictureBox();
             panelThongTin = new Panel();
-            labelTongThoiGian = new Label();
-            labelThoiGianSuDung = new Label();
-            labelThoiGianConLai = new Label();
-            textBoxTTG = new TextBox();
-            textBoxTGSD = new TextBox();
-            textBoxTGCL = new TextBox();
-            labelGioDangNhap = new Label();
             textBoxGDN = new TextBox();
+            labelGioDangNhap = new Label();
+            textBoxTGCL = new TextBox();
+            textBoxTGSD = new TextBox();
+            textBoxTTG = new TextBox();
+            labelThoiGianConLai = new Label();
+            labelThoiGianSuDung = new Label();
+            labelTongThoiGian = new Label();
             btnDoiMK = new Button();
             btnTinNhan = new Button();
             btnGoiMon = new Button();
@@ -62,29 +63,41 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.AliceBlue;
-            panel1.Controls.Add(MayName);
+            panel1.BackColor = SystemColors.ControlDarkDark;
+            panel1.Controls.Add(labelDaKetNoi);
+            panel1.Controls.Add(labelTenUser);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(353, 53);
+            panel1.Size = new Size(353, 47);
             panel1.TabIndex = 1;
             // 
-            // MayName
+            // labelDaKetNoi
             // 
-            MayName.Anchor = AnchorStyles.None;
-            MayName.AutoSize = true;
-            MayName.Font = new Font("Segoe UI", 15F);
-            MayName.Location = new Point(143, 9);
-            MayName.Name = "MayName";
-            MayName.Size = new Size(62, 28);
-            MayName.TabIndex = 0;
-            MayName.Text = "MayX";
+            labelDaKetNoi.AutoSize = true;
+            labelDaKetNoi.Font = new Font("Segoe UI", 15F);
+            labelDaKetNoi.ForeColor = Color.LawnGreen;
+            labelDaKetNoi.Location = new Point(237, 9);
+            labelDaKetNoi.Name = "labelDaKetNoi";
+            labelDaKetNoi.Size = new Size(101, 28);
+            labelDaKetNoi.TabIndex = 1;
+            labelDaKetNoi.Text = "Đã kết nối";
+            // 
+            // labelTenUser
+            // 
+            labelTenUser.AutoSize = true;
+            labelTenUser.Font = new Font("Segoe UI", 15F);
+            labelTenUser.ForeColor = SystemColors.ButtonFace;
+            labelTenUser.Location = new Point(31, 9);
+            labelTenUser.Name = "labelTenUser";
+            labelTenUser.Size = new Size(80, 28);
+            labelTenUser.TabIndex = 0;
+            labelTenUser.Text = "TenUser";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 270);
+            pictureBox1.Location = new Point(12, 254);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(329, 79);
             pictureBox1.TabIndex = 2;
@@ -101,58 +114,18 @@
             panelThongTin.Controls.Add(labelThoiGianConLai);
             panelThongTin.Controls.Add(labelThoiGianSuDung);
             panelThongTin.Controls.Add(labelTongThoiGian);
-            panelThongTin.Location = new Point(12, 59);
+            panelThongTin.Location = new Point(12, 53);
             panelThongTin.Name = "panelThongTin";
             panelThongTin.Size = new Size(329, 132);
             panelThongTin.TabIndex = 3;
             // 
-            // labelTongThoiGian
+            // textBoxGDN
             // 
-            labelTongThoiGian.AutoSize = true;
-            labelTongThoiGian.Location = new Point(19, 15);
-            labelTongThoiGian.Name = "labelTongThoiGian";
-            labelTongThoiGian.Size = new Size(88, 15);
-            labelTongThoiGian.TabIndex = 0;
-            labelTongThoiGian.Text = "Tổng thời gian:";
-            // 
-            // labelThoiGianSuDung
-            // 
-            labelThoiGianSuDung.AutoSize = true;
-            labelThoiGianSuDung.Location = new Point(19, 44);
-            labelThoiGianSuDung.Name = "labelThoiGianSuDung";
-            labelThoiGianSuDung.Size = new Size(106, 15);
-            labelThoiGianSuDung.TabIndex = 1;
-            labelThoiGianSuDung.Text = "Thời gian sử dụng:";
-            // 
-            // labelThoiGianConLai
-            // 
-            labelThoiGianConLai.AutoSize = true;
-            labelThoiGianConLai.Location = new Point(19, 69);
-            labelThoiGianConLai.Name = "labelThoiGianConLai";
-            labelThoiGianConLai.Size = new Size(98, 15);
-            labelThoiGianConLai.TabIndex = 2;
-            labelThoiGianConLai.Text = "Thời gian còn lại:";
-            // 
-            // textBoxTTG
-            // 
-            textBoxTTG.Location = new Point(141, 12);
-            textBoxTTG.Name = "textBoxTTG";
-            textBoxTTG.Size = new Size(185, 23);
-            textBoxTTG.TabIndex = 4;
-            // 
-            // textBoxTGSD
-            // 
-            textBoxTGSD.Location = new Point(141, 41);
-            textBoxTGSD.Name = "textBoxTGSD";
-            textBoxTGSD.Size = new Size(185, 23);
-            textBoxTGSD.TabIndex = 5;
-            // 
-            // textBoxTGCL
-            // 
-            textBoxTGCL.Location = new Point(141, 66);
-            textBoxTGCL.Name = "textBoxTGCL";
-            textBoxTGCL.Size = new Size(185, 23);
-            textBoxTGCL.TabIndex = 6;
+            textBoxGDN.Location = new Point(141, 99);
+            textBoxGDN.Name = "textBoxGDN";
+            textBoxGDN.ReadOnly = true;
+            textBoxGDN.Size = new Size(185, 23);
+            textBoxGDN.TabIndex = 8;
             // 
             // labelGioDangNhap
             // 
@@ -163,18 +136,62 @@
             labelGioDangNhap.TabIndex = 7;
             labelGioDangNhap.Text = "Giờ đăng nhập:";
             // 
-            // textBoxGDN
+            // textBoxTGCL
             // 
-            textBoxGDN.Location = new Point(141, 99);
-            textBoxGDN.Name = "textBoxGDN";
-            textBoxGDN.Size = new Size(185, 23);
-            textBoxGDN.TabIndex = 8;
+            textBoxTGCL.Location = new Point(141, 66);
+            textBoxTGCL.Name = "textBoxTGCL";
+            textBoxTGCL.ReadOnly = true;
+            textBoxTGCL.Size = new Size(185, 23);
+            textBoxTGCL.TabIndex = 6;
+            // 
+            // textBoxTGSD
+            // 
+            textBoxTGSD.Location = new Point(141, 41);
+            textBoxTGSD.Name = "textBoxTGSD";
+            textBoxTGSD.ReadOnly = true;
+            textBoxTGSD.Size = new Size(185, 23);
+            textBoxTGSD.TabIndex = 5;
+            // 
+            // textBoxTTG
+            // 
+            textBoxTTG.Location = new Point(141, 12);
+            textBoxTTG.Name = "textBoxTTG";
+            textBoxTTG.ReadOnly = true;
+            textBoxTTG.Size = new Size(185, 23);
+            textBoxTTG.TabIndex = 4;
+            // 
+            // labelThoiGianConLai
+            // 
+            labelThoiGianConLai.AutoSize = true;
+            labelThoiGianConLai.Location = new Point(19, 69);
+            labelThoiGianConLai.Name = "labelThoiGianConLai";
+            labelThoiGianConLai.Size = new Size(98, 15);
+            labelThoiGianConLai.TabIndex = 2;
+            labelThoiGianConLai.Text = "Thời gian còn lại:";
+            // 
+            // labelThoiGianSuDung
+            // 
+            labelThoiGianSuDung.AutoSize = true;
+            labelThoiGianSuDung.Location = new Point(19, 44);
+            labelThoiGianSuDung.Name = "labelThoiGianSuDung";
+            labelThoiGianSuDung.Size = new Size(106, 15);
+            labelThoiGianSuDung.TabIndex = 1;
+            labelThoiGianSuDung.Text = "Thời gian sử dụng:";
+            // 
+            // labelTongThoiGian
+            // 
+            labelTongThoiGian.AutoSize = true;
+            labelTongThoiGian.Location = new Point(19, 15);
+            labelTongThoiGian.Name = "labelTongThoiGian";
+            labelTongThoiGian.Size = new Size(88, 15);
+            labelTongThoiGian.TabIndex = 0;
+            labelTongThoiGian.Text = "Tổng thời gian:";
             // 
             // btnDoiMK
             // 
             btnDoiMK.Image = (Image)resources.GetObject("btnDoiMK.Image");
             btnDoiMK.ImageAlign = ContentAlignment.TopCenter;
-            btnDoiMK.Location = new Point(12, 207);
+            btnDoiMK.Location = new Point(12, 191);
             btnDoiMK.Name = "btnDoiMK";
             btnDoiMK.Size = new Size(75, 57);
             btnDoiMK.TabIndex = 1;
@@ -185,7 +202,7 @@
             // btnTinNhan
             // 
             btnTinNhan.Image = (Image)resources.GetObject("btnTinNhan.Image");
-            btnTinNhan.Location = new Point(93, 207);
+            btnTinNhan.Location = new Point(93, 191);
             btnTinNhan.Name = "btnTinNhan";
             btnTinNhan.Size = new Size(75, 57);
             btnTinNhan.TabIndex = 4;
@@ -196,7 +213,7 @@
             // btnGoiMon
             // 
             btnGoiMon.Image = (Image)resources.GetObject("btnGoiMon.Image");
-            btnGoiMon.Location = new Point(174, 207);
+            btnGoiMon.Location = new Point(174, 191);
             btnGoiMon.Name = "btnGoiMon";
             btnGoiMon.Size = new Size(83, 57);
             btnGoiMon.TabIndex = 5;
@@ -207,19 +224,20 @@
             // btnDangXuat
             // 
             btnDangXuat.Image = (Image)resources.GetObject("btnDangXuat.Image");
-            btnDangXuat.Location = new Point(263, 207);
+            btnDangXuat.Location = new Point(266, 191);
             btnDangXuat.Name = "btnDangXuat";
             btnDangXuat.Size = new Size(75, 57);
             btnDangXuat.TabIndex = 6;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.TextImageRelation = TextImageRelation.ImageAboveText;
             btnDangXuat.UseVisualStyleBackColor = true;
+            btnDangXuat.Click += btnDangXuat_Click;
             // 
             // ThongTinKhach
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(353, 359);
+            ClientSize = new Size(353, 342);
             Controls.Add(btnDangXuat);
             Controls.Add(btnGoiMon);
             Controls.Add(btnTinNhan);
@@ -228,8 +246,9 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ThongTinKhach";
-            Text = "ThongTinKhach";
+            Text = "Máy trạm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -243,7 +262,6 @@
 
         private Label label1;
         private Panel panel1;
-        private Label MayName;
         private PictureBox pictureBox1;
         private Panel panelThongTin;
         private Label labelTongThoiGian;
@@ -258,5 +276,7 @@
         private Button btnTinNhan;
         private Button btnGoiMon;
         private Button btnDangXuat;
+        private Label labelDaKetNoi;
+        private Label labelTenUser;
     }
 }
