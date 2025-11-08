@@ -159,6 +159,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.BackColor = Color.FromArgb(10, 18, 80);
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
@@ -172,6 +173,7 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.BackColor = Color.FromArgb(10, 18, 80);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -185,6 +187,7 @@
             // 
             // btnMinimize
             // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnMinimize.BackColor = Color.FromArgb(10, 18, 80);
             btnMinimize.FlatAppearance.BorderSize = 0;
             btnMinimize.FlatStyle = FlatStyle.Flat;
@@ -198,7 +201,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Dock = DockStyle.Fill;
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.Name = "pictureBox4";
@@ -216,6 +219,7 @@
             Controls.Add(panel1);
             Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DangNhap";
             Text = "Đăng Nhập";
             Load += DangNhap_Load;

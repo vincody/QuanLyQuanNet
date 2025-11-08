@@ -177,6 +177,7 @@
             // 
             // panelChild
             // 
+            panelChild.AutoScroll = true;
             panelChild.Dock = DockStyle.Fill;
             panelChild.Location = new Point(220, 119);
             panelChild.Name = "panelChild";
