@@ -35,6 +35,9 @@
             panelLogo = new Panel();
             pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            btnCloseK = new Button();
+            btnMaximizeK = new Button();
+            btnMinimizeK = new Button();
             labelList = new Label();
             panelChild = new Panel();
             panelMenu.SuspendLayout();
@@ -52,7 +55,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 597);
+            panelMenu.Size = new Size(220, 578);
             panelMenu.TabIndex = 0;
             // 
             // btnNapTien
@@ -112,13 +115,55 @@
             // panelTitle
             // 
             panelTitle.BackColor = Color.AliceBlue;
+            panelTitle.Controls.Add(btnCloseK);
+            panelTitle.Controls.Add(btnMaximizeK);
+            panelTitle.Controls.Add(btnMinimizeK);
             panelTitle.Controls.Add(labelList);
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(220, 0);
             panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(816, 119);
+            panelTitle.Size = new Size(836, 119);
             panelTitle.TabIndex = 7;
             panelTitle.MouseDown += panelTitle_MouseDown;
+            // 
+            // btnCloseK
+            // 
+            btnCloseK.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCloseK.FlatAppearance.BorderSize = 0;
+            btnCloseK.FlatStyle = FlatStyle.Flat;
+            btnCloseK.Image = (Image)resources.GetObject("btnCloseK.Image");
+            btnCloseK.Location = new Point(804, 3);
+            btnCloseK.Name = "btnCloseK";
+            btnCloseK.Size = new Size(27, 23);
+            btnCloseK.TabIndex = 9;
+            btnCloseK.UseVisualStyleBackColor = true;
+            btnCloseK.Click += btnCloseK_Click;
+            // 
+            // btnMaximizeK
+            // 
+            btnMaximizeK.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximizeK.FlatAppearance.BorderSize = 0;
+            btnMaximizeK.FlatStyle = FlatStyle.Flat;
+            btnMaximizeK.Image = (Image)resources.GetObject("btnMaximizeK.Image");
+            btnMaximizeK.Location = new Point(771, 2);
+            btnMaximizeK.Name = "btnMaximizeK";
+            btnMaximizeK.Size = new Size(27, 23);
+            btnMaximizeK.TabIndex = 8;
+            btnMaximizeK.UseVisualStyleBackColor = true;
+            btnMaximizeK.Click += btnMaximizeK_Click;
+            // 
+            // btnMinimizeK
+            // 
+            btnMinimizeK.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimizeK.FlatAppearance.BorderSize = 0;
+            btnMinimizeK.FlatStyle = FlatStyle.Flat;
+            btnMinimizeK.Image = (Image)resources.GetObject("btnMinimizeK.Image");
+            btnMinimizeK.Location = new Point(738, 3);
+            btnMinimizeK.Name = "btnMinimizeK";
+            btnMinimizeK.Size = new Size(27, 23);
+            btnMinimizeK.TabIndex = 7;
+            btnMinimizeK.UseVisualStyleBackColor = true;
+            btnMinimizeK.Click += btnMinimizeK_Click;
             // 
             // labelList
             // 
@@ -135,14 +180,14 @@
             panelChild.Dock = DockStyle.Fill;
             panelChild.Location = new Point(220, 119);
             panelChild.Name = "panelChild";
-            panelChild.Size = new Size(816, 478);
+            panelChild.Size = new Size(836, 459);
             panelChild.TabIndex = 7;
             // 
             // MenuKhach
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1036, 597);
+            ClientSize = new Size(1056, 578);
             Controls.Add(panelChild);
             Controls.Add(panelTitle);
             Controls.Add(panelMenu);
@@ -166,5 +211,8 @@
         private Panel panelTitle;
         private Label labelList;
         private Panel panelChild;
+        private Button btnMinimizeK;
+        private Button btnCloseK;
+        private Button btnMaximizeK;
     }
 }

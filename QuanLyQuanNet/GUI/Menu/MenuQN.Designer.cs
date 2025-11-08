@@ -42,6 +42,9 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            btnClose = new Button();
+            btnMaximize = new Button();
+            btnMinimize = new Button();
             lblTenDN = new Label();
             lblTitle = new Label();
             panelCon = new Panel();
@@ -253,6 +256,9 @@
             // panelTitle
             // 
             panelTitle.BackColor = Color.AliceBlue;
+            panelTitle.Controls.Add(btnClose);
+            panelTitle.Controls.Add(btnMaximize);
+            panelTitle.Controls.Add(btnMinimize);
             panelTitle.Controls.Add(lblTenDN);
             panelTitle.Controls.Add(lblTitle);
             panelTitle.Dock = DockStyle.Top;
@@ -261,6 +267,49 @@
             panelTitle.Size = new Size(836, 119);
             panelTitle.TabIndex = 10;
             panelTitle.MouseDown += panelTitle_MouseDown;
+            // 
+            // btnClose
+            // 
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.ForeColor = Color.AliceBlue;
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(804, 3);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(27, 23);
+            btnClose.TabIndex = 4;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
+            // btnMaximize
+            // 
+            btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.BackColor = Color.Transparent;
+            btnMaximize.FlatAppearance.BorderSize = 0;
+            btnMaximize.FlatStyle = FlatStyle.Flat;
+            btnMaximize.ForeColor = Color.Transparent;
+            btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
+            btnMaximize.Location = new Point(771, -2);
+            btnMaximize.Name = "btnMaximize";
+            btnMaximize.Size = new Size(27, 34);
+            btnMaximize.TabIndex = 3;
+            btnMaximize.UseVisualStyleBackColor = false;
+            btnMaximize.Click += btnMaximize_Click;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatAppearance.BorderSize = 0;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.ForeColor = Color.AliceBlue;
+            btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
+            btnMinimize.Location = new Point(738, 3);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(27, 23);
+            btnMinimize.TabIndex = 2;
+            btnMinimize.UseVisualStyleBackColor = true;
+            btnMinimize.Click += btnMinimize_Click;
             // 
             // lblTenDN
             // 
@@ -330,5 +379,8 @@
         private Button btnChatAdmin;
         private Label lblTitle;
         private Label lblTenDN;
+        private Button btnClose;
+        private Button btnMaximize;
+        private Button btnMinimize;
     }
 }
