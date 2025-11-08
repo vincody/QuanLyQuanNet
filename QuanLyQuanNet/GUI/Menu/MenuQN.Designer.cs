@@ -260,6 +260,7 @@
             panelTitle.Name = "panelTitle";
             panelTitle.Size = new Size(836, 119);
             panelTitle.TabIndex = 10;
+            panelTitle.MouseDown += panelTitle_MouseDown;
             // 
             // lblTenDN
             // 

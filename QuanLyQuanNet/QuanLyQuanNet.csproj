@@ -27,8 +27,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="GUI\FormNgoai\FormKhach\" />
-  </ItemGroup>
-
 </Project>

@@ -155,11 +155,12 @@
             // labelSoDu
             // 
             labelSoDu.AutoSize = true;
-            labelSoDu.Location = new Point(22, 120);
+            labelSoDu.Location = new Point(19, 120);
             labelSoDu.Name = "labelSoDu";
             labelSoDu.Size = new Size(92, 15);
             labelSoDu.TabIndex = 9;
             labelSoDu.Text = "Số dư tài khoản:";
+            labelSoDu.Click += labelSoDu_Click;
             // 
             // textBoxGDN
             // 

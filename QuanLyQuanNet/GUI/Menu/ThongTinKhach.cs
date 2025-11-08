@@ -178,5 +178,10 @@ namespace QuanLyQuanNet.GUI.Menu
                 MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void labelSoDu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -35,9 +35,12 @@
             panelLogo = new Panel();
             pictureBox1 = new PictureBox();
             panelTitle = new Panel();
+            labelList = new Label();
+            panelChild = new Panel();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelTitle.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -61,6 +64,7 @@
             btnNapTien.ImageAlign = ContentAlignment.MiddleLeft;
             btnNapTien.Location = new Point(0, 164);
             btnNapTien.Name = "btnNapTien";
+            btnNapTien.Padding = new Padding(12, 0, 0, 0);
             btnNapTien.Size = new Size(220, 45);
             btnNapTien.TabIndex = 5;
             btnNapTien.Text = "Nạp tiền ";
@@ -78,6 +82,7 @@
             btnGame.ImageAlign = ContentAlignment.MiddleLeft;
             btnGame.Location = new Point(0, 119);
             btnGame.Name = "btnGame";
+            btnGame.Padding = new Padding(12, 0, 0, 0);
             btnGame.Size = new Size(220, 45);
             btnGame.TabIndex = 3;
             btnGame.Text = "Menu Game";
@@ -107,17 +112,37 @@
             // panelTitle
             // 
             panelTitle.BackColor = Color.AliceBlue;
+            panelTitle.Controls.Add(labelList);
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(220, 0);
             panelTitle.Name = "panelTitle";
             panelTitle.Size = new Size(816, 119);
             panelTitle.TabIndex = 7;
             // 
+            // labelList
+            // 
+            labelList.AutoSize = true;
+            labelList.Font = new Font("Segoe UI", 20F);
+            labelList.Location = new Point(25, 41);
+            labelList.Name = "labelList";
+            labelList.Size = new Size(97, 37);
+            labelList.TabIndex = 6;
+            labelList.Text = "TenList";
+            // 
+            // panelChild
+            // 
+            panelChild.Dock = DockStyle.Fill;
+            panelChild.Location = new Point(220, 119);
+            panelChild.Name = "panelChild";
+            panelChild.Size = new Size(816, 478);
+            panelChild.TabIndex = 7;
+            // 
             // MenuKhach
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1036, 597);
+            Controls.Add(panelChild);
             Controls.Add(panelTitle);
             Controls.Add(panelMenu);
             Name = "MenuKhach";
@@ -125,6 +150,8 @@
             panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelTitle.ResumeLayout(false);
+            panelTitle.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -136,5 +163,7 @@
         private Button btnGame;
         private Button btnNapTien;
         private Panel panelTitle;
+        private Label labelList;
+        private Panel panelChild;
     }
 }

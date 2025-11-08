@@ -49,6 +49,23 @@ namespace QuanLyQuanNet.GUI.Menu
                 }
             }
         }
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activateForm != null)
+            {
+                activateForm.Close();
+            }
+            ActivateButton(btnSender);
+            activateForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelChild.Controls.Add(childForm);
+            this.panelChild.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelList.Text = childForm.Text;
+        }
 
         private void btnFoods_Click(object sender, EventArgs e)
         {
@@ -57,7 +74,7 @@ namespace QuanLyQuanNet.GUI.Menu
 
         private void btnGame_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new FormNgoai.FormKhach.MenuGames(), sender);
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -67,7 +84,7 @@ namespace QuanLyQuanNet.GUI.Menu
 
         private void btnNapTien_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new FormNgoai.FormKhach.NapTien(), sender);
         }
     }
 }
