@@ -118,6 +118,7 @@
             panelTitle.Name = "panelTitle";
             panelTitle.Size = new Size(816, 119);
             panelTitle.TabIndex = 7;
+            panelTitle.MouseDown += panelTitle_MouseDown;
             // 
             // labelList
             // 
