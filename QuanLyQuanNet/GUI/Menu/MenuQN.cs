@@ -19,14 +19,89 @@ namespace QuanLyQuanNet.GUI.Menu
         private Random random;
         private int tempIndex;
         private Form activateForm;
+        private System.Windows.Forms.Timer notificationTimer;
+        private Dictionary<string, ChatvKH> openChatForms = new Dictionary<string, ChatvKH>();
         // Constructor
 
         public MenuQN()
         {
             InitializeComponent();
+            SetupNotificationTimer();
+            // Đảm bảo IsAdminReady = true khi Form này mở
+            // TemporaryChatManager.IsAdminReady = true;
+            TemporaryChatManager.IsAdminReady = true;
             this.Text = "";
             this.ControlBox = false;
         }
+        private void MenuQN_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (notificationTimer != null)
+            {
+                notificationTimer.Stop();
+            }
+            // Đánh dấu Admin BẬN (Không sẵn sàng) khi Form Quản lý đóng
+            TemporaryChatManager.IsAdminReady = false;
+        }
+        private void SetupNotificationTimer()
+        {
+            notificationTimer = new System.Windows.Forms.Timer();
+            notificationTimer.Interval = 1000; // Kiểm tra mỗi 1 giây
+            notificationTimer.Tick += NotificationTimer_Tick;
+            notificationTimer.Start();
+        }
+        private void NotificationTimer_Tick(object sender, EventArgs e)
+        {
+            if (TemporaryChatManager.MachinesWithNewMessages.Count > 0)
+            {
+                // Lấy danh sách các máy cần mở chat để tránh lỗi Collection modified
+                string[] machinesToProcess = TemporaryChatManager.MachinesWithNewMessages.ToArray();
+
+                foreach (string tenMayCanChat in machinesToProcess)
+                {
+                    // Xóa máy khỏi danh sách chờ ngay lập tức
+                    TemporaryChatManager.MachinesWithNewMessages.Remove(tenMayCanChat);
+
+                    // Kiểm tra xem Form chat cho máy này đã mở chưa
+                    if (!openChatForms.ContainsKey(tenMayCanChat) || openChatForms[tenMayCanChat].IsDisposed)
+                    {
+                        // Mở Form ChatvKH mới
+                        OpenChatForMachine(tenMayCanChat);
+                    }
+                    else
+                    {
+                        // Nếu đã mở, chỉ cần đưa Form đó lên phía trước (Focus)
+                        openChatForms[tenMayCanChat].BringToFront();
+                    }
+                }
+            }
+        }
+        private void OpenChatForMachine(string tenMay)
+        {
+            ChatvKH adminChatForm = new ChatvKH(tenMay);
+
+            // Lưu Form vào Dictionary
+            openChatForms.Add(tenMay, adminChatForm);
+
+            // Xử lý sự kiện khi Form đóng để dọn dẹp Dictionary
+            adminChatForm.FormClosed += (s, args) =>
+            {
+                if (openChatForms.ContainsKey(tenMay))
+                {
+                    openChatForms.Remove(tenMay);
+                }
+                // Logic xóa khỏi OpenAdminChatWindows của TemporaryChatManager vẫn cần giữ
+                if (TemporaryChatManager.OpenAdminChatWindows.Contains(tenMay))
+                {
+                    TemporaryChatManager.OpenAdminChatWindows.Remove(tenMay);
+                }
+            };
+
+            // Đánh dấu máy này đang được Admin mở chat
+            TemporaryChatManager.OpenAdminChatWindows.Add(tenMay);
+
+            adminChatForm.Show();
+        }
+        // Đừng quên dừng Timer khi Form MenuQN đóng
         // drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -129,7 +204,7 @@ namespace QuanLyQuanNet.GUI.Menu
 
         private void btnChatAdmin_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormNgoai.FormAdmin.ChatvKH(), sender);
+
         }
 
         private void panelTitle_MouseDown(object sender, MouseEventArgs e)

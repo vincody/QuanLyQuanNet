@@ -171,9 +171,9 @@
             labelList.Font = new Font("Segoe UI", 20F);
             labelList.Location = new Point(25, 41);
             labelList.Name = "labelList";
-            labelList.Size = new Size(97, 37);
+            labelList.Size = new Size(85, 37);
             labelList.TabIndex = 6;
-            labelList.Text = "TenList";
+            labelList.Text = "Menu";
             // 
             // panelChild
             // 

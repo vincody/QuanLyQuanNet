@@ -246,7 +246,6 @@
             // 
             // btnTinNhan
             // 
-            btnTinNhan.Enabled = false;
             btnTinNhan.Image = (Image)resources.GetObject("btnTinNhan.Image");
             btnTinNhan.Location = new Point(93, 236);
             btnTinNhan.Name = "btnTinNhan";
@@ -255,6 +254,7 @@
             btnTinNhan.Text = "Chat";
             btnTinNhan.TextImageRelation = TextImageRelation.ImageAboveText;
             btnTinNhan.UseVisualStyleBackColor = true;
+            btnTinNhan.Click += btnTinNhan_Click;
             // 
             // btnGoiMon
             // 

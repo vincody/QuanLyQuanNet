@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.Transactions;
-
+using System.Drawing; // Thêm using System.Drawing cho Point
+using System.Windows.Forms; // Thêm using System.Windows.Forms
+using System.Linq; // Thêm using System.Linq
 
 // ... các using khác ...
 using QuanLyQuanNet.GUI.Menu;
 // Thêm using cho class UserSession nếu nó ở namespace khác
-// Ví dụ: using QuanLyQuanNet.Utils; 
+// Ví dụ: using QuanLyQuanNet.Utils; 
 
 namespace QuanLyQuanNet
 {
@@ -37,7 +39,7 @@ namespace QuanLyQuanNet
             string matKhau = txtMatKhau.Text.Trim();
 
             // ⚠️ Lưu ý bảo mật: Hãy nhớ triển khai hàm BĂM MẬT KHẨU thực tế!
-            // Ví dụ: string matKhauDaBam = HashFunction(matKhau); 
+            // Ví dụ: string matKhauDaBam = HashFunction(matKhau); 
 
             // Hàm KiemTraDangNhap đã được sửa để vừa kiểm tra và vừa lưu thông tin session.
             if (KiemTraVaTaoSession(tenDangNhap, matKhau))
@@ -60,7 +62,7 @@ namespace QuanLyQuanNet
 
                     ThongTinKhach formThongTin = new ThongTinKhach(
                     UserSession.TenDangNhap, // Giá trị cho labelTenUser
-                    UserSession.TenMay,     // Giá trị cho tiêu đề Form
+                    UserSession.TenMay,     // Giá trị cho tiêu đề Form
                     menuKhachForm
                     );
                     // =============================================================
@@ -71,7 +73,7 @@ namespace QuanLyQuanNet
 
                     // 2. Lấy kích thước màn hình
                     int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
-                    int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+                    // int screenHeight = Screen.PrimaryScreen.WorkingArea.Height; // Không cần thiết
 
                     // 3. Tính toán vị trí X và Y (góc trên bên phải)
                     // X = Chiều rộng màn hình - Chiều rộng của Form ThongTinKhach
@@ -97,6 +99,7 @@ namespace QuanLyQuanNet
                 }
 
                 // 3. Ẩn Form Đăng nhập hiện tại
+                
             }
             else
             {
@@ -154,7 +157,7 @@ namespace QuanLyQuanNet
                                 UserSession.TaiKhoanID = taiKhoanID;
                                 UserSession.HoTen = hoTen;
                                 UserSession.TenDangNhap = tenDangNhap;
-                                UserSession.SoDu = soDu; // <<< LƯU SỐ DƯ VÀO SESSION
+                                UserSession.SoDu = soDu; // LƯU SỐ DƯ VÀO SESSION
                             }
                         } // reader tự động đóng tại đây
                     }
@@ -199,13 +202,14 @@ namespace QuanLyQuanNet
                 }
             }
         }
+
         // Đặt hàm này trong class DangNhap
         private string TimVaGiaHanMay(SqlConnection connection, SqlTransaction transaction)
         {
             string[] danhSachMay = {
-            "MAY01", "MAY02", "MAY03", "MAY04", "MAY05",
-            "MAY06", "MAY07", "MAY08", "MAY09", "MAY10"
-        };
+                "MAY01", "MAY02", "MAY03", "MAY04", "MAY05",
+                "MAY06", "MAY07", "MAY08", "MAY09", "MAY10"
+            };
             Random random = new Random();
 
             // Tối đa 20 lần thử để tìm máy ngẫu nhiên
@@ -213,25 +217,30 @@ namespace QuanLyQuanNet
             {
                 string tenMayChon = danhSachMay[random.Next(0, danhSachMay.Length)];
 
-                // KIỂM TRA MÁY CÓ RẢNH KHÔNG VÀ LẤY GIÁ:
+                // ✅ SỬA LỖI LOGIC: Dùng NOT EXISTS thay cho LEFT JOIN để khắc phục lỗi "Máy đầy"
                 string queryKiemTra = @"
-                SELECT C.TinhTrang, C.GiaTheoGio
-                FROM Computers C
-                LEFT JOIN SuDungMay S ON C.TenMay = S.TenMay AND S.ThoiGianKetThuc IS NULL
-                WHERE C.TenMay = @TenMay AND C.TinhTrang = 'Available' AND S.TenMay IS NULL;";
+                    SELECT C.GiaTheoGio
+                    FROM Computers C
+                    WHERE C.TenMay = @TenMay
+                      AND C.TinhTrang = 'Available'
+                      -- Đảm bảo máy không có phiên sử dụng nào chưa kết thúc
+                      AND NOT EXISTS (
+                          SELECT 1 FROM SuDungMay S 
+                          WHERE S.TenMay = C.TenMay AND S.ThoiGianKetThuc IS NULL
+                      );";
 
                 using (SqlCommand commandKiemTra = new SqlCommand(queryKiemTra, connection, transaction))
                 {
                     commandKiemTra.Parameters.AddWithValue("@TenMay", tenMayChon);
 
-                    // SỬ DỤNG ExecuteReader để đọc nhiều cột
+                    // SỬ DỤNG ExecuteReader để đọc cột GiaTheoGio
                     using (SqlDataReader reader = commandKiemTra.ExecuteReader())
                     {
-                        if (reader.Read()) // Nếu tìm thấy hàng, tức là máy RẢNH
+                        if (reader.Read()) // Nếu tìm thấy hàng, tức là máy RẢNH và không bị kẹt
                         {
                             // Lấy Giá Theo Giờ
                             decimal giaTheoGio = reader.GetDecimal(reader.GetOrdinal("GiaTheoGio"));
-                            reader.Close(); // <<< ĐÓNG READER ĐỂ TIẾP TỤC LỆNH SQL KHÁC
+                            reader.Close(); // ĐÓNG READER ĐỂ THỰC THI CÁC LỆNH SQL TIẾP THEO
 
                             // 1. CẬP NHẬT TRẠNG THÁI MÁY THÀNH 'Busy'
                             string queryUpdate = "UPDATE Computers SET TinhTrang = 'Busy' WHERE TenMay = @TenMay";
@@ -254,19 +263,16 @@ namespace QuanLyQuanNet
                                 commandInsert.ExecuteNonQuery();
                             }
 
-                            // **********************************************
-                            // <<< BỔ SUNG QUAN TRỌNG: LƯU VÀO SESSION >>>
+                            // LƯU VÀO SESSION
                             UserSession.GiaTheoGio = giaTheoGio;
                             UserSession.TenMay = tenMayChon;
-                            // **********************************************
 
                             return tenMayChon; // Trả về tên máy thành công
                         }
-                        // Nếu reader.Read() là False, reader sẽ tự động đóng
                     }
                 }
             }
-            return null; // Không tìm thấy máy rảnh sau nhiều lần thử
+            return null; // Không tìm thấy máy rảnh
         }
 
         private void DangNhap_Load(object sender, EventArgs e)

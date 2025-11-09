@@ -191,5 +191,19 @@ namespace QuanLyQuanNet.GUI.Menu
             DoiMK doiMKForm = new DoiMK();
             doiMKForm.ShowDialog(); // Dùng ShowDialog để ngăn người dùng thao tác với Form cha
         }
+
+        private void btnTinNhan_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra Admin có sẵn sàng không
+            if (!TemporaryChatManager.IsAdminReady)
+            {
+                MessageBox.Show("Quản lý đang bận, vui lòng thử lại sau vài phút", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Mở Form chat, truyền tên máy và tên đăng nhập
+            GiaoTiepKH chatForm = new GiaoTiepKH(UserSession.TenMay, UserSession.TenDangNhap);
+            chatForm.Show();
+        }
     }
 }
