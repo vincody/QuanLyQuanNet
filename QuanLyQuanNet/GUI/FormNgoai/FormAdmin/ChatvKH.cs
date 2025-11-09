@@ -15,13 +15,13 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
     {
         private string tenMayKhach;
         private System.Windows.Forms.Timer chatTimer;
-
+        private int lastMessageCount = 0;
         public ChatvKH(string tenMay)
         {
             InitializeComponent();
             this.tenMayKhach = tenMay;
             this.labelTenMay.Text = $"Đang chat với: {tenMay}"; // Gán tên máy
-            textBoxNhanAD.ReadOnly = true;
+            richTextBoxNhanAD.ReadOnly = true;
             this.ControlBox = false;
 
             SetupTimer();
@@ -43,15 +43,46 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
         private void LoadHistory()
         {
-            List<string> history = TemporaryChatManager.GetHistory(tenMayKhach);
-            string newContent = string.Join(Environment.NewLine, history);
+            List<ChatMessage> history = TemporaryChatManager.GetHistory(tenMayKhach);
 
-            if (textBoxNhanAD.Text != newContent)
+            // ✅ Sửa lỗi logic: Chỉ cập nhật nếu số lượng tin nhắn trong bộ nhớ TĂNG
+            if (history.Count <= lastMessageCount) return;
+
+            // 1. Nếu đây là lần đầu tiên tải lịch sử (Form mới mở), xóa nội dung cũ
+            if (lastMessageCount == 0)
             {
-                textBoxNhanAD.Text = newContent;
-                textBoxNhanAD.SelectionStart = textBoxNhanAD.Text.Length;
-                textBoxNhanAD.ScrollToCaret();
+                richTextBoxNhanAD.Clear();
             }
+
+            // 2. Tải các tin nhắn mới (chỉ từ vị trí lastMessageCount)
+            for (int i = lastMessageCount; i < history.Count; i++)
+            {
+                var msg = history[i];
+
+                // Định dạng tin nhắn (Giữ nguyên)
+                string senderDisplay = (msg.Sender == "Quản lý") ? "[Quản lý]" : $"[{msg.Sender}]";
+                string line = $"{msg.Time:HH:mm:ss} {senderDisplay}: {msg.Content}";
+
+                // Chọn màu: Xanh dương cho Quản lý, Đen cho Khách
+                Color color = (msg.Sender == "Quản lý") ? Color.Blue : Color.Black;
+
+                // Thêm dòng mới vào RichTextBox với màu sắc
+                AppendText(richTextBoxNhanAD, line + Environment.NewLine, color);
+            }
+
+            // 3. Cập nhật biến đếm: Đánh dấu số tin nhắn đã hiển thị
+            lastMessageCount = history.Count;
+        }
+
+        // Hàm AppendText (Giữ nguyên như đã thảo luận)
+        private void AppendText(RichTextBox box, string text, Color color)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.SelectionColor = color;
+            box.AppendText(text);
+            box.SelectionColor = box.ForeColor;
+            box.ScrollToCaret(); // Cuộn xuống cuối
         }
 
         // drag form

@@ -32,9 +32,9 @@
             panel1 = new Panel();
             btnCloseAd = new Button();
             labelTenMay = new Label();
-            textBoxNhanAD = new TextBox();
             textBoxGuiAD = new TextBox();
             btnChatAd = new Button();
+            richTextBoxNhanAD = new RichTextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,15 +71,6 @@
             labelTenMay.TabIndex = 1;
             labelTenMay.Text = "May";
             // 
-            // textBoxNhanAD
-            // 
-            textBoxNhanAD.Location = new Point(25, 78);
-            textBoxNhanAD.Multiline = true;
-            textBoxNhanAD.Name = "textBoxNhanAD";
-            textBoxNhanAD.ReadOnly = true;
-            textBoxNhanAD.Size = new Size(631, 241);
-            textBoxNhanAD.TabIndex = 3;
-            // 
             // textBoxGuiAD
             // 
             textBoxGuiAD.Location = new Point(25, 325);
@@ -98,14 +89,22 @@
             btnChatAd.UseVisualStyleBackColor = true;
             btnChatAd.Click += btnChatAd_Click;
             // 
+            // richTextBoxNhanAD
+            // 
+            richTextBoxNhanAD.Location = new Point(25, 78);
+            richTextBoxNhanAD.Name = "richTextBoxNhanAD";
+            richTextBoxNhanAD.Size = new Size(631, 241);
+            richTextBoxNhanAD.TabIndex = 6;
+            richTextBoxNhanAD.Text = "";
+            // 
             // ChatvKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(682, 413);
+            Controls.Add(richTextBoxNhanAD);
             Controls.Add(btnChatAd);
             Controls.Add(textBoxGuiAD);
-            Controls.Add(textBoxNhanAD);
             Controls.Add(labelTenMay);
             Controls.Add(panel1);
             Name = "ChatvKH";
@@ -119,8 +118,8 @@
         private Panel panel1;
         private Button btnCloseAd;
         private Label labelTenMay;
-        private TextBox textBoxNhanAD;
         private TextBox textBoxGuiAD;
         private Button btnChatAd;
+        private RichTextBox richTextBoxNhanAD;
     }
 }

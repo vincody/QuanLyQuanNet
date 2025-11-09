@@ -29,24 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GiaoTiepKH));
-            textBoxNhanKH = new TextBox();
             panel1 = new Panel();
             btnCloseKH = new Button();
             labelChat = new Label();
             textBoxGuiKH = new TextBox();
             btnChatKH = new Button();
+            richTextBoxNhanKH = new RichTextBox();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // textBoxNhanKH
-            // 
-            textBoxNhanKH.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBoxNhanKH.Location = new Point(25, 78);
-            textBoxNhanKH.Multiline = true;
-            textBoxNhanKH.Name = "textBoxNhanKH";
-            textBoxNhanKH.ReadOnly = true;
-            textBoxNhanKH.Size = new Size(631, 241);
-            textBoxNhanKH.TabIndex = 0;
             // 
             // panel1
             // 
@@ -105,16 +95,24 @@
             btnChatKH.UseVisualStyleBackColor = true;
             btnChatKH.Click += btnChatKH_Click;
             // 
+            // richTextBoxNhanKH
+            // 
+            richTextBoxNhanKH.Location = new Point(25, 78);
+            richTextBoxNhanKH.Name = "richTextBoxNhanKH";
+            richTextBoxNhanKH.Size = new Size(631, 241);
+            richTextBoxNhanKH.TabIndex = 5;
+            richTextBoxNhanKH.Text = "";
+            // 
             // GiaoTiepKH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(682, 413);
+            Controls.Add(richTextBoxNhanKH);
             Controls.Add(btnChatKH);
             Controls.Add(textBoxGuiKH);
             Controls.Add(labelChat);
             Controls.Add(panel1);
-            Controls.Add(textBoxNhanKH);
             Name = "GiaoTiepKH";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -122,12 +120,11 @@
         }
 
         #endregion
-
-        private TextBox textBoxNhanKH;
         private Panel panel1;
         private Label labelChat;
         private TextBox textBoxGuiKH;
         private Button btnChatKH;
         private Button btnCloseKH;
+        private RichTextBox richTextBoxNhanKH;
     }
 }
