@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyQuanNet.GUI.FormNgoai.FormKhach;
 
 namespace QuanLyQuanNet.GUI.Menu
 {
@@ -182,6 +183,13 @@ namespace QuanLyQuanNet.GUI.Menu
         private void labelSoDu_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDoiMK_Click(object sender, EventArgs e)
+        {
+            // Tạo và hiển thị Form đổi mật khẩu
+            DoiMK doiMKForm = new DoiMK();
+            doiMKForm.ShowDialog(); // Dùng ShowDialog để ngăn người dùng thao tác với Form cha
         }
     }
 }

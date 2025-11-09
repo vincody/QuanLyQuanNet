@@ -103,7 +103,8 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 299);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(329, 79);
+            pictureBox1.Size = new Size(326, 78);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
@@ -241,9 +242,11 @@
             btnDoiMK.Text = "Mật khẩu";
             btnDoiMK.TextImageRelation = TextImageRelation.ImageAboveText;
             btnDoiMK.UseVisualStyleBackColor = true;
+            btnDoiMK.Click += btnDoiMK_Click;
             // 
             // btnTinNhan
             // 
+            btnTinNhan.Enabled = false;
             btnTinNhan.Image = (Image)resources.GetObject("btnTinNhan.Image");
             btnTinNhan.Location = new Point(93, 236);
             btnTinNhan.Name = "btnTinNhan";
@@ -255,6 +258,7 @@
             // 
             // btnGoiMon
             // 
+            btnGoiMon.Enabled = false;
             btnGoiMon.Image = (Image)resources.GetObject("btnGoiMon.Image");
             btnGoiMon.Location = new Point(174, 236);
             btnGoiMon.Name = "btnGoiMon";
