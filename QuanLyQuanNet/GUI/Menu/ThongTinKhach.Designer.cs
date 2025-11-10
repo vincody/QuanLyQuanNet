@@ -103,7 +103,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(12, 299);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(326, 78);
+            pictureBox1.Size = new Size(326, 124);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -284,7 +284,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(353, 384);
+            ClientSize = new Size(353, 435);
             ControlBox = false;
             Controls.Add(btnDangXuat);
             Controls.Add(btnGoiMon);
