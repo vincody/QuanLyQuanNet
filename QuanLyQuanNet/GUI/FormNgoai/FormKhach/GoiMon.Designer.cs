@@ -31,6 +31,7 @@
             CagetoryMonAn = new FlowLayoutPanel();
             MenuDoAn = new FlowLayoutPanel();
             panel1 = new Panel();
+            textBoxTimMonAn = new TextBox();
             panel2 = new Panel();
             labelTongTien = new Label();
             label1 = new Label();
@@ -45,23 +46,24 @@
             CagetoryMonAn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             CagetoryMonAn.Location = new Point(0, 0);
             CagetoryMonAn.Name = "CagetoryMonAn";
-            CagetoryMonAn.Size = new Size(500, 53);
+            CagetoryMonAn.Size = new Size(500, 42);
             CagetoryMonAn.TabIndex = 0;
             // 
             // MenuDoAn
             // 
-            MenuDoAn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            MenuDoAn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MenuDoAn.AutoScroll = true;
             MenuDoAn.BackColor = SystemColors.ControlDarkDark;
-            MenuDoAn.Location = new Point(0, 59);
+            MenuDoAn.Location = new Point(0, 40);
             MenuDoAn.Name = "MenuDoAn";
-            MenuDoAn.Size = new Size(500, 465);
+            MenuDoAn.Size = new Size(500, 484);
             MenuDoAn.TabIndex = 0;
             MenuDoAn.Paint += MenuDoAn_Paint;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel1.Controls.Add(textBoxTimMonAn);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(ListMonAnDat);
             panel1.Controls.Add(panelThanhToan);
@@ -70,13 +72,25 @@
             panel1.Size = new Size(375, 524);
             panel1.TabIndex = 0;
             // 
+            // textBoxTimMonAn
+            // 
+            textBoxTimMonAn.BackColor = Color.LightGray;
+            textBoxTimMonAn.BorderStyle = BorderStyle.None;
+            textBoxTimMonAn.Font = new Font("Segoe UI", 15F);
+            textBoxTimMonAn.Location = new Point(6, 7);
+            textBoxTimMonAn.Name = "textBoxTimMonAn";
+            textBoxTimMonAn.PlaceholderText = "Tìm tên món ăn";
+            textBoxTimMonAn.Size = new Size(210, 27);
+            textBoxTimMonAn.TabIndex = 0;
+            textBoxTimMonAn.TextAlign = HorizontalAlignment.Center;
+            // 
             // panel2
             // 
             panel2.Controls.Add(labelTongTien);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(3, 347);
             panel2.Name = "panel2";
-            panel2.Size = new Size(369, 25);
+            panel2.Size = new Size(362, 25);
             panel2.TabIndex = 0;
             // 
             // labelTongTien
@@ -85,7 +99,7 @@
             labelTongTien.BackColor = SystemColors.Control;
             labelTongTien.Font = new Font("Segoe UI", 10F);
             labelTongTien.ForeColor = Color.Crimson;
-            labelTongTien.Location = new Point(320, 0);
+            labelTongTien.Location = new Point(275, 0);
             labelTongTien.Name = "labelTongTien";
             labelTongTien.Size = new Size(49, 19);
             labelTongTien.TabIndex = 1;
@@ -106,9 +120,9 @@
             ListMonAnDat.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ListMonAnDat.AutoScroll = true;
             ListMonAnDat.BackColor = SystemColors.ControlDarkDark;
-            ListMonAnDat.Location = new Point(3, 59);
+            ListMonAnDat.Location = new Point(3, 40);
             ListMonAnDat.Name = "ListMonAnDat";
-            ListMonAnDat.Size = new Size(369, 285);
+            ListMonAnDat.Size = new Size(369, 304);
             ListMonAnDat.TabIndex = 0;
             // 
             // panelThanhToan
@@ -128,8 +142,9 @@
             Controls.Add(CagetoryMonAn);
             Controls.Add(MenuDoAn);
             Name = "GoiMon";
-            Text = "GoiMon";
+            Text = "Gọi món";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -145,5 +160,6 @@
         private Panel panel2;
         private Label labelTongTien;
         private Label label1;
+        private TextBox textBoxTimMonAn;
     }
 }

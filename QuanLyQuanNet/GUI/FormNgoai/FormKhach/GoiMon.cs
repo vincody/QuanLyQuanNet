@@ -21,31 +21,55 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             InitializeComponent();
             LoadMenu();
             SetupCategoryFilters();
+            // Gán sự kiện TextChanged
+            this.textBoxTimMonAn.TextChanged += new EventHandler(this.textBoxTimMonAn_TextChanged);
         }
         // Gọi hàm này khi Form Load
-        private void LoadMenu(string filterCategory = "Tất cả") // Đặt giá trị mặc định là "Tất cả"
+        private void LoadMenu(string filterCategory = "Tất cả", string searchKeyword = "") // <<< ĐÃ THÊM THAM SỐ searchKeyword
         {
             // Xóa các controls cũ (nếu có) trước khi tải lại
             MenuDoAn.Controls.Clear();
 
-            string query = "SELECT TenMon, Gia, HinhAnhPath, DanhMuc FROM ThucDon"; // Cần SELECT cả DanhMuc (Mặc dù không dùng ở đây, nhưng tốt cho debugging)
+            string query = "SELECT TenMon, Gia, HinhAnhPath, DanhMuc FROM ThucDon";
+
+            // Khởi tạo danh sách các mệnh đề WHERE
+            List<string> whereClauses = new List<string>();
 
             // 1. Xây dựng mệnh đề WHERE
             if (filterCategory != "Tất cả")
             {
-                // Thêm mệnh đề WHERE vào truy vấn để lọc theo DanhMuc
-                query += " WHERE DanhMuc = @Category";
+                whereClauses.Add("DanhMuc = @Category");
             }
+
+            // 2. BỔ SUNG LỌC THEO TỪ KHÓA TÌM KIẾM
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                whereClauses.Add("TenMon LIKE @SearchKeyword");
+            }
+
+            // Xây dựng câu truy vấn hoàn chỉnh với các mệnh đề WHERE
+            if (whereClauses.Count > 0)
+            {
+                query += " WHERE " + string.Join(" AND ", whereClauses);
+            }
+            // HẾT PHẦN XÂY DỰNG QUERY
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // 2. Thêm tham số SQL nếu không phải là "Tất cả"
+                    // 3. Thêm tham số SQL
                     if (filterCategory != "Tất cả")
                     {
-                        // Truyền giá trị Category được chọn (ví dụ: "Đồ ăn" hoặc "Đồ uống")
+                        // Truyền giá trị Category được chọn
                         command.Parameters.AddWithValue("@Category", filterCategory);
+                    }
+
+                    // BỔ SUNG THAM SỐ TÌM KIẾM
+                    if (!string.IsNullOrEmpty(searchKeyword))
+                    {
+                        // Sử dụng LIKE để tìm kiếm tương đối (chứa từ khóa)
+                        command.Parameters.AddWithValue("@SearchKeyword", "%" + searchKeyword + "%");
                     }
 
                     try
@@ -94,7 +118,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                             // ✅ BỔ SUNG QUAN TRỌNG: Gán sự kiện cho TẤT CẢ controls con
                             foreach (Control c in monAnControl.Controls)
                             {
-                                // Hàm DoAn_ControlClick này sẽ được định nghĩa trong DoAn.cs để gọi this.OnClick(e)
                                 c.Click += MonAn_Click;
                             }
 
@@ -112,7 +135,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         // Gọi hàm này khi Form Load
         private void SetupCategoryFilters()
         {
-            string[] categories = { "Tất cả", "Đồ ăn", "Đồ uống" };
+            string[] categories = { "Tất cả", "Đồ ăn", "Đồ uống", "Tráng miệng" };
 
             foreach (string category in categories)
             {
@@ -123,7 +146,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 btn.AutoSize = true;
                 btn.Padding = new Padding(10, 5, 10, 5); // Tùy chỉnh kích thước
                 btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderSize = 1;
+                btn.FlatAppearance.BorderSize = 0;
                 btn.Click += CategoryButton_Click; // Gán chung sự kiện Click
 
                 // Thêm nút vào FlowLayoutPanel CagetoryMonAn
@@ -249,6 +272,15 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             // Hiển thị tổng tiền lên Label
             labelTongTien.Text = tongTien.ToString("N0") + " VNĐ";
         }
+        private void textBoxTimMonAn_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = textBoxTimMonAn.Text.Trim();
 
+            // Giả định bạn có biến string currentCategory để giữ trạng thái lọc hiện tại
+            // Nếu không, chỉ cần gọi LoadMenu("Tất cả", keyword)
+
+            // Ví dụ gọi:
+            LoadMenu("Tất cả", keyword);
+        }
     }
 }
