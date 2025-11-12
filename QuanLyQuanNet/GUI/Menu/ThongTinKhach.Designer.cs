@@ -49,7 +49,6 @@
             labelTongThoiGian = new Label();
             btnDoiMK = new Button();
             btnTinNhan = new Button();
-            btnGoiMon = new Button();
             btnDangXuat = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -235,7 +234,7 @@
             // 
             btnDoiMK.Image = (Image)resources.GetObject("btnDoiMK.Image");
             btnDoiMK.ImageAlign = ContentAlignment.TopCenter;
-            btnDoiMK.Location = new Point(9, 236);
+            btnDoiMK.Location = new Point(12, 236);
             btnDoiMK.Name = "btnDoiMK";
             btnDoiMK.Size = new Size(78, 57);
             btnDoiMK.TabIndex = 1;
@@ -247,31 +246,19 @@
             // btnTinNhan
             // 
             btnTinNhan.Image = (Image)resources.GetObject("btnTinNhan.Image");
-            btnTinNhan.Location = new Point(93, 236);
+            btnTinNhan.Location = new Point(96, 236);
             btnTinNhan.Name = "btnTinNhan";
-            btnTinNhan.Size = new Size(75, 57);
+            btnTinNhan.Size = new Size(158, 57);
             btnTinNhan.TabIndex = 4;
             btnTinNhan.Text = "Chat";
             btnTinNhan.TextImageRelation = TextImageRelation.ImageAboveText;
             btnTinNhan.UseVisualStyleBackColor = true;
             btnTinNhan.Click += btnTinNhan_Click;
             // 
-            // btnGoiMon
-            // 
-            btnGoiMon.Enabled = false;
-            btnGoiMon.Image = (Image)resources.GetObject("btnGoiMon.Image");
-            btnGoiMon.Location = new Point(174, 236);
-            btnGoiMon.Name = "btnGoiMon";
-            btnGoiMon.Size = new Size(83, 57);
-            btnGoiMon.TabIndex = 5;
-            btnGoiMon.Text = "Gọi món";
-            btnGoiMon.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnGoiMon.UseVisualStyleBackColor = true;
-            // 
             // btnDangXuat
             // 
             btnDangXuat.Image = (Image)resources.GetObject("btnDangXuat.Image");
-            btnDangXuat.Location = new Point(263, 236);
+            btnDangXuat.Location = new Point(260, 236);
             btnDangXuat.Name = "btnDangXuat";
             btnDangXuat.Size = new Size(78, 57);
             btnDangXuat.TabIndex = 6;
@@ -287,7 +274,6 @@
             ClientSize = new Size(353, 435);
             ControlBox = false;
             Controls.Add(btnDangXuat);
-            Controls.Add(btnGoiMon);
             Controls.Add(btnTinNhan);
             Controls.Add(btnDoiMK);
             Controls.Add(panelThongTin);
@@ -322,7 +308,6 @@
         private Label labelThoiGianSuDung;
         private Button btnDoiMK;
         private Button btnTinNhan;
-        private Button btnGoiMon;
         private Button btnDangXuat;
         private Label labelDaKetNoi;
         private Label labelTenUser;

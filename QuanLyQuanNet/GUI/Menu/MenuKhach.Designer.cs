@@ -57,7 +57,7 @@
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(220, 578);
+            panelMenu.Size = new Size(220, 637);
             panelMenu.TabIndex = 0;
             // 
             // btnGoiMon
@@ -201,14 +201,14 @@
             panelChild.Dock = DockStyle.Fill;
             panelChild.Location = new Point(220, 119);
             panelChild.Name = "panelChild";
-            panelChild.Size = new Size(868, 459);
+            panelChild.Size = new Size(868, 518);
             panelChild.TabIndex = 7;
             // 
             // MenuKhach
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1088, 578);
+            ClientSize = new Size(1088, 637);
             Controls.Add(panelChild);
             Controls.Add(panelTitle);
             Controls.Add(panelMenu);
