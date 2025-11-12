@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuKhach));
             panelMenu = new Panel();
+            btnGoiMon = new Button();
             btnNapTien = new Button();
             btnGame = new Button();
             panelLogo = new Panel();
@@ -49,6 +50,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.AliceBlue;
+            panelMenu.Controls.Add(btnGoiMon);
             panelMenu.Controls.Add(btnNapTien);
             panelMenu.Controls.Add(btnGame);
             panelMenu.Controls.Add(panelLogo);
@@ -57,6 +59,24 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(220, 578);
             panelMenu.TabIndex = 0;
+            // 
+            // btnGoiMon
+            // 
+            btnGoiMon.Dock = DockStyle.Top;
+            btnGoiMon.FlatAppearance.BorderSize = 0;
+            btnGoiMon.FlatStyle = FlatStyle.Flat;
+            btnGoiMon.Image = (Image)resources.GetObject("btnGoiMon.Image");
+            btnGoiMon.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGoiMon.Location = new Point(0, 209);
+            btnGoiMon.Name = "btnGoiMon";
+            btnGoiMon.Padding = new Padding(12, 0, 0, 0);
+            btnGoiMon.Size = new Size(220, 45);
+            btnGoiMon.TabIndex = 6;
+            btnGoiMon.Text = "Gọi món";
+            btnGoiMon.TextAlign = ContentAlignment.MiddleLeft;
+            btnGoiMon.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGoiMon.UseVisualStyleBackColor = true;
+            btnGoiMon.Click += btnGoiMon_Click;
             // 
             // btnNapTien
             // 
@@ -122,7 +142,7 @@
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(220, 0);
             panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(836, 119);
+            panelTitle.Size = new Size(868, 119);
             panelTitle.TabIndex = 7;
             panelTitle.MouseDown += panelTitle_MouseDown;
             // 
@@ -132,7 +152,7 @@
             btnCloseK.FlatAppearance.BorderSize = 0;
             btnCloseK.FlatStyle = FlatStyle.Flat;
             btnCloseK.Image = (Image)resources.GetObject("btnCloseK.Image");
-            btnCloseK.Location = new Point(804, 3);
+            btnCloseK.Location = new Point(836, 3);
             btnCloseK.Name = "btnCloseK";
             btnCloseK.Size = new Size(27, 23);
             btnCloseK.TabIndex = 9;
@@ -145,7 +165,7 @@
             btnMaximizeK.FlatAppearance.BorderSize = 0;
             btnMaximizeK.FlatStyle = FlatStyle.Flat;
             btnMaximizeK.Image = (Image)resources.GetObject("btnMaximizeK.Image");
-            btnMaximizeK.Location = new Point(771, 2);
+            btnMaximizeK.Location = new Point(803, 2);
             btnMaximizeK.Name = "btnMaximizeK";
             btnMaximizeK.Size = new Size(27, 23);
             btnMaximizeK.TabIndex = 8;
@@ -158,7 +178,7 @@
             btnMinimizeK.FlatAppearance.BorderSize = 0;
             btnMinimizeK.FlatStyle = FlatStyle.Flat;
             btnMinimizeK.Image = (Image)resources.GetObject("btnMinimizeK.Image");
-            btnMinimizeK.Location = new Point(738, 3);
+            btnMinimizeK.Location = new Point(770, 3);
             btnMinimizeK.Name = "btnMinimizeK";
             btnMinimizeK.Size = new Size(27, 23);
             btnMinimizeK.TabIndex = 7;
@@ -181,14 +201,14 @@
             panelChild.Dock = DockStyle.Fill;
             panelChild.Location = new Point(220, 119);
             panelChild.Name = "panelChild";
-            panelChild.Size = new Size(836, 459);
+            panelChild.Size = new Size(868, 459);
             panelChild.TabIndex = 7;
             // 
             // MenuKhach
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1056, 578);
+            ClientSize = new Size(1088, 578);
             Controls.Add(panelChild);
             Controls.Add(panelTitle);
             Controls.Add(panelMenu);
@@ -215,5 +235,6 @@
         private Button btnMinimizeK;
         private Button btnCloseK;
         private Button btnMaximizeK;
+        private Button btnGoiMon;
     }
 }

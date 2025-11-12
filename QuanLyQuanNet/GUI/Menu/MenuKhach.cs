@@ -119,5 +119,10 @@ namespace QuanLyQuanNet.GUI.Menu
         {
             this.Close();
         }
+
+        private void btnGoiMon_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormNgoai.FormKhach.GoiMon(), sender);
+        }
     }
 }
