@@ -37,10 +37,10 @@
             label1 = new Label();
             ListMonAnDat = new FlowLayoutPanel();
             panelThanhToan = new Panel();
-            checkBox2 = new CheckBox();
-            textBox1 = new TextBox();
-            checkBox1 = new CheckBox();
-            button1 = new Button();
+            checkBoxSoDu = new CheckBox();
+            textBoxNote = new TextBox();
+            checkBoxTienMat = new CheckBox();
+            btnDatMon = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelThanhToan.SuspendLayout();
@@ -139,57 +139,58 @@
             // 
             panelThanhToan.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panelThanhToan.BorderStyle = BorderStyle.Fixed3D;
-            panelThanhToan.Controls.Add(checkBox2);
-            panelThanhToan.Controls.Add(textBox1);
-            panelThanhToan.Controls.Add(checkBox1);
-            panelThanhToan.Controls.Add(button1);
+            panelThanhToan.Controls.Add(checkBoxSoDu);
+            panelThanhToan.Controls.Add(textBoxNote);
+            panelThanhToan.Controls.Add(checkBoxTienMat);
+            panelThanhToan.Controls.Add(btnDatMon);
             panelThanhToan.Location = new Point(-1, 378);
             panelThanhToan.Name = "panelThanhToan";
             panelThanhToan.Size = new Size(372, 124);
             panelThanhToan.TabIndex = 0;
             // 
-            // checkBox2
+            // checkBoxSoDu
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Segoe UI", 12F);
-            checkBox2.Location = new Point(133, 13);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(219, 25);
-            checkBox2.TabIndex = 4;
-            checkBox2.Text = "Dùng số dư trong tài khoản";
-            checkBox2.UseVisualStyleBackColor = true;
+            checkBoxSoDu.AutoSize = true;
+            checkBoxSoDu.Font = new Font("Segoe UI", 12F);
+            checkBoxSoDu.Location = new Point(133, 13);
+            checkBoxSoDu.Name = "checkBoxSoDu";
+            checkBoxSoDu.Size = new Size(219, 25);
+            checkBoxSoDu.TabIndex = 4;
+            checkBoxSoDu.Text = "Dùng số dư trong tài khoản";
+            checkBoxSoDu.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxNote
             // 
-            textBox1.Location = new Point(18, 44);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Note cho quán";
-            textBox1.Size = new Size(334, 23);
-            textBox1.TabIndex = 3;
+            textBoxNote.Location = new Point(18, 44);
+            textBoxNote.Name = "textBoxNote";
+            textBoxNote.PlaceholderText = "Note cho quán";
+            textBoxNote.Size = new Size(334, 23);
+            textBoxNote.TabIndex = 3;
             // 
-            // checkBox1
+            // checkBoxTienMat
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 12F);
-            checkBox1.Location = new Point(18, 13);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(89, 25);
-            checkBox1.TabIndex = 1;
-            checkBox1.Text = "Tiền mặt";
-            checkBox1.UseVisualStyleBackColor = true;
+            checkBoxTienMat.AutoSize = true;
+            checkBoxTienMat.Font = new Font("Segoe UI", 12F);
+            checkBoxTienMat.Location = new Point(18, 13);
+            checkBoxTienMat.Name = "checkBoxTienMat";
+            checkBoxTienMat.Size = new Size(89, 25);
+            checkBoxTienMat.TabIndex = 1;
+            checkBoxTienMat.Text = "Tiền mặt";
+            checkBoxTienMat.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnDatMon
             // 
-            button1.BackColor = Color.AliceBlue;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 15F);
-            button1.Location = new Point(18, 73);
-            button1.Name = "button1";
-            button1.Size = new Size(334, 44);
-            button1.TabIndex = 2;
-            button1.Text = "Đặt món";
-            button1.UseVisualStyleBackColor = false;
+            btnDatMon.BackColor = Color.AliceBlue;
+            btnDatMon.FlatAppearance.BorderSize = 0;
+            btnDatMon.FlatStyle = FlatStyle.Flat;
+            btnDatMon.Font = new Font("Segoe UI", 15F);
+            btnDatMon.Location = new Point(18, 73);
+            btnDatMon.Name = "btnDatMon";
+            btnDatMon.Size = new Size(334, 44);
+            btnDatMon.TabIndex = 2;
+            btnDatMon.Text = "Đặt món";
+            btnDatMon.UseVisualStyleBackColor = false;
+            btnDatMon.Click += btnDatMon_Click;
             // 
             // GoiMon
             // 
@@ -221,9 +222,9 @@
         private Label labelTongTien;
         private Label label1;
         private TextBox textBoxTimMonAn;
-        private CheckBox checkBox1;
-        private Button button1;
-        private TextBox textBox1;
-        private CheckBox checkBox2;
+        private CheckBox checkBoxTienMat;
+        private Button btnDatMon;
+        private TextBox textBoxNote;
+        private CheckBox checkBoxSoDu;
     }
 }

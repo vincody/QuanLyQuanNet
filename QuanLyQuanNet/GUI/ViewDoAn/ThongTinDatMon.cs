@@ -1,46 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+// ... (các using khác) ...
 using System.Windows.Forms;
 
 namespace QuanLyQuanNet.GUI.ViewDoAn
 {
     public partial class ThongTinDatMon : UserControl
     {
-        // Cần có các thuộc tính công khai (Public) để Form cha gán dữ liệu
+        // Cần có các thuộc tính công khai (Public)
         public string TenMon { get; set; }
         public decimal GiaDonVi { get; set; }
         private int _soLuong = 1;
+
+        public int MonAnID { get; set; } // <<<<< ĐÃ KHAI BÁO
+
         public event EventHandler<OrderUpdateEventArgs> QuantityChanged;
         public event EventHandler ItemRemoved;
 
-        // Add this field to your ThongTinDatMon class if you want to manage order items here,
-        // or (recommended) pass the dictionary from the parent form as a parameter to the control's constructor or method.
-        // For demonstration, I'll add a property to set it from outside:
-        public Dictionary<string, ThongTinDatMon> CurrentOrderItems { get; set; }
+        // Thuộc tính này không cần thiết, Form cha nên quản lý Dictionary
+        // public Dictionary<string, ThongTinDatMon> CurrentOrderItems { get; set; } 
 
         public ThongTinDatMon()
         {
             InitializeComponent();
         }
-        // Gán giá trị ban đầu và cập nhật
-        public void InitializeItem(string tenMon, decimal giaDonVi)
+
+        // ✅ ĐÃ SỬA: Bổ sung MonAnID vào tham số
+        public void InitializeItem(int monAnID, string tenMon, decimal giaDonVi)
         {
+            this.MonAnID = monAnID;       // ✅ Gán MonAnID
             this.TenMon = tenMon;
             this.GiaDonVi = giaDonVi;
             UpdateDisplay();
         }
+
         // Hàm cập nhật hiển thị (tên món, số lượng, tổng giá)
         private void UpdateDisplay()
         {
             labelTenMon.Text = this.TenMon;
             // Hiển thị tổng giá tiền: Đơn giá * Số lượng
             labelGiaTien.Text = (this.GiaDonVi * _soLuong).ToString("N0") + " VNĐ";
+            // Giả định Label SoLuong tồn tại trên User Control
             SoLuong.Text = _soLuong.ToString();
 
             // Gửi sự kiện cập nhật lên Form cha để tính tổng hóa đơn
@@ -69,7 +69,8 @@ namespace QuanLyQuanNet.GUI.ViewDoAn
             // Xóa chính control này khỏi FlowLayoutPanel
             this.Dispose();
         }
-        // Class mô hình dữ liệu để gửi thông tin cập nhật
+
+        // Class mô hình dữ liệu để gửi thông tin cập nhật (GIỮ NGUYÊN)
         public class OrderUpdateEventArgs : EventArgs
         {
             public string ItemName { get; }
@@ -83,24 +84,9 @@ namespace QuanLyQuanNet.GUI.ViewDoAn
                 Quantity = quantity;
             }
         }
-        // Xử lý khi số lượng món ăn thay đổi (btnThem/btnTru được bấm)
-        private void OrderItemControl_QuantityChanged(object sender, OrderUpdateEventArgs e)
-        {
-            // Ở đây bạn có thể cập nhật Tổng hóa đơn của Form chính
-            // Ví dụ: UpdateTotalOrder();
-        }
-        // Xử lý khi món ăn bị xóa (btnXoaMon được bấm)
-        private void OrderItemControl_ItemRemoved(object sender, EventArgs e)
-        {
-            ThongTinDatMon removedControl = sender as ThongTinDatMon;
-            if (removedControl != null && CurrentOrderItems != null)
-            {
-                // Xóa món ăn khỏi Dictionary quản lý
-                CurrentOrderItems.Remove(removedControl.TenMon);
 
-                // Cập nhật lại Tổng hóa đơn
-                // UpdateTotalOrder();
-            }
-        }
+        // ✅ ĐÃ XÓA/DI CHUYỂN: Các hàm OrderItemControl_QuantityChanged và ItemRemoved
+        // đã bị xóa khỏi đây vì chúng thuộc về Form cha (GoiMon.cs).
+        // Hãy đảm bảo code trong GoiMon.cs gọi InitializeItem(monAnID, tenMon, giaDonVi).
     }
 }

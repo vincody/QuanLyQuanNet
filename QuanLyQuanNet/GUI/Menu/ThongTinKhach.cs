@@ -20,6 +20,7 @@ namespace QuanLyQuanNet.GUI.Menu
         private DateTime thoiGianDangNhap;         // Lưu thời điểm hiện tại khi Form mở
         private System.Windows.Forms.Timer capNhatTimer;
         private TimeSpan tongThoiGianChoi;
+        private decimal initialSoDu; // <<< BỔ SUNG: Lưu số dư ban đầu để tính toán trừ tiền
         public ThongTinKhach()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace QuanLyQuanNet.GUI.Menu
 
             // 2. Hiển thị Số dư tài khoản
             // Sử dụng định dạng tiền tệ (C0) hoặc tùy chỉnh (N0)
+            initialSoDu = UserSession.SoDu; // <<< LƯU SỐ DƯ BAN ĐẦU
             textBoxSoDu.Text = UserSession.SoDu.ToString("N0") + " VND";
 
             // 3. Hiển thị Giá máy hiện tại
@@ -47,7 +49,7 @@ namespace QuanLyQuanNet.GUI.Menu
             if (UserSession.SoDu > 0 && UserSession.GiaTheoGio > 0)
             {
                 // Tính số giờ chơi (decimal)
-                decimal tongSoGio = UserSession.SoDu / UserSession.GiaTheoGio;
+                decimal tongSoGio = initialSoDu / UserSession.GiaTheoGio;
 
                 // Chuyển thành TimeSpan
                 tongThoiGianChoi = TimeSpan.FromHours((double)tongSoGio);
@@ -71,28 +73,52 @@ namespace QuanLyQuanNet.GUI.Menu
         private void CapNhatThoiGian(object sender, EventArgs e)
         {
             // 1. Tính Thời gian sử dụng (TGSD)
-            // Sử dụng biến thoiGianDangNhap đã lưu
             TimeSpan thoiGianSuDung = DateTime.Now.Subtract(thoiGianDangNhap);
+
+            // === BỔ SUNG LOGIC TÍNH VÀ TRỪ TIỀN ===
+            decimal giaTheoGio = UserSession.GiaTheoGio;
+
+            // Tính tổng chi phí dựa trên tổng số giờ (TotalHours là decimal) đã sử dụng
+            decimal tongChiPhi = (decimal)thoiGianSuDung.TotalHours * giaTheoGio;
+
+            // Số dư còn lại: Số dư ban đầu - Tổng chi phí
+            decimal soDuConLai = initialSoDu - tongChiPhi;
+
+            // Cập nhật UserSession.SoDu (client-side) và hiển thị
+            UserSession.SoDu = soDuConLai;
+            textBoxSoDu.Text = soDuConLai.ToString("N0") + " VND";
+            // ========================================
 
             // 2. Tính Thời gian còn lại (TGCL)
             TimeSpan thoiGianConLai = tongThoiGianChoi.Subtract(thoiGianSuDung);
 
             // 3. Định dạng và Hiển thị
-            // Hiển thị TGSD (Chỉ lấy giờ và phút)
-            textBoxTGSD.Text = ((int)thoiGianSuDung.TotalHours).ToString("D2") + ":" + thoiGianSuDung.Minutes.ToString("D2");
+            // Thêm hiển thị giây để chính xác hơn
+            textBoxTGSD.Text = thoiGianSuDung.ToString(@"hh\:mm\:ss");
 
-            // Hiển thị TGCL
-            if (thoiGianConLai.TotalSeconds > 0)
+            // Kiểm tra hết tiền/hết giờ
+            if (soDuConLai <= 0) // Hết tiền trước
             {
-                // Hiển thị TGCL (Chỉ lấy giờ và phút)
-                textBoxTGCL.Text = ((int)thoiGianConLai.TotalHours).ToString("D2") + ":" + thoiGianConLai.Minutes.ToString("D2");
+                thoiGianConLai = TimeSpan.Zero;
+                textBoxTGCL.Text = "00:00:00";
+                capNhatTimer.Stop();
+
+                textBoxSoDu.Text = 0.ToString("N0") + " VND"; // Hiển thị 0 VND
+
+                // Tự động xử lý đăng xuất khi hết tiền
+                MessageBox.Show("Tài khoản của bạn đã hết tiền/hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnDangXuat_Click(sender, e); // Tự động gọi đăng xuất để cập nhật CSDL
             }
-            else // Hết giờ chơi
+            else if (thoiGianConLai.TotalSeconds > 0)
             {
-                textBoxTGCL.Text = "00:00";
-                capNhatTimer.Stop(); // Dừng Timer
+                // Hiển thị TGCL
+                textBoxTGCL.Text = thoiGianConLai.ToString(@"hh\:mm\:ss");
+            }
+            else // Trường hợp hết giờ (Nếu có lỗi tính toán)
+            {
+                textBoxTGCL.Text = "00:00:00";
+                capNhatTimer.Stop();
                 MessageBox.Show("Tài khoản của bạn đã hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                // Tùy chọn: Gọi logic đăng xuất tự động (nếu có)
             }
         }
         public ThongTinKhach(string tenNguoiDung, string tenMaySuDung, Form menuKhachForm)
@@ -114,6 +140,30 @@ namespace QuanLyQuanNet.GUI.Menu
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
+            // Đảm bảo timer đã dừng để có số liệu chính xác cuối cùng
+            if (capNhatTimer != null)
+            {
+                capNhatTimer.Stop();
+            }
+
+            // 1. TÍNH TOÁN CHI PHÍ CUỐI CÙNG VÀ SỐ DƯ MỚI
+            TimeSpan thoiGianSuDung = DateTime.Now.Subtract(thoiGianDangNhap);
+            decimal tongChiPhiDaSuDung = (decimal)thoiGianSuDung.TotalHours * UserSession.GiaTheoGio;
+
+            // Số dư cuối cùng (Số dư ban đầu - Chi phí đã dùng)
+            decimal soDuMoi = initialSoDu - tongChiPhiDaSuDung;
+
+            // Đảm bảo số dư mới không âm (trường hợp khách hàng đã hết tiền hoặc có sai lệch)
+            if (soDuMoi < 0)
+            {
+                // Nếu số dư âm, chi phí thực tế bằng số dư ban đầu, và số dư mới là 0
+                tongChiPhiDaSuDung = initialSoDu;
+                soDuMoi = 0;
+            }
+
+            // Cập nhật UserSession.SoDu để client-side có giá trị mới
+            UserSession.SoDu = soDuMoi;
+
             string tenMayDangSuDung = UserSession.TenMay;
             string tenDangNhap = UserSession.TenDangNhap;
 
@@ -125,7 +175,7 @@ namespace QuanLyQuanNet.GUI.Menu
 
             try
             {
-                // Bắt đầu giao dịch để đảm bảo cả 2 UPDATE/INSERT đều thành công
+                // Bắt đầu giao dịch để đảm bảo cả 3 UPDATE đều thành công
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -134,26 +184,34 @@ namespace QuanLyQuanNet.GUI.Menu
                     try
                     {
                         // === BƯỚC 1: CẬP NHẬT TRẠNG THÁI MÁY VỀ AVAILABLE (Bảng Computers) ===
-                        string queryUpdateMay = "UPDATE Computers SET TinhTrang = 'Available' WHERE TenMay = @TenMay AND TinhTrang = 'Busy'";
+                        string queryUpdateMay = "UPDATE Computers SET TinhTrang = N'Available' WHERE TenMay = @TenMay AND TinhTrang = N'Busy'";
                         using (SqlCommand cmdUpdateMay = new SqlCommand(queryUpdateMay, connection, transaction))
                         {
                             cmdUpdateMay.Parameters.AddWithValue("@TenMay", tenMayDangSuDung);
                             cmdUpdateMay.ExecuteNonQuery();
                         }
 
-                        // === BƯỚC 2: GHI NHẬN THỜI GIAN KẾT THÚC (Bảng SuDungMay) ===
-                        // Cập nhật phiên sử dụng đang hoạt động (ThoiGianKetThuc IS NULL)
-                        // Tùy chọn: Bạn có thể tính toán và cập nhật TongTienThanhToan tại đây
+                        // === BƯỚC 2: CẬP NHẬT SỐ DƯ TÀI KHOẢN (Bảng TaiKhoan) ===
+                        string queryUpdateSoDu = "UPDATE TaiKhoan SET SoDu = @SoDuMoi WHERE TenDangNhap = @TenDN";
+                        using (SqlCommand cmdUpdateSoDu = new SqlCommand(queryUpdateSoDu, connection, transaction))
+                        {
+                            cmdUpdateSoDu.Parameters.AddWithValue("@SoDuMoi", soDuMoi);
+                            cmdUpdateSoDu.Parameters.AddWithValue("@TenDN", tenDangNhap);
+                            cmdUpdateSoDu.ExecuteNonQuery();
+                        }
+
+                        // === BƯỚC 3: GHI NHẬN THỜI GIAN KẾT THÚC VÀ TỔNG CHI PHÍ (Bảng SuDungMay) ===
                         string queryUpdateSuDung = @"
-                        UPDATE SuDungMay 
-                        SET ThoiGianKetThuc = GETDATE()
-                        -- Tùy chọn: SET TongTienThanhToan = TinhTien(ThoiGianBatDau, GETDATE(), GiaTheoGio)
-                        WHERE TenMay = @TenMay AND TenDangNhap = @TenDN AND ThoiGianKetThuc IS NULL";
+                UPDATE SuDungMay 
+                SET ThoiGianKetThuc = GETDATE(),
+                    TongTienThanhToan = @TongChiPhi
+                WHERE TenMay = @TenMay AND TenDangNhap = @TenDN AND ThoiGianKetThuc IS NULL";
 
                         using (SqlCommand cmdUpdateSuDung = new SqlCommand(queryUpdateSuDung, connection, transaction))
                         {
                             cmdUpdateSuDung.Parameters.AddWithValue("@TenMay", tenMayDangSuDung);
                             cmdUpdateSuDung.Parameters.AddWithValue("@TenDN", tenDangNhap);
+                            cmdUpdateSuDung.Parameters.AddWithValue("@TongChiPhi", tongChiPhiDaSuDung); // <<< Ghi nhận chi phí
                             cmdUpdateSuDung.ExecuteNonQuery();
                         }
 
@@ -161,6 +219,7 @@ namespace QuanLyQuanNet.GUI.Menu
                         transaction.Commit();
 
                         // Xóa Session và Đóng Form
+                        UserSession.ClearSession(); // <<< Phải có hàm này để dọn dẹp Session
                         if (menuKhachFormInstance != null)
                         {
                             menuKhachFormInstance.Close();
@@ -179,7 +238,24 @@ namespace QuanLyQuanNet.GUI.Menu
                 MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void RefreshBalanceAfterOrder(decimal newSoDu)
+        {
+            // 1. Dừng timer cũ
+            if (capNhatTimer != null && capNhatTimer.Enabled)
+            {
+                capNhatTimer.Stop();
+            }
 
+            // 2. Cập nhật initialSoDu và UserSession
+            initialSoDu = newSoDu;
+            UserSession.SoDu = newSoDu;
+
+            // 3. Chạy lại logic thiết lập thông tin (tính Tổng Thời Gian Chơi mới)
+            SetupThongTinMay();
+
+            // 4. Khởi động lại Timer
+            SetupTimer();
+        }
         private void labelSoDu_Click(object sender, EventArgs e)
         {
 
