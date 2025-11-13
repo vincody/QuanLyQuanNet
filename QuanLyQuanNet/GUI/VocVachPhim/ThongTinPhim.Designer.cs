@@ -40,13 +40,13 @@
             // 
             // panel1
             // 
-            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(HinhPhim);
-            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(220, 240);
+            panel1.Size = new Size(240, 240);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -54,30 +54,32 @@
             panel2.Controls.Add(labelTenPhim);
             panel2.Controls.Add(labelTap);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 193);
+            panel2.Location = new Point(0, 195);
             panel2.Name = "panel2";
-            panel2.Size = new Size(216, 43);
+            panel2.Size = new Size(238, 43);
             panel2.TabIndex = 3;
             // 
             // labelTenPhim
             // 
-            labelTenPhim.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            labelTenPhim.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelTenPhim.AutoSize = true;
-            labelTenPhim.Font = new Font("Segoe UI", 9F);
-            labelTenPhim.Location = new Point(51, 5);
+            labelTenPhim.Font = new Font("Segoe UI", 12F);
+            labelTenPhim.Location = new Point(45, 0);
             labelTenPhim.Name = "labelTenPhim";
-            labelTenPhim.Size = new Size(54, 15);
+            labelTenPhim.Size = new Size(69, 21);
             labelTenPhim.TabIndex = 1;
             labelTenPhim.Text = "TenPhim";
             labelTenPhim.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // labelTap
             // 
-            labelTap.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            labelTap.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelTap.AutoSize = true;
-            labelTap.Location = new Point(79, 28);
+            labelTap.Font = new Font("Segoe UI", 12F);
+            labelTap.ForeColor = Color.DarkGreen;
+            labelTap.Location = new Point(91, 19);
             labelTap.Name = "labelTap";
-            labelTap.Size = new Size(26, 15);
+            labelTap.Size = new Size(33, 21);
             labelTap.TabIndex = 2;
             labelTap.Text = "Tap";
             labelTap.TextAlign = ContentAlignment.MiddleCenter;
@@ -85,10 +87,9 @@
             // 
             // HinhPhim
             // 
-            HinhPhim.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            HinhPhim.Location = new Point(27, 3);
+            HinhPhim.Location = new Point(45, 0);
             HinhPhim.Name = "HinhPhim";
-            HinhPhim.Size = new Size(162, 192);
+            HinhPhim.Size = new Size(146, 192);
             HinhPhim.SizeMode = PictureBoxSizeMode.StretchImage;
             HinhPhim.TabIndex = 0;
             HinhPhim.TabStop = false;
@@ -97,9 +98,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             Controls.Add(panel1);
             Name = "ThongTinPhim";
-            Size = new Size(220, 240);
+            Size = new Size(240, 240);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

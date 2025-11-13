@@ -40,6 +40,7 @@
             // 
             panelListPhim.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelListPhim.AutoScroll = true;
+            panelListPhim.BackColor = SystemColors.ControlDarkDark;
             panelListPhim.Location = new Point(0, 43);
             panelListPhim.Name = "panelListPhim";
             panelListPhim.Size = new Size(800, 407);
@@ -99,7 +100,7 @@
             Controls.Add(btnCong);
             Controls.Add(panelListPhim);
             Name = "ListPhim";
-            Text = "ListPhim";
+            Text = "Xem phim";
             Load += ListPhim_Load;
             ResumeLayout(false);
             PerformLayout();
