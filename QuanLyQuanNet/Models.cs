@@ -15,8 +15,17 @@ namespace QuanLyQuanNet
         {
             public string slug { get; set; }
             public string name { get; set; }
+
+            [JsonProperty("thumb_url")]
             public string poster_url { get; set; } // Giả định trường này tồn tại trong response
+
             public int year { get; set; }
+            [JsonProperty("current_episode")]
+            public string current_episode { get; set; } // Phải là string
+
+            // ✅ Phải là int hoặc decimal để thực hiện so sánh số lượng
+            [JsonProperty("total_episodes")]
+            public int total_episodes { get; set; }
         }
 
         public class FilmApiResponse

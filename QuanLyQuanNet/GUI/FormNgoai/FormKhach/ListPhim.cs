@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Web; // Cần add reference System.Web cho UrlEncode
-using static QuanLyQuanNet.Models;
-using QuanLyQuanNet.GUI.VocVachPhim;
+using static QuanLyQuanNet.Models; // Chứa FilmApiResponse và FilmItem
+using QuanLyQuanNet.GUI.VocVachPhim; // Chứa ThongTinPhim User Control
 
 namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 {
@@ -17,7 +17,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
     {
         private readonly HttpClient client = new HttpClient();
         private const string ApiBaseUrl = "https://phim.nguonc.com/api/films/phim-moi-cap-nhat?page=";
-        // Đặt hằng số API tìm kiếm mới
         private const string SearchApiBaseUrl = "https://phim.nguonc.com/api/films/search?keyword=";
 
         // Biến quản lý trạng thái trang
@@ -27,45 +26,40 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         public ListPhim()
         {
             InitializeComponent();
-            // Thiết lập trạng thái ban đầu của TextBox/Button
             UpdatePageControls();
+
+            // Gán sự kiện cho TextBox tìm kiếm (Enter key)
+            this.textBoxTimTen.KeyDown += new KeyEventHandler(this.textBoxTimTen_KeyDown);
+            this.textBoxSoTrang.KeyDown += new KeyEventHandler(this.textBoxSoTrang_KeyDown);
         }
 
-        // Phương thức chính tải phim
+        // ====================================================================
+        // PHƯƠNG THỨC TẢI PHIM MỚI (PHÂN TRANG)
+        // ====================================================================
+
         public async void LoadFilms(int page)
         {
-            // Kiểm tra giới hạn trang hợp lệ trước khi tải
-            // Kiểm tra tổng số trang chỉ khi nó đã được xác định (totalPages > 1)
             if (page < 1 || (totalPages > 1 && page > totalPages)) return;
 
-            // Cập nhật trạng thái trang hiện tại
             currentPage = page;
             panelListPhim.Controls.Clear();
 
-            // ✅ TẠO URL API CHÍNH XÁC VỚI SỐ TRANG MỚI
-            // ApiBaseUrl: "https://phim.nguonc.com/api/films/phim-moi-cap-nhat?page="
-            string url = $"{ApiBaseUrl}{page}"; // <-- Đảm bảo URL là chính xác
+            string url = $"{ApiBaseUrl}{page}";
 
             try
             {
-                // Cập nhật hiển thị trang đang tải
                 textBoxSoTrang.Text = currentPage.ToString();
 
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
-
-                // Phân tích cú pháp JSON
                 FilmApiResponse apiResponse = JsonConvert.DeserializeObject<FilmApiResponse>(responseBody);
 
                 if (apiResponse?.items == null || apiResponse.items.Count == 0)
                 {
-                    // Nếu hết phim ở trang này và nó không phải trang 1, giả định đây là trang cuối
-                    if (currentPage > 1)
-                    {
-                        totalPages = currentPage;
-                    }
+                    if (currentPage > 1) { totalPages = currentPage; }
+
                     panelListPhim.Controls.Add(new Label() { Text = "Không tìm thấy phim nào.", AutoSize = true, ForeColor = Color.White });
                     UpdatePageControls();
                     return;
@@ -80,19 +74,44 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 // 2. Tạo và thêm User Controls vào FlowLayoutPanel
                 foreach (var film in apiResponse.items)
                 {
-                    // TẠO USER CONTROL ThongTinPhim
                     ThongTinPhim filmControl = new ThongTinPhim();
 
-                    // Gán Tên Phim
                     filmControl.labelTenPhim.Text = film.name;
 
-                    // Tải và gán Poster
                     if (!string.IsNullOrEmpty(film.poster_url))
                     {
                         filmControl.HinhPhim.ImageLocation = film.poster_url;
+                        filmControl.HinhPhim.SizeMode = PictureBoxSizeMode.Zoom;
                     }
 
+                    // === LOGIC XỬ LÝ VÀ GÁN TẬP PHIM (labelTap) ===
+                    string currentEpStatus = film.current_episode?.Trim() ?? "";
+                    int totalEpCount = film.total_episodes;
+                    string tapPhimToDisplay = "Đang cập nhật";
+
+                    if (currentEpStatus.StartsWith("Hoàn tất", StringComparison.OrdinalIgnoreCase))
+                    {
+                        tapPhimToDisplay = currentEpStatus;
+                    }
+                    else if (currentEpStatus.StartsWith("Tập ", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (totalEpCount > 0)
+                        {
+                            tapPhimToDisplay = $"{currentEpStatus}/{totalEpCount}";
+                        }
+                        else
+                        {
+                            tapPhimToDisplay = currentEpStatus;
+                        }
+                    }
+                    filmControl.labelTap.Text = tapPhimToDisplay;
+                    // ===============================================
+
                     panelListPhim.Controls.Add(filmControl);
+
+                    // ✅ KHẮC PHỤC LỖI HIỂN THỊ: GỌI HÀM CĂN CHỈNH SAU KHI CONTROL ĐƯỢC LOAD
+                    // Điều này đảm bảo kích thước Control đã hợp lệ trước khi tính toán vị trí
+                    filmControl.Load += (sender, e) => filmControl.CenterLabels();
                 }
 
                 // 3. Cập nhật trạng thái nút sau khi tải xong
@@ -100,11 +119,15 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             }
             catch (Exception ex)
             {
-                // Nếu có lỗi, giữ nguyên totalPages (hoặc lùi về trang trước)
                 MessageBox.Show($"Lỗi tải phim: {ex.Message}", "Lỗi API", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 UpdatePageControls();
             }
         }
+
+        // ====================================================================
+        // PHƯƠNG THỨC TÌM KIẾM
+        // ====================================================================
+
         public async void SearchFilms(string keyword)
         {
             panelListPhim.Controls.Clear();
@@ -115,7 +138,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 return;
             }
 
-            // 1. URL Encoding (Mã hóa từ khóa để đảm bảo an toàn trong URL)
             string encodedKeyword = System.Web.HttpUtility.UrlEncode(keyword.Trim());
             string url = $"{SearchApiBaseUrl}{encodedKeyword}";
 
@@ -127,8 +149,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 response.EnsureSuccessStatusCode();
 
                 string responseBody = await response.Content.ReadAsStringAsync();
-
-                // 2. Deserialize JSON (Sử dụng lại FilmApiResponse và FilmItem)
                 FilmApiResponse apiResponse = JsonConvert.DeserializeObject<FilmApiResponse>(responseBody);
 
                 panelListPhim.Controls.Clear(); // Xóa thông báo 'Đang tìm kiếm...'
@@ -136,18 +156,15 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 if (apiResponse?.items == null || apiResponse.items.Count == 0)
                 {
                     panelListPhim.Controls.Add(new Label() { Text = $"Không tìm thấy phim nào cho từ khóa '{keyword}'.", AutoSize = true, ForeColor = Color.White });
-
-                    // ✅ Đặt lại trạng thái phân trang (vì đây là kết quả tìm kiếm)
                     totalPages = 1;
                     currentPage = 1;
                     UpdatePageControls();
                     return;
                 }
 
-                // 3. Hiển thị Kết quả
+                // Hiển thị Kết quả
                 foreach (var film in apiResponse.items)
                 {
-                    // TẠO USER CONTROL ThongTinPhim (Tái sử dụng logic hiển thị đã có)
                     ThongTinPhim filmControl = new ThongTinPhim();
                     filmControl.labelTenPhim.Text = film.name;
 
@@ -157,11 +174,20 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                         filmControl.HinhPhim.SizeMode = PictureBoxSizeMode.Zoom;
                     }
 
+                    // === LOGIC XỬ LÝ VÀ GÁN TẬP PHIM (labelTap) ===
+                    string currentEpStatus = film.current_episode?.Trim() ?? "";
+                    string tapPhimToDisplay = currentEpStatus;
+                    filmControl.labelTap.Text = tapPhimToDisplay;
+                    // ===============================================
+
                     panelListPhim.Controls.Add(filmControl);
+
+                    // ✅ KHẮC PHỤC LỖI HIỂN THỊ: GỌI HÀM CĂN CHỈNH SAU KHI CONTROL ĐƯỢC LOAD
+                    filmControl.Load += (sender, e) => filmControl.CenterLabels();
                 }
 
-                // ✅ Đặt lại trạng thái phân trang (vì đây là kết quả tìm kiếm)
-                totalPages = 1;
+                // Đặt lại trạng thái phân trang (vì đây là kết quả tìm kiếm)
+                totalPages = 1; // Kết quả tìm kiếm không có phân trang
                 currentPage = 1;
                 UpdatePageControls();
             }
@@ -172,13 +198,16 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             }
         }
 
+        // ====================================================================
+        // LOGIC QUẢN LÝ UI VÀ PHÂN TRANG
+        // ====================================================================
+
         private void UpdatePageControls()
         {
             // Vô hiệu hóa nút TRỪ nếu đang ở trang 1
             btnTru.Enabled = (currentPage > 1);
 
-            // ✅ SỬA LỖI UI: Bật nút CỘNG nếu chưa phải trang cuối HOẶC totalPages vẫn còn là 1
-            // (tức là ta chưa xác định được giới hạn, nên ta cho phép người dùng thử tải trang 2)
+            // Bật nút CỘNG nếu chưa phải trang cuối HOẶC totalPages vẫn còn là 1
             btnCong.Enabled = (currentPage < totalPages || totalPages == 1);
 
             // Cập nhật hiển thị số trang hiện tại
@@ -201,45 +230,14 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 
         private void btnCong_Click(object sender, EventArgs e)
         {
-            // ✅ SỬA LỖI LOGIC: Cho phép tăng nếu chưa phải trang cuối HOẶC totalPages là 1.
+            // Cho phép tăng nếu chưa phải trang cuối HOẶC totalPages là 1.
             if (currentPage < totalPages || totalPages == 1)
             {
-                // Khi tải trang 2 (hoặc cao hơn), LoadFilms sẽ nhận giá trị totalPages thực tế 
-                // và tự khắc phục lỗi.
                 LoadFilms(currentPage + 1);
             }
         }
 
-        // Tùy chọn: Xử lý nhập trang trực tiếp
-        private void textBoxSoTrang_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // 1. Kiểm tra đầu vào hợp lệ
-                if (int.TryParse(textBoxSoTrang.Text, out int requestedPage) && requestedPage >= 1)
-                {
-                    // Tắt tiếng beep khi nhấn Enter
-                    e.SuppressKeyPress = true;
-
-                    // 2. LOGIC KIỂM TRA GIỚI HẠN:
-                    // Chỉ kiểm tra trang tối đa (totalPages) nếu chúng ta đã xác định được nó (> 1).
-                    // Hoặc kiểm tra nếu trang yêu cầu lớn hơn totalPages, CHÚNG TA LẶP LẠI TRANG ĐẦU
-                    if (totalPages > 1 && requestedPage > totalPages)
-                    {
-                        MessageBox.Show($"Vui lòng nhập số trang hợp lệ (1 đến {totalPages}).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // 3. Tải phim với trang mới
-                    LoadFilms(requestedPage);
-                }
-                else
-                {
-                    MessageBox.Show($"Vui lòng nhập số trang hợp lệ (phải là số nguyên dương).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-        // Event handler cho TextBox tìm kiếm (khi nhấn Enter)
+        // HÀM XỬ LÝ NHẬP TÊN TÌM KIẾM
         private void textBoxTimTen_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -252,11 +250,32 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                     return;
                 }
 
-                // Gọi hàm tìm kiếm
                 SearchFilms(keyword);
-
-                // Ngăn Enter key kích hoạt các controls khác
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        // Xử lý nhập trang trực tiếp
+        private void textBoxSoTrang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (int.TryParse(textBoxSoTrang.Text, out int requestedPage) && requestedPage >= 1)
+                {
+                    e.SuppressKeyPress = true;
+
+                    if (totalPages > 1 && requestedPage > totalPages)
+                    {
+                        MessageBox.Show($"Vui lòng nhập số trang hợp lệ (1 đến {totalPages}).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    LoadFilms(requestedPage);
+                }
+                else
+                {
+                    MessageBox.Show($"Vui lòng nhập số trang hợp lệ (phải là số nguyên dương).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
     }
