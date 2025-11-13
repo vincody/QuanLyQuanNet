@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuKhach));
             panelMenu = new Panel();
+            btnXemPhim = new Button();
             btnGoiMon = new Button();
             btnNapTien = new Button();
             btnGame = new Button();
@@ -50,6 +51,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.AliceBlue;
+            panelMenu.Controls.Add(btnXemPhim);
             panelMenu.Controls.Add(btnGoiMon);
             panelMenu.Controls.Add(btnNapTien);
             panelMenu.Controls.Add(btnGame);
@@ -59,6 +61,24 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(220, 637);
             panelMenu.TabIndex = 0;
+            // 
+            // btnXemPhim
+            // 
+            btnXemPhim.Dock = DockStyle.Top;
+            btnXemPhim.FlatAppearance.BorderSize = 0;
+            btnXemPhim.FlatStyle = FlatStyle.Flat;
+            btnXemPhim.Image = (Image)resources.GetObject("btnXemPhim.Image");
+            btnXemPhim.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXemPhim.Location = new Point(0, 254);
+            btnXemPhim.Name = "btnXemPhim";
+            btnXemPhim.Padding = new Padding(12, 0, 0, 0);
+            btnXemPhim.Size = new Size(220, 45);
+            btnXemPhim.TabIndex = 7;
+            btnXemPhim.Text = "Xem phim";
+            btnXemPhim.TextAlign = ContentAlignment.MiddleLeft;
+            btnXemPhim.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnXemPhim.UseVisualStyleBackColor = true;
+            btnXemPhim.Click += btnXemPhim_Click;
             // 
             // btnGoiMon
             // 
@@ -236,5 +256,6 @@
         private Button btnCloseK;
         private Button btnMaximizeK;
         private Button btnGoiMon;
+        private Button btnXemPhim;
     }
 }

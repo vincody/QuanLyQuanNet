@@ -124,5 +124,10 @@ namespace QuanLyQuanNet.GUI.Menu
         {
             OpenChildForm(new FormNgoai.FormKhach.GoiMon(), sender);
         }
+
+        private void btnXemPhim_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormNgoai.FormKhach.ListPhim(), sender);
+        }
     }
 }
