@@ -23,7 +23,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         private int totalPages = 1;
         private string activeKeyword = ""; // Lưu từ khóa tìm kiếm đang hoạt động
 
-        public ListPhim()
+        public ListPhim()          
         {
             InitializeComponent();
             UpdatePageControls();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,119 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 {
     public partial class KHang : Form
     {
+        private const string connectionString = "Server=VINH; Database=QuanLyQuanNetDB; Integrated Security=True;";
+
         public KHang()
         {
             InitializeComponent();
+        }
+        // Hàm này được gọi khi Form Load
+        private void LoadDataIntoGrid(string sdtFilter = null)
+        {
+            // 1. Xây dựng truy vấn SQL
+            string query = "SELECT TenDangNhap, HoTen, SDT, CCCD, SoDu FROM TaiKhoan";
+
+            // Chỉ lấy các tài khoản có isKhach = 1 (Tùy chọn)
+            query += " WHERE isKhach = 1";
+
+            // Thêm điều kiện tìm kiếm nếu có
+            if (!string.IsNullOrEmpty(sdtFilter))
+            {
+                query += " AND SDT LIKE @SDTFilter";
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    if (!string.IsNullOrEmpty(sdtFilter))
+                    {
+                        // Thêm ký tự % cho tìm kiếm LIKE (Tìm kiếm SDT chứa chuỗi nhập vào)
+                        command.Parameters.AddWithValue("@SDTFilter", "%" + sdtFilter + "%");
+                    }
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        // Gán dữ liệu vào DataGridView
+                        dataGridViewTK.DataSource = dt;
+
+                        // 2. Định dạng cột và sắp xếp thứ tự hiển thị
+                        FormatAndOrderGrid();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi tải dữ liệu khách hàng: " + ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        // Hàm này căn chỉnh và đặt tên header theo yêu cầu
+        private void FormatAndOrderGrid()
+        {
+            // Kiểm tra DataGridView có dữ liệu chưa
+            if (dataGridViewTK.DataSource == null) return;
+
+            // 1. Ẩn tất cả các cột ban đầu
+            foreach (DataGridViewColumn col in dataGridViewTK.Columns)
+            {
+                col.Visible = false;
+            }
+
+            // 2. Hiển thị lại các cột theo thứ tự và đặt tên header
+
+            // Tên đăng nhập (TenDangNhap) - Cột 0
+            dataGridViewTK.Columns["TenDangNhap"].Visible = true;
+            dataGridViewTK.Columns["TenDangNhap"].DisplayIndex = 0;
+            dataGridViewTK.Columns["TenDangNhap"].HeaderText = "Tên Đăng Nhập";
+
+            // Họ tên (HoTen) - Cột 1
+            dataGridViewTK.Columns["HoTen"].Visible = true;
+            dataGridViewTK.Columns["HoTen"].DisplayIndex = 1;
+            dataGridViewTK.Columns["HoTen"].HeaderText = "Họ Tên";
+
+            // SĐT (SDT) - Cột 2
+            dataGridViewTK.Columns["SDT"].Visible = true;
+            dataGridViewTK.Columns["SDT"].DisplayIndex = 2;
+            dataGridViewTK.Columns["SDT"].HeaderText = "SĐT";
+
+            // 3: CCCD (CCCD)  <<< CỘT MỚI
+            dataGridViewTK.Columns["CCCD"].Visible = true;
+            dataGridViewTK.Columns["CCCD"].DisplayIndex = 3;
+            dataGridViewTK.Columns["CCCD"].HeaderText = "CCCD";
+
+            // Số dư (SoDu) - Cột 4
+            dataGridViewTK.Columns["SoDu"].Visible = true;
+            dataGridViewTK.Columns["SoDu"].DisplayIndex = 3;
+            dataGridViewTK.Columns["SoDu"].HeaderText = "Số Dư";
+            dataGridViewTK.Columns["SoDu"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
+        }
+
+        // Hàm này nên được gọi trong sự kiện Form_Load
+        private void KHang_Load(object sender, EventArgs e)
+        {
+            LoadDataIntoGrid();
+        }
+        private void textBoxSDT_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = textBoxSDT.Text.Trim();
+
+            // Gọi lại hàm LoadDataIntoGrid với chuỗi tìm kiếm
+            LoadDataIntoGrid(filterText);
+        }
+
+        private void btnThemTaiKhoan_Click(object sender, EventArgs e)
+        {
+            ThemTaiKhoan formThem = new ThemTaiKhoan();
+            formThem.ShowDialog();
+
+            // Tải lại DataGridView sau khi tạo tài khoản thành công
+            LoadDataIntoGrid();
         }
     }
 }
