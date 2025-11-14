@@ -155,7 +155,7 @@
             btnKH.Padding = new Padding(12, 0, 0, 0);
             btnKH.Size = new Size(220, 45);
             btnKH.TabIndex = 5;
-            btnKH.Text = "Khách hàng";
+            btnKH.Text = "Tài khoản";
             btnKH.TextAlign = ContentAlignment.MiddleLeft;
             btnKH.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnKH.UseVisualStyleBackColor = true;

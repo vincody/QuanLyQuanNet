@@ -132,7 +132,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "KHang";
-            Text = "Khách hàng";
+            Text = "Tài khoản";
             Load += KHang_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTK).EndInit();
