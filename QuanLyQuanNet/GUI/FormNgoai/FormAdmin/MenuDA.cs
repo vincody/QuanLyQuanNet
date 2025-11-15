@@ -17,7 +17,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         public MenuDA()
         {
             InitializeComponent();
-  
+
         }
         // Gọi hàm này khi Form Load
         private void LoadMenuData(string searchKeyword = null)
@@ -196,5 +196,27 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             LoadMenuData(keyword);
         }
 
+        private void btnThemMon_Click(object sender, EventArgs e)
+        {
+            // Tạo một instance mới của Form ThemMonAn
+            ThemMonAn themMonForm = new ThemMonAn();
+
+            // Hiển thị Form ThemMonAn và chờ nó đóng
+            DialogResult result = themMonForm.ShowDialog();
+
+            // Kiểm tra kết quả trả về từ form ThemMonAn
+            // Nếu kết quả là DialogResult.OK (đã thêm thành công và đóng form)
+            if (result == DialogResult.OK)
+            {
+                // ***** MÃ CẬP NHẬT DỮ LIỆU ĐƯỢC THÊM VÀO ĐÂY *****
+
+                // Gọi hàm để tải lại hoặc làm mới danh sách món ăn trên form MenuDA này.
+                // BẠN CẦN THAY THẾ LoadDataMonAn() bằng tên hàm tải dữ liệu thực tế của bạn.
+                LoadMenuData();
+
+                // Ví dụ, nếu bạn dùng DataGridView có tên dgvMonAn:
+                // dgvMonAn.Refresh(); 
+            }
+        }
     }
 }

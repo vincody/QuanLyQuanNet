@@ -45,6 +45,9 @@
     <None Update="Images\Pepsi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Images\phobo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Images\Quán Net.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
