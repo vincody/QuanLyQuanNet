@@ -209,7 +209,7 @@
             btnMenu.Padding = new Padding(12, 0, 0, 0);
             btnMenu.Size = new Size(220, 45);
             btnMenu.TabIndex = 1;
-            btnMenu.Text = "Menu";
+            btnMenu.Text = "Menu đồ ăn";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMenu.UseVisualStyleBackColor = true;

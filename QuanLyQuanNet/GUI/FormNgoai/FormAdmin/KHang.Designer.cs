@@ -63,7 +63,7 @@
             dataGridViewTK.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 10);
             dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
@@ -73,22 +73,22 @@
             dataGridViewTK.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewTK.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewTK.EnableHeadersVisualStyles = false;
             dataGridViewTK.Location = new Point(0, 0);
             dataGridViewTK.Name = "dataGridViewTK";
             dataGridViewTK.ReadOnly = true;
+            dataGridViewTK.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.Padding = new Padding(0, 0, 0, 5);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridViewTK.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
@@ -112,28 +112,31 @@
             // 
             // btnSuaThongTin
             // 
+            btnSuaThongTin.BackColor = Color.AliceBlue;
             btnSuaThongTin.Font = new Font("Segoe UI", 12F);
-            btnSuaThongTin.Location = new Point(445, 11);
+            btnSuaThongTin.Location = new Point(464, 12);
             btnSuaThongTin.Name = "btnSuaThongTin";
-            btnSuaThongTin.Size = new Size(172, 29);
+            btnSuaThongTin.Size = new Size(192, 29);
             btnSuaThongTin.TabIndex = 2;
             btnSuaThongTin.Text = "Sửa thông tin";
-            btnSuaThongTin.UseVisualStyleBackColor = true;
+            btnSuaThongTin.UseVisualStyleBackColor = false;
             btnSuaThongTin.Click += btnSuaThongTin_Click;
             // 
             // btnThemTaiKhoan
             // 
+            btnThemTaiKhoan.BackColor = Color.AliceBlue;
             btnThemTaiKhoan.Font = new Font("Segoe UI", 12F);
-            btnThemTaiKhoan.Location = new Point(266, 12);
+            btnThemTaiKhoan.Location = new Point(266, 11);
             btnThemTaiKhoan.Name = "btnThemTaiKhoan";
-            btnThemTaiKhoan.Size = new Size(173, 29);
+            btnThemTaiKhoan.Size = new Size(192, 29);
             btnThemTaiKhoan.TabIndex = 1;
             btnThemTaiKhoan.Text = "Thêm tài khoản";
-            btnThemTaiKhoan.UseVisualStyleBackColor = true;
+            btnThemTaiKhoan.UseVisualStyleBackColor = false;
             btnThemTaiKhoan.Click += btnThemTaiKhoan_Click;
             // 
             // textBoxSDT
             // 
+            textBoxSDT.BackColor = Color.AliceBlue;
             textBoxSDT.Font = new Font("Segoe UI", 12F);
             textBoxSDT.Location = new Point(12, 12);
             textBoxSDT.Name = "textBoxSDT";

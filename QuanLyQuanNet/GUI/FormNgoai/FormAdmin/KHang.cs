@@ -82,46 +82,52 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         private void FormatAndOrderGrid()
         {
             // Kiểm tra DataGridView có dữ liệu chưa
-            if (dataGridViewTK.DataSource == null) return;
+            if (dataGridViewTK.DataSource == null || dataGridViewTK.Columns.Count == 0) return;
 
             // 1. Ẩn tất cả các cột ban đầu
             foreach (DataGridViewColumn col in dataGridViewTK.Columns)
             {
                 col.Visible = false;
             }
-            // BỔ SUNG: Ẩn cột TaiKhoanID
+            // BỔ SUNG: Ẩn cột TaiKhoanID   
             if (dataGridViewTK.Columns.Contains("TaiKhoanID"))
             {
                 dataGridViewTK.Columns["TaiKhoanID"].Visible = false;
+                dataGridViewTK.Columns["TaiKhoanID"].DisplayIndex = 0; // GIỮ VỊ TRÍ 0
             }
 
             // 2. Hiển thị lại các cột theo thứ tự và đặt tên header
 
             // Tên đăng nhập (TenDangNhap) - Cột 0
             dataGridViewTK.Columns["TenDangNhap"].Visible = true;
-            dataGridViewTK.Columns["TenDangNhap"].DisplayIndex = 0;
+            dataGridViewTK.Columns["TenDangNhap"].DisplayIndex = 1;
             dataGridViewTK.Columns["TenDangNhap"].HeaderText = "Tên Đăng Nhập";
+            dataGridViewTK.Columns["TenDangNhap"].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // Họ tên (HoTen) - Cột 1
             dataGridViewTK.Columns["HoTen"].Visible = true;
-            dataGridViewTK.Columns["HoTen"].DisplayIndex = 1;
+            dataGridViewTK.Columns["HoTen"].DisplayIndex = 2;
             dataGridViewTK.Columns["HoTen"].HeaderText = "Họ Tên";
+            dataGridViewTK.Columns["HoTen"].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // SĐT (SDT) - Cột 2
             dataGridViewTK.Columns["SDT"].Visible = true;
-            dataGridViewTK.Columns["SDT"].DisplayIndex = 2;
+            dataGridViewTK.Columns["SDT"].DisplayIndex = 3;
             dataGridViewTK.Columns["SDT"].HeaderText = "SĐT";
+            dataGridViewTK.Columns["SDT"].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // 3: CCCD (CCCD)  <<< CỘT MỚI
             dataGridViewTK.Columns["CCCD"].Visible = true;
-            dataGridViewTK.Columns["CCCD"].DisplayIndex = 3;
+            dataGridViewTK.Columns["CCCD"].DisplayIndex = 4;
             dataGridViewTK.Columns["CCCD"].HeaderText = "CCCD";
+            dataGridViewTK.Columns["CCCD"].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             // Số dư (SoDu) - Cột 4
             dataGridViewTK.Columns["SoDu"].Visible = true;
-            dataGridViewTK.Columns["SoDu"].DisplayIndex = 4;
+            dataGridViewTK.Columns["SoDu"].DisplayIndex = 5;
             dataGridViewTK.Columns["SoDu"].HeaderText = "Số Dư";
             dataGridViewTK.Columns["SoDu"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
+            dataGridViewTK.Columns["SoDu"].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         // Hàm này nên được gọi trong sự kiện Form_Load
