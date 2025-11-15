@@ -35,6 +35,7 @@
             panel1 = new Panel();
             dataGridViewTK = new DataGridView();
             panel2 = new Panel();
+            btnSuaThongTin = new Button();
             btnThemTaiKhoan = new Button();
             textBoxSDT = new TextBox();
             panel1.SuspendLayout();
@@ -56,6 +57,7 @@
             dataGridViewTK.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewTK.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewTK.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewTK.BackgroundColor = Color.White;
             dataGridViewTK.BorderStyle = BorderStyle.None;
             dataGridViewTK.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewTK.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -64,7 +66,7 @@
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 10);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewTK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -93,11 +95,13 @@
             dataGridViewTK.RowHeadersVisible = false;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewTK.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewTK.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewTK.Size = new Size(800, 394);
             dataGridViewTK.TabIndex = 0;
             // 
             // panel2
             // 
+            panel2.Controls.Add(btnSuaThongTin);
             panel2.Controls.Add(btnThemTaiKhoan);
             panel2.Controls.Add(textBoxSDT);
             panel2.Dock = DockStyle.Top;
@@ -106,11 +110,23 @@
             panel2.Size = new Size(800, 50);
             panel2.TabIndex = 1;
             // 
+            // btnSuaThongTin
+            // 
+            btnSuaThongTin.Font = new Font("Segoe UI", 12F);
+            btnSuaThongTin.Location = new Point(445, 11);
+            btnSuaThongTin.Name = "btnSuaThongTin";
+            btnSuaThongTin.Size = new Size(172, 29);
+            btnSuaThongTin.TabIndex = 2;
+            btnSuaThongTin.Text = "Sửa thông tin";
+            btnSuaThongTin.UseVisualStyleBackColor = true;
+            btnSuaThongTin.Click += btnSuaThongTin_Click;
+            // 
             // btnThemTaiKhoan
             // 
+            btnThemTaiKhoan.Font = new Font("Segoe UI", 12F);
             btnThemTaiKhoan.Location = new Point(266, 12);
             btnThemTaiKhoan.Name = "btnThemTaiKhoan";
-            btnThemTaiKhoan.Size = new Size(110, 23);
+            btnThemTaiKhoan.Size = new Size(173, 29);
             btnThemTaiKhoan.TabIndex = 1;
             btnThemTaiKhoan.Text = "Thêm tài khoản";
             btnThemTaiKhoan.UseVisualStyleBackColor = true;
@@ -118,11 +134,13 @@
             // 
             // textBoxSDT
             // 
+            textBoxSDT.Font = new Font("Segoe UI", 12F);
             textBoxSDT.Location = new Point(12, 12);
             textBoxSDT.Name = "textBoxSDT";
             textBoxSDT.PlaceholderText = "Tìm theo số điện thoại";
-            textBoxSDT.Size = new Size(248, 23);
+            textBoxSDT.Size = new Size(248, 29);
             textBoxSDT.TabIndex = 0;
+            textBoxSDT.TextChanged += textBoxSDT_TextChanged;
             // 
             // KHang
             // 
@@ -148,5 +166,6 @@
         private TextBox textBoxSDT;
         private DataGridView dataGridViewTK;
         private Button btnThemTaiKhoan;
+        private Button btnSuaThongTin;
     }
 }

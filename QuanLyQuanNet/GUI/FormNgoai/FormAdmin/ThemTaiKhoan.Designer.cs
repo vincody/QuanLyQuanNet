@@ -177,7 +177,6 @@
             Controls.Add(labelTenTK);
             Controls.Add(panel1);
             Name = "ThemTaiKhoan";
-            Text = "ThemTaiKhoan";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

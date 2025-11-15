@@ -18,12 +18,21 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         public KHang()
         {
             InitializeComponent();
+            btnSuaThongTin.Enabled = false;
+            this.dataGridViewTK.SelectionChanged += new EventHandler(this.dataGridViewTK_SelectionChanged);
         }
+        // Hàm xử lý khi hàng được chọn/bỏ chọn
+        private void dataGridViewTK_SelectionChanged(object sender, EventArgs e)
+        {
+            // Kích hoạt nút nếu có ít nhất một hàng được chọn
+            btnSuaThongTin.Enabled = dataGridViewTK.SelectedRows.Count == 1;
+        }
+
         // Hàm này được gọi khi Form Load
         private void LoadDataIntoGrid(string sdtFilter = null)
         {
             // 1. Xây dựng truy vấn SQL
-            string query = "SELECT TenDangNhap, HoTen, SDT, CCCD, SoDu FROM TaiKhoan";
+            string query = "SELECT TaiKhoanID, TenDangNhap, HoTen, SDT, CCCD, SoDu FROM TaiKhoan";
 
             // Chỉ lấy các tài khoản có isKhach = 1 (Tùy chọn)
             query += " WHERE isKhach = 1";
@@ -40,8 +49,12 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                 {
                     if (!string.IsNullOrEmpty(sdtFilter))
                     {
-                        // Thêm ký tự % cho tìm kiếm LIKE (Tìm kiếm SDT chứa chuỗi nhập vào)
-                        command.Parameters.AddWithValue("@SDTFilter", "%" + sdtFilter + "%");
+                        // ✅ SỬA LỖI TRUY VẤN:
+                        // 1. Dùng SqlDbType.NVarChar để báo cho SQL Server biết đây là chuỗi Unicode.
+                        // 2. Thêm tiền tố N nếu dùng kiểu khác (nhưng dùng Parameters tốt hơn).
+                        // 3. Đảm bảo sử dụng tham số (@SDTFilter) một cách rõ ràng.
+
+                        command.Parameters.Add("@SDTFilter", SqlDbType.NVarChar).Value = "%" + sdtFilter + "%";
                     }
 
                     try
@@ -76,6 +89,11 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             {
                 col.Visible = false;
             }
+            // BỔ SUNG: Ẩn cột TaiKhoanID
+            if (dataGridViewTK.Columns.Contains("TaiKhoanID"))
+            {
+                dataGridViewTK.Columns["TaiKhoanID"].Visible = false;
+            }
 
             // 2. Hiển thị lại các cột theo thứ tự và đặt tên header
 
@@ -101,7 +119,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
             // Số dư (SoDu) - Cột 4
             dataGridViewTK.Columns["SoDu"].Visible = true;
-            dataGridViewTK.Columns["SoDu"].DisplayIndex = 3;
+            dataGridViewTK.Columns["SoDu"].DisplayIndex = 4;
             dataGridViewTK.Columns["SoDu"].HeaderText = "Số Dư";
             dataGridViewTK.Columns["SoDu"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ
         }
@@ -126,6 +144,34 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
             // Tải lại DataGridView sau khi tạo tài khoản thành công
             LoadDataIntoGrid();
+        }
+
+        private void btnSuaThongTin_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTK.SelectedRows.Count == 1)
+            {
+                // 1. Lấy dữ liệu từ hàng đang chọn
+                DataGridViewRow selectedRow = dataGridViewTK.SelectedRows[0];
+
+                // 2. Tạo một đối tượng chứa dữ liệu để truyền đi
+                TaiKhoanData data = new TaiKhoanData
+                {
+                    // Sử dụng Convert.ToInt32 để xử lý an toàn hơn so với casting trực tiếp (int)
+                    TaiKhoanID = Convert.ToInt32(selectedRow.Cells["TaiKhoanID"].Value),
+                    TenDangNhap = selectedRow.Cells["TenDangNhap"].Value.ToString(),
+                    HoTen = selectedRow.Cells["HoTen"].Value.ToString(),
+                    CCCD = selectedRow.Cells["CCCD"].Value.ToString(),
+                    SDT = selectedRow.Cells["SDT"].Value.ToString(),
+                    SoDu = Convert.ToDecimal(selectedRow.Cells["SoDu"].Value)
+                };
+
+                // 3. Mở Form và truyền dữ liệu
+                SuaThongTin formSua = new SuaThongTin(data);
+                formSua.ShowDialog();
+
+                // Tải lại DataGridView sau khi sửa thông tin
+                LoadDataIntoGrid();
+            }
         }
     }
 }

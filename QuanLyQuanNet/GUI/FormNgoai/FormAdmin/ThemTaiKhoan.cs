@@ -16,7 +16,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
     public partial class ThemTaiKhoan : Form
     {
         private const string connectionString = "Server=VINH; Database=QuanLyQuanNetDB; Integrated Security=True;";
-        private const string DEFAULT_PASSWORD = "12345678";
         public ThemTaiKhoan()
         {
             InitializeComponent();
@@ -97,7 +96,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             // 3. Thực hiện Giao dịch (INSERT và Kiểm tra Trùng lặp)
             if (CreateNewAccountTransaction(hoTen, cccd, tenDangNhap, sdt, soDu))
             {
-                MessageBox.Show("Tạo tài khoản thành công! Mật khẩu mặc định là 12345678.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tạo tài khoản thành công! Mật khẩu mặc định là sdt.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -158,7 +157,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                     using (SqlCommand cmdInsert = new SqlCommand(insertQuery, connection, transaction))
                     {
                         cmdInsert.Parameters.AddWithValue("@TenDN", tenDangNhap);
-                        cmdInsert.Parameters.AddWithValue("@MK", DEFAULT_PASSWORD); // Mật khẩu mặc định
+                        cmdInsert.Parameters.AddWithValue("@MK", sdt); // Mật khẩu mặc định là sdt đăng ký cùng
                         cmdInsert.Parameters.AddWithValue("@HoTen", hoTen);
                         cmdInsert.Parameters.AddWithValue("@SDT", sdt);
                         // Dùng N'value' cho NVARCHAR trong trường hợp này không cần thiết vì ta dùng Parameters, 
