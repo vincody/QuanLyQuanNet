@@ -87,6 +87,7 @@
             btnTrack.TextAlign = ContentAlignment.MiddleLeft;
             btnTrack.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTrack.UseVisualStyleBackColor = true;
+            btnTrack.Visible = false;
             btnTrack.Click += btnTrack_Click;
             // 
             // btnNV
@@ -105,6 +106,7 @@
             btnNV.TextAlign = ContentAlignment.MiddleLeft;
             btnNV.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnNV.UseVisualStyleBackColor = true;
+            btnNV.Visible = false;
             btnNV.Click += btnNV_Click;
             // 
             // btnKho
@@ -123,6 +125,7 @@
             btnKho.TextAlign = ContentAlignment.MiddleLeft;
             btnKho.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnKho.UseVisualStyleBackColor = true;
+            btnKho.Visible = false;
             btnKho.Click += btnKho_Click;
             // 
             // btnVoucher
@@ -141,6 +144,7 @@
             btnVoucher.TextAlign = ContentAlignment.MiddleLeft;
             btnVoucher.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnVoucher.UseVisualStyleBackColor = true;
+            btnVoucher.Visible = false;
             btnVoucher.Click += btnVoucher_Click;
             // 
             // btnKH
@@ -173,7 +177,7 @@
             btnHistory.Padding = new Padding(12, 0, 0, 0);
             btnHistory.Size = new Size(220, 45);
             btnHistory.TabIndex = 4;
-            btnHistory.Text = "Lịch sử dùng máy";
+            btnHistory.Text = "Đơn đặt món";
             btnHistory.TextAlign = ContentAlignment.MiddleLeft;
             btnHistory.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnHistory.UseVisualStyleBackColor = true;
