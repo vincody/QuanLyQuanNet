@@ -16,10 +16,16 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
     public partial class TTMay : Form
     {
         private const string connectionString = "Server=VINH; Database=QuanLyQuanNetDB; Integrated Security=True;";
+        private string selectedTenMay = null;
+        private int selectedId = 0;
+
+        // Cần tạo Class mô hình dữ liệu để truyền đi (Ví dụ: đặt trong file riêng)
+        public ComputerData selectedComputerData;
         public TTMay()
         {
             InitializeComponent();
             labelMayHT.Visible = false;
+            btnSuaThongTinMay.Enabled = false;
         }
         // Hàm này nên được gọi khi Form TTMay Load
         private void LoadComputerStatus()
@@ -135,14 +141,23 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             labelMayHT.Visible = true;
 
             // 2. Tải thông tin chi tiết vào các TextBox
-            LoadDetailInfo(tenMayChon);
+            // Tải thông tin chi tiết vào các TextBox
+            selectedComputerData = LoadDetailInfo(tenMayChon); // <<< Sửa: Hàm LoadDetailInfo phải trả về dữ liệu
+
+            if (selectedComputerData != null)
+            {
+                selectedTenMay = tenMayChon;
+                btnSuaThongTinMay.Enabled = true; // Bật nút Sửa thông tin
+                labelMayHT.Visible = true;
+            }
         }
-        private void LoadDetailInfo(string tenMay)
+        private ComputerData LoadDetailInfo(string tenMay)
         {
-            // Cập nhật Label máy hiện tại
+            // Cập nhật Label máy hiện tại (Giữ nguyên)
             labelMayHT.Text = tenMay;
 
-            string query = "SELECT GiaTheoGio, CPU, GPU, RAM, ManHinh FROM Computers WHERE TenMay = @TenMay";
+            // Truy vấn lấy tất cả các cột cần thiết, bao gồm ID
+            string query = "SELECT Id, TenMay, CPU, GPU, RAM, ManHinh, GiaTheoGio, TinhTrang FROM Computers WHERE TenMay = @TenMay";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -157,22 +172,37 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
                         if (reader.Read())
                         {
-                            // ✅ SỬA LỖI: Đọc dữ liệu dưới dạng DECIMAL (hoặc string)
+                            // Đọc giá trị DECIMAl
                             decimal giaTheoGio = reader.GetDecimal(reader.GetOrdinal("GiaTheoGio"));
 
-                            // ✅ HIỂN THỊ GIÁ VÀO TEXTBOX MỚI
-                            // Định dạng giá trị để hiển thị (ví dụ: 15.000)
-                            textBoxGiaMayTrenH.Text = giaTheoGio.ToString("N0", new System.Globalization.CultureInfo("vi-VN"));
-
-                            // Gán thông tin cấu hình cũ (giữ nguyên logic cũ)
+                            // Gán thông tin cấu hình vào TextBox (Phần hiển thị UI)
+                            textBoxGiaMayTrenH.Text = giaTheoGio.ToString("N0", new System.Globalization.CultureInfo("vi-VN")) + " VNĐ";
                             textBoxCPU.Text = reader["CPU"].ToString();
                             textBoxGPU.Text = reader["GPU"].ToString();
                             textBoxRAM.Text = reader["RAM"].ToString();
                             textBoxManHinh.Text = reader["ManHinh"].ToString();
+
+                            // ✅ BỔ SUNG: TẠO VÀ TRẢ VỀ ĐỐI TƯỢNG COMPUTERDATA
+                            ComputerData data = new ComputerData
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                                TenMay = tenMay, // Đã có sẵn
+                                CPU = reader["CPU"].ToString(),
+                                GPU = reader["GPU"].ToString(),
+                                RAM = reader["RAM"].ToString(),
+                                ManHinh = reader["ManHinh"].ToString(),
+                                GiaTheoGio = giaTheoGio, // Đã đọc
+                                TinhTrang = reader["TinhTrang"].ToString()
+                            };
+
+                            // Đóng Reader và trả về dữ liệu
+                            reader.Close();
+                            return data;
                         }
                         else
                         {
                             // Trường hợp không tìm thấy máy (Xóa nội dung cũ)
+                            textBoxGiaMayTrenH.Text = "";
                             textBoxCPU.Text = "";
                             textBoxGPU.Text = "";
                             textBoxRAM.Text = "";
@@ -183,7 +213,43 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                     {
                         MessageBox.Show("Lỗi truy vấn chi tiết máy: " + ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    // Trả về null nếu có lỗi hoặc không tìm thấy máy
+                    return null;
                 }
+            }
+        }
+
+        private void btnSuaThongTinMay_Click(object sender, EventArgs e)
+        {
+            if (selectedComputerData == null)
+            {
+                MessageBox.Show("Vui lòng chọn máy cần sửa thông tin.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Mở Form Sửa thông tin và truyền dữ liệu
+            SuaThongTinMay formSua = new SuaThongTinMay(selectedComputerData);
+            formSua.ShowDialog();
+
+            // Sau khi Form đóng, tải lại trạng thái tất cả máy
+            LoadComputerStatus();
+
+            // Vô hiệu hóa nút Sửa và xóa trạng thái chọn
+            btnSuaThongTinMay.Enabled = false;
+            selectedComputerData = null;
+            selectedTenMay = null;
+            labelMayHT.Visible = false;
+        }
+
+        private void btnAddMay_Click(object sender, EventArgs e)
+        {
+            ThemMayMoi formThem = new ThemMayMoi();
+
+            // Mở Form con và kiểm tra nếu việc thêm thành công (DialogResult.OK)
+            if (formThem.ShowDialog() == DialogResult.OK)
+            {
+                // Tải lại trạng thái các máy (ví dụ: tạo lại các nút máy trong flowpanel)
+                LoadComputerStatus();
             }
         }
     }

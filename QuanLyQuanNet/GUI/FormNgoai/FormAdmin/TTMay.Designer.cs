@@ -33,7 +33,7 @@
             panel1 = new Panel();
             textBoxGiaMayTrenH = new TextBox();
             label5 = new Label();
-            button2 = new Button();
+            btnSuaThongTinMay = new Button();
             textBoxManHinh = new TextBox();
             label10 = new Label();
             textBoxRAM = new TextBox();
@@ -46,7 +46,7 @@
             labelMayHT = new Label();
             label3 = new Label();
             label4 = new Label();
-            button1 = new Button();
+            btnAddMay = new Button();
             flowPanelMayTinh = new FlowLayoutPanel();
             panel2 = new Panel();
             panel1.SuspendLayout();
@@ -81,7 +81,7 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel1.Controls.Add(textBoxGiaMayTrenH);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(btnSuaThongTinMay);
             panel1.Controls.Add(textBoxManHinh);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(textBoxRAM);
@@ -115,16 +115,17 @@
             label5.TabIndex = 18;
             label5.Text = "Giá máy (/h)";
             // 
-            // button2
+            // btnSuaThongTinMay
             // 
-            button2.BackColor = Color.AliceBlue;
-            button2.Font = new Font("Segoe UI", 15F);
-            button2.Location = new Point(82, 325);
-            button2.Name = "button2";
-            button2.Size = new Size(205, 52);
-            button2.TabIndex = 17;
-            button2.Text = "Sửa thông tin máy";
-            button2.UseVisualStyleBackColor = false;
+            btnSuaThongTinMay.BackColor = Color.AliceBlue;
+            btnSuaThongTinMay.Font = new Font("Segoe UI", 15F);
+            btnSuaThongTinMay.Location = new Point(82, 340);
+            btnSuaThongTinMay.Name = "btnSuaThongTinMay";
+            btnSuaThongTinMay.Size = new Size(205, 52);
+            btnSuaThongTinMay.TabIndex = 17;
+            btnSuaThongTinMay.Text = "Sửa thông tin máy";
+            btnSuaThongTinMay.UseVisualStyleBackColor = false;
+            btnSuaThongTinMay.Click += btnSuaThongTinMay_Click;
             // 
             // textBoxManHinh
             // 
@@ -242,16 +243,17 @@
             label4.TabIndex = 4;
             label4.Text = "label4";
             // 
-            // button1
+            // btnAddMay
             // 
-            button1.BackColor = Color.AliceBlue;
-            button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(12, 9);
-            button1.Name = "button1";
-            button1.Size = new Size(119, 33);
-            button1.TabIndex = 6;
-            button1.Text = "Thêm máy";
-            button1.UseVisualStyleBackColor = false;
+            btnAddMay.BackColor = Color.AliceBlue;
+            btnAddMay.Font = new Font("Segoe UI", 12F);
+            btnAddMay.Location = new Point(12, 9);
+            btnAddMay.Name = "btnAddMay";
+            btnAddMay.Size = new Size(119, 33);
+            btnAddMay.TabIndex = 6;
+            btnAddMay.Text = "Thêm máy";
+            btnAddMay.UseVisualStyleBackColor = false;
+            btnAddMay.Click += btnAddMay_Click;
             // 
             // flowPanelMayTinh
             // 
@@ -277,7 +279,7 @@
             ClientSize = new Size(800, 482);
             Controls.Add(panel2);
             Controls.Add(flowPanelMayTinh);
-            Controls.Add(button1);
+            Controls.Add(btnAddMay);
             Controls.Add(label3);
             Controls.Add(label4);
             Controls.Add(panel1);
@@ -298,7 +300,7 @@
         private Panel panel1;
         private Label label3;
         private Label label4;
-        private Button button1;
+        private Button btnAddMay;
         private Label labelMayHT;
         private FlowLayoutPanel flowPanelMayTinh;
         private TextBox textBoxRAM;
@@ -311,7 +313,7 @@
         private TextBox textBoxManHinh;
         private Label label10;
         private Panel panel2;
-        private Button button2;
+        private Button btnSuaThongTinMay;
         private TextBox textBoxGiaMayTrenH;
         private Label label5;
     }
