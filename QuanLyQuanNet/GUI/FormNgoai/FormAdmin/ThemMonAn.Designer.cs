@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThemMonAn));
             panel1 = new Panel();
+            btnClose = new Button();
             label1 = new Label();
             pictureBoxAnhMonAn = new PictureBox();
             btnThemAnhMA = new Button();
@@ -48,12 +49,28 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.AliceBlue;
+            panel1.Controls.Add(btnClose);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 58);
             panel1.TabIndex = 0;
+            panel1.MouseDown += panel1_MouseDown;
+            // 
+            // btnClose
+            // 
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Font = new Font("Segoe UI", 15F);
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(761, 16);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(27, 23);
+            btnClose.TabIndex = 2;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // label1
             // 
@@ -176,7 +193,6 @@
             Controls.Add(pictureBoxAnhMonAn);
             Controls.Add(panel1);
             Name = "ThemMonAn";
-            Text = "ThemMonAn";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxAnhMonAn).EndInit();
@@ -199,5 +215,6 @@
         private TextBox textBoxTenMA;
         private TextBox textBoxGiaMonAn;
         private Label label3;
+        private Button btnClose;
     }
 }

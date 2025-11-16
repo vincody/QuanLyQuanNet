@@ -4,11 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO; // Thêm thư viện này cho các thao tác về File/Path
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO; // Thêm thư viện này cho các thao tác về File/Path
 
 namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 {
@@ -23,6 +24,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         public ThemMonAn()
         {
             InitializeComponent();
+            this.ControlBox = false;
 
             // --- LOGIC XÁC ĐỊNH THƯ MỤC IMAGES LINH HOẠT ---
             string duongDanHienTai = Application.StartupPath;
@@ -54,7 +56,12 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             comboBoxPhanLoai.Items.Add("Đồ ăn");
             comboBoxPhanLoai.Items.Add("Đồ uống");
         }
-
+        // drag form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        //
         private void btnThemAnhMA_Click(object sender, EventArgs e)
         {
             // Lấy đường dẫn đến thư mục Downloads của người dùng hiện tại
@@ -189,6 +196,17 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

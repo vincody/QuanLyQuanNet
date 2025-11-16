@@ -145,6 +145,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(427, 30);
             panel1.TabIndex = 12;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // btnClose
             // 
@@ -156,6 +157,7 @@
             btnClose.Size = new Size(27, 23);
             btnClose.TabIndex = 1;
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // checkBoxMK
             // 
@@ -186,7 +188,6 @@
             Controls.Add(labelTenTK);
             Controls.Add(panel1);
             Name = "SuaThongTin";
-            Text = "SuaThongTin";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
