@@ -218,5 +218,122 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                 // dgvMonAn.Refresh(); 
             }
         }
+
+        private void btnSuaChiTietMon_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMenu.SelectedRows.Count > 0)
+            {
+                // 1. Lấy dữ liệu từ dòng được chọn
+                DataGridViewRow selectedRow = dataGridViewMenu.SelectedRows[0];
+
+                try
+                {
+                    MonAnModel monAnSua = new MonAnModel
+                    {
+                        // Đảm bảo tên cột khớp với tên cột trong SQL SELECT
+                        MonAnID = Convert.ToInt32(selectedRow.Cells["MonAnID"].Value),
+                        TenMon = selectedRow.Cells["TenMon"].Value.ToString(),
+                        Gia = Convert.ToDecimal(selectedRow.Cells["Gia"].Value),
+                        DanhMuc = selectedRow.Cells["DanhMuc"].Value.ToString(),
+                        HinhAnhPath = selectedRow.Cells["HinhAnhPath"].Value.ToString()
+                    };
+
+                    // 2. Mở form SuaMonAn và truyền dữ liệu
+                    SuaMonAn suaForm = new SuaMonAn(monAnSua);
+                    DialogResult result = suaForm.ShowDialog();
+
+                    // 3. Nếu sửa thành công, làm mới DataGridView
+                    if (result == DialogResult.OK)
+                    {
+                        // Gọi hàm nạp lại dữ liệu của bạn
+                        LoadMenuData(); // THAY THẾ LoadMenuData() bằng tên hàm của bạn
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi lấy dữ liệu từ DataGridView: {ex.Message}. Vui lòng kiểm tra lại tên cột và kiểu dữ liệu.", "Lỗi dữ liệu");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một món ăn để sửa.", "Cảnh báo");
+            }
+        }
+
+        private void btnXoaMonAn_Click(object sender, EventArgs e)
+        {
+            // 1. Kiểm tra xem người dùng đã chọn dòng nào chưa
+            if (dataGridViewMenu.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một món ăn để xóa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy thông tin món ăn được chọn
+            DataGridViewRow selectedRow = dataGridViewMenu.SelectedRows[0];
+
+            try
+            {
+                int monAnID = Convert.ToInt32(selectedRow.Cells["MonAnID"].Value);
+                string tenMon = selectedRow.Cells["TenMon"].Value.ToString();
+
+                // 2. HIỆN THỊ HỘP THOẠI XÁC NHẬN
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn xóa món ăn '{tenMon}' không?",
+                    "Xác nhận xóa món ăn",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                // 3. THỰC HIỆN XÓA NẾU NGƯỜI DÙNG CHỌN CÓ (Yes)
+                if (dialogResult == DialogResult.Yes)
+                {
+                    XoaMonAnTrongDatabase(monAnID, tenMon);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lấy dữ liệu món ăn: {ex.Message}. Vui lòng kiểm tra lại DataGridView.", "Lỗi dữ liệu");
+            }
+        }
+        // Thêm phương thức để thực hiện kết nối và xóa Database
+        private void XoaMonAnTrongDatabase(int monAnID, string tenMon)
+        {
+            
+
+            // Câu lệnh DELETE SQL
+            string query = "DELETE FROM ThucDon WHERE MonAnID = @MonAnID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MonAnID", monAnID);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show($"Đã xóa món ăn '{tenMon}' thành công.", "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // 4. LÀM MỚI DATAGRIDVIEW
+                        LoadMenuData(); // Gọi hàm nạp lại dữ liệu của bạn để cập nhật DataGridView
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Không tìm thấy món ăn có ID {monAnID} để xóa.", "Lỗi xóa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Lỗi Database khi xóa: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi không xác định: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

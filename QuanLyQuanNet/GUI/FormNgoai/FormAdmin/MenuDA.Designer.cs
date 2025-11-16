@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dataGridViewMenu = new DataGridView();
             pictureBoxMenu = new PictureBox();
             textBoxTimKiem = new TextBox();
             btnThemMon = new Button();
-            button2 = new Button();
+            btnXoaMonAn = new Button();
             panel1 = new Panel();
             btnSuaChiTietMon = new Button();
             textBoxTenMA = new TextBox();
@@ -62,36 +62,36 @@
             dataGridViewMenu.BorderStyle = BorderStyle.None;
             dataGridViewMenu.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewMenu.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new Padding(0, 0, 0, 10);
-            dataGridViewCellStyle4.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 10);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridViewMenu.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewMenu.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewMenu.GridColor = Color.AliceBlue;
             dataGridViewMenu.Location = new Point(12, 72);
             dataGridViewMenu.Name = "dataGridViewMenu";
             dataGridViewMenu.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridViewMenu.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewMenu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewMenu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewMenu.Size = new Size(473, 418);
             dataGridViewMenu.TabIndex = 0;
@@ -129,16 +129,17 @@
             btnThemMon.UseVisualStyleBackColor = false;
             btnThemMon.Click += btnThemMon_Click;
             // 
-            // button2
+            // btnXoaMonAn
             // 
-            button2.BackColor = Color.AliceBlue;
-            button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(334, 27);
-            button2.Name = "button2";
-            button2.Size = new Size(151, 29);
-            button2.TabIndex = 4;
-            button2.Text = "Xóa món";
-            button2.UseVisualStyleBackColor = false;
+            btnXoaMonAn.BackColor = Color.AliceBlue;
+            btnXoaMonAn.Font = new Font("Segoe UI", 12F);
+            btnXoaMonAn.Location = new Point(334, 27);
+            btnXoaMonAn.Name = "btnXoaMonAn";
+            btnXoaMonAn.Size = new Size(151, 29);
+            btnXoaMonAn.TabIndex = 4;
+            btnXoaMonAn.Text = "Xóa món";
+            btnXoaMonAn.UseVisualStyleBackColor = false;
+            btnXoaMonAn.Click += btnXoaMonAn_Click;
             // 
             // panel1
             // 
@@ -168,6 +169,7 @@
             btnSuaChiTietMon.TabIndex = 6;
             btnSuaChiTietMon.Text = "Sửa chi tiết món ăn";
             btnSuaChiTietMon.UseVisualStyleBackColor = false;
+            btnSuaChiTietMon.Click += btnSuaChiTietMon_Click;
             // 
             // textBoxTenMA
             // 
@@ -235,7 +237,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 493);
             Controls.Add(panel1);
-            Controls.Add(button2);
+            Controls.Add(btnXoaMonAn);
             Controls.Add(btnThemMon);
             Controls.Add(textBoxTimKiem);
             Controls.Add(pictureBoxMenu);
@@ -257,7 +259,7 @@
         private PictureBox pictureBoxMenu;
         private TextBox textBoxTimKiem;
         private Button btnThemMon;
-        private Button button2;
+        private Button btnXoaMonAn;
         private Panel panel1;
         private Label labelPL;
         private TextBox textBoxTenMA;
