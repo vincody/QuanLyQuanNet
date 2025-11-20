@@ -43,7 +43,7 @@
             panelListPhim.BackColor = SystemColors.ControlDarkDark;
             panelListPhim.Location = new Point(0, 43);
             panelListPhim.Name = "panelListPhim";
-            panelListPhim.Size = new Size(875, 407);
+            panelListPhim.Size = new Size(920, 407);
             panelListPhim.TabIndex = 0;
             // 
             // textBoxSoTrang
@@ -51,7 +51,7 @@
             textBoxSoTrang.Location = new Point(52, 13);
             textBoxSoTrang.Name = "textBoxSoTrang";
             textBoxSoTrang.PlaceholderText = "Trang";
-            textBoxSoTrang.Size = new Size(31, 23);
+            textBoxSoTrang.Size = new Size(50, 23);
             textBoxSoTrang.TabIndex = 3;
             textBoxSoTrang.KeyDown += textBoxSoTrang_KeyDown;
             // 
@@ -60,7 +60,7 @@
             btnCong.FlatAppearance.BorderSize = 0;
             btnCong.FlatStyle = FlatStyle.Flat;
             btnCong.Image = (Image)resources.GetObject("btnCong.Image");
-            btnCong.Location = new Point(89, 10);
+            btnCong.Location = new Point(108, 10);
             btnCong.Name = "btnCong";
             btnCong.Size = new Size(34, 27);
             btnCong.TabIndex = 2;
@@ -82,10 +82,10 @@
             // textBoxTimTen
             // 
             textBoxTimTen.Font = new Font("Segoe UI", 12F);
-            textBoxTimTen.Location = new Point(129, 10);
+            textBoxTimTen.Location = new Point(148, 10);
             textBoxTimTen.Name = "textBoxTimTen";
-            textBoxTimTen.PlaceholderText = "Tìm phim theo tên";
-            textBoxTimTen.Size = new Size(138, 29);
+            textBoxTimTen.PlaceholderText = "Tìm phim theo tên ở đây";
+            textBoxTimTen.Size = new Size(182, 29);
             textBoxTimTen.TabIndex = 4;
             textBoxTimTen.KeyDown += textBoxTimTen_KeyDown;
             // 
@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(875, 450);
+            ClientSize = new Size(920, 450);
             Controls.Add(textBoxTimTen);
             Controls.Add(btnTru);
             Controls.Add(textBoxSoTrang);
