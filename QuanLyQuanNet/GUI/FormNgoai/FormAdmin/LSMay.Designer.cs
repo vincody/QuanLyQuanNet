@@ -44,7 +44,6 @@
             dataGridViewLSOrder.AllowUserToDeleteRows = false;
             dataGridViewLSOrder.AllowUserToResizeColumns = false;
             dataGridViewLSOrder.AllowUserToResizeRows = false;
-            dataGridViewLSOrder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewLSOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewLSOrder.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewLSOrder.BackgroundColor = Color.White;
@@ -69,6 +68,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridViewLSOrder.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewLSOrder.Dock = DockStyle.Bottom;
             dataGridViewLSOrder.Location = new Point(0, 59);
             dataGridViewLSOrder.Name = "dataGridViewLSOrder";
             dataGridViewLSOrder.ReadOnly = true;
@@ -88,6 +88,7 @@
             // panel1
             // 
             panel1.Controls.Add(btnXemDonDatMon);
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 59);
