@@ -23,13 +23,27 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         private int totalPages = 1;
         private string activeKeyword = ""; // Lưu từ khóa tìm kiếm đang hoạt động
 
-        public ListPhim()          
+        public ListPhim()
         {
             InitializeComponent();
             UpdatePageControls();
 
             this.textBoxTimTen.KeyDown += new KeyEventHandler(this.textBoxTimTen_KeyDown);
             this.textBoxSoTrang.KeyDown += new KeyEventHandler(this.textBoxSoTrang_KeyDown);
+
+            // ✅ BỔ SUNG: Gán sự kiện click cho các thẻ phim để mở Form XemPhim
+            this.panelListPhim.ControlAdded += (s, e) => {
+                if (e.Control is ThongTinPhim filmControl)
+                {
+                    // Gán sự kiện cho chính UserControl
+                    filmControl.Click += FilmCard_Click;
+                    // Gán sự kiện cho các controls con bên trong (để bắt click bất kể ở đâu)
+                    foreach (Control c in filmControl.Controls)
+                    {
+                        c.Click += FilmCard_Click;
+                    }
+                }
+            };
         }
 
         // ====================================================================
@@ -90,7 +104,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                 foreach (var film in apiResponse.items)
                 {
                     ThongTinPhim filmControl = new ThongTinPhim();
-
                     filmControl.labelTenPhim.Text = film.name;
 
                     if (!string.IsNullOrEmpty(film.poster_url))
@@ -102,7 +115,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                     // === LOGIC XỬ LÝ VÀ GÁN TẬP PHIM (labelTap) ===
                     string currentEpStatus = film.current_episode?.Trim() ?? "";
                     int totalEpCount = film.total_episodes;
-                    string tapPhimToDisplay = ""; // ✅ FIX: Mặc định là chuỗi rỗng
+                    string tapPhimToDisplay = ""; // Mặc định là chuỗi rỗng
 
                     // 1. Kiểm tra trường hợp Movie đã FULL: total=1 và current="FULL"
                     if (totalEpCount == 1 && currentEpStatus.Equals("FULL", StringComparison.OrdinalIgnoreCase))
@@ -135,6 +148,9 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                     filmControl.labelTap.Text = tapPhimToDisplay;
                     // ===============================================
 
+                    // Lưu Slug vào Tag để Form XemPhim có thể truy vấn
+                    filmControl.Tag = film.slug;
+
                     panelListPhim.Controls.Add(filmControl);
 
                     // Khắc phục lỗi hiển thị: GỌI HÀM CĂN CHỈNH SAU KHI CONTROL ĐƯỢC LOAD
@@ -151,17 +167,31 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         }
 
         // ====================================================================
-        // PHƯƠNG THỨC TÌM KIẾM (Đã thống nhất với LoadContent)
+        // HÀM XỬ LÝ CLICK CARD PHIM (MỞ FORM XEM PHIM)
         // ====================================================================
 
-        public async void SearchFilms(string keyword)
+        private void FilmCard_Click(object sender, EventArgs e)
         {
-            // Hàm này chỉ là một wrapper gọi LoadContent
-            LoadContent(1, keyword);
+            Control clickedControl = sender as Control;
+            if (clickedControl == null) return;
+
+            // Tìm control cha có kiểu ThongTinPhim (vì click có thể đến từ Label/PictureBox con)
+            ThongTinPhim filmControl = clickedControl as ThongTinPhim ?? clickedControl.Parent as ThongTinPhim;
+
+            // 2. Lấy Slug từ Tag và kiểm tra
+            if (filmControl?.Tag == null || string.IsNullOrEmpty(filmControl.Tag.ToString())) return;
+
+            string filmSlug = filmControl.Tag.ToString();
+
+            // 3. Mở Form XemPhim và truyền slug đi
+            // Giả định bạn đã tạo Form XemPhim và có Constructor nhận slug
+            // LƯU Ý: Nếu Form XemPhim của bạn không có namespace rõ ràng, bạn cần đảm bảo nó được tham chiếu đúng.
+            XemPhim filmPlayer = new XemPhim(filmSlug);
+            filmPlayer.ShowDialog();
         }
 
         // ====================================================================
-        // LOGIC QUẢN LÝ UI VÀ PHÂN TRANG
+        // LOGIC QUẢN LÝ UI VÀ PHÂN TRANG (Giữ nguyên)
         // ====================================================================
 
         private void UpdatePageControls()
@@ -177,7 +207,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 
         private void ListPhim_Load(object sender, EventArgs e)
         {
-            LoadContent(1); // Gọi hàm mới
+            LoadContent(1);
         }
 
         private void btnTru_Click(object sender, EventArgs e)
@@ -207,8 +237,8 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                     LoadContent(1, "");
                     return;
                 }
-
-                SearchFilms(keyword);
+                // ✅ FIX: GỌI TRỰC TIẾP HÀM LOADCONTENT VỚI TỪ KHÓA
+                LoadContent(1, keyword);
                 e.SuppressKeyPress = true;
             }
         }
