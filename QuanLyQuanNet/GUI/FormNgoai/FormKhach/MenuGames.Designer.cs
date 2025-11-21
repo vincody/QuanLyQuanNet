@@ -28,16 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            CagetoryGames = new FlowLayoutPanel();
             flowPanelGame = new FlowLayoutPanel();
             SuspendLayout();
             // 
+            // CagetoryGames
+            // 
+            CagetoryGames.Dock = DockStyle.Top;
+            CagetoryGames.Location = new Point(0, 0);
+            CagetoryGames.Name = "CagetoryGames";
+            CagetoryGames.Size = new Size(808, 57);
+            CagetoryGames.TabIndex = 9;
+            // 
             // flowPanelGame
             // 
+            flowPanelGame.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowPanelGame.AutoScroll = true;
-            flowPanelGame.Dock = DockStyle.Fill;
-            flowPanelGame.Location = new Point(0, 0);
+            flowPanelGame.Location = new Point(0, 55);
             flowPanelGame.Name = "flowPanelGame";
-            flowPanelGame.Size = new Size(808, 450);
+            flowPanelGame.Size = new Size(808, 395);
             flowPanelGame.TabIndex = 8;
             // 
             // MenuGames
@@ -45,6 +54,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(808, 450);
+            Controls.Add(CagetoryGames);
             Controls.Add(flowPanelGame);
             Name = "MenuGames";
             Text = "Menu games";
@@ -61,6 +71,7 @@
         private Button button6;
         private Button button7;
         private Button button8;
+        private FlowLayoutPanel CagetoryGames;
         private FlowLayoutPanel flowPanelGame;
     }
 }
