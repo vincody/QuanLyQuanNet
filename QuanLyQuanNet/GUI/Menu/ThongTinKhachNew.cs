@@ -4,19 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
+namespace QuanLyQuanNet.GUI.Menu
 {
-    public partial class NapTien : Form
+    public partial class ThongTinKhachNew : Form
     {
-        public NapTien()
+        public ThongTinKhachNew()
         {
             InitializeComponent();
-            labelTenDN.Text = UserSession.TenDangNhap;
         }
     }
 }

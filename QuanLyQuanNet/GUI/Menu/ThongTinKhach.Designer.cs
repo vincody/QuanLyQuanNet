@@ -33,7 +33,6 @@
             panel1 = new Panel();
             labelDaKetNoi = new Label();
             labelTenUser = new Label();
-            pictureBox1 = new PictureBox();
             panelThongTin = new Panel();
             textBoxGiaMay = new TextBox();
             textBoxSoDu = new TextBox();
@@ -51,7 +50,6 @@
             btnTinNhan = new Button();
             btnDangXuat = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelThongTin.SuspendLayout();
             SuspendLayout();
             // 
@@ -96,16 +94,6 @@
             labelTenUser.Size = new Size(80, 28);
             labelTenUser.TabIndex = 0;
             labelTenUser.Text = "TenUser";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 299);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(326, 124);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
             // 
             // panelThongTin
             // 
@@ -277,7 +265,6 @@
             Controls.Add(btnTinNhan);
             Controls.Add(btnDoiMK);
             Controls.Add(panelThongTin);
-            Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -285,7 +272,6 @@
             Text = "Máy trạm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelThongTin.ResumeLayout(false);
             panelThongTin.PerformLayout();
             ResumeLayout(false);
@@ -296,7 +282,6 @@
 
         private Label label1;
         private Panel panel1;
-        private PictureBox pictureBox1;
         private Panel panelThongTin;
         private Label labelTongThoiGian;
         private TextBox textBoxGDN;

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bunifu.UI.WinForms" Version="9.1.0" />
+    <PackageReference Include="Bunifu.Utils" Version="1.0.5" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3595.46" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />

@@ -57,13 +57,11 @@ namespace QuanLyQuanNet
                 {
                     // Chuyển đến Menu cho Khách
                     // Giả sử bạn có Form tên là MenuKhach
-                    MenuKhach menuKhachForm = new MenuKhach();
-                    menuKhachForm.Show();
 
                     ThongTinKhach formThongTin = new ThongTinKhach(
-                    UserSession.TenDangNhap, // Giá trị cho labelTenUser
-                    UserSession.TenMay,     // Giá trị cho tiêu đề Form
-                    menuKhachForm
+                        UserSession.TenDangNhap, // Giá trị cho labelTenUser
+                        UserSession.TenMay,      // Giá trị cho tiêu đề Form
+                        null                     // Truyền null hoặc một instance của Form menuKhachForm nếu có
                     );
                     // =============================================================
                     // *** ĐIỀU CHỈNH VỊ TRÍ FORM MỚI (ThongTinKhach) ***
