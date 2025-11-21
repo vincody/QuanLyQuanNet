@@ -31,59 +31,13 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            dataGridViewLSOrder = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnXemDonDatMon = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewLSOrder).BeginInit();
+            dataGridViewLSOrder = new Bunifu.UI.WinForms.BunifuDataGridView();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLSOrder).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridViewLSOrder
-            // 
-            dataGridViewLSOrder.AllowUserToAddRows = false;
-            dataGridViewLSOrder.AllowUserToDeleteRows = false;
-            dataGridViewLSOrder.AllowUserToResizeColumns = false;
-            dataGridViewLSOrder.AllowUserToResizeRows = false;
-            dataGridViewLSOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewLSOrder.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewLSOrder.BackgroundColor = Color.White;
-            dataGridViewLSOrder.BorderStyle = BorderStyle.None;
-            dataGridViewLSOrder.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewLSOrder.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 10);
-            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewLSOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewLSOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewLSOrder.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewLSOrder.Dock = DockStyle.Bottom;
-            dataGridViewLSOrder.Location = new Point(0, 59);
-            dataGridViewLSOrder.Name = "dataGridViewLSOrder";
-            dataGridViewLSOrder.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewLSOrder.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewLSOrder.RowHeadersVisible = false;
-            dataGridViewLSOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewLSOrder.Size = new Size(800, 391);
-            dataGridViewLSOrder.TabIndex = 0;
             // 
             // panel1
             // 
@@ -105,24 +59,96 @@
             btnXemDonDatMon.UseVisualStyleBackColor = true;
             btnXemDonDatMon.Click += btnXemDonDatMon_Click;
             // 
+            // dataGridViewLSOrder
+            // 
+            dataGridViewLSOrder.AllowCustomTheming = false;
+            dataGridViewLSOrder.AllowUserToAddRows = false;
+            dataGridViewLSOrder.AllowUserToDeleteRows = false;
+            dataGridViewLSOrder.AllowUserToResizeColumns = false;
+            dataGridViewLSOrder.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewLSOrder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewLSOrder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewLSOrder.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewLSOrder.BorderStyle = BorderStyle.None;
+            dataGridViewLSOrder.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewLSOrder.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewLSOrder.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewLSOrder.ColumnHeadersHeight = 40;
+            dataGridViewLSOrder.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewLSOrder.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewLSOrder.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            dataGridViewLSOrder.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewLSOrder.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.Black;
+            dataGridViewLSOrder.CurrentTheme.BackColor = Color.White;
+            dataGridViewLSOrder.CurrentTheme.GridColor = Color.FromArgb(221, 238, 255);
+            dataGridViewLSOrder.CurrentTheme.HeaderStyle.BackColor = Color.DodgerBlue;
+            dataGridViewLSOrder.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewLSOrder.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            dataGridViewLSOrder.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewLSOrder.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            dataGridViewLSOrder.CurrentTheme.Name = null;
+            dataGridViewLSOrder.CurrentTheme.RowsStyle.BackColor = Color.White;
+            dataGridViewLSOrder.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewLSOrder.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            dataGridViewLSOrder.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewLSOrder.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewLSOrder.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewLSOrder.EnableHeadersVisualStyles = false;
+            dataGridViewLSOrder.GridColor = Color.FromArgb(221, 238, 255);
+            dataGridViewLSOrder.HeaderBackColor = Color.DodgerBlue;
+            dataGridViewLSOrder.HeaderBgColor = Color.Empty;
+            dataGridViewLSOrder.HeaderForeColor = Color.White;
+            dataGridViewLSOrder.Location = new Point(0, 59);
+            dataGridViewLSOrder.Name = "dataGridViewLSOrder";
+            dataGridViewLSOrder.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewLSOrder.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewLSOrder.RowHeadersVisible = false;
+            dataGridViewLSOrder.RowTemplate.Height = 40;
+            dataGridViewLSOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewLSOrder.Size = new Size(800, 391);
+            dataGridViewLSOrder.TabIndex = 2;
+            dataGridViewLSOrder.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            // 
             // LSMay
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel1);
             Controls.Add(dataGridViewLSOrder);
+            Controls.Add(panel1);
             Name = "LSMay";
             Text = "Lịch sử dụng máy";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewLSOrder).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLSOrder).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView dataGridViewLSOrder;
         private Panel panel1;
         private Button btnXemDonDatMon;
+        private Bunifu.UI.WinForms.BunifuDataGridView dataGridViewLSOrder;
     }
 }
