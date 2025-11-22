@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinKhach));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             labelTenUser = new Label();
             btnDoiMK = new Button();
             btnTinNhan = new Button();
@@ -59,9 +59,9 @@
             bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuPanel5 = new Bunifu.UI.WinForms.BunifuPanel();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnMenuGames = new Button();
+            btnXemPhim = new Button();
+            btnDatMonAn = new Button();
             bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             bunifuPanel3.SuspendLayout();
@@ -173,13 +173,13 @@
             guna2PictureBox3.AutoRoundedCorners = true;
             guna2PictureBox3.BackColor = Color.Transparent;
             guna2PictureBox3.BorderRadius = 19;
-            customizableEdges1.TopRight = false;
-            guna2PictureBox3.CustomizableEdges = customizableEdges1;
+            customizableEdges9.TopRight = false;
+            guna2PictureBox3.CustomizableEdges = customizableEdges9;
             guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
             guna2PictureBox3.ImageRotate = 0F;
             guna2PictureBox3.Location = new Point(9, 12);
             guna2PictureBox3.Name = "guna2PictureBox3";
-            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2PictureBox3.Size = new Size(41, 42);
             guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox3.TabIndex = 20;
@@ -224,13 +224,13 @@
             guna2PictureBox1.AutoRoundedCorners = true;
             guna2PictureBox1.BackColor = Color.Transparent;
             guna2PictureBox1.BorderRadius = 17;
-            customizableEdges3.TopRight = false;
-            guna2PictureBox1.CustomizableEdges = customizableEdges3;
+            customizableEdges11.TopRight = false;
+            guna2PictureBox1.CustomizableEdges = customizableEdges11;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(9, 6);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2PictureBox1.Size = new Size(36, 36);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             guna2PictureBox1.TabIndex = 19;
@@ -255,11 +255,11 @@
             GiaMayHienThi.ButtonTextMarginLeft = 0;
             GiaMayHienThi.ColorContrastOnClick = 45;
             GiaMayHienThi.ColorContrastOnHover = 45;
-            borderEdges1.BottomLeft = false;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = false;
-            borderEdges1.TopRight = true;
-            GiaMayHienThi.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = false;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = false;
+            borderEdges3.TopRight = true;
+            GiaMayHienThi.CustomizableEdges = borderEdges3;
             GiaMayHienThi.DialogResult = DialogResult.None;
             GiaMayHienThi.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             GiaMayHienThi.DisabledFillColor = Color.Empty;
@@ -345,11 +345,11 @@
             HienThiLoaiMay.ButtonTextMarginLeft = 0;
             HienThiLoaiMay.ColorContrastOnClick = 45;
             HienThiLoaiMay.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = false;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = false;
-            HienThiLoaiMay.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = false;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = false;
+            HienThiLoaiMay.CustomizableEdges = borderEdges4;
             HienThiLoaiMay.DialogResult = DialogResult.None;
             HienThiLoaiMay.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             HienThiLoaiMay.DisabledFillColor = Color.Empty;
@@ -462,7 +462,7 @@
             // 
             btnNapTien.BackColor = Color.Transparent;
             btnNapTien.BorderRadius = 15;
-            btnNapTien.CustomizableEdges = customizableEdges5;
+            btnNapTien.CustomizableEdges = customizableEdges13;
             btnNapTien.DisabledState.BorderColor = Color.DarkGray;
             btnNapTien.DisabledState.CustomBorderColor = Color.DarkGray;
             btnNapTien.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -473,7 +473,7 @@
             btnNapTien.Image = (Image)resources.GetObject("btnNapTien.Image");
             btnNapTien.Location = new Point(205, 48);
             btnNapTien.Name = "btnNapTien";
-            btnNapTien.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnNapTien.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnNapTien.Size = new Size(118, 45);
             btnNapTien.TabIndex = 21;
             btnNapTien.Text = "Nạp tiền";
@@ -514,12 +514,12 @@
             // guna2PictureBox2
             // 
             guna2PictureBox2.BackColor = Color.Transparent;
-            guna2PictureBox2.CustomizableEdges = customizableEdges7;
+            guna2PictureBox2.CustomizableEdges = customizableEdges15;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(11, 14);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2PictureBox2.Size = new Size(36, 36);
             guna2PictureBox2.TabIndex = 18;
             guna2PictureBox2.TabStop = false;
@@ -532,9 +532,9 @@
             bunifuPanel5.BorderColor = Color.Transparent;
             bunifuPanel5.BorderRadius = 15;
             bunifuPanel5.BorderThickness = 1;
-            bunifuPanel5.Controls.Add(button3);
-            bunifuPanel5.Controls.Add(button2);
-            bunifuPanel5.Controls.Add(button1);
+            bunifuPanel5.Controls.Add(btnMenuGames);
+            bunifuPanel5.Controls.Add(btnXemPhim);
+            bunifuPanel5.Controls.Add(btnDatMonAn);
             bunifuPanel5.Controls.Add(btnTinNhan);
             bunifuPanel5.Location = new Point(12, 383);
             bunifuPanel5.Name = "bunifuPanel5";
@@ -542,51 +542,54 @@
             bunifuPanel5.Size = new Size(329, 66);
             bunifuPanel5.TabIndex = 22;
             // 
-            // button3
+            // btnMenuGames
             // 
-            button3.BackColor = Color.Transparent;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(235, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(78, 57);
-            button3.TabIndex = 7;
-            button3.Text = "Xem phim";
-            button3.TextImageRelation = TextImageRelation.ImageAboveText;
-            button3.UseVisualStyleBackColor = false;
+            btnMenuGames.BackColor = Color.Transparent;
+            btnMenuGames.FlatAppearance.BorderSize = 0;
+            btnMenuGames.FlatStyle = FlatStyle.Flat;
+            btnMenuGames.ForeColor = Color.White;
+            btnMenuGames.Image = (Image)resources.GetObject("btnMenuGames.Image");
+            btnMenuGames.Location = new Point(164, 3);
+            btnMenuGames.Name = "btnMenuGames";
+            btnMenuGames.Size = new Size(65, 57);
+            btnMenuGames.TabIndex = 8;
+            btnMenuGames.Text = "Games";
+            btnMenuGames.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnMenuGames.UseVisualStyleBackColor = false;
+            btnMenuGames.Click += btnMenuGames_Click;
             // 
-            // button2
+            // btnXemPhim
             // 
-            button2.BackColor = Color.Transparent;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(165, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(65, 57);
-            button2.TabIndex = 6;
-            button2.Text = "Games";
-            button2.TextImageRelation = TextImageRelation.ImageAboveText;
-            button2.UseVisualStyleBackColor = false;
+            btnXemPhim.BackColor = Color.Transparent;
+            btnXemPhim.FlatAppearance.BorderSize = 0;
+            btnXemPhim.FlatStyle = FlatStyle.Flat;
+            btnXemPhim.ForeColor = Color.White;
+            btnXemPhim.Image = (Image)resources.GetObject("btnXemPhim.Image");
+            btnXemPhim.Location = new Point(235, 3);
+            btnXemPhim.Name = "btnXemPhim";
+            btnXemPhim.Size = new Size(78, 57);
+            btnXemPhim.TabIndex = 7;
+            btnXemPhim.Text = "Xem phim";
+            btnXemPhim.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnXemPhim.UseVisualStyleBackColor = false;
+            btnXemPhim.Click += btnXemPhim_Click;
             // 
-            // button1
+            // btnDatMonAn
             // 
-            button1.BackColor = Color.Transparent;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.TopCenter;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(78, 57);
-            button1.TabIndex = 5;
-            button1.Text = "Gọi món";
-            button1.TextImageRelation = TextImageRelation.ImageAboveText;
-            button1.UseVisualStyleBackColor = false;
+            btnDatMonAn.BackColor = Color.Transparent;
+            btnDatMonAn.FlatAppearance.BorderSize = 0;
+            btnDatMonAn.FlatStyle = FlatStyle.Flat;
+            btnDatMonAn.ForeColor = Color.White;
+            btnDatMonAn.Image = (Image)resources.GetObject("btnDatMonAn.Image");
+            btnDatMonAn.ImageAlign = ContentAlignment.TopCenter;
+            btnDatMonAn.Location = new Point(3, 3);
+            btnDatMonAn.Name = "btnDatMonAn";
+            btnDatMonAn.Size = new Size(78, 57);
+            btnDatMonAn.TabIndex = 5;
+            btnDatMonAn.Text = "Gọi món";
+            btnDatMonAn.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnDatMonAn.UseVisualStyleBackColor = false;
+            btnDatMonAn.Click += btnDatMonAn_Click;
             // 
             // ThongTinKhach
             // 
@@ -636,10 +639,10 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnNapTien;
         private Bunifu.UI.WinForms.BunifuLabel labelHienThiSoDu;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel5;
-        private Button button1;
+        private Button btnDatMonAn;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
-        private Button button2;
-        private Button button3;
+        private Button btnXemPhim;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
+        private Button btnMenuGames;
     }
 }

@@ -287,5 +287,23 @@ namespace QuanLyQuanNet.GUI.Menu
             NapTien napTienForm = new NapTien();
             napTienForm.ShowDialog();
         }
+
+        private void btnDatMonAn_Click(object sender, EventArgs e)
+        {
+            GoiMon goiMonForm = new GoiMon();
+            goiMonForm.Show();
+        }
+
+        private void btnMenuGames_Click(object sender, EventArgs e)
+        {
+            MenuGames menuGamesForm = new MenuGames();
+            menuGamesForm.Show();
+        }
+
+        private void btnXemPhim_Click(object sender, EventArgs e)
+        {
+            ListPhim listPhimForm = new ListPhim();
+            listPhimForm.Show();
+        }
     }
 }
