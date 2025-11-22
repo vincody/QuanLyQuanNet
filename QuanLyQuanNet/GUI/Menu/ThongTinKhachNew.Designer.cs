@@ -28,12 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ThongTinKhachNew";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinKhachNew));
+            bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            SuspendLayout();
+            // 
+            // bunifuPanel1
+            // 
+            bunifuPanel1.BackgroundColor = Color.Transparent;
+            bunifuPanel1.BackgroundImage = (Image)resources.GetObject("bunifuPanel1.BackgroundImage");
+            bunifuPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+            bunifuPanel1.BorderColor = Color.Transparent;
+            bunifuPanel1.BorderRadius = 3;
+            bunifuPanel1.BorderThickness = 1;
+            bunifuPanel1.Location = new Point(0, 0);
+            bunifuPanel1.Name = "bunifuPanel1";
+            bunifuPanel1.ShowBorders = true;
+            bunifuPanel1.Size = new Size(338, 44);
+            bunifuPanel1.TabIndex = 0;
+            // 
+            // ThongTinKhachNew
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(339, 450);
+            Controls.Add(bunifuPanel1);
+            Name = "ThongTinKhachNew";
+            Text = "ThongTinKhachNew";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
     }
 }

@@ -215,17 +215,17 @@ namespace QuanLyQuanNet
             {
                 string tenMayChon = danhSachMay[random.Next(0, danhSachMay.Length)];
 
-                // ✅ SỬA LỖI LOGIC: Dùng NOT EXISTS thay cho LEFT JOIN để khắc phục lỗi "Máy đầy"
+                // ✅ SỬA LỖI: Dùng LOWER() để loại bỏ lỗi phân biệt chữ hoa/thường 
+                // và dùng NOT EXISTS để kiểm tra phiên đang hoạt động.
                 string queryKiemTra = @"
-                    SELECT C.GiaTheoGio
-                    FROM Computers C
-                    WHERE C.TenMay = @TenMay
-                      AND C.TinhTrang = 'Available'
-                      -- Đảm bảo máy không có phiên sử dụng nào chưa kết thúc
-                      AND NOT EXISTS (
-                          SELECT 1 FROM SuDungMay S 
-                          WHERE S.TenMay = C.TenMay AND S.ThoiGianKetThuc IS NULL
-                      );";
+            SELECT C.GiaTheoGio 
+            FROM Computers C
+            WHERE C.TenMay = @TenMay 
+              AND LOWER(C.TinhTrang) = 'available' -- BẮT BUỘC: So sánh ở dạng chữ thường
+              AND NOT EXISTS (
+                  SELECT 1 FROM SuDungMay S 
+                  WHERE S.TenMay = C.TenMay AND S.ThoiGianKetThuc IS NULL
+              );";
 
                 using (SqlCommand commandKiemTra = new SqlCommand(queryKiemTra, connection, transaction))
                 {

@@ -32,34 +32,22 @@ namespace QuanLyQuanNet.GUI.Menu
         }
         private void SetupThongTinMay()
         {
-            // 1. Gán Giờ Đăng Nhập (theo yêu cầu)
-            thoiGianDangNhap = DateTime.Now; // <<< LƯU THỜI ĐIỂM HIỆN TẠI
-            textBoxGDN.Text = thoiGianDangNhap.ToString("HH:mm:ss dd/MM/yyyy");
+            // 1. LƯU GIỜ ĐĂNG NHẬP
+            thoiGianDangNhap = DateTime.Now;
 
-            // 2. Hiển thị Số dư tài khoản
-            // Sử dụng định dạng tiền tệ (C0) hoặc tùy chỉnh (N0)
-            initialSoDu = UserSession.SoDu; // <<< LƯU SỐ DƯ BAN ĐẦU
-            textBoxSoDu.Text = UserSession.SoDu.ToString("N0") + " VND";
+            // 2. HIỂN THỊ SỐ DƯ & GIÁ MÁY
+            initialSoDu = UserSession.SoDu;
+            textBoxSoDu.Text = initialSoDu.ToString("N0") + " VND"; // Hiển thị số dư ban đầu
+            textBoxGiaMay.Text = UserSession.GiaTheoGio.ToString("N0") + " VND/h"; // Hiển thị Giá máy
 
-            // 3. Hiển thị Giá máy hiện tại
-            textBoxGiaMay.Text = UserSession.GiaTheoGio.ToString("N0") + " VND/h";
-
-            // 4. Tính Tổng Thời Gian (hh:mm)
-            // Công thức: Tổng thời gian = (Số dư / Giá/Giờ)
+            // 3. TÍNH TỔNG THỜI GIAN CÓ THỂ CHƠI (Vẫn cần để tính countdown)
             if (UserSession.SoDu > 0 && UserSession.GiaTheoGio > 0)
             {
-                // Tính số giờ chơi (decimal)
                 decimal tongSoGio = initialSoDu / UserSession.GiaTheoGio;
-
-                // Chuyển thành TimeSpan
                 tongThoiGianChoi = TimeSpan.FromHours((double)tongSoGio);
-
-                // Hiển thị Tổng Thời Gian có thể chơi (hh:mm)
-                textBoxTTG.Text = ((int)tongThoiGianChoi.TotalHours).ToString("D2") + ":" + tongThoiGianChoi.Minutes.ToString("D2");
             }
             else
             {
-                textBoxTTG.Text = "00:00";
                 tongThoiGianChoi = TimeSpan.Zero;
             }
         }
@@ -75,65 +63,51 @@ namespace QuanLyQuanNet.GUI.Menu
             // 1. Tính Thời gian sử dụng (TGSD)
             TimeSpan thoiGianSuDung = DateTime.Now.Subtract(thoiGianDangNhap);
 
-            // === BỔ SUNG LOGIC TÍNH VÀ TRỪ TIỀN ===
+            // === BỔ SUNG LOGIC TÍNH VÀ TRỪ TIỀN (Giữ nguyên) ===
             decimal giaTheoGio = UserSession.GiaTheoGio;
-
-            // Tính tổng chi phí dựa trên tổng số giờ (TotalHours là decimal) đã sử dụng
             decimal tongChiPhi = (decimal)thoiGianSuDung.TotalHours * giaTheoGio;
-
-            // Số dư còn lại: Số dư ban đầu - Tổng chi phí
             decimal soDuConLai = initialSoDu - tongChiPhi;
 
-            // Cập nhật UserSession.SoDu (client-side) và hiển thị
+            // Cập nhật hiển thị Số Dư
             UserSession.SoDu = soDuConLai;
             textBoxSoDu.Text = soDuConLai.ToString("N0") + " VND";
             // ========================================
 
             // 2. Tính Thời gian còn lại (TGCL)
             TimeSpan thoiGianConLai = tongThoiGianChoi.Subtract(thoiGianSuDung);
-
-            // 3. Định dạng và Hiển thị
-            // Thêm hiển thị giây để chính xác hơn
-            textBoxTGSD.Text = thoiGianSuDung.ToString(@"hh\:mm\:ss");
-
-            // Kiểm tra hết tiền/hết giờ
+            // 4. Kiểm tra hết tiền/hết giờ
             if (soDuConLai <= 0) // Hết tiền trước
             {
-                thoiGianConLai = TimeSpan.Zero;
-                textBoxTGCL.Text = "00:00:00";
+                // Cập nhật TGCL và SoDu về 0 và dừng
+                ThoiGianConLai.Text = "00:00"; // ✅ FIX: Gán vào Label với format hh:mm
+
                 capNhatTimer.Stop();
+                textBoxSoDu.Text = 0.ToString("N0") + " VND";
 
-                textBoxSoDu.Text = 0.ToString("N0") + " VND"; // Hiển thị 0 VND
-
-                // Tự động xử lý đăng xuất khi hết tiền
                 MessageBox.Show("Tài khoản của bạn đã hết tiền/hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                btnDangXuat_Click(sender, e); // Tự động gọi đăng xuất để cập nhật CSDL
+                btnDangXuat_Click(sender, e);
             }
             else if (thoiGianConLai.TotalSeconds > 0)
             {
-                // Hiển thị TGCL
-                textBoxTGCL.Text = thoiGianConLai.ToString(@"hh\:mm\:ss");
+                // ✅ FIX: Gán vào Label với format hh:mm (Loại bỏ giây)
+                ThoiGianConLai.Text = thoiGianConLai.ToString(@"hh\:mm");
             }
-            else // Trường hợp hết giờ (Nếu có lỗi tính toán)
+            else // Trường hợp hết giờ
             {
-                textBoxTGCL.Text = "00:00:00";
+                ThoiGianConLai.Text = "00:00"; // ✅ FIX: Gán vào Label
                 capNhatTimer.Stop();
                 MessageBox.Show("Tài khoản của bạn đã hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        // Constructor được sử dụng để khởi tạo Form
         public ThongTinKhach(string tenNguoiDung, string tenMaySuDung, Form menuKhachForm)
         {
             InitializeComponent();
-            // Gán tham chiếu của MenuKhach
             this.menuKhachFormInstance = menuKhachForm;
-            // 1. Cập nhật Label (labelTenUser)
             labelTenUser.Text = tenNguoiDung;
-
-            // 2. Cập nhật Tiêu đề Form (Text)
-            this.Text = tenMaySuDung; // Sửa Text của Form thành tên máy
-            SetupThongTinMay(); // <<< PHẢI CÓ DÒNG NÀY
+            this.Text = tenMaySuDung;
+            SetupThongTinMay();
             SetupTimer();
-            // 3. Tùy chọn: Ẩn nút nếu cần (như yêu cầu trước)
             this.MaximizeBox = false;
             this.MinimizeBox = false;
         }
@@ -238,22 +212,16 @@ namespace QuanLyQuanNet.GUI.Menu
                 MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // Hàm RefreshBalanceAfterOrder (Giữ nguyên logic)
         public void RefreshBalanceAfterOrder(decimal newSoDu)
         {
-            // 1. Dừng timer cũ
             if (capNhatTimer != null && capNhatTimer.Enabled)
             {
                 capNhatTimer.Stop();
             }
-
-            // 2. Cập nhật initialSoDu và UserSession
             initialSoDu = newSoDu;
             UserSession.SoDu = newSoDu;
-
-            // 3. Chạy lại logic thiết lập thông tin (tính Tổng Thời Gian Chơi mới)
             SetupThongTinMay();
-
-            // 4. Khởi động lại Timer
             SetupTimer();
         }
         private void labelSoDu_Click(object sender, EventArgs e)
@@ -280,6 +248,12 @@ namespace QuanLyQuanNet.GUI.Menu
             // Mở Form chat, truyền tên máy và tên đăng nhập
             GiaoTiepKH chatForm = new GiaoTiepKH(UserSession.TenMay, UserSession.TenDangNhap);
             chatForm.Show();
+        }
+
+        private void btnNapTien_Click(object sender, EventArgs e)
+        {
+            NapTien napTienForm = new NapTien();
+            napTienForm.ShowDialog();
         }
     }
 }
