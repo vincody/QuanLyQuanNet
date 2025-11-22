@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThongTinKhach));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             labelTenUser = new Label();
             btnDoiMK = new Button();
             btnTinNhan = new Button();
@@ -47,6 +49,8 @@
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            labelTenMay = new Label();
+            guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             GiaMayHienThi = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -64,6 +68,8 @@
             btnDatMonAn = new Button();
             bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
+            bunifuPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).BeginInit();
             bunifuPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             bunifuPanel4.SuspendLayout();
@@ -159,7 +165,7 @@
             bunifuLabel1.CursorType = Cursors.Default;
             bunifuLabel1.Font = new Font("Segoe UI", 10F);
             bunifuLabel1.ForeColor = Color.White;
-            bunifuLabel1.Location = new Point(55, 31);
+            bunifuLabel1.Location = new Point(54, 31);
             bunifuLabel1.Name = "bunifuLabel1";
             bunifuLabel1.RightToLeft = RightToLeft.No;
             bunifuLabel1.Size = new Size(47, 17);
@@ -173,13 +179,13 @@
             guna2PictureBox3.AutoRoundedCorners = true;
             guna2PictureBox3.BackColor = Color.Transparent;
             guna2PictureBox3.BorderRadius = 19;
-            customizableEdges9.TopRight = false;
-            guna2PictureBox3.CustomizableEdges = customizableEdges9;
+            customizableEdges1.TopRight = false;
+            guna2PictureBox3.CustomizableEdges = customizableEdges1;
             guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
             guna2PictureBox3.ImageRotate = 0F;
             guna2PictureBox3.Location = new Point(9, 12);
             guna2PictureBox3.Name = "guna2PictureBox3";
-            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox3.Size = new Size(41, 42);
             guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox3.TabIndex = 20;
@@ -194,11 +200,43 @@
             bunifuPanel2.BorderColor = Color.FromArgb(73, 85, 101);
             bunifuPanel2.BorderRadius = 15;
             bunifuPanel2.BorderThickness = 1;
+            bunifuPanel2.Controls.Add(labelTenMay);
+            bunifuPanel2.Controls.Add(guna2PictureBox4);
             bunifuPanel2.Location = new Point(12, 3);
             bunifuPanel2.Name = "bunifuPanel2";
             bunifuPanel2.ShowBorders = true;
             bunifuPanel2.Size = new Size(329, 44);
             bunifuPanel2.TabIndex = 15;
+            // 
+            // labelTenMay
+            // 
+            labelTenMay.AutoSize = true;
+            labelTenMay.BackColor = Color.Transparent;
+            labelTenMay.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTenMay.ForeColor = Color.White;
+            labelTenMay.Location = new Point(129, 12);
+            labelTenMay.Name = "labelTenMay";
+            labelTenMay.Size = new Size(70, 21);
+            labelTenMay.TabIndex = 21;
+            labelTenMay.Text = "TenMay";
+            // 
+            // guna2PictureBox4
+            // 
+            guna2PictureBox4.AutoRoundedCorners = true;
+            guna2PictureBox4.BackColor = Color.Transparent;
+            guna2PictureBox4.BorderRadius = 17;
+            customizableEdges3.TopRight = false;
+            guna2PictureBox4.CustomizableEdges = customizableEdges3;
+            guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
+            guna2PictureBox4.ImageRotate = 0F;
+            guna2PictureBox4.Location = new Point(14, 5);
+            guna2PictureBox4.Name = "guna2PictureBox4";
+            guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox4.Size = new Size(36, 36);
+            guna2PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            guna2PictureBox4.TabIndex = 20;
+            guna2PictureBox4.TabStop = false;
+            guna2PictureBox4.UseTransparentBackground = true;
             // 
             // bunifuPanel3
             // 
@@ -224,13 +262,13 @@
             guna2PictureBox1.AutoRoundedCorners = true;
             guna2PictureBox1.BackColor = Color.Transparent;
             guna2PictureBox1.BorderRadius = 17;
-            customizableEdges11.TopRight = false;
-            guna2PictureBox1.CustomizableEdges = customizableEdges11;
+            customizableEdges5.TopRight = false;
+            guna2PictureBox1.CustomizableEdges = customizableEdges5;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(9, 6);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2PictureBox1.Size = new Size(36, 36);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             guna2PictureBox1.TabIndex = 19;
@@ -255,11 +293,11 @@
             GiaMayHienThi.ButtonTextMarginLeft = 0;
             GiaMayHienThi.ColorContrastOnClick = 45;
             GiaMayHienThi.ColorContrastOnHover = 45;
-            borderEdges3.BottomLeft = false;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = false;
-            borderEdges3.TopRight = true;
-            GiaMayHienThi.CustomizableEdges = borderEdges3;
+            borderEdges1.BottomLeft = false;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = false;
+            borderEdges1.TopRight = true;
+            GiaMayHienThi.CustomizableEdges = borderEdges1;
             GiaMayHienThi.DialogResult = DialogResult.None;
             GiaMayHienThi.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             GiaMayHienThi.DisabledFillColor = Color.Empty;
@@ -345,11 +383,11 @@
             HienThiLoaiMay.ButtonTextMarginLeft = 0;
             HienThiLoaiMay.ColorContrastOnClick = 45;
             HienThiLoaiMay.ColorContrastOnHover = 45;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = false;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = false;
-            HienThiLoaiMay.CustomizableEdges = borderEdges4;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = false;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = false;
+            HienThiLoaiMay.CustomizableEdges = borderEdges2;
             HienThiLoaiMay.DialogResult = DialogResult.None;
             HienThiLoaiMay.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             HienThiLoaiMay.DisabledFillColor = Color.Empty;
@@ -423,7 +461,7 @@
             ThoiGianConLai.BackColor = Color.FromArgb(73, 85, 101);
             ThoiGianConLai.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             ThoiGianConLai.ForeColor = Color.White;
-            ThoiGianConLai.Location = new Point(44, 22);
+            ThoiGianConLai.Location = new Point(42, 22);
             ThoiGianConLai.Name = "ThoiGianConLai";
             ThoiGianConLai.Size = new Size(29, 21);
             ThoiGianConLai.TabIndex = 2;
@@ -462,7 +500,7 @@
             // 
             btnNapTien.BackColor = Color.Transparent;
             btnNapTien.BorderRadius = 15;
-            btnNapTien.CustomizableEdges = customizableEdges13;
+            btnNapTien.CustomizableEdges = customizableEdges7;
             btnNapTien.DisabledState.BorderColor = Color.DarkGray;
             btnNapTien.DisabledState.CustomBorderColor = Color.DarkGray;
             btnNapTien.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -473,7 +511,7 @@
             btnNapTien.Image = (Image)resources.GetObject("btnNapTien.Image");
             btnNapTien.Location = new Point(205, 48);
             btnNapTien.Name = "btnNapTien";
-            btnNapTien.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnNapTien.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnNapTien.Size = new Size(118, 45);
             btnNapTien.TabIndex = 21;
             btnNapTien.Text = "Nạp tiền";
@@ -514,12 +552,12 @@
             // guna2PictureBox2
             // 
             guna2PictureBox2.BackColor = Color.Transparent;
-            guna2PictureBox2.CustomizableEdges = customizableEdges15;
+            guna2PictureBox2.CustomizableEdges = customizableEdges9;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(11, 14);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2PictureBox2.Size = new Size(36, 36);
             guna2PictureBox2.TabIndex = 18;
             guna2PictureBox2.TabStop = false;
@@ -605,10 +643,12 @@
             Controls.Add(bunifuPanel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ThongTinKhach";
-            Text = "Máy trạm";
             bunifuPanel1.ResumeLayout(false);
             bunifuPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
+            bunifuPanel2.ResumeLayout(false);
+            bunifuPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).EndInit();
             bunifuPanel3.ResumeLayout(false);
             bunifuPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
@@ -644,5 +684,7 @@
         private Button btnXemPhim;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Button btnMenuGames;
+        private Label labelTenMay;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
     }
 }

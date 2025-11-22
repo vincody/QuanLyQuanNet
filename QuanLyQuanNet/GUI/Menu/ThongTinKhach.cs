@@ -34,6 +34,8 @@ namespace QuanLyQuanNet.GUI.Menu
         {
             // 1. LƯU GIỜ ĐĂNG NHẬP
             thoiGianDangNhap = DateTime.Now;
+            // ✅ BỔ SUNG: HIỂN THỊ TÊN MÁY
+            labelTenMay.Text = UserSession.TenMay;
 
             // 2. HIỂN THỊ SỐ DƯ & GIÁ MÁY
             initialSoDu = UserSession.SoDu;
@@ -137,7 +139,6 @@ namespace QuanLyQuanNet.GUI.Menu
             InitializeComponent();
             this.menuKhachFormInstance = menuKhachForm;
             labelTenUser.Text = tenNguoiDung;
-            this.Text = tenMaySuDung;
             SetupThongTinMay();
             SetupTimer();
             this.MaximizeBox = false;
