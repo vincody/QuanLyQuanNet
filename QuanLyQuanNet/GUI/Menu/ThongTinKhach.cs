@@ -248,13 +248,24 @@ namespace QuanLyQuanNet.GUI.Menu
         // Hàm RefreshBalanceAfterOrder (Giữ nguyên logic)
         public void RefreshBalanceAfterOrder(decimal newSoDu)
         {
+            // 1. Dừng timer cũ
             if (capNhatTimer != null && capNhatTimer.Enabled)
             {
                 capNhatTimer.Stop();
             }
+
+            // 2. Cập nhật dữ liệu nền
             initialSoDu = newSoDu;
             UserSession.SoDu = newSoDu;
+
+            // 3. Cập nhật hiển thị
+            // ✅ QUAN TRỌNG: Dòng này cập nhật label bạn muốn
+            labelHienThiSoDu.Text = newSoDu.ToString("N0") + " VND";
+
+            // 4. Chạy lại logic tính toán thời gian chơi mới
             SetupThongTinMay();
+
+            // 5. Khởi động lại Timer
             SetupTimer();
         }
         private void labelSoDu_Click(object sender, EventArgs e)
