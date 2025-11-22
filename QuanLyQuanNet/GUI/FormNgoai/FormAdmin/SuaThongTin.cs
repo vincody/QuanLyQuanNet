@@ -21,7 +21,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             InitializeComponent();
             this.currentData = data;
             LoadInitialData();
-            this.ControlBox = false;
         }
         // drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
