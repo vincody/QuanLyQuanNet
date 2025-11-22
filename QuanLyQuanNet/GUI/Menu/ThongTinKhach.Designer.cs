@@ -40,30 +40,28 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             labelTenUser = new Label();
-            textBoxGiaMay = new TextBox();
-            textBoxSoDu = new TextBox();
             btnDoiMK = new Button();
             btnTinNhan = new Button();
             btnDangXuat = new Button();
             bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
-            guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            GiaMayHienThi = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            HienThiLoaiMay = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ThoiGianConLai = new Label();
             label1 = new Label();
             bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
             btnNapTien = new Guna.UI2.WinForms.Guna2GradientButton();
-            bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
+            labelHienThiSoDu = new Bunifu.UI.WinForms.BunifuLabel();
             bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             bunifuPanel5 = new Bunifu.UI.WinForms.BunifuPanel();
+            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            button3 = new Button();
             bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             bunifuPanel3.SuspendLayout();
@@ -84,22 +82,6 @@
             labelTenUser.Size = new Size(71, 21);
             labelTenUser.TabIndex = 0;
             labelTenUser.Text = "TenUser";
-            // 
-            // textBoxGiaMay
-            // 
-            textBoxGiaMay.Location = new Point(138, 19);
-            textBoxGiaMay.Name = "textBoxGiaMay";
-            textBoxGiaMay.ReadOnly = true;
-            textBoxGiaMay.Size = new Size(185, 23);
-            textBoxGiaMay.TabIndex = 12;
-            // 
-            // textBoxSoDu
-            // 
-            textBoxSoDu.Location = new Point(125, 14);
-            textBoxSoDu.Name = "textBoxSoDu";
-            textBoxSoDu.ReadOnly = true;
-            textBoxSoDu.Size = new Size(185, 23);
-            textBoxSoDu.TabIndex = 11;
             // 
             // btnDoiMK
             // 
@@ -139,7 +121,7 @@
             btnDangXuat.BackColor = Color.Transparent;
             btnDangXuat.FlatAppearance.BorderSize = 0;
             btnDangXuat.FlatStyle = FlatStyle.Flat;
-            btnDangXuat.ForeColor = Color.FromArgb(163, 64, 93);
+            btnDangXuat.ForeColor = Color.White;
             btnDangXuat.Image = (Image)resources.GetObject("btnDangXuat.Image");
             btnDangXuat.Location = new Point(253, 56);
             btnDangXuat.Name = "btnDangXuat";
@@ -158,8 +140,8 @@
             bunifuPanel1.BorderColor = Color.FromArgb(73, 85, 101);
             bunifuPanel1.BorderRadius = 15;
             bunifuPanel1.BorderThickness = 1;
-            bunifuPanel1.Controls.Add(guna2PictureBox3);
             bunifuPanel1.Controls.Add(bunifuLabel1);
+            bunifuPanel1.Controls.Add(guna2PictureBox3);
             bunifuPanel1.Controls.Add(btnDoiMK);
             bunifuPanel1.Controls.Add(labelTenUser);
             bunifuPanel1.Controls.Add(btnDangXuat);
@@ -168,6 +150,23 @@
             bunifuPanel1.ShowBorders = true;
             bunifuPanel1.Size = new Size(329, 114);
             bunifuPanel1.TabIndex = 13;
+            // 
+            // bunifuLabel1
+            // 
+            bunifuLabel1.AllowParentOverrides = false;
+            bunifuLabel1.AutoEllipsis = false;
+            bunifuLabel1.BackColor = Color.FromArgb(39, 139, 226);
+            bunifuLabel1.CursorType = Cursors.Default;
+            bunifuLabel1.Font = new Font("Segoe UI", 10F);
+            bunifuLabel1.ForeColor = Color.White;
+            bunifuLabel1.Location = new Point(55, 31);
+            bunifuLabel1.Name = "bunifuLabel1";
+            bunifuLabel1.RightToLeft = RightToLeft.No;
+            bunifuLabel1.Size = new Size(47, 17);
+            bunifuLabel1.TabIndex = 21;
+            bunifuLabel1.Text = "Hội viên";
+            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // guna2PictureBox3
             // 
@@ -186,24 +185,6 @@
             guna2PictureBox3.TabIndex = 20;
             guna2PictureBox3.TabStop = false;
             guna2PictureBox3.UseTransparentBackground = true;
-            // 
-            // bunifuLabel1
-            // 
-            bunifuLabel1.AllowParentOverrides = false;
-            bunifuLabel1.AutoEllipsis = false;
-            bunifuLabel1.BackColor = Color.DodgerBlue;
-            bunifuLabel1.BorderStyle = BorderStyle.FixedSingle;
-            bunifuLabel1.CursorType = Cursors.Default;
-            bunifuLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel1.ForeColor = Color.White;
-            bunifuLabel1.Location = new Point(56, 31);
-            bunifuLabel1.Name = "bunifuLabel1";
-            bunifuLabel1.RightToLeft = RightToLeft.No;
-            bunifuLabel1.Size = new Size(66, 23);
-            bunifuLabel1.TabIndex = 14;
-            bunifuLabel1.Text = "Hội viên";
-            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuPanel2
             // 
@@ -228,9 +209,8 @@
             bunifuPanel3.BorderRadius = 15;
             bunifuPanel3.BorderThickness = 1;
             bunifuPanel3.Controls.Add(guna2PictureBox1);
-            bunifuPanel3.Controls.Add(bunifuButton2);
-            bunifuPanel3.Controls.Add(textBoxGiaMay);
-            bunifuPanel3.Controls.Add(bunifuButton1);
+            bunifuPanel3.Controls.Add(GiaMayHienThi);
+            bunifuPanel3.Controls.Add(HienThiLoaiMay);
             bunifuPanel3.Controls.Add(ThoiGianConLai);
             bunifuPanel3.Controls.Add(label1);
             bunifuPanel3.Location = new Point(12, 173);
@@ -257,185 +237,185 @@
             guna2PictureBox1.TabStop = false;
             guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // bunifuButton2
+            // GiaMayHienThi
             // 
-            bunifuButton2.AllowAnimations = true;
-            bunifuButton2.AllowMouseEffects = true;
-            bunifuButton2.AllowToggling = false;
-            bunifuButton2.AnimationSpeed = 200;
-            bunifuButton2.AutoGenerateColors = false;
-            bunifuButton2.AutoRoundBorders = false;
-            bunifuButton2.AutoSizeLeftIcon = true;
-            bunifuButton2.AutoSizeRightIcon = true;
-            bunifuButton2.BackColor = Color.Transparent;
-            bunifuButton2.BackColor1 = Color.FromArgb(51, 122, 183);
-            bunifuButton2.BackgroundImage = (Image)resources.GetObject("bunifuButton2.BackgroundImage");
-            bunifuButton2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton2.ButtonText = "10.000 đ/h";
-            bunifuButton2.ButtonTextMarginLeft = 0;
-            bunifuButton2.ColorContrastOnClick = 45;
-            bunifuButton2.ColorContrastOnHover = 45;
+            GiaMayHienThi.AllowAnimations = true;
+            GiaMayHienThi.AllowMouseEffects = true;
+            GiaMayHienThi.AllowToggling = false;
+            GiaMayHienThi.AnimationSpeed = 200;
+            GiaMayHienThi.AutoGenerateColors = false;
+            GiaMayHienThi.AutoRoundBorders = false;
+            GiaMayHienThi.AutoSizeLeftIcon = true;
+            GiaMayHienThi.AutoSizeRightIcon = true;
+            GiaMayHienThi.BackColor = Color.Transparent;
+            GiaMayHienThi.BackColor1 = Color.FromArgb(51, 122, 183);
+            GiaMayHienThi.BackgroundImage = (Image)resources.GetObject("GiaMayHienThi.BackgroundImage");
+            GiaMayHienThi.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            GiaMayHienThi.ButtonText = "10.000 đ/h";
+            GiaMayHienThi.ButtonTextMarginLeft = 0;
+            GiaMayHienThi.ColorContrastOnClick = 45;
+            GiaMayHienThi.ColorContrastOnHover = 45;
             borderEdges1.BottomLeft = false;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = false;
             borderEdges1.TopRight = true;
-            bunifuButton2.CustomizableEdges = borderEdges1;
-            bunifuButton2.DialogResult = DialogResult.None;
-            bunifuButton2.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton2.DisabledFillColor = Color.Empty;
-            bunifuButton2.DisabledForecolor = Color.Empty;
-            bunifuButton2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            bunifuButton2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuButton2.ForeColor = Color.White;
-            bunifuButton2.IconLeft = null;
-            bunifuButton2.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton2.IconLeftCursor = Cursors.Default;
-            bunifuButton2.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton2.IconMarginLeft = 11;
-            bunifuButton2.IconPadding = 10;
-            bunifuButton2.IconRight = null;
-            bunifuButton2.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton2.IconRightCursor = Cursors.Default;
-            bunifuButton2.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton2.IconSize = 25;
-            bunifuButton2.IdleBorderColor = Color.Empty;
-            bunifuButton2.IdleBorderRadius = 0;
-            bunifuButton2.IdleBorderThickness = 0;
-            bunifuButton2.IdleFillColor = Color.Empty;
-            bunifuButton2.IdleIconLeftImage = null;
-            bunifuButton2.IdleIconRightImage = null;
-            bunifuButton2.IndicateFocus = false;
-            bunifuButton2.Location = new Point(90, 60);
-            bunifuButton2.Name = "bunifuButton2";
-            bunifuButton2.OnDisabledState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnDisabledState.BorderRadius = 15;
-            bunifuButton2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton2.OnDisabledState.BorderThickness = 1;
-            bunifuButton2.OnDisabledState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnDisabledState.ForeColor = SystemColors.HighlightText;
-            bunifuButton2.OnDisabledState.IconLeftImage = null;
-            bunifuButton2.OnDisabledState.IconRightImage = null;
-            bunifuButton2.onHoverState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.onHoverState.BorderRadius = 15;
-            bunifuButton2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton2.onHoverState.BorderThickness = 1;
-            bunifuButton2.onHoverState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.onHoverState.ForeColor = Color.White;
-            bunifuButton2.onHoverState.IconLeftImage = null;
-            bunifuButton2.onHoverState.IconRightImage = null;
-            bunifuButton2.OnIdleState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnIdleState.BorderRadius = 15;
-            bunifuButton2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton2.OnIdleState.BorderThickness = 1;
-            bunifuButton2.OnIdleState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnIdleState.ForeColor = Color.White;
-            bunifuButton2.OnIdleState.IconLeftImage = null;
-            bunifuButton2.OnIdleState.IconRightImage = null;
-            bunifuButton2.OnPressedState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnPressedState.BorderRadius = 15;
-            bunifuButton2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton2.OnPressedState.BorderThickness = 1;
-            bunifuButton2.OnPressedState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton2.OnPressedState.ForeColor = Color.White;
-            bunifuButton2.OnPressedState.IconLeftImage = null;
-            bunifuButton2.OnPressedState.IconRightImage = null;
-            bunifuButton2.Size = new Size(76, 33);
-            bunifuButton2.TabIndex = 18;
-            bunifuButton2.TextAlign = ContentAlignment.MiddleCenter;
-            bunifuButton2.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton2.TextMarginLeft = 0;
-            bunifuButton2.TextPadding = new Padding(0);
-            bunifuButton2.UseDefaultRadiusAndThickness = true;
+            GiaMayHienThi.CustomizableEdges = borderEdges1;
+            GiaMayHienThi.DialogResult = DialogResult.None;
+            GiaMayHienThi.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            GiaMayHienThi.DisabledFillColor = Color.Empty;
+            GiaMayHienThi.DisabledForecolor = Color.Empty;
+            GiaMayHienThi.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            GiaMayHienThi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GiaMayHienThi.ForeColor = Color.White;
+            GiaMayHienThi.IconLeft = null;
+            GiaMayHienThi.IconLeftAlign = ContentAlignment.MiddleLeft;
+            GiaMayHienThi.IconLeftCursor = Cursors.Default;
+            GiaMayHienThi.IconLeftPadding = new Padding(11, 3, 3, 3);
+            GiaMayHienThi.IconMarginLeft = 11;
+            GiaMayHienThi.IconPadding = 10;
+            GiaMayHienThi.IconRight = null;
+            GiaMayHienThi.IconRightAlign = ContentAlignment.MiddleRight;
+            GiaMayHienThi.IconRightCursor = Cursors.Default;
+            GiaMayHienThi.IconRightPadding = new Padding(3, 3, 7, 3);
+            GiaMayHienThi.IconSize = 25;
+            GiaMayHienThi.IdleBorderColor = Color.Empty;
+            GiaMayHienThi.IdleBorderRadius = 0;
+            GiaMayHienThi.IdleBorderThickness = 0;
+            GiaMayHienThi.IdleFillColor = Color.Empty;
+            GiaMayHienThi.IdleIconLeftImage = null;
+            GiaMayHienThi.IdleIconRightImage = null;
+            GiaMayHienThi.IndicateFocus = false;
+            GiaMayHienThi.Location = new Point(90, 60);
+            GiaMayHienThi.Name = "GiaMayHienThi";
+            GiaMayHienThi.OnDisabledState.BorderColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnDisabledState.BorderRadius = 15;
+            GiaMayHienThi.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            GiaMayHienThi.OnDisabledState.BorderThickness = 1;
+            GiaMayHienThi.OnDisabledState.FillColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnDisabledState.ForeColor = SystemColors.HighlightText;
+            GiaMayHienThi.OnDisabledState.IconLeftImage = null;
+            GiaMayHienThi.OnDisabledState.IconRightImage = null;
+            GiaMayHienThi.onHoverState.BorderColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.onHoverState.BorderRadius = 15;
+            GiaMayHienThi.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            GiaMayHienThi.onHoverState.BorderThickness = 1;
+            GiaMayHienThi.onHoverState.FillColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.onHoverState.ForeColor = Color.White;
+            GiaMayHienThi.onHoverState.IconLeftImage = null;
+            GiaMayHienThi.onHoverState.IconRightImage = null;
+            GiaMayHienThi.OnIdleState.BorderColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnIdleState.BorderRadius = 15;
+            GiaMayHienThi.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            GiaMayHienThi.OnIdleState.BorderThickness = 1;
+            GiaMayHienThi.OnIdleState.FillColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnIdleState.ForeColor = Color.White;
+            GiaMayHienThi.OnIdleState.IconLeftImage = null;
+            GiaMayHienThi.OnIdleState.IconRightImage = null;
+            GiaMayHienThi.OnPressedState.BorderColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnPressedState.BorderRadius = 15;
+            GiaMayHienThi.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            GiaMayHienThi.OnPressedState.BorderThickness = 1;
+            GiaMayHienThi.OnPressedState.FillColor = Color.FromArgb(116, 125, 142);
+            GiaMayHienThi.OnPressedState.ForeColor = Color.White;
+            GiaMayHienThi.OnPressedState.IconLeftImage = null;
+            GiaMayHienThi.OnPressedState.IconRightImage = null;
+            GiaMayHienThi.Size = new Size(83, 33);
+            GiaMayHienThi.TabIndex = 18;
+            GiaMayHienThi.TextAlign = ContentAlignment.MiddleCenter;
+            GiaMayHienThi.TextAlignment = HorizontalAlignment.Center;
+            GiaMayHienThi.TextMarginLeft = 0;
+            GiaMayHienThi.TextPadding = new Padding(0);
+            GiaMayHienThi.UseDefaultRadiusAndThickness = true;
             // 
-            // bunifuButton1
+            // HienThiLoaiMay
             // 
-            bunifuButton1.AllowAnimations = true;
-            bunifuButton1.AllowMouseEffects = true;
-            bunifuButton1.AllowToggling = false;
-            bunifuButton1.AnimationSpeed = 200;
-            bunifuButton1.AutoGenerateColors = false;
-            bunifuButton1.AutoRoundBorders = false;
-            bunifuButton1.AutoSizeLeftIcon = true;
-            bunifuButton1.AutoSizeRightIcon = true;
-            bunifuButton1.BackColor = Color.Transparent;
-            bunifuButton1.BackColor1 = Color.FromArgb(51, 122, 183);
-            bunifuButton1.BackgroundImage = (Image)resources.GetObject("bunifuButton1.BackgroundImage");
-            bunifuButton1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.ButtonText = "Standard";
-            bunifuButton1.ButtonTextMarginLeft = 0;
-            bunifuButton1.ColorContrastOnClick = 45;
-            bunifuButton1.ColorContrastOnHover = 45;
+            HienThiLoaiMay.AllowAnimations = true;
+            HienThiLoaiMay.AllowMouseEffects = true;
+            HienThiLoaiMay.AllowToggling = false;
+            HienThiLoaiMay.AnimationSpeed = 200;
+            HienThiLoaiMay.AutoGenerateColors = false;
+            HienThiLoaiMay.AutoRoundBorders = false;
+            HienThiLoaiMay.AutoSizeLeftIcon = true;
+            HienThiLoaiMay.AutoSizeRightIcon = true;
+            HienThiLoaiMay.BackColor = Color.Transparent;
+            HienThiLoaiMay.BackColor1 = Color.FromArgb(51, 122, 183);
+            HienThiLoaiMay.BackgroundImage = (Image)resources.GetObject("HienThiLoaiMay.BackgroundImage");
+            HienThiLoaiMay.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            HienThiLoaiMay.ButtonText = "Standard";
+            HienThiLoaiMay.ButtonTextMarginLeft = 0;
+            HienThiLoaiMay.ColorContrastOnClick = 45;
+            HienThiLoaiMay.ColorContrastOnHover = 45;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = false;
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = false;
-            bunifuButton1.CustomizableEdges = borderEdges2;
-            bunifuButton1.DialogResult = DialogResult.None;
-            bunifuButton1.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton1.DisabledFillColor = Color.Empty;
-            bunifuButton1.DisabledForecolor = Color.Empty;
-            bunifuButton1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            bunifuButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuButton1.ForeColor = Color.White;
-            bunifuButton1.IconLeft = null;
-            bunifuButton1.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton1.IconLeftCursor = Cursors.Default;
-            bunifuButton1.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton1.IconMarginLeft = 11;
-            bunifuButton1.IconPadding = 10;
-            bunifuButton1.IconRight = null;
-            bunifuButton1.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton1.IconRightCursor = Cursors.Default;
-            bunifuButton1.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton1.IconSize = 25;
-            bunifuButton1.IdleBorderColor = Color.Empty;
-            bunifuButton1.IdleBorderRadius = 0;
-            bunifuButton1.IdleBorderThickness = 0;
-            bunifuButton1.IdleFillColor = Color.Empty;
-            bunifuButton1.IdleIconLeftImage = null;
-            bunifuButton1.IdleIconRightImage = null;
-            bunifuButton1.IndicateFocus = false;
-            bunifuButton1.Location = new Point(11, 60);
-            bunifuButton1.Name = "bunifuButton1";
-            bunifuButton1.OnDisabledState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnDisabledState.BorderRadius = 15;
-            bunifuButton1.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.OnDisabledState.BorderThickness = 1;
-            bunifuButton1.OnDisabledState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnDisabledState.ForeColor = Color.White;
-            bunifuButton1.OnDisabledState.IconLeftImage = null;
-            bunifuButton1.OnDisabledState.IconRightImage = null;
-            bunifuButton1.onHoverState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.onHoverState.BorderRadius = 15;
-            bunifuButton1.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.onHoverState.BorderThickness = 1;
-            bunifuButton1.onHoverState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.onHoverState.ForeColor = Color.White;
-            bunifuButton1.onHoverState.IconLeftImage = null;
-            bunifuButton1.onHoverState.IconRightImage = null;
-            bunifuButton1.OnIdleState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnIdleState.BorderRadius = 15;
-            bunifuButton1.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.OnIdleState.BorderThickness = 1;
-            bunifuButton1.OnIdleState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnIdleState.ForeColor = Color.White;
-            bunifuButton1.OnIdleState.IconLeftImage = null;
-            bunifuButton1.OnIdleState.IconRightImage = null;
-            bunifuButton1.OnPressedState.BorderColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnPressedState.BorderRadius = 15;
-            bunifuButton1.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton1.OnPressedState.BorderThickness = 1;
-            bunifuButton1.OnPressedState.FillColor = Color.FromArgb(116, 125, 142);
-            bunifuButton1.OnPressedState.ForeColor = Color.White;
-            bunifuButton1.OnPressedState.IconLeftImage = null;
-            bunifuButton1.OnPressedState.IconRightImage = null;
-            bunifuButton1.Size = new Size(76, 33);
-            bunifuButton1.TabIndex = 17;
-            bunifuButton1.TextAlign = ContentAlignment.MiddleCenter;
-            bunifuButton1.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton1.TextMarginLeft = 0;
-            bunifuButton1.TextPadding = new Padding(0);
-            bunifuButton1.UseDefaultRadiusAndThickness = true;
+            HienThiLoaiMay.CustomizableEdges = borderEdges2;
+            HienThiLoaiMay.DialogResult = DialogResult.None;
+            HienThiLoaiMay.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            HienThiLoaiMay.DisabledFillColor = Color.Empty;
+            HienThiLoaiMay.DisabledForecolor = Color.Empty;
+            HienThiLoaiMay.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            HienThiLoaiMay.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            HienThiLoaiMay.ForeColor = Color.White;
+            HienThiLoaiMay.IconLeft = null;
+            HienThiLoaiMay.IconLeftAlign = ContentAlignment.MiddleLeft;
+            HienThiLoaiMay.IconLeftCursor = Cursors.Default;
+            HienThiLoaiMay.IconLeftPadding = new Padding(11, 3, 3, 3);
+            HienThiLoaiMay.IconMarginLeft = 11;
+            HienThiLoaiMay.IconPadding = 10;
+            HienThiLoaiMay.IconRight = null;
+            HienThiLoaiMay.IconRightAlign = ContentAlignment.MiddleRight;
+            HienThiLoaiMay.IconRightCursor = Cursors.Default;
+            HienThiLoaiMay.IconRightPadding = new Padding(3, 3, 7, 3);
+            HienThiLoaiMay.IconSize = 25;
+            HienThiLoaiMay.IdleBorderColor = Color.Empty;
+            HienThiLoaiMay.IdleBorderRadius = 0;
+            HienThiLoaiMay.IdleBorderThickness = 0;
+            HienThiLoaiMay.IdleFillColor = Color.Empty;
+            HienThiLoaiMay.IdleIconLeftImage = null;
+            HienThiLoaiMay.IdleIconRightImage = null;
+            HienThiLoaiMay.IndicateFocus = false;
+            HienThiLoaiMay.Location = new Point(11, 60);
+            HienThiLoaiMay.Name = "HienThiLoaiMay";
+            HienThiLoaiMay.OnDisabledState.BorderColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnDisabledState.BorderRadius = 15;
+            HienThiLoaiMay.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            HienThiLoaiMay.OnDisabledState.BorderThickness = 1;
+            HienThiLoaiMay.OnDisabledState.FillColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnDisabledState.ForeColor = Color.White;
+            HienThiLoaiMay.OnDisabledState.IconLeftImage = null;
+            HienThiLoaiMay.OnDisabledState.IconRightImage = null;
+            HienThiLoaiMay.onHoverState.BorderColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.onHoverState.BorderRadius = 15;
+            HienThiLoaiMay.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            HienThiLoaiMay.onHoverState.BorderThickness = 1;
+            HienThiLoaiMay.onHoverState.FillColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.onHoverState.ForeColor = Color.White;
+            HienThiLoaiMay.onHoverState.IconLeftImage = null;
+            HienThiLoaiMay.onHoverState.IconRightImage = null;
+            HienThiLoaiMay.OnIdleState.BorderColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnIdleState.BorderRadius = 15;
+            HienThiLoaiMay.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            HienThiLoaiMay.OnIdleState.BorderThickness = 1;
+            HienThiLoaiMay.OnIdleState.FillColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnIdleState.ForeColor = Color.White;
+            HienThiLoaiMay.OnIdleState.IconLeftImage = null;
+            HienThiLoaiMay.OnIdleState.IconRightImage = null;
+            HienThiLoaiMay.OnPressedState.BorderColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnPressedState.BorderRadius = 15;
+            HienThiLoaiMay.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            HienThiLoaiMay.OnPressedState.BorderThickness = 1;
+            HienThiLoaiMay.OnPressedState.FillColor = Color.FromArgb(116, 125, 142);
+            HienThiLoaiMay.OnPressedState.ForeColor = Color.White;
+            HienThiLoaiMay.OnPressedState.IconLeftImage = null;
+            HienThiLoaiMay.OnPressedState.IconRightImage = null;
+            HienThiLoaiMay.Size = new Size(76, 33);
+            HienThiLoaiMay.TabIndex = 17;
+            HienThiLoaiMay.TextAlign = ContentAlignment.MiddleCenter;
+            HienThiLoaiMay.TextAlignment = HorizontalAlignment.Center;
+            HienThiLoaiMay.TextMarginLeft = 0;
+            HienThiLoaiMay.TextPadding = new Padding(0);
+            HienThiLoaiMay.UseDefaultRadiusAndThickness = true;
             // 
             // ThoiGianConLai
             // 
@@ -443,7 +423,7 @@
             ThoiGianConLai.BackColor = Color.FromArgb(73, 85, 101);
             ThoiGianConLai.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             ThoiGianConLai.ForeColor = Color.White;
-            ThoiGianConLai.Location = new Point(47, 21);
+            ThoiGianConLai.Location = new Point(44, 22);
             ThoiGianConLai.Name = "ThoiGianConLai";
             ThoiGianConLai.Size = new Size(29, 21);
             ThoiGianConLai.TabIndex = 2;
@@ -469,9 +449,8 @@
             bunifuPanel4.BorderRadius = 15;
             bunifuPanel4.BorderThickness = 1;
             bunifuPanel4.Controls.Add(btnNapTien);
-            bunifuPanel4.Controls.Add(bunifuLabel3);
+            bunifuPanel4.Controls.Add(labelHienThiSoDu);
             bunifuPanel4.Controls.Add(bunifuLabel2);
-            bunifuPanel4.Controls.Add(textBoxSoDu);
             bunifuPanel4.Controls.Add(guna2PictureBox2);
             bunifuPanel4.Location = new Point(12, 277);
             bunifuPanel4.Name = "bunifuPanel4";
@@ -500,21 +479,21 @@
             btnNapTien.Text = "Nạp tiền";
             btnNapTien.Click += btnNapTien_Click;
             // 
-            // bunifuLabel3
+            // labelHienThiSoDu
             // 
-            bunifuLabel3.AllowParentOverrides = false;
-            bunifuLabel3.AutoEllipsis = false;
-            bunifuLabel3.CursorType = Cursors.Default;
-            bunifuLabel3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuLabel3.ForeColor = Color.White;
-            bunifuLabel3.Location = new Point(50, 35);
-            bunifuLabel3.Name = "bunifuLabel3";
-            bunifuLabel3.RightToLeft = RightToLeft.No;
-            bunifuLabel3.Size = new Size(45, 15);
-            bunifuLabel3.TabIndex = 20;
-            bunifuLabel3.Text = "100.000";
-            bunifuLabel3.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            labelHienThiSoDu.AllowParentOverrides = false;
+            labelHienThiSoDu.AutoEllipsis = false;
+            labelHienThiSoDu.CursorType = Cursors.Default;
+            labelHienThiSoDu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelHienThiSoDu.ForeColor = Color.White;
+            labelHienThiSoDu.Location = new Point(50, 35);
+            labelHienThiSoDu.Name = "labelHienThiSoDu";
+            labelHienThiSoDu.RightToLeft = RightToLeft.No;
+            labelHienThiSoDu.Size = new Size(45, 15);
+            labelHienThiSoDu.TabIndex = 20;
+            labelHienThiSoDu.Text = "100.000";
+            labelHienThiSoDu.TextAlignment = ContentAlignment.TopLeft;
+            labelHienThiSoDu.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuLabel2
             // 
@@ -563,6 +542,21 @@
             bunifuPanel5.Size = new Size(329, 66);
             bunifuPanel5.TabIndex = 22;
             // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.White;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.Location = new Point(235, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(78, 57);
+            button3.TabIndex = 7;
+            button3.Text = "Xem phim";
+            button3.TextImageRelation = TextImageRelation.ImageAboveText;
+            button3.UseVisualStyleBackColor = false;
+            // 
             // button2
             // 
             button2.BackColor = Color.Transparent;
@@ -574,7 +568,7 @@
             button2.Name = "button2";
             button2.Size = new Size(65, 57);
             button2.TabIndex = 6;
-            button2.Text = "Chat";
+            button2.Text = "Games";
             button2.TextImageRelation = TextImageRelation.ImageAboveText;
             button2.UseVisualStyleBackColor = false;
             // 
@@ -593,21 +587,6 @@
             button1.Text = "Gọi món";
             button1.TextImageRelation = TextImageRelation.ImageAboveText;
             button1.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Transparent;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(235, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(78, 57);
-            button3.TabIndex = 7;
-            button3.Text = "Xem phim";
-            button3.TextImageRelation = TextImageRelation.ImageAboveText;
-            button3.UseVisualStyleBackColor = false;
             // 
             // ThongTinKhach
             // 
@@ -643,25 +622,24 @@
         private Button btnDangXuat;
         private Label labelTenUser;
         private TextBox textBoxGiaMay;
-        private TextBox textBoxSoDu;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel3;
         private Label label1;
         private Label ThoiGianConLai;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton GiaMayHienThi;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton HienThiLoaiMay;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2GradientButton btnNapTien;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Bunifu.UI.WinForms.BunifuLabel labelHienThiSoDu;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel5;
         private Button button1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Button button2;
         private Button button3;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
     }
 }

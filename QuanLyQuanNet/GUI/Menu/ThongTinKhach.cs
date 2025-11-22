@@ -37,8 +37,40 @@ namespace QuanLyQuanNet.GUI.Menu
 
             // 2. HIỂN THỊ SỐ DƯ & GIÁ MÁY
             initialSoDu = UserSession.SoDu;
-            textBoxSoDu.Text = initialSoDu.ToString("N0") + " VND"; // Hiển thị số dư ban đầu
-            textBoxGiaMay.Text = UserSession.GiaTheoGio.ToString("N0") + " VND/h"; // Hiển thị Giá máy
+            labelHienThiSoDu.Text = initialSoDu.ToString("N0") + " VND";
+            GiaMayHienThi.Text = UserSession.GiaTheoGio.ToString("N0") + " đ/h";
+
+            // 3. LẤY VÀ HIỂN THỊ LOẠI MÁY (DangMay)
+            string tenMay = UserSession.TenMay; // Lấy tên máy từ session
+            string dangMay = string.Empty;
+
+            // Truy vấn CSDL để lấy DangMay
+            string queryDangMay = "SELECT DangMay FROM Computers WHERE TenMay = @TenMay";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(queryDangMay, connection))
+                {
+                    command.Parameters.AddWithValue("@TenMay", tenMay);
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar(); // Lấy giá trị đầu tiên
+                        if (result != null)
+                        {
+                            dangMay = result.ToString();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý nếu có lỗi CSDL
+                        MessageBox.Show("Lỗi khi tải Loại máy: " + ex.Message, "Lỗi CSDL");
+                        dangMay = "Lỗi dữ liệu";
+                    }
+                }
+            }
+            // ✅ Gán giá trị DangMay vào button HienThiLoaiMay
+            HienThiLoaiMay.Text = dangMay;
 
             // 3. TÍNH TỔNG THỜI GIAN CÓ THỂ CHƠI (Vẫn cần để tính countdown)
             if (UserSession.SoDu > 0 && UserSession.GiaTheoGio > 0)
@@ -70,7 +102,8 @@ namespace QuanLyQuanNet.GUI.Menu
 
             // Cập nhật hiển thị Số Dư
             UserSession.SoDu = soDuConLai;
-            textBoxSoDu.Text = soDuConLai.ToString("N0") + " VND";
+            // ✅ FIX: Gán vào Label mới
+            labelHienThiSoDu.Text = soDuConLai.ToString("N0") + " VND";
             // ========================================
 
             // 2. Tính Thời gian còn lại (TGCL)
@@ -80,9 +113,8 @@ namespace QuanLyQuanNet.GUI.Menu
             {
                 // Cập nhật TGCL và SoDu về 0 và dừng
                 ThoiGianConLai.Text = "00:00"; // ✅ FIX: Gán vào Label với format hh:mm
-
+                labelHienThiSoDu.Text = 0.ToString("N0") + " VND"; // ✅ FIX: Gán 0 VND vào Label
                 capNhatTimer.Stop();
-                textBoxSoDu.Text = 0.ToString("N0") + " VND";
 
                 MessageBox.Show("Tài khoản của bạn đã hết tiền/hết giờ chơi!", "Hết giờ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btnDangXuat_Click(sender, e);
