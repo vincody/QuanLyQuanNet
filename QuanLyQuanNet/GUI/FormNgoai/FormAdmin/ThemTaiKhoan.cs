@@ -19,7 +19,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         public ThemTaiKhoan()
         {
             InitializeComponent();
-            this.ControlBox = false;
             textBoxSoDu.KeyPress += TextBox_AllowOnlyNumbers_KeyPress;
         }
         // drag form
