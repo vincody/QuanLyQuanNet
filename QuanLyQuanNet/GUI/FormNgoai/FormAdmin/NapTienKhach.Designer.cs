@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NapTienKhach));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
@@ -57,11 +57,11 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges14 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
-            bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
-            bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-            bunifuTextBox2 = new Bunifu.UI.WinForms.BunifuTextBox();
-            bunifuTextBox3 = new Bunifu.UI.WinForms.BunifuTextBox();
             bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
+            textBoxSoTienSauNap = new Bunifu.UI.WinForms.BunifuTextBox();
+            textBoxTienNap = new Bunifu.UI.WinForms.BunifuTextBox();
+            bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            textBoxTenDangNhap = new Bunifu.UI.WinForms.BunifuTextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -75,7 +75,7 @@
             bunifuButton10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuButton11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuButton12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            bunifuButton13 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            btnXacNhanNap = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuButton14 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuGroupBox1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -102,10 +102,10 @@
             bunifuGroupBox1.BorderRadius = 1;
             bunifuGroupBox1.BorderThickness = 1;
             bunifuGroupBox1.Controls.Add(bunifuLabel3);
-            bunifuGroupBox1.Controls.Add(bunifuTextBox3);
-            bunifuGroupBox1.Controls.Add(bunifuTextBox2);
+            bunifuGroupBox1.Controls.Add(textBoxSoTienSauNap);
+            bunifuGroupBox1.Controls.Add(textBoxTienNap);
             bunifuGroupBox1.Controls.Add(bunifuLabel2);
-            bunifuGroupBox1.Controls.Add(bunifuTextBox1);
+            bunifuGroupBox1.Controls.Add(textBoxTenDangNhap);
             bunifuGroupBox1.Controls.Add(bunifuLabel1);
             bunifuGroupBox1.Font = new Font("Segoe UI", 9F);
             bunifuGroupBox1.LabelAlign = HorizontalAlignment.Left;
@@ -118,79 +118,168 @@
             bunifuGroupBox1.TabStop = false;
             bunifuGroupBox1.Text = "Thông tin nạp";
             // 
-            // bunifuTextBox1
+            // bunifuLabel3
             // 
-            bunifuTextBox1.AcceptsReturn = false;
-            bunifuTextBox1.AcceptsTab = false;
-            bunifuTextBox1.AnimationSpeed = 200;
-            bunifuTextBox1.AutoCompleteMode = AutoCompleteMode.None;
-            bunifuTextBox1.AutoCompleteSource = AutoCompleteSource.None;
-            bunifuTextBox1.AutoSizeHeight = true;
-            bunifuTextBox1.BackColor = Color.Transparent;
-            bunifuTextBox1.BackgroundImage = (Image)resources.GetObject("bunifuTextBox1.BackgroundImage");
-            bunifuTextBox1.BorderColorActive = Color.DodgerBlue;
-            bunifuTextBox1.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            bunifuTextBox1.BorderColorHover = Color.FromArgb(105, 181, 255);
-            bunifuTextBox1.BorderColorIdle = Color.Silver;
-            bunifuTextBox1.BorderRadius = 1;
-            bunifuTextBox1.BorderThickness = 1;
-            bunifuTextBox1.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            bunifuTextBox1.CharacterCasing = CharacterCasing.Normal;
-            bunifuTextBox1.DefaultFont = new Font("Segoe UI", 9.25F);
-            bunifuTextBox1.DefaultText = "";
-            bunifuTextBox1.FillColor = Color.White;
-            bunifuTextBox1.HideSelection = true;
-            bunifuTextBox1.IconLeft = null;
-            bunifuTextBox1.IconLeftCursor = Cursors.IBeam;
-            bunifuTextBox1.IconPadding = 10;
-            bunifuTextBox1.IconRight = null;
-            bunifuTextBox1.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox1.Location = new Point(137, 21);
-            bunifuTextBox1.MaxLength = 32767;
-            bunifuTextBox1.MinimumSize = new Size(1, 1);
-            bunifuTextBox1.Modified = false;
-            bunifuTextBox1.Multiline = false;
-            bunifuTextBox1.Name = "bunifuTextBox1";
-            stateProperties9.BorderColor = Color.DodgerBlue;
-            stateProperties9.FillColor = Color.Empty;
-            stateProperties9.ForeColor = Color.Empty;
-            stateProperties9.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties10.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties10.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties10.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox1.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties11.FillColor = Color.Empty;
-            stateProperties11.ForeColor = Color.Empty;
-            stateProperties11.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = Color.Silver;
-            stateProperties12.FillColor = Color.White;
-            stateProperties12.ForeColor = Color.Empty;
-            stateProperties12.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox1.OnIdleState = stateProperties12;
-            bunifuTextBox1.Padding = new Padding(3);
-            bunifuTextBox1.PasswordChar = '\0';
-            bunifuTextBox1.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox1.PlaceholderText = "Enter text";
-            bunifuTextBox1.ReadOnly = true;
-            bunifuTextBox1.ScrollBars = ScrollBars.None;
-            bunifuTextBox1.SelectedText = "";
-            bunifuTextBox1.SelectionLength = 0;
-            bunifuTextBox1.SelectionStart = 0;
-            bunifuTextBox1.ShortcutsEnabled = true;
-            bunifuTextBox1.Size = new Size(218, 29);
-            bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            bunifuTextBox1.TabIndex = 1;
-            bunifuTextBox1.TextAlign = HorizontalAlignment.Left;
-            bunifuTextBox1.TextMarginBottom = 0;
-            bunifuTextBox1.TextMarginLeft = 3;
-            bunifuTextBox1.TextMarginTop = 1;
-            bunifuTextBox1.TextPlaceholder = "Enter text";
-            bunifuTextBox1.UseSystemPasswordChar = false;
-            bunifuTextBox1.WordWrap = true;
+            bunifuLabel3.AllowParentOverrides = false;
+            bunifuLabel3.AutoEllipsis = false;
+            bunifuLabel3.CursorType = Cursors.Default;
+            bunifuLabel3.Font = new Font("Segoe UI", 12F);
+            bunifuLabel3.Location = new Point(19, 103);
+            bunifuLabel3.Name = "bunifuLabel3";
+            bunifuLabel3.RightToLeft = RightToLeft.No;
+            bunifuLabel3.Size = new Size(106, 21);
+            bunifuLabel3.TabIndex = 5;
+            bunifuLabel3.Text = "Số tiền sau nạp";
+            bunifuLabel3.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // textBoxSoTienSauNap
+            // 
+            textBoxSoTienSauNap.AcceptsReturn = false;
+            textBoxSoTienSauNap.AcceptsTab = false;
+            textBoxSoTienSauNap.AnimationSpeed = 200;
+            textBoxSoTienSauNap.AutoCompleteMode = AutoCompleteMode.None;
+            textBoxSoTienSauNap.AutoCompleteSource = AutoCompleteSource.None;
+            textBoxSoTienSauNap.AutoSizeHeight = true;
+            textBoxSoTienSauNap.BackColor = Color.Transparent;
+            textBoxSoTienSauNap.BackgroundImage = (Image)resources.GetObject("textBoxSoTienSauNap.BackgroundImage");
+            textBoxSoTienSauNap.BorderColorActive = Color.DodgerBlue;
+            textBoxSoTienSauNap.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            textBoxSoTienSauNap.BorderColorHover = Color.FromArgb(105, 181, 255);
+            textBoxSoTienSauNap.BorderColorIdle = Color.Silver;
+            textBoxSoTienSauNap.BorderRadius = 1;
+            textBoxSoTienSauNap.BorderThickness = 1;
+            textBoxSoTienSauNap.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            textBoxSoTienSauNap.CharacterCasing = CharacterCasing.Normal;
+            textBoxSoTienSauNap.DefaultFont = new Font("Segoe UI", 9.25F);
+            textBoxSoTienSauNap.DefaultText = "";
+            textBoxSoTienSauNap.FillColor = Color.White;
+            textBoxSoTienSauNap.HideSelection = true;
+            textBoxSoTienSauNap.IconLeft = null;
+            textBoxSoTienSauNap.IconLeftCursor = Cursors.IBeam;
+            textBoxSoTienSauNap.IconPadding = 10;
+            textBoxSoTienSauNap.IconRight = null;
+            textBoxSoTienSauNap.IconRightCursor = Cursors.IBeam;
+            textBoxSoTienSauNap.Location = new Point(137, 100);
+            textBoxSoTienSauNap.MaxLength = 32767;
+            textBoxSoTienSauNap.MinimumSize = new Size(1, 1);
+            textBoxSoTienSauNap.Modified = false;
+            textBoxSoTienSauNap.Multiline = false;
+            textBoxSoTienSauNap.Name = "textBoxSoTienSauNap";
+            stateProperties1.BorderColor = Color.DodgerBlue;
+            stateProperties1.FillColor = Color.Empty;
+            stateProperties1.ForeColor = Color.Empty;
+            stateProperties1.PlaceholderForeColor = Color.Empty;
+            textBoxSoTienSauNap.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties2.PlaceholderForeColor = Color.DarkGray;
+            textBoxSoTienSauNap.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties3.FillColor = Color.Empty;
+            stateProperties3.ForeColor = Color.Empty;
+            stateProperties3.PlaceholderForeColor = Color.Empty;
+            textBoxSoTienSauNap.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = Color.Silver;
+            stateProperties4.FillColor = Color.White;
+            stateProperties4.ForeColor = Color.Empty;
+            stateProperties4.PlaceholderForeColor = Color.Empty;
+            textBoxSoTienSauNap.OnIdleState = stateProperties4;
+            textBoxSoTienSauNap.Padding = new Padding(3);
+            textBoxSoTienSauNap.PasswordChar = '\0';
+            textBoxSoTienSauNap.PlaceholderForeColor = Color.Silver;
+            textBoxSoTienSauNap.PlaceholderText = "Enter text";
+            textBoxSoTienSauNap.ReadOnly = true;
+            textBoxSoTienSauNap.ScrollBars = ScrollBars.None;
+            textBoxSoTienSauNap.SelectedText = "";
+            textBoxSoTienSauNap.SelectionLength = 0;
+            textBoxSoTienSauNap.SelectionStart = 0;
+            textBoxSoTienSauNap.ShortcutsEnabled = true;
+            textBoxSoTienSauNap.Size = new Size(218, 29);
+            textBoxSoTienSauNap.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            textBoxSoTienSauNap.TabIndex = 4;
+            textBoxSoTienSauNap.TextAlign = HorizontalAlignment.Left;
+            textBoxSoTienSauNap.TextMarginBottom = 0;
+            textBoxSoTienSauNap.TextMarginLeft = 3;
+            textBoxSoTienSauNap.TextMarginTop = 1;
+            textBoxSoTienSauNap.TextPlaceholder = "Enter text";
+            textBoxSoTienSauNap.UseSystemPasswordChar = false;
+            textBoxSoTienSauNap.WordWrap = true;
+            // 
+            // textBoxTienNap
+            // 
+            textBoxTienNap.AcceptsReturn = false;
+            textBoxTienNap.AcceptsTab = false;
+            textBoxTienNap.AnimationSpeed = 200;
+            textBoxTienNap.AutoCompleteMode = AutoCompleteMode.None;
+            textBoxTienNap.AutoCompleteSource = AutoCompleteSource.None;
+            textBoxTienNap.AutoSizeHeight = true;
+            textBoxTienNap.BackColor = Color.Transparent;
+            textBoxTienNap.BackgroundImage = (Image)resources.GetObject("textBoxTienNap.BackgroundImage");
+            textBoxTienNap.BorderColorActive = Color.DodgerBlue;
+            textBoxTienNap.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            textBoxTienNap.BorderColorHover = Color.FromArgb(105, 181, 255);
+            textBoxTienNap.BorderColorIdle = Color.Silver;
+            textBoxTienNap.BorderRadius = 1;
+            textBoxTienNap.BorderThickness = 1;
+            textBoxTienNap.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            textBoxTienNap.CharacterCasing = CharacterCasing.Normal;
+            textBoxTienNap.DefaultFont = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxTienNap.DefaultText = "";
+            textBoxTienNap.FillColor = Color.White;
+            textBoxTienNap.HideSelection = true;
+            textBoxTienNap.IconLeft = null;
+            textBoxTienNap.IconLeftCursor = Cursors.IBeam;
+            textBoxTienNap.IconPadding = 10;
+            textBoxTienNap.IconRight = null;
+            textBoxTienNap.IconRightCursor = Cursors.IBeam;
+            textBoxTienNap.Location = new Point(137, 56);
+            textBoxTienNap.MaxLength = 32767;
+            textBoxTienNap.MinimumSize = new Size(1, 1);
+            textBoxTienNap.Modified = false;
+            textBoxTienNap.Multiline = false;
+            textBoxTienNap.Name = "textBoxTienNap";
+            stateProperties5.BorderColor = Color.DodgerBlue;
+            stateProperties5.FillColor = Color.Empty;
+            stateProperties5.ForeColor = Color.Empty;
+            stateProperties5.PlaceholderForeColor = Color.Empty;
+            textBoxTienNap.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties6.PlaceholderForeColor = Color.DarkGray;
+            textBoxTienNap.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties7.FillColor = Color.Empty;
+            stateProperties7.ForeColor = Color.Empty;
+            stateProperties7.PlaceholderForeColor = Color.Empty;
+            textBoxTienNap.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = Color.Silver;
+            stateProperties8.FillColor = Color.White;
+            stateProperties8.ForeColor = Color.Empty;
+            stateProperties8.PlaceholderForeColor = Color.Empty;
+            textBoxTienNap.OnIdleState = stateProperties8;
+            textBoxTienNap.Padding = new Padding(3);
+            textBoxTienNap.PasswordChar = '\0';
+            textBoxTienNap.PlaceholderForeColor = Color.Silver;
+            textBoxTienNap.PlaceholderText = "Enter text";
+            textBoxTienNap.ReadOnly = false;
+            textBoxTienNap.ScrollBars = ScrollBars.None;
+            textBoxTienNap.SelectedText = "";
+            textBoxTienNap.SelectionLength = 0;
+            textBoxTienNap.SelectionStart = 0;
+            textBoxTienNap.ShortcutsEnabled = true;
+            textBoxTienNap.Size = new Size(218, 38);
+            textBoxTienNap.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            textBoxTienNap.TabIndex = 3;
+            textBoxTienNap.TextAlign = HorizontalAlignment.Left;
+            textBoxTienNap.TextMarginBottom = 0;
+            textBoxTienNap.TextMarginLeft = 3;
+            textBoxTienNap.TextMarginTop = 1;
+            textBoxTienNap.TextPlaceholder = "Enter text";
+            textBoxTienNap.UseSystemPasswordChar = false;
+            textBoxTienNap.WordWrap = true;
             // 
             // bunifuLabel2
             // 
@@ -207,168 +296,79 @@
             bunifuLabel2.TextAlignment = ContentAlignment.TopLeft;
             bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuTextBox2
+            // textBoxTenDangNhap
             // 
-            bunifuTextBox2.AcceptsReturn = false;
-            bunifuTextBox2.AcceptsTab = false;
-            bunifuTextBox2.AnimationSpeed = 200;
-            bunifuTextBox2.AutoCompleteMode = AutoCompleteMode.None;
-            bunifuTextBox2.AutoCompleteSource = AutoCompleteSource.None;
-            bunifuTextBox2.AutoSizeHeight = true;
-            bunifuTextBox2.BackColor = Color.Transparent;
-            bunifuTextBox2.BackgroundImage = (Image)resources.GetObject("bunifuTextBox2.BackgroundImage");
-            bunifuTextBox2.BorderColorActive = Color.DodgerBlue;
-            bunifuTextBox2.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            bunifuTextBox2.BorderColorHover = Color.FromArgb(105, 181, 255);
-            bunifuTextBox2.BorderColorIdle = Color.Silver;
-            bunifuTextBox2.BorderRadius = 1;
-            bunifuTextBox2.BorderThickness = 1;
-            bunifuTextBox2.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            bunifuTextBox2.CharacterCasing = CharacterCasing.Normal;
-            bunifuTextBox2.DefaultFont = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuTextBox2.DefaultText = "";
-            bunifuTextBox2.FillColor = Color.White;
-            bunifuTextBox2.HideSelection = true;
-            bunifuTextBox2.IconLeft = null;
-            bunifuTextBox2.IconLeftCursor = Cursors.IBeam;
-            bunifuTextBox2.IconPadding = 10;
-            bunifuTextBox2.IconRight = null;
-            bunifuTextBox2.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox2.Location = new Point(137, 56);
-            bunifuTextBox2.MaxLength = 32767;
-            bunifuTextBox2.MinimumSize = new Size(1, 1);
-            bunifuTextBox2.Modified = false;
-            bunifuTextBox2.Multiline = false;
-            bunifuTextBox2.Name = "bunifuTextBox2";
-            stateProperties5.BorderColor = Color.DodgerBlue;
-            stateProperties5.FillColor = Color.Empty;
-            stateProperties5.ForeColor = Color.Empty;
-            stateProperties5.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties6.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox2.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties7.FillColor = Color.Empty;
-            stateProperties7.ForeColor = Color.Empty;
-            stateProperties7.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = Color.Silver;
-            stateProperties8.FillColor = Color.White;
-            stateProperties8.ForeColor = Color.Empty;
-            stateProperties8.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox2.OnIdleState = stateProperties8;
-            bunifuTextBox2.Padding = new Padding(3);
-            bunifuTextBox2.PasswordChar = '\0';
-            bunifuTextBox2.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox2.PlaceholderText = "Enter text";
-            bunifuTextBox2.ReadOnly = false;
-            bunifuTextBox2.ScrollBars = ScrollBars.None;
-            bunifuTextBox2.SelectedText = "";
-            bunifuTextBox2.SelectionLength = 0;
-            bunifuTextBox2.SelectionStart = 0;
-            bunifuTextBox2.ShortcutsEnabled = true;
-            bunifuTextBox2.Size = new Size(218, 38);
-            bunifuTextBox2.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            bunifuTextBox2.TabIndex = 3;
-            bunifuTextBox2.TextAlign = HorizontalAlignment.Left;
-            bunifuTextBox2.TextMarginBottom = 0;
-            bunifuTextBox2.TextMarginLeft = 3;
-            bunifuTextBox2.TextMarginTop = 1;
-            bunifuTextBox2.TextPlaceholder = "Enter text";
-            bunifuTextBox2.UseSystemPasswordChar = false;
-            bunifuTextBox2.WordWrap = true;
-            // 
-            // bunifuTextBox3
-            // 
-            bunifuTextBox3.AcceptsReturn = false;
-            bunifuTextBox3.AcceptsTab = false;
-            bunifuTextBox3.AnimationSpeed = 200;
-            bunifuTextBox3.AutoCompleteMode = AutoCompleteMode.None;
-            bunifuTextBox3.AutoCompleteSource = AutoCompleteSource.None;
-            bunifuTextBox3.AutoSizeHeight = true;
-            bunifuTextBox3.BackColor = Color.Transparent;
-            bunifuTextBox3.BackgroundImage = (Image)resources.GetObject("bunifuTextBox3.BackgroundImage");
-            bunifuTextBox3.BorderColorActive = Color.DodgerBlue;
-            bunifuTextBox3.BorderColorDisabled = Color.FromArgb(204, 204, 204);
-            bunifuTextBox3.BorderColorHover = Color.FromArgb(105, 181, 255);
-            bunifuTextBox3.BorderColorIdle = Color.Silver;
-            bunifuTextBox3.BorderRadius = 1;
-            bunifuTextBox3.BorderThickness = 1;
-            bunifuTextBox3.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
-            bunifuTextBox3.CharacterCasing = CharacterCasing.Normal;
-            bunifuTextBox3.DefaultFont = new Font("Segoe UI", 9.25F);
-            bunifuTextBox3.DefaultText = "";
-            bunifuTextBox3.FillColor = Color.White;
-            bunifuTextBox3.HideSelection = true;
-            bunifuTextBox3.IconLeft = null;
-            bunifuTextBox3.IconLeftCursor = Cursors.IBeam;
-            bunifuTextBox3.IconPadding = 10;
-            bunifuTextBox3.IconRight = null;
-            bunifuTextBox3.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox3.Location = new Point(137, 100);
-            bunifuTextBox3.MaxLength = 32767;
-            bunifuTextBox3.MinimumSize = new Size(1, 1);
-            bunifuTextBox3.Modified = false;
-            bunifuTextBox3.Multiline = false;
-            bunifuTextBox3.Name = "bunifuTextBox3";
-            stateProperties1.BorderColor = Color.DodgerBlue;
-            stateProperties1.FillColor = Color.Empty;
-            stateProperties1.ForeColor = Color.Empty;
-            stateProperties1.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox3.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = Color.FromArgb(204, 204, 204);
-            stateProperties2.FillColor = Color.FromArgb(240, 240, 240);
-            stateProperties2.ForeColor = Color.FromArgb(109, 109, 109);
-            stateProperties2.PlaceholderForeColor = Color.DarkGray;
-            bunifuTextBox3.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = Color.FromArgb(105, 181, 255);
-            stateProperties3.FillColor = Color.Empty;
-            stateProperties3.ForeColor = Color.Empty;
-            stateProperties3.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox3.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = Color.Silver;
-            stateProperties4.FillColor = Color.White;
-            stateProperties4.ForeColor = Color.Empty;
-            stateProperties4.PlaceholderForeColor = Color.Empty;
-            bunifuTextBox3.OnIdleState = stateProperties4;
-            bunifuTextBox3.Padding = new Padding(3);
-            bunifuTextBox3.PasswordChar = '\0';
-            bunifuTextBox3.PlaceholderForeColor = Color.Silver;
-            bunifuTextBox3.PlaceholderText = "Enter text";
-            bunifuTextBox3.ReadOnly = true;
-            bunifuTextBox3.ScrollBars = ScrollBars.None;
-            bunifuTextBox3.SelectedText = "";
-            bunifuTextBox3.SelectionLength = 0;
-            bunifuTextBox3.SelectionStart = 0;
-            bunifuTextBox3.ShortcutsEnabled = true;
-            bunifuTextBox3.Size = new Size(218, 29);
-            bunifuTextBox3.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            bunifuTextBox3.TabIndex = 4;
-            bunifuTextBox3.TextAlign = HorizontalAlignment.Left;
-            bunifuTextBox3.TextMarginBottom = 0;
-            bunifuTextBox3.TextMarginLeft = 3;
-            bunifuTextBox3.TextMarginTop = 1;
-            bunifuTextBox3.TextPlaceholder = "Enter text";
-            bunifuTextBox3.UseSystemPasswordChar = false;
-            bunifuTextBox3.WordWrap = true;
-            // 
-            // bunifuLabel3
-            // 
-            bunifuLabel3.AllowParentOverrides = false;
-            bunifuLabel3.AutoEllipsis = false;
-            bunifuLabel3.CursorType = Cursors.Default;
-            bunifuLabel3.Font = new Font("Segoe UI", 12F);
-            bunifuLabel3.Location = new Point(19, 103);
-            bunifuLabel3.Name = "bunifuLabel3";
-            bunifuLabel3.RightToLeft = RightToLeft.No;
-            bunifuLabel3.Size = new Size(106, 21);
-            bunifuLabel3.TabIndex = 5;
-            bunifuLabel3.Text = "Số tiền sau nạp";
-            bunifuLabel3.TextAlignment = ContentAlignment.TopLeft;
-            bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            textBoxTenDangNhap.AcceptsReturn = false;
+            textBoxTenDangNhap.AcceptsTab = false;
+            textBoxTenDangNhap.AnimationSpeed = 200;
+            textBoxTenDangNhap.AutoCompleteMode = AutoCompleteMode.None;
+            textBoxTenDangNhap.AutoCompleteSource = AutoCompleteSource.None;
+            textBoxTenDangNhap.AutoSizeHeight = true;
+            textBoxTenDangNhap.BackColor = Color.Transparent;
+            textBoxTenDangNhap.BackgroundImage = (Image)resources.GetObject("textBoxTenDangNhap.BackgroundImage");
+            textBoxTenDangNhap.BorderColorActive = Color.DodgerBlue;
+            textBoxTenDangNhap.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            textBoxTenDangNhap.BorderColorHover = Color.FromArgb(105, 181, 255);
+            textBoxTenDangNhap.BorderColorIdle = Color.Silver;
+            textBoxTenDangNhap.BorderRadius = 1;
+            textBoxTenDangNhap.BorderThickness = 1;
+            textBoxTenDangNhap.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            textBoxTenDangNhap.CharacterCasing = CharacterCasing.Normal;
+            textBoxTenDangNhap.DefaultFont = new Font("Segoe UI", 9.25F);
+            textBoxTenDangNhap.DefaultText = "";
+            textBoxTenDangNhap.FillColor = Color.White;
+            textBoxTenDangNhap.HideSelection = true;
+            textBoxTenDangNhap.IconLeft = null;
+            textBoxTenDangNhap.IconLeftCursor = Cursors.IBeam;
+            textBoxTenDangNhap.IconPadding = 10;
+            textBoxTenDangNhap.IconRight = null;
+            textBoxTenDangNhap.IconRightCursor = Cursors.IBeam;
+            textBoxTenDangNhap.Location = new Point(137, 21);
+            textBoxTenDangNhap.MaxLength = 32767;
+            textBoxTenDangNhap.MinimumSize = new Size(1, 1);
+            textBoxTenDangNhap.Modified = false;
+            textBoxTenDangNhap.Multiline = false;
+            textBoxTenDangNhap.Name = "textBoxTenDangNhap";
+            stateProperties9.BorderColor = Color.DodgerBlue;
+            stateProperties9.FillColor = Color.Empty;
+            stateProperties9.ForeColor = Color.Empty;
+            stateProperties9.PlaceholderForeColor = Color.Empty;
+            textBoxTenDangNhap.OnActiveState = stateProperties9;
+            stateProperties10.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties10.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties10.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties10.PlaceholderForeColor = Color.DarkGray;
+            textBoxTenDangNhap.OnDisabledState = stateProperties10;
+            stateProperties11.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties11.FillColor = Color.Empty;
+            stateProperties11.ForeColor = Color.Empty;
+            stateProperties11.PlaceholderForeColor = Color.Empty;
+            textBoxTenDangNhap.OnHoverState = stateProperties11;
+            stateProperties12.BorderColor = Color.Silver;
+            stateProperties12.FillColor = Color.White;
+            stateProperties12.ForeColor = Color.Empty;
+            stateProperties12.PlaceholderForeColor = Color.Empty;
+            textBoxTenDangNhap.OnIdleState = stateProperties12;
+            textBoxTenDangNhap.Padding = new Padding(3);
+            textBoxTenDangNhap.PasswordChar = '\0';
+            textBoxTenDangNhap.PlaceholderForeColor = Color.Silver;
+            textBoxTenDangNhap.PlaceholderText = "Enter text";
+            textBoxTenDangNhap.ReadOnly = true;
+            textBoxTenDangNhap.ScrollBars = ScrollBars.None;
+            textBoxTenDangNhap.SelectedText = "";
+            textBoxTenDangNhap.SelectionLength = 0;
+            textBoxTenDangNhap.SelectionStart = 0;
+            textBoxTenDangNhap.ShortcutsEnabled = true;
+            textBoxTenDangNhap.Size = new Size(218, 29);
+            textBoxTenDangNhap.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            textBoxTenDangNhap.TabIndex = 1;
+            textBoxTenDangNhap.TextAlign = HorizontalAlignment.Left;
+            textBoxTenDangNhap.TextMarginBottom = 0;
+            textBoxTenDangNhap.TextMarginLeft = 3;
+            textBoxTenDangNhap.TextMarginTop = 1;
+            textBoxTenDangNhap.TextPlaceholder = "Enter text";
+            textBoxTenDangNhap.UseSystemPasswordChar = false;
+            textBoxTenDangNhap.WordWrap = true;
             // 
             // flowLayoutPanel1
             // 
@@ -478,6 +478,7 @@
             bunifuButton1.TextMarginLeft = 0;
             bunifuButton1.TextPadding = new Padding(0);
             bunifuButton1.UseDefaultRadiusAndThickness = true;
+            bunifuButton1.Click += bunifuButton1_Click;
             // 
             // bunifuButton2
             // 
@@ -568,6 +569,7 @@
             bunifuButton2.TextMarginLeft = 0;
             bunifuButton2.TextPadding = new Padding(0);
             bunifuButton2.UseDefaultRadiusAndThickness = true;
+            bunifuButton2.Click += bunifuButton2_Click;
             // 
             // bunifuButton3
             // 
@@ -748,6 +750,7 @@
             bunifuButton4.TextMarginLeft = 0;
             bunifuButton4.TextPadding = new Padding(0);
             bunifuButton4.UseDefaultRadiusAndThickness = true;
+            bunifuButton4.Click += bunifuButton4_Click;
             // 
             // bunifuButton5
             // 
@@ -838,6 +841,7 @@
             bunifuButton5.TextMarginLeft = 0;
             bunifuButton5.TextPadding = new Padding(0);
             bunifuButton5.UseDefaultRadiusAndThickness = true;
+            bunifuButton5.Click += bunifuButton5_Click;
             // 
             // bunifuButton6
             // 
@@ -928,6 +932,7 @@
             bunifuButton6.TextMarginLeft = 0;
             bunifuButton6.TextPadding = new Padding(0);
             bunifuButton6.UseDefaultRadiusAndThickness = true;
+            bunifuButton6.Click += bunifuButton6_Click;
             // 
             // bunifuButton7
             // 
@@ -1018,6 +1023,7 @@
             bunifuButton7.TextMarginLeft = 0;
             bunifuButton7.TextPadding = new Padding(0);
             bunifuButton7.UseDefaultRadiusAndThickness = true;
+            bunifuButton7.Click += bunifuButton7_Click;
             // 
             // bunifuButton8
             // 
@@ -1108,6 +1114,7 @@
             bunifuButton8.TextMarginLeft = 0;
             bunifuButton8.TextPadding = new Padding(0);
             bunifuButton8.UseDefaultRadiusAndThickness = true;
+            bunifuButton8.Click += bunifuButton8_Click;
             // 
             // bunifuButton9
             // 
@@ -1198,6 +1205,7 @@
             bunifuButton9.TextMarginLeft = 0;
             bunifuButton9.TextPadding = new Padding(0);
             bunifuButton9.UseDefaultRadiusAndThickness = true;
+            bunifuButton9.Click += bunifuButton9_Click;
             // 
             // bunifuButton10
             // 
@@ -1288,6 +1296,7 @@
             bunifuButton10.TextMarginLeft = 0;
             bunifuButton10.TextPadding = new Padding(0);
             bunifuButton10.UseDefaultRadiusAndThickness = true;
+            bunifuButton10.Click += bunifuButton10_Click;
             // 
             // bunifuButton11
             // 
@@ -1378,6 +1387,7 @@
             bunifuButton11.TextMarginLeft = 0;
             bunifuButton11.TextPadding = new Padding(0);
             bunifuButton11.UseDefaultRadiusAndThickness = true;
+            bunifuButton11.Click += bunifuButton11_Click;
             // 
             // bunifuButton12
             // 
@@ -1468,96 +1478,98 @@
             bunifuButton12.TextMarginLeft = 0;
             bunifuButton12.TextPadding = new Padding(0);
             bunifuButton12.UseDefaultRadiusAndThickness = true;
+            bunifuButton12.Click += bunifuButton12_Click;
             // 
-            // bunifuButton13
+            // btnXacNhanNap
             // 
-            bunifuButton13.AllowAnimations = true;
-            bunifuButton13.AllowMouseEffects = true;
-            bunifuButton13.AllowToggling = false;
-            bunifuButton13.AnimationSpeed = 200;
-            bunifuButton13.AutoGenerateColors = false;
-            bunifuButton13.AutoRoundBorders = false;
-            bunifuButton13.AutoSizeLeftIcon = true;
-            bunifuButton13.AutoSizeRightIcon = true;
-            bunifuButton13.BackColor = Color.Transparent;
-            bunifuButton13.BackColor1 = Color.FromArgb(51, 122, 183);
-            bunifuButton13.BackgroundImage = (Image)resources.GetObject("bunifuButton13.BackgroundImage");
-            bunifuButton13.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton13.ButtonText = "Nạp tiền";
-            bunifuButton13.ButtonTextMarginLeft = 0;
-            bunifuButton13.ColorContrastOnClick = 45;
-            bunifuButton13.ColorContrastOnHover = 45;
+            btnXacNhanNap.AllowAnimations = true;
+            btnXacNhanNap.AllowMouseEffects = true;
+            btnXacNhanNap.AllowToggling = false;
+            btnXacNhanNap.AnimationSpeed = 200;
+            btnXacNhanNap.AutoGenerateColors = false;
+            btnXacNhanNap.AutoRoundBorders = false;
+            btnXacNhanNap.AutoSizeLeftIcon = true;
+            btnXacNhanNap.AutoSizeRightIcon = true;
+            btnXacNhanNap.BackColor = Color.Transparent;
+            btnXacNhanNap.BackColor1 = Color.FromArgb(51, 122, 183);
+            btnXacNhanNap.BackgroundImage = (Image)resources.GetObject("btnXacNhanNap.BackgroundImage");
+            btnXacNhanNap.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            btnXacNhanNap.ButtonText = "Nạp tiền";
+            btnXacNhanNap.ButtonTextMarginLeft = 0;
+            btnXacNhanNap.ColorContrastOnClick = 45;
+            btnXacNhanNap.ColorContrastOnHover = 45;
             borderEdges13.BottomLeft = true;
             borderEdges13.BottomRight = true;
             borderEdges13.TopLeft = true;
             borderEdges13.TopRight = true;
-            bunifuButton13.CustomizableEdges = borderEdges13;
-            bunifuButton13.DialogResult = DialogResult.None;
-            bunifuButton13.DisabledBorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton13.DisabledFillColor = Color.Empty;
-            bunifuButton13.DisabledForecolor = Color.Empty;
-            bunifuButton13.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            bunifuButton13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bunifuButton13.ForeColor = Color.Black;
-            bunifuButton13.IconLeft = null;
-            bunifuButton13.IconLeftAlign = ContentAlignment.MiddleLeft;
-            bunifuButton13.IconLeftCursor = Cursors.Default;
-            bunifuButton13.IconLeftPadding = new Padding(11, 3, 3, 3);
-            bunifuButton13.IconMarginLeft = 11;
-            bunifuButton13.IconPadding = 10;
-            bunifuButton13.IconRight = null;
-            bunifuButton13.IconRightAlign = ContentAlignment.MiddleRight;
-            bunifuButton13.IconRightCursor = Cursors.Default;
-            bunifuButton13.IconRightPadding = new Padding(3, 3, 7, 3);
-            bunifuButton13.IconSize = 25;
-            bunifuButton13.IdleBorderColor = Color.Empty;
-            bunifuButton13.IdleBorderRadius = 0;
-            bunifuButton13.IdleBorderThickness = 0;
-            bunifuButton13.IdleFillColor = Color.Empty;
-            bunifuButton13.IdleIconLeftImage = null;
-            bunifuButton13.IdleIconRightImage = null;
-            bunifuButton13.IndicateFocus = false;
-            bunifuButton13.Location = new Point(117, 200);
-            bunifuButton13.Name = "bunifuButton13";
-            bunifuButton13.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
-            bunifuButton13.OnDisabledState.BorderRadius = 1;
-            bunifuButton13.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton13.OnDisabledState.BorderThickness = 1;
-            bunifuButton13.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
-            bunifuButton13.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
-            bunifuButton13.OnDisabledState.IconLeftImage = null;
-            bunifuButton13.OnDisabledState.IconRightImage = null;
-            bunifuButton13.onHoverState.BorderColor = Color.FromArgb(30, 150, 255);
-            bunifuButton13.onHoverState.BorderRadius = 1;
-            bunifuButton13.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton13.onHoverState.BorderThickness = 1;
-            bunifuButton13.onHoverState.FillColor = Color.FromArgb(30, 150, 255);
-            bunifuButton13.onHoverState.ForeColor = Color.White;
-            bunifuButton13.onHoverState.IconLeftImage = null;
-            bunifuButton13.onHoverState.IconRightImage = null;
-            bunifuButton13.OnIdleState.BorderColor = SystemColors.Control;
-            bunifuButton13.OnIdleState.BorderRadius = 1;
-            bunifuButton13.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton13.OnIdleState.BorderThickness = 1;
-            bunifuButton13.OnIdleState.FillColor = SystemColors.AppWorkspace;
-            bunifuButton13.OnIdleState.ForeColor = Color.Black;
-            bunifuButton13.OnIdleState.IconLeftImage = null;
-            bunifuButton13.OnIdleState.IconRightImage = null;
-            bunifuButton13.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
-            bunifuButton13.OnPressedState.BorderRadius = 1;
-            bunifuButton13.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            bunifuButton13.OnPressedState.BorderThickness = 1;
-            bunifuButton13.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
-            bunifuButton13.OnPressedState.ForeColor = Color.White;
-            bunifuButton13.OnPressedState.IconLeftImage = null;
-            bunifuButton13.OnPressedState.IconRightImage = null;
-            bunifuButton13.Size = new Size(122, 39);
-            bunifuButton13.TabIndex = 17;
-            bunifuButton13.TextAlign = ContentAlignment.MiddleCenter;
-            bunifuButton13.TextAlignment = HorizontalAlignment.Center;
-            bunifuButton13.TextMarginLeft = 0;
-            bunifuButton13.TextPadding = new Padding(0);
-            bunifuButton13.UseDefaultRadiusAndThickness = true;
+            btnXacNhanNap.CustomizableEdges = borderEdges13;
+            btnXacNhanNap.DialogResult = DialogResult.None;
+            btnXacNhanNap.DisabledBorderColor = Color.FromArgb(191, 191, 191);
+            btnXacNhanNap.DisabledFillColor = Color.Empty;
+            btnXacNhanNap.DisabledForecolor = Color.Empty;
+            btnXacNhanNap.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            btnXacNhanNap.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnXacNhanNap.ForeColor = Color.Black;
+            btnXacNhanNap.IconLeft = null;
+            btnXacNhanNap.IconLeftAlign = ContentAlignment.MiddleLeft;
+            btnXacNhanNap.IconLeftCursor = Cursors.Default;
+            btnXacNhanNap.IconLeftPadding = new Padding(11, 3, 3, 3);
+            btnXacNhanNap.IconMarginLeft = 11;
+            btnXacNhanNap.IconPadding = 10;
+            btnXacNhanNap.IconRight = null;
+            btnXacNhanNap.IconRightAlign = ContentAlignment.MiddleRight;
+            btnXacNhanNap.IconRightCursor = Cursors.Default;
+            btnXacNhanNap.IconRightPadding = new Padding(3, 3, 7, 3);
+            btnXacNhanNap.IconSize = 25;
+            btnXacNhanNap.IdleBorderColor = Color.Empty;
+            btnXacNhanNap.IdleBorderRadius = 0;
+            btnXacNhanNap.IdleBorderThickness = 0;
+            btnXacNhanNap.IdleFillColor = Color.Empty;
+            btnXacNhanNap.IdleIconLeftImage = null;
+            btnXacNhanNap.IdleIconRightImage = null;
+            btnXacNhanNap.IndicateFocus = false;
+            btnXacNhanNap.Location = new Point(117, 200);
+            btnXacNhanNap.Name = "btnXacNhanNap";
+            btnXacNhanNap.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
+            btnXacNhanNap.OnDisabledState.BorderRadius = 1;
+            btnXacNhanNap.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            btnXacNhanNap.OnDisabledState.BorderThickness = 1;
+            btnXacNhanNap.OnDisabledState.FillColor = Color.FromArgb(204, 204, 204);
+            btnXacNhanNap.OnDisabledState.ForeColor = Color.FromArgb(168, 160, 168);
+            btnXacNhanNap.OnDisabledState.IconLeftImage = null;
+            btnXacNhanNap.OnDisabledState.IconRightImage = null;
+            btnXacNhanNap.onHoverState.BorderColor = Color.FromArgb(30, 150, 255);
+            btnXacNhanNap.onHoverState.BorderRadius = 1;
+            btnXacNhanNap.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            btnXacNhanNap.onHoverState.BorderThickness = 1;
+            btnXacNhanNap.onHoverState.FillColor = Color.FromArgb(30, 150, 255);
+            btnXacNhanNap.onHoverState.ForeColor = Color.White;
+            btnXacNhanNap.onHoverState.IconLeftImage = null;
+            btnXacNhanNap.onHoverState.IconRightImage = null;
+            btnXacNhanNap.OnIdleState.BorderColor = SystemColors.Control;
+            btnXacNhanNap.OnIdleState.BorderRadius = 1;
+            btnXacNhanNap.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            btnXacNhanNap.OnIdleState.BorderThickness = 1;
+            btnXacNhanNap.OnIdleState.FillColor = SystemColors.AppWorkspace;
+            btnXacNhanNap.OnIdleState.ForeColor = Color.Black;
+            btnXacNhanNap.OnIdleState.IconLeftImage = null;
+            btnXacNhanNap.OnIdleState.IconRightImage = null;
+            btnXacNhanNap.OnPressedState.BorderColor = Color.FromArgb(40, 96, 144);
+            btnXacNhanNap.OnPressedState.BorderRadius = 1;
+            btnXacNhanNap.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            btnXacNhanNap.OnPressedState.BorderThickness = 1;
+            btnXacNhanNap.OnPressedState.FillColor = Color.FromArgb(40, 96, 144);
+            btnXacNhanNap.OnPressedState.ForeColor = Color.White;
+            btnXacNhanNap.OnPressedState.IconLeftImage = null;
+            btnXacNhanNap.OnPressedState.IconRightImage = null;
+            btnXacNhanNap.Size = new Size(122, 39);
+            btnXacNhanNap.TabIndex = 17;
+            btnXacNhanNap.TextAlign = ContentAlignment.MiddleCenter;
+            btnXacNhanNap.TextAlignment = HorizontalAlignment.Center;
+            btnXacNhanNap.TextMarginLeft = 0;
+            btnXacNhanNap.TextPadding = new Padding(0);
+            btnXacNhanNap.UseDefaultRadiusAndThickness = true;
+            btnXacNhanNap.Click += btnXacNhanNap_Click_1;
             // 
             // bunifuButton14
             // 
@@ -1648,6 +1660,7 @@
             bunifuButton14.TextMarginLeft = 0;
             bunifuButton14.TextPadding = new Padding(0);
             bunifuButton14.UseDefaultRadiusAndThickness = true;
+            bunifuButton14.Click += bunifuButton14_Click;
             // 
             // NapTienKhach
             // 
@@ -1655,7 +1668,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(636, 250);
             Controls.Add(bunifuButton14);
-            Controls.Add(bunifuButton13);
+            Controls.Add(btnXacNhanNap);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(bunifuGroupBox1);
             Name = "NapTienKhach";
@@ -1670,10 +1683,10 @@
 
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
+        private Bunifu.UI.WinForms.BunifuTextBox textBoxTenDangNhap;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox3;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox2;
+        private Bunifu.UI.WinForms.BunifuTextBox textBoxSoTienSauNap;
+        private Bunifu.UI.WinForms.BunifuTextBox textBoxTienNap;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private FlowLayoutPanel flowLayoutPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
@@ -1688,7 +1701,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton10;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton11;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton12;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton13;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnXacNhanNap;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton14;
     }
 }

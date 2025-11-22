@@ -179,5 +179,35 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                 LoadDataIntoGrid();
             }
         }
+
+        private void btnNapTien_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem có dòng nào được chọn không
+            if (dataGridViewTK.SelectedRows.Count == 1)
+            {
+                // 1. Lấy dữ liệu từ hàng đang chọn
+                DataGridViewRow selectedRow = dataGridViewTK.SelectedRows[0];
+
+                string tenDangNhap = selectedRow.Cells["TenDangNhap"].Value.ToString();
+
+                // Lấy số dư hiện tại (cần convert cẩn thận)
+                decimal soDuHienTai = 0;
+                if (selectedRow.Cells["SoDu"].Value != null)
+                {
+                    decimal.TryParse(selectedRow.Cells["SoDu"].Value.ToString(), out soDuHienTai);
+                }
+
+                // 2. Mở Form NapTienKhach và truyền dữ liệu
+                NapTienKhach formNap = new NapTienKhach(tenDangNhap, soDuHienTai);
+                formNap.ShowDialog(); // Dùng ShowDialog để chờ xử lý xong
+
+                // 3. Tải lại DataGridView để cập nhật số dư mới nhất
+                LoadDataIntoGrid();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản khách hàng để nạp tiền.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

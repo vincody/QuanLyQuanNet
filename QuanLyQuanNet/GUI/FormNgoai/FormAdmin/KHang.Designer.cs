@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KHang));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             panel1 = new Panel();
             dataGridViewTK = new Bunifu.UI.WinForms.BunifuDataGridView();
             panel2 = new Panel();
@@ -62,21 +62,21 @@
             dataGridViewTK.AllowUserToDeleteRows = false;
             dataGridViewTK.AllowUserToResizeColumns = false;
             dataGridViewTK.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(248, 251, 255);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewTK.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewTK.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTK.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewTK.BorderStyle = BorderStyle.None;
             dataGridViewTK.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewTK.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.DodgerBlue;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(24, 115, 204);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridViewTK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewTK.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTK.ColumnHeadersHeight = 40;
             dataGridViewTK.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(248, 251, 255);
             dataGridViewTK.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
@@ -96,14 +96,14 @@
             dataGridViewTK.CurrentTheme.RowsStyle.ForeColor = Color.Black;
             dataGridViewTK.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
             dataGridViewTK.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(210, 232, 255);
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridViewTK.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewTK.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTK.Dock = DockStyle.Fill;
             dataGridViewTK.EnableHeadersVisualStyles = false;
             dataGridViewTK.GridColor = Color.FromArgb(221, 238, 255);
@@ -113,14 +113,14 @@
             dataGridViewTK.Location = new Point(0, 0);
             dataGridViewTK.Name = "dataGridViewTK";
             dataGridViewTK.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewTK.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewTK.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTK.RowHeadersVisible = false;
             dataGridViewTK.RowTemplate.Height = 40;
             dataGridViewTK.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -193,11 +193,11 @@
             btnNapTien.ButtonTextMarginLeft = 0;
             btnNapTien.ColorContrastOnClick = 45;
             btnNapTien.ColorContrastOnHover = 45;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            btnNapTien.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            btnNapTien.CustomizableEdges = borderEdges1;
             btnNapTien.DialogResult = DialogResult.None;
             btnNapTien.DisabledBorderColor = Color.FromArgb(191, 191, 191);
             btnNapTien.DisabledFillColor = Color.Empty;
@@ -264,6 +264,7 @@
             btnNapTien.TextMarginLeft = 0;
             btnNapTien.TextPadding = new Padding(0);
             btnNapTien.UseDefaultRadiusAndThickness = true;
+            btnNapTien.Click += btnNapTien_Click;
             // 
             // KHang
             // 
