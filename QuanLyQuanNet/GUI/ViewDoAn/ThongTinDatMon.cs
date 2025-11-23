@@ -1,49 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
-// ... (các using khác) ...
+using System.ComponentModel;
+using System.Drawing; // Cần cho Image
+using System.IO;      // Cần cho FileStream, Path
 using System.Windows.Forms;
+using System.Runtime.Serialization; // Add this for serialization attributes
 
 namespace QuanLyQuanNet.GUI.ViewDoAn
 {
+    [Serializable] // Add this attribute to enable serialization for the class
     public partial class ThongTinDatMon : UserControl
     {
-        // Cần có các thuộc tính công khai (Public)
+        // Các thuộc tính công khai
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true)]
+        [Bindable(true)]
         public string TenMon { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true)]
+        [Bindable(true)]
         public decimal GiaDonVi { get; set; }
-        private int _soLuong = 1;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Browsable(true)]
+        [Bindable(true)]
+        public int MonAnID { get; set; }
 
-        public int MonAnID { get; set; } // <<<<< ĐÃ KHAI BÁO
+        private int _soLuong = 1;
 
         public event EventHandler<OrderUpdateEventArgs> QuantityChanged;
         public event EventHandler ItemRemoved;
-
-        // Thuộc tính này không cần thiết, Form cha nên quản lý Dictionary
-        // public Dictionary<string, ThongTinDatMon> CurrentOrderItems { get; set; } 
 
         public ThongTinDatMon()
         {
             InitializeComponent();
         }
 
-        // ✅ ĐÃ SỬA: Bổ sung MonAnID vào tham số
-        public void InitializeItem(int monAnID, string tenMon, decimal giaDonVi)
+        // ✅ ĐÃ SỬA: Thêm tham số 'hinhAnhPath'
+        public void InitializeItem(int monAnID, string tenMon, decimal giaDonVi, string hinhAnhPath)
         {
-            this.MonAnID = monAnID;       // ✅ Gán MonAnID
+            this.MonAnID = monAnID;
             this.TenMon = tenMon;
             this.GiaDonVi = giaDonVi;
+
+            // --- LOGIC TẢI ẢNH ---
+            if (!string.IsNullOrEmpty(hinhAnhPath))
+            {
+                try
+                {
+                    string fullPath = Path.Combine(Application.StartupPath, hinhAnhPath);
+                    if (File.Exists(fullPath))
+                    {
+                        // Dùng FileStream để không khóa file ảnh
+                        using (var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                        {
+                            pictureBoxHienThiAnh.Image = Image.FromStream(stream);
+                        }
+                        pictureBoxHienThiAnh.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
+                }
+                catch (Exception)
+                {
+                    // Nếu lỗi tải ảnh, có thể gán ảnh mặc định hoặc để trống
+                    pictureBoxHienThiAnh.Image = null;
+                }
+            }
+            // ---------------------
+
             UpdateDisplay();
         }
 
-        // Hàm cập nhật hiển thị (tên món, số lượng, tổng giá)
         private void UpdateDisplay()
         {
             labelTenMon.Text = this.TenMon;
-            // Hiển thị tổng giá tiền: Đơn giá * Số lượng
             labelGiaTien.Text = (this.GiaDonVi * _soLuong).ToString("N0") + " VNĐ";
-            // Giả định Label SoLuong tồn tại trên User Control
             SoLuong.Text = _soLuong.ToString();
 
-            // Gửi sự kiện cập nhật lên Form cha để tính tổng hóa đơn
             QuantityChanged?.Invoke(this, new OrderUpdateEventArgs(this.TenMon, this.GiaDonVi, _soLuong));
         }
 
@@ -64,13 +95,10 @@ namespace QuanLyQuanNet.GUI.ViewDoAn
 
         private void btnXoaMon_Click(object sender, EventArgs e)
         {
-            // Thông báo cho Form cha trước khi xóa control
             ItemRemoved?.Invoke(this, EventArgs.Empty);
-            // Xóa chính control này khỏi FlowLayoutPanel
             this.Dispose();
         }
 
-        // Class mô hình dữ liệu để gửi thông tin cập nhật (GIỮ NGUYÊN)
         public class OrderUpdateEventArgs : EventArgs
         {
             public string ItemName { get; }
@@ -84,9 +112,5 @@ namespace QuanLyQuanNet.GUI.ViewDoAn
                 Quantity = quantity;
             }
         }
-
-        // ✅ ĐÃ XÓA/DI CHUYỂN: Các hàm OrderItemControl_QuantityChanged và ItemRemoved
-        // đã bị xóa khỏi đây vì chúng thuộc về Form cha (GoiMon.cs).
-        // Hãy đảm bảo code trong GoiMon.cs gọi InitializeItem(monAnID, tenMon, giaDonVi).
     }
 }

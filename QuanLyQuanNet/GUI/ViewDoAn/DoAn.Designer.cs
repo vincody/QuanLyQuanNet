@@ -123,15 +123,15 @@
             btnThemMon.OnIdleState.BorderRadius = 1;
             btnThemMon.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             btnThemMon.OnIdleState.BorderThickness = 1;
-            btnThemMon.OnIdleState.FillColor = Color.Silver;
+            btnThemMon.OnIdleState.FillColor = Color.FromArgb(139, 149, 163);
             btnThemMon.OnIdleState.ForeColor = Color.White;
             btnThemMon.OnIdleState.IconLeftImage = (Image)resources.GetObject("btnThemMon.OnIdleState.IconLeftImage");
             btnThemMon.OnIdleState.IconRightImage = null;
-            btnThemMon.OnPressedState.BorderColor = Color.Silver;
+            btnThemMon.OnPressedState.BorderColor = Color.FromArgb(139, 149, 163);
             btnThemMon.OnPressedState.BorderRadius = 1;
             btnThemMon.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             btnThemMon.OnPressedState.BorderThickness = 1;
-            btnThemMon.OnPressedState.FillColor = Color.Silver;
+            btnThemMon.OnPressedState.FillColor = Color.FromArgb(139, 149, 163);
             btnThemMon.OnPressedState.ForeColor = Color.White;
             btnThemMon.OnPressedState.IconLeftImage = null;
             btnThemMon.OnPressedState.IconRightImage = null;
@@ -147,7 +147,7 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.Transparent;
-            guna2Panel1.BorderColor = Color.Silver;
+            guna2Panel1.BorderColor = Color.FromArgb(139, 149, 163);
             guna2Panel1.BorderRadius = 20;
             guna2Panel1.BorderThickness = 1;
             guna2Panel1.Controls.Add(labelGiaDoAn);
@@ -156,7 +156,7 @@
             customizableEdges1.TopLeft = false;
             customizableEdges1.TopRight = false;
             guna2Panel1.CustomizableEdges = customizableEdges1;
-            guna2Panel1.FillColor = Color.Silver;
+            guna2Panel1.FillColor = Color.FromArgb(139, 149, 163);
             guna2Panel1.Location = new Point(0, 145);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -169,7 +169,7 @@
             labelGiaDoAn.AutoEllipsis = false;
             labelGiaDoAn.CursorType = Cursors.Default;
             labelGiaDoAn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelGiaDoAn.ForeColor = Color.Brown;
+            labelGiaDoAn.ForeColor = Color.AliceBlue;
             labelGiaDoAn.Location = new Point(12, 50);
             labelGiaDoAn.Name = "labelGiaDoAn";
             labelGiaDoAn.RightToLeft = RightToLeft.No;
@@ -186,6 +186,7 @@
             labelTenDoAn.AutoSize = false;
             labelTenDoAn.CursorType = Cursors.Default;
             labelTenDoAn.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTenDoAn.ForeColor = Color.White;
             labelTenDoAn.Location = new Point(3, 3);
             labelTenDoAn.Name = "labelTenDoAn";
             labelTenDoAn.RightToLeft = RightToLeft.No;

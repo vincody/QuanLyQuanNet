@@ -2203,9 +2203,9 @@
   <data name="btnThemMon.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABbSURBVFhH7dmxDQAgDANBRstobOZsBmKHL4j0xUkuv/dK
-        Ukn252q90d3nZ6/RUJKhNENphtIMpRlKM5RmKM1QmqE0Q2mG0gylGUozlGYozVCaoTRDaeNCRxxiFzLy
-        Cx8FF6r+AAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABdSURBVFhH7dmhEQAgDARBSktp+MgMFaRQMJRwAmZOrHh3
+        /kdWR66eT6uOccd+3DQUZijNUJqhNENphtIMpRlKM5RmKM1QmqE0Q2mG0gylGUozlGYozVDaT6GfHGIH
+        hbqvc3f/TWkAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnThemMon.IconLeft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -2248,9 +2248,9 @@
 </value>
   </data>
   <data name="labelGiaDoAn.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Segoe UI'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(165, 42, 42); text-align: left; }</value>
+    <value>#bunifu-label { padding: 0px; font-family: 'Segoe UI'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(240, 248, 255); text-align: left; }</value>
   </data>
   <data name="labelTenDoAn.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 7px;font-family: 'Segoe UI'; font-size: 15pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(0, 0, 0); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 7px;font-family: 'Segoe UI'; font-size: 15pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(255, 255, 255); text-align: center; }</value>
   </data>
 </root>

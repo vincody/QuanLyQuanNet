@@ -34,73 +34,80 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             CagetoryMonAn = new FlowLayoutPanel();
             MenuDoAn = new FlowLayoutPanel();
             panel1 = new Panel();
-            textBoxTimMonAn = new TextBox();
+            bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             ListMonAnDat = new FlowLayoutPanel();
             panelThanhToan = new Panel();
+            labelTongTien = new Label();
             btnDatMon = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
-            labelTongTien = new Label();
             checkBoxSoDu = new CheckBox();
             checkBoxTienMat = new CheckBox();
+            textBoxTimMonAn = new Bunifu.UI.WinForms.BunifuTextBox();
             panel1.SuspendLayout();
             panelThanhToan.SuspendLayout();
             SuspendLayout();
             // 
             // CagetoryMonAn
             // 
-            CagetoryMonAn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CagetoryMonAn.BorderStyle = BorderStyle.Fixed3D;
-            CagetoryMonAn.Location = new Point(0, 0);
+            CagetoryMonAn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            CagetoryMonAn.BackColor = Color.FromArgb(84, 93, 110);
+            CagetoryMonAn.Location = new Point(0, 42);
             CagetoryMonAn.Name = "CagetoryMonAn";
-            CagetoryMonAn.Size = new Size(976, 42);
+            CagetoryMonAn.Size = new Size(125, 587);
             CagetoryMonAn.TabIndex = 0;
             // 
             // MenuDoAn
             // 
             MenuDoAn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MenuDoAn.AutoScroll = true;
-            MenuDoAn.BackColor = SystemColors.ControlDarkDark;
-            MenuDoAn.BorderStyle = BorderStyle.Fixed3D;
-            MenuDoAn.Location = new Point(0, 40);
+            MenuDoAn.BackColor = Color.FromArgb(84, 93, 110);
+            MenuDoAn.Location = new Point(133, 40);
             MenuDoAn.Name = "MenuDoAn";
-            MenuDoAn.Size = new Size(976, 589);
+            MenuDoAn.Size = new Size(995, 589);
             MenuDoAn.TabIndex = 0;
             MenuDoAn.Paint += MenuDoAn_Paint;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(textBoxTimMonAn);
+            panel1.Controls.Add(bunifuLabel1);
             panel1.Controls.Add(ListMonAnDat);
             panel1.Controls.Add(panelThanhToan);
-            panel1.Location = new Point(982, 0);
+            panel1.Location = new Point(1134, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(375, 629);
             panel1.TabIndex = 0;
             // 
-            // textBoxTimMonAn
+            // bunifuLabel1
             // 
-            textBoxTimMonAn.BackColor = Color.LightGray;
-            textBoxTimMonAn.BorderStyle = BorderStyle.None;
-            textBoxTimMonAn.Font = new Font("Segoe UI", 15F);
-            textBoxTimMonAn.Location = new Point(6, 7);
-            textBoxTimMonAn.Name = "textBoxTimMonAn";
-            textBoxTimMonAn.PlaceholderText = "Tìm tên món ăn";
-            textBoxTimMonAn.Size = new Size(210, 27);
-            textBoxTimMonAn.TabIndex = 0;
-            textBoxTimMonAn.TextAlign = HorizontalAlignment.Center;
+            bunifuLabel1.AllowParentOverrides = false;
+            bunifuLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            bunifuLabel1.AutoEllipsis = false;
+            bunifuLabel1.CursorType = Cursors.Default;
+            bunifuLabel1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bunifuLabel1.ForeColor = Color.White;
+            bunifuLabel1.Location = new Point(90, 8);
+            bunifuLabel1.Name = "bunifuLabel1";
+            bunifuLabel1.RightToLeft = RightToLeft.No;
+            bunifuLabel1.Size = new Size(206, 28);
+            bunifuLabel1.TabIndex = 1;
+            bunifuLabel1.Text = "Đơn đặt món của bạn";
+            bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
+            bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // ListMonAnDat
             // 
             ListMonAnDat.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ListMonAnDat.AutoScroll = true;
-            ListMonAnDat.BackColor = SystemColors.ControlDarkDark;
-            ListMonAnDat.BorderStyle = BorderStyle.Fixed3D;
-            ListMonAnDat.Location = new Point(-1, 40);
+            ListMonAnDat.BackColor = Color.FromArgb(84, 93, 110);
+            ListMonAnDat.Location = new Point(3, 40);
             ListMonAnDat.Name = "ListMonAnDat";
             ListMonAnDat.Size = new Size(369, 375);
             ListMonAnDat.TabIndex = 0;
@@ -108,16 +115,28 @@
             // panelThanhToan
             // 
             panelThanhToan.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            panelThanhToan.BorderStyle = BorderStyle.Fixed3D;
             panelThanhToan.Controls.Add(labelTongTien);
             panelThanhToan.Controls.Add(btnDatMon);
             panelThanhToan.Controls.Add(bunifuTextBox1);
             panelThanhToan.Controls.Add(checkBoxSoDu);
             panelThanhToan.Controls.Add(checkBoxTienMat);
-            panelThanhToan.Location = new Point(-1, 367);
+            panelThanhToan.Location = new Point(3, 367);
             panelThanhToan.Name = "panelThanhToan";
             panelThanhToan.Size = new Size(372, 255);
             panelThanhToan.TabIndex = 0;
+            // 
+            // labelTongTien
+            // 
+            labelTongTien.AutoSize = true;
+            labelTongTien.BackColor = Color.FromArgb(16, 178, 248);
+            labelTongTien.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTongTien.ForeColor = Color.White;
+            labelTongTien.Location = new Point(17, 202);
+            labelTongTien.Name = "labelTongTien";
+            labelTongTien.Size = new Size(74, 28);
+            labelTongTien.TabIndex = 1;
+            labelTongTien.Text = "0 VNĐ";
+            labelTongTien.Click += labelTongTien_Click;
             // 
             // btnDatMon
             // 
@@ -167,7 +186,7 @@
             btnDatMon.IdleIconLeftImage = null;
             btnDatMon.IdleIconRightImage = null;
             btnDatMon.IndicateFocus = false;
-            btnDatMon.Location = new Point(17, 188);
+            btnDatMon.Location = new Point(3, 188);
             btnDatMon.Name = "btnDatMon";
             btnDatMon.OnDisabledState.BorderColor = Color.FromArgb(191, 191, 191);
             btnDatMon.OnDisabledState.BorderRadius = 15;
@@ -201,7 +220,7 @@
             btnDatMon.OnPressedState.ForeColor = Color.White;
             btnDatMon.OnPressedState.IconLeftImage = null;
             btnDatMon.OnPressedState.IconRightImage = null;
-            btnDatMon.Size = new Size(334, 54);
+            btnDatMon.Size = new Size(360, 54);
             btnDatMon.TabIndex = 6;
             btnDatMon.TextAlign = ContentAlignment.MiddleRight;
             btnDatMon.TextAlignment = HorizontalAlignment.Center;
@@ -230,14 +249,15 @@
             bunifuTextBox1.CharacterCasing = CharacterCasing.Normal;
             bunifuTextBox1.DefaultFont = new Font("Segoe UI", 9.25F);
             bunifuTextBox1.DefaultText = "";
-            bunifuTextBox1.FillColor = Color.White;
+            bunifuTextBox1.FillColor = Color.FromArgb(139, 149, 163);
+            bunifuTextBox1.ForeColor = Color.White;
             bunifuTextBox1.HideSelection = true;
             bunifuTextBox1.IconLeft = null;
             bunifuTextBox1.IconLeftCursor = Cursors.IBeam;
             bunifuTextBox1.IconPadding = 10;
             bunifuTextBox1.IconRight = null;
             bunifuTextBox1.IconRightCursor = Cursors.IBeam;
-            bunifuTextBox1.Location = new Point(5, 48);
+            bunifuTextBox1.Location = new Point(3, 54);
             bunifuTextBox1.MaxLength = 32767;
             bunifuTextBox1.MinimumSize = new Size(1, 1);
             bunifuTextBox1.Modified = false;
@@ -259,13 +279,13 @@
             stateProperties3.PlaceholderForeColor = Color.Empty;
             bunifuTextBox1.OnHoverState = stateProperties3;
             stateProperties4.BorderColor = Color.Silver;
-            stateProperties4.FillColor = Color.White;
-            stateProperties4.ForeColor = Color.Empty;
+            stateProperties4.FillColor = Color.FromArgb(139, 149, 163);
+            stateProperties4.ForeColor = Color.White;
             stateProperties4.PlaceholderForeColor = Color.Empty;
             bunifuTextBox1.OnIdleState = stateProperties4;
             bunifuTextBox1.Padding = new Padding(3);
             bunifuTextBox1.PasswordChar = '\0';
-            bunifuTextBox1.PlaceholderForeColor = Color.Silver;
+            bunifuTextBox1.PlaceholderForeColor = Color.White;
             bunifuTextBox1.PlaceholderText = "Note cho quán";
             bunifuTextBox1.ReadOnly = false;
             bunifuTextBox1.ScrollBars = ScrollBars.None;
@@ -273,7 +293,7 @@
             bunifuTextBox1.SelectionLength = 0;
             bunifuTextBox1.SelectionStart = 0;
             bunifuTextBox1.ShortcutsEnabled = true;
-            bunifuTextBox1.Size = new Size(358, 92);
+            bunifuTextBox1.Size = new Size(366, 86);
             bunifuTextBox1.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             bunifuTextBox1.TabIndex = 5;
             bunifuTextBox1.TextAlign = HorizontalAlignment.Left;
@@ -284,26 +304,14 @@
             bunifuTextBox1.UseSystemPasswordChar = false;
             bunifuTextBox1.WordWrap = true;
             // 
-            // labelTongTien
-            // 
-            labelTongTien.AutoSize = true;
-            labelTongTien.BackColor = Color.FromArgb(16, 178, 248);
-            labelTongTien.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelTongTien.ForeColor = Color.White;
-            labelTongTien.Location = new Point(35, 200);
-            labelTongTien.Name = "labelTongTien";
-            labelTongTien.Size = new Size(76, 28);
-            labelTongTien.TabIndex = 1;
-            labelTongTien.Text = "SoTien";
-            labelTongTien.Click += labelTongTien_Click;
-            // 
             // checkBoxSoDu
             // 
             checkBoxSoDu.AutoSize = true;
-            checkBoxSoDu.Font = new Font("Segoe UI", 12F);
-            checkBoxSoDu.Location = new Point(132, 157);
+            checkBoxSoDu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkBoxSoDu.ForeColor = Color.White;
+            checkBoxSoDu.Location = new Point(124, 157);
             checkBoxSoDu.Name = "checkBoxSoDu";
-            checkBoxSoDu.Size = new Size(219, 25);
+            checkBoxSoDu.Size = new Size(239, 25);
             checkBoxSoDu.TabIndex = 4;
             checkBoxSoDu.Text = "Dùng số dư trong tài khoản";
             checkBoxSoDu.UseVisualStyleBackColor = true;
@@ -311,19 +319,96 @@
             // checkBoxTienMat
             // 
             checkBoxTienMat.AutoSize = true;
-            checkBoxTienMat.Font = new Font("Segoe UI", 12F);
-            checkBoxTienMat.Location = new Point(17, 157);
+            checkBoxTienMat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            checkBoxTienMat.ForeColor = Color.White;
+            checkBoxTienMat.Location = new Point(10, 157);
             checkBoxTienMat.Name = "checkBoxTienMat";
-            checkBoxTienMat.Size = new Size(89, 25);
+            checkBoxTienMat.Size = new Size(96, 25);
             checkBoxTienMat.TabIndex = 1;
             checkBoxTienMat.Text = "Tiền mặt";
             checkBoxTienMat.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTimMonAn
+            // 
+            textBoxTimMonAn.AcceptsReturn = false;
+            textBoxTimMonAn.AcceptsTab = false;
+            textBoxTimMonAn.AnimationSpeed = 200;
+            textBoxTimMonAn.AutoCompleteMode = AutoCompleteMode.None;
+            textBoxTimMonAn.AutoCompleteSource = AutoCompleteSource.None;
+            textBoxTimMonAn.AutoSizeHeight = true;
+            textBoxTimMonAn.BackColor = Color.Transparent;
+            textBoxTimMonAn.BackgroundImage = (Image)resources.GetObject("textBoxTimMonAn.BackgroundImage");
+            textBoxTimMonAn.BorderColorActive = Color.DodgerBlue;
+            textBoxTimMonAn.BorderColorDisabled = Color.FromArgb(204, 204, 204);
+            textBoxTimMonAn.BorderColorHover = Color.FromArgb(105, 181, 255);
+            textBoxTimMonAn.BorderColorIdle = Color.Silver;
+            textBoxTimMonAn.BorderRadius = 15;
+            textBoxTimMonAn.BorderThickness = 1;
+            textBoxTimMonAn.CharacterCase = Bunifu.UI.WinForms.BunifuTextBox.CharacterCases.Normal;
+            textBoxTimMonAn.CharacterCasing = CharacterCasing.Normal;
+            textBoxTimMonAn.DefaultFont = new Font("Segoe UI", 9.25F);
+            textBoxTimMonAn.DefaultText = "";
+            textBoxTimMonAn.FillColor = Color.FromArgb(139, 149, 163);
+            textBoxTimMonAn.HideSelection = true;
+            textBoxTimMonAn.IconLeft = null;
+            textBoxTimMonAn.IconLeftCursor = Cursors.IBeam;
+            textBoxTimMonAn.IconPadding = 10;
+            textBoxTimMonAn.IconRight = null;
+            textBoxTimMonAn.IconRightCursor = Cursors.IBeam;
+            textBoxTimMonAn.Location = new Point(2, 5);
+            textBoxTimMonAn.MaxLength = 32767;
+            textBoxTimMonAn.MinimumSize = new Size(1, 1);
+            textBoxTimMonAn.Modified = false;
+            textBoxTimMonAn.Multiline = false;
+            textBoxTimMonAn.Name = "textBoxTimMonAn";
+            stateProperties5.BorderColor = Color.DodgerBlue;
+            stateProperties5.FillColor = Color.Empty;
+            stateProperties5.ForeColor = Color.Empty;
+            stateProperties5.PlaceholderForeColor = Color.Empty;
+            textBoxTimMonAn.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = Color.FromArgb(204, 204, 204);
+            stateProperties6.FillColor = Color.FromArgb(240, 240, 240);
+            stateProperties6.ForeColor = Color.FromArgb(109, 109, 109);
+            stateProperties6.PlaceholderForeColor = Color.DarkGray;
+            textBoxTimMonAn.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = Color.FromArgb(105, 181, 255);
+            stateProperties7.FillColor = Color.Empty;
+            stateProperties7.ForeColor = Color.Empty;
+            stateProperties7.PlaceholderForeColor = Color.Empty;
+            textBoxTimMonAn.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = Color.Silver;
+            stateProperties8.FillColor = Color.FromArgb(139, 149, 163);
+            stateProperties8.ForeColor = Color.Empty;
+            stateProperties8.PlaceholderForeColor = Color.Empty;
+            textBoxTimMonAn.OnIdleState = stateProperties8;
+            textBoxTimMonAn.Padding = new Padding(3);
+            textBoxTimMonAn.PasswordChar = '\0';
+            textBoxTimMonAn.PlaceholderForeColor = Color.White;
+            textBoxTimMonAn.PlaceholderText = "Tìm kiếm";
+            textBoxTimMonAn.ReadOnly = false;
+            textBoxTimMonAn.ScrollBars = ScrollBars.None;
+            textBoxTimMonAn.SelectedText = "";
+            textBoxTimMonAn.SelectionLength = 0;
+            textBoxTimMonAn.SelectionStart = 0;
+            textBoxTimMonAn.ShortcutsEnabled = true;
+            textBoxTimMonAn.Size = new Size(125, 31);
+            textBoxTimMonAn.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            textBoxTimMonAn.TabIndex = 1;
+            textBoxTimMonAn.TextAlign = HorizontalAlignment.Left;
+            textBoxTimMonAn.TextMarginBottom = 0;
+            textBoxTimMonAn.TextMarginLeft = 3;
+            textBoxTimMonAn.TextMarginTop = 1;
+            textBoxTimMonAn.TextPlaceholder = "Tìm kiếm";
+            textBoxTimMonAn.UseSystemPasswordChar = false;
+            textBoxTimMonAn.WordWrap = true;
             // 
             // GoiMon
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1360, 629);
+            BackColor = Color.FromArgb(84, 93, 110);
+            ClientSize = new Size(1512, 629);
+            Controls.Add(textBoxTimMonAn);
             Controls.Add(panel1);
             Controls.Add(CagetoryMonAn);
             Controls.Add(MenuDoAn);
@@ -344,10 +429,11 @@
         private FlowLayoutPanel ListMonAnDat;
         private Panel panelThanhToan;
         private Label labelTongTien;
-        private TextBox textBoxTimMonAn;
         private CheckBox checkBoxTienMat;
         private CheckBox checkBoxSoDu;
         private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnDatMon;
+        private Bunifu.UI.WinForms.BunifuTextBox textBoxTimMonAn;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
     }
 }

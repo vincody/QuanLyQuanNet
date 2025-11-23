@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using QuanLyQuanNet.GUI.Menu;
 using QuanLyQuanNet.GUI.ViewDoAn;
+using System.Net.NetworkInformation;
 
 namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 {
@@ -98,7 +99,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                             MenuDoAn.Controls.Add(monAnControl);
                             monAnControl.ThemMonClicked += MonAn_Click;
 
-                            monAnControl.Tag = new { MonAnID = monAnID, TenMon = tenMon, Gia = gia };
+                            monAnControl.Tag = new { MonAnID = monAnID, TenMon = tenMon, Gia = gia, HinhAnhPath = hinhAnhPath };
                         }
                     }
                     catch (Exception ex)
@@ -113,25 +114,49 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 
             foreach (string category in categories)
             {
-                Button btn = new Button();
+                // Thay thế System.Windows.Forms.Button bằng BunifuButton
+                Bunifu.UI.WinForms.BunifuButton.BunifuButton btn =new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+
+                // Thiết lập Text và Tag
                 btn.Text = category;
                 btn.Tag = category;
-                btn.AutoSize = true;
-                btn.Padding = new Padding(10, 5, 10, 5);
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderSize = 0;
+
+                // 2. Thiết lập hiển thị nút (Điều chỉnh thuộc tính cho khớp với BunifuButton)
+                // Nhiều thuộc tính của BunifuButton khác với Button chuẩn.
+
+                // Ví dụ: Sử dụng thuộc tính Bunifu Button 
+                btn.AllowAnimations = true; // Bật hoạt ảnh
+                btn.AllowToggling = false;
+                btn.AutoRoundBorders = true;
+                btn.Height = 35; // Chiều cao cố định
+                btn.Width = 110; // Chiều rộng cố định (Nếu không dùng AutoSize)
+                btn.OnIdleState.BorderColor = Color.Transparent;
+                btn.OnIdleState.FillColor = Color.Transparent;
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Padding = new Padding(20, 0, 0, 0);
+                // Gán sự kiện Click
                 btn.Click += CategoryButton_Click;
+
+                // Thêm vào container (Giả sử CagetoryMonAn là FlowLayoutPanel hoặc Panel)
                 CagetoryMonAn.Controls.Add(btn);
             }
         }
 
         private void CategoryButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
+            // ✅ FIX LỖI: Kiểm tra đối tượng gửi sự kiện dưới dạng Control chung hoặc BunifuButton
+            Control clickedControl = sender as Control;
+
+            if (clickedControl != null)
             {
-                string selectedCategory = clickedButton.Tag.ToString();
-                LoadMenu(selectedCategory, textBoxTimMonAn.Text.Trim());
+                // Lấy giá trị Tag trực tiếp từ Control (vì Tag là thuộc tính chung)
+                string selectedCategory = clickedControl.Tag.ToString();
+
+                // Lưu trạng thái lọc hiện tại
+                currentCategory = selectedCategory;
+
+                // Gọi hàm tải menu với tham số phân loại
+                LoadMenu(selectedCategory);
             }
         }
 
@@ -165,11 +190,12 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             int monAnID = itemInfo.MonAnID;
             string tenMon = itemInfo.TenMon;
             decimal giaDonVi = itemInfo.Gia;
+            string hinhAnhPath = itemInfo.HinhAnhPath; // ✅ LẤY ĐƯỜNG DẪN ẢNH
 
-            AddOrUpdateOrderItem(monAnID, tenMon, giaDonVi);
+            AddOrUpdateOrderItem(monAnID, tenMon, giaDonVi, hinhAnhPath);
         }
 
-        private void AddOrUpdateOrderItem(int monAnID, string tenMon, decimal giaDonVi)
+        private void AddOrUpdateOrderItem(int monAnID, string tenMon, decimal giaDonVi, string hinhAnhPath)
         {
             if (currentOrderItems.ContainsKey(tenMon))
             {
@@ -179,7 +205,8 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             {
                 ThongTinDatMon orderItemControl = new ThongTinDatMon();
 
-                orderItemControl.InitializeItem(monAnID, tenMon, giaDonVi);
+                // ✅ GỌI HÀM VỚI 4 THAM SỐ (bao gồm ảnh)
+                orderItemControl.InitializeItem(monAnID, tenMon, giaDonVi, hinhAnhPath);
 
                 orderItemControl.QuantityChanged += OrderItemControl_QuantityChanged;
                 orderItemControl.ItemRemoved += OrderItemControl_ItemRemoved;
