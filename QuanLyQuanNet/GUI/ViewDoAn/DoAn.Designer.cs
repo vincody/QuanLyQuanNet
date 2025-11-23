@@ -32,39 +32,14 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            labelTenDoAn = new Label();
-            labelGiaDoAn = new Label();
             pictureBoxHinhAnh = new PictureBox();
             btnThemMon = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            labelGiaDoAn = new Bunifu.UI.WinForms.BunifuLabel();
+            labelTenDoAn = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBoxHinhAnh).BeginInit();
             guna2Panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // labelTenDoAn
-            // 
-            labelTenDoAn.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            labelTenDoAn.BackColor = Color.Transparent;
-            labelTenDoAn.Font = new Font("Segoe UI", 15F);
-            labelTenDoAn.Location = new Point(39, 4);
-            labelTenDoAn.Name = "labelTenDoAn";
-            labelTenDoAn.Size = new Size(108, 32);
-            labelTenDoAn.TabIndex = 1;
-            labelTenDoAn.Text = "TenMonAn";
-            labelTenDoAn.TextAlign = ContentAlignment.MiddleCenter;
-            labelTenDoAn.Click += labelTenDoAn_Click;
-            // 
-            // labelGiaDoAn
-            // 
-            labelGiaDoAn.AutoSize = true;
-            labelGiaDoAn.Font = new Font("Segoe UI", 10F);
-            labelGiaDoAn.ForeColor = Color.Firebrick;
-            labelGiaDoAn.Location = new Point(13, 51);
-            labelGiaDoAn.Name = "labelGiaDoAn";
-            labelGiaDoAn.Size = new Size(64, 19);
-            labelGiaDoAn.TabIndex = 2;
-            labelGiaDoAn.Text = "GiaDoAn";
-            labelGiaDoAn.Click += labelGiaDoAn_Click;
             // 
             // pictureBoxHinhAnh
             // 
@@ -150,7 +125,7 @@
             btnThemMon.OnIdleState.BorderThickness = 1;
             btnThemMon.OnIdleState.FillColor = Color.Silver;
             btnThemMon.OnIdleState.ForeColor = Color.White;
-            btnThemMon.OnIdleState.IconLeftImage = (Image)resources.GetObject("bunifuButton1.OnIdleState.IconLeftImage");
+            btnThemMon.OnIdleState.IconLeftImage = (Image)resources.GetObject("btnThemMon.OnIdleState.IconLeftImage");
             btnThemMon.OnIdleState.IconRightImage = null;
             btnThemMon.OnPressedState.BorderColor = Color.Silver;
             btnThemMon.OnPressedState.BorderRadius = 1;
@@ -175,9 +150,9 @@
             guna2Panel1.BorderColor = Color.Silver;
             guna2Panel1.BorderRadius = 20;
             guna2Panel1.BorderThickness = 1;
+            guna2Panel1.Controls.Add(labelGiaDoAn);
             guna2Panel1.Controls.Add(labelTenDoAn);
             guna2Panel1.Controls.Add(btnThemMon);
-            guna2Panel1.Controls.Add(labelGiaDoAn);
             customizableEdges1.TopLeft = false;
             customizableEdges1.TopRight = false;
             guna2Panel1.CustomizableEdges = customizableEdges1;
@@ -187,6 +162,39 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2Panel1.Size = new Size(190, 84);
             guna2Panel1.TabIndex = 4;
+            // 
+            // labelGiaDoAn
+            // 
+            labelGiaDoAn.AllowParentOverrides = false;
+            labelGiaDoAn.AutoEllipsis = false;
+            labelGiaDoAn.CursorType = Cursors.Default;
+            labelGiaDoAn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelGiaDoAn.ForeColor = Color.Brown;
+            labelGiaDoAn.Location = new Point(12, 50);
+            labelGiaDoAn.Name = "labelGiaDoAn";
+            labelGiaDoAn.RightToLeft = RightToLeft.No;
+            labelGiaDoAn.Size = new Size(60, 21);
+            labelGiaDoAn.TabIndex = 6;
+            labelGiaDoAn.Text = "GiaMon";
+            labelGiaDoAn.TextAlignment = ContentAlignment.TopLeft;
+            labelGiaDoAn.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // labelTenDoAn
+            // 
+            labelTenDoAn.AllowParentOverrides = false;
+            labelTenDoAn.AutoEllipsis = true;
+            labelTenDoAn.AutoSize = false;
+            labelTenDoAn.CursorType = Cursors.Default;
+            labelTenDoAn.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTenDoAn.Location = new Point(3, 3);
+            labelTenDoAn.Name = "labelTenDoAn";
+            labelTenDoAn.RightToLeft = RightToLeft.No;
+            labelTenDoAn.Size = new Size(185, 41);
+            labelTenDoAn.TabIndex = 5;
+            labelTenDoAn.Text = "TenMon";
+            labelTenDoAn.TextAlignment = ContentAlignment.MiddleCenter;
+            labelTenDoAn.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            labelTenDoAn.UseGdiPlusTextRendering = true;
             // 
             // DoAn
             // 
@@ -205,9 +213,9 @@
 
         #endregion
         public PictureBox pictureBoxHinhAnh;
-        public Label labelGiaDoAn;
-        public Label labelTenDoAn;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnThemMon;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        public Bunifu.UI.WinForms.BunifuLabel labelGiaDoAn;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnThemMon;
+        public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        public Bunifu.UI.WinForms.BunifuLabel labelTenDoAn;
     }
 }

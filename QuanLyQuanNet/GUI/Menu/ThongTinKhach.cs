@@ -303,7 +303,7 @@ namespace QuanLyQuanNet.GUI.Menu
         private void btnDatMonAn_Click(object sender, EventArgs e)
         {
             GoiMon goiMonForm = new GoiMon();
-            goiMonForm.Show();
+            goiMonForm.ShowDialog();
         }
 
         private void btnMenuGames_Click(object sender, EventArgs e)

@@ -23,7 +23,6 @@ namespace QuanLyQuanNet.GUI.ViewDoAn
 
         // Các hàm click khác có thể bỏ trống hoặc xóa nếu không dùng
         private void pictureBoxHinhAnh_Click(object sender, EventArgs e) { }
-        private void labelTenDoAn_Click(object sender, EventArgs e) { }
         private void labelGiaDoAn_Click(object sender, EventArgs e) { }
     }
 }
