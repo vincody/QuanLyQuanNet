@@ -43,7 +43,7 @@
             panelListPhim.BackColor = SystemColors.ControlDarkDark;
             panelListPhim.Location = new Point(0, 43);
             panelListPhim.Name = "panelListPhim";
-            panelListPhim.Size = new Size(920, 407);
+            panelListPhim.Size = new Size(1220, 486);
             panelListPhim.TabIndex = 0;
             // 
             // textBoxSoTrang
@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 450);
+            ClientSize = new Size(1220, 529);
             Controls.Add(textBoxTimTen);
             Controls.Add(btnTru);
             Controls.Add(textBoxSoTrang);

@@ -89,6 +89,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -102,7 +103,7 @@
             panel1.Controls.Add(label2);
             panel1.Location = new Point(26, 130);
             panel1.Name = "panel1";
-            panel1.Size = new Size(375, 329);
+            panel1.Size = new Size(388, 329);
             panel1.TabIndex = 5;
             // 
             // pictureBox3
@@ -201,7 +202,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.Name = "pictureBox4";

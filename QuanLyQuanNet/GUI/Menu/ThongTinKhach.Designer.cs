@@ -641,6 +641,7 @@
             Controls.Add(bunifuPanel3);
             Controls.Add(bunifuPanel1);
             Controls.Add(bunifuPanel2);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ThongTinKhach";
             bunifuPanel1.ResumeLayout(false);
