@@ -29,26 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameInfo));
-            bunifuPictureBoxHinhAnhGame = new Bunifu.UI.WinForms.BunifuPictureBox();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             bunifuLabelTenGame = new Bunifu.UI.WinForms.BunifuLabel();
+            bunifuPictureBoxHinhAnhGame = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)bunifuPictureBoxHinhAnhGame).BeginInit();
             SuspendLayout();
-            // 
-            // bunifuPictureBoxHinhAnhGame
-            // 
-            bunifuPictureBoxHinhAnhGame.AllowFocused = false;
-            bunifuPictureBoxHinhAnhGame.Anchor = AnchorStyles.None;
-            bunifuPictureBoxHinhAnhGame.AutoSizeHeight = true;
-            bunifuPictureBoxHinhAnhGame.BorderRadius = 23;
-            bunifuPictureBoxHinhAnhGame.Image = (Image)resources.GetObject("bunifuPictureBoxHinhAnhGame.Image");
-            bunifuPictureBoxHinhAnhGame.IsCircle = true;
-            bunifuPictureBoxHinhAnhGame.Location = new Point(12, 3);
-            bunifuPictureBoxHinhAnhGame.Name = "bunifuPictureBoxHinhAnhGame";
-            bunifuPictureBoxHinhAnhGame.Size = new Size(46, 46);
-            bunifuPictureBoxHinhAnhGame.SizeMode = PictureBoxSizeMode.StretchImage;
-            bunifuPictureBoxHinhAnhGame.TabIndex = 0;
-            bunifuPictureBoxHinhAnhGame.TabStop = false;
-            bunifuPictureBoxHinhAnhGame.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
             // bunifuLabelTenGame
             // 
@@ -57,8 +43,9 @@
             bunifuLabelTenGame.AutoEllipsis = false;
             bunifuLabelTenGame.AutoSize = false;
             bunifuLabelTenGame.CursorType = Cursors.Default;
-            bunifuLabelTenGame.Font = new Font("Segoe UI", 9F);
-            bunifuLabelTenGame.Location = new Point(0, 55);
+            bunifuLabelTenGame.Font = new Font("Segoe UI", 10F);
+            bunifuLabelTenGame.ForeColor = Color.White;
+            bunifuLabelTenGame.Location = new Point(16, 78);
             bunifuLabelTenGame.Name = "bunifuLabelTenGame";
             bunifuLabelTenGame.RightToLeft = RightToLeft.No;
             bunifuLabelTenGame.Size = new Size(67, 44);
@@ -67,21 +54,36 @@
             bunifuLabelTenGame.TextAlignment = ContentAlignment.MiddleCenter;
             bunifuLabelTenGame.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // bunifuPictureBoxHinhAnhGame
+            // 
+            bunifuPictureBoxHinhAnhGame.BorderRadius = 15;
+            bunifuPictureBoxHinhAnhGame.CustomizableEdges = customizableEdges1;
+            bunifuPictureBoxHinhAnhGame.FillColor = Color.Transparent;
+            bunifuPictureBoxHinhAnhGame.ImageRotate = 0F;
+            bunifuPictureBoxHinhAnhGame.Location = new Point(10, 6);
+            bunifuPictureBoxHinhAnhGame.Name = "bunifuPictureBoxHinhAnhGame";
+            bunifuPictureBoxHinhAnhGame.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            bunifuPictureBoxHinhAnhGame.Size = new Size(80, 70);
+            bunifuPictureBoxHinhAnhGame.SizeMode = PictureBoxSizeMode.StretchImage;
+            bunifuPictureBoxHinhAnhGame.TabIndex = 3;
+            bunifuPictureBoxHinhAnhGame.TabStop = false;
+            bunifuPictureBoxHinhAnhGame.UseTransparentBackground = true;
+            // 
             // GameInfo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(bunifuLabelTenGame);
+            BackColor = Color.Transparent;
             Controls.Add(bunifuPictureBoxHinhAnhGame);
+            Controls.Add(bunifuLabelTenGame);
             Name = "GameInfo";
-            Size = new Size(67, 99);
+            Size = new Size(99, 129);
             ((System.ComponentModel.ISupportInitialize)bunifuPictureBoxHinhAnhGame).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        public Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBoxHinhAnhGame;
         public Bunifu.UI.WinForms.BunifuLabel bunifuLabelTenGame;
+        public Guna.UI2.WinForms.Guna2PictureBox bunifuPictureBoxHinhAnhGame;
     }
 }

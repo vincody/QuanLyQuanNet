@@ -114,7 +114,10 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
 
                 btn.Height = 35; // Chiều cao cố định
                 btn.Width = 80; // Chiều rộng cố định (Nếu không dùng AutoSize)
-
+                btn.OnIdleState.BorderColor = Color.White;
+                btn.OnIdleState.FillColor = Color.Transparent;
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Padding = new Padding(20, 0, 0, 0);
 
                 // Gán chung sự kiện Click
                 btn.Click += CategoryButton_Click;
