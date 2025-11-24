@@ -42,7 +42,7 @@
             CagetoryGames.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             CagetoryGames.Location = new Point(0, 57);
             CagetoryGames.Name = "CagetoryGames";
-            CagetoryGames.Size = new Size(1048, 55);
+            CagetoryGames.Size = new Size(1157, 55);
             CagetoryGames.TabIndex = 9;
             // 
             // flowPanelGame
@@ -51,7 +51,7 @@
             flowPanelGame.AutoScroll = true;
             flowPanelGame.Location = new Point(0, 111);
             flowPanelGame.Name = "flowPanelGame";
-            flowPanelGame.Size = new Size(1048, 417);
+            flowPanelGame.Size = new Size(1157, 417);
             flowPanelGame.TabIndex = 8;
             // 
             // bunifuLabel1
@@ -92,7 +92,7 @@
             textBoxTimKiemGame.PlaceholderText = "Tìm kiếm game";
             textBoxTimKiemGame.SelectedText = "";
             textBoxTimKiemGame.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            textBoxTimKiemGame.Size = new Size(853, 36);
+            textBoxTimKiemGame.Size = new Size(962, 36);
             textBoxTimKiemGame.TabIndex = 11;
             textBoxTimKiemGame.TextChanged += textBoxTimKiemGame_TextChanged;
             // 
@@ -101,7 +101,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(73, 85, 101);
-            ClientSize = new Size(1048, 528);
+            ClientSize = new Size(1157, 528);
             Controls.Add(textBoxTimKiemGame);
             Controls.Add(bunifuLabel1);
             Controls.Add(CagetoryGames);
