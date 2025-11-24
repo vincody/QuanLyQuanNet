@@ -34,7 +34,7 @@
             CagetoryGames = new FlowLayoutPanel();
             flowPanelGame = new FlowLayoutPanel();
             bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            textBoxTimKiemGame = new Guna.UI2.WinForms.Guna2TextBox();
             SuspendLayout();
             // 
             // CagetoryGames
@@ -61,7 +61,7 @@
             bunifuLabel1.CursorType = Cursors.Default;
             bunifuLabel1.Font = new Font("Segoe Script", 25F);
             bunifuLabel1.ForeColor = Color.White;
-            bunifuLabel1.Location = new Point(36, 1);
+            bunifuLabel1.Location = new Point(36, 2);
             bunifuLabel1.Name = "bunifuLabel1";
             bunifuLabel1.RightToLeft = RightToLeft.No;
             bunifuLabel1.Size = new Size(114, 52);
@@ -70,30 +70,31 @@
             bunifuLabel1.TextAlignment = ContentAlignment.TopLeft;
             bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // guna2TextBox1
+            // textBoxTimKiemGame
             // 
-            guna2TextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            guna2TextBox1.BorderRadius = 15;
+            textBoxTimKiemGame.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxTimKiemGame.BorderRadius = 15;
             customizableEdges1.TopLeft = false;
-            guna2TextBox1.CustomizableEdges = customizableEdges1;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FillColor = Color.FromArgb(73, 85, 101);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.IconLeft = (Image)resources.GetObject("guna2TextBox1.IconLeft");
-            guna2TextBox1.Location = new Point(183, 12);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PlaceholderForeColor = Color.White;
-            guna2TextBox1.PlaceholderText = "Tìm kiếm game";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2TextBox1.Size = new Size(853, 36);
-            guna2TextBox1.TabIndex = 11;
+            textBoxTimKiemGame.CustomizableEdges = customizableEdges1;
+            textBoxTimKiemGame.DefaultText = "";
+            textBoxTimKiemGame.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            textBoxTimKiemGame.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            textBoxTimKiemGame.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            textBoxTimKiemGame.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            textBoxTimKiemGame.FillColor = Color.FromArgb(73, 85, 101);
+            textBoxTimKiemGame.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            textBoxTimKiemGame.Font = new Font("Segoe UI", 9F);
+            textBoxTimKiemGame.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            textBoxTimKiemGame.IconLeft = (Image)resources.GetObject("textBoxTimKiemGame.IconLeft");
+            textBoxTimKiemGame.Location = new Point(183, 12);
+            textBoxTimKiemGame.Name = "textBoxTimKiemGame";
+            textBoxTimKiemGame.PlaceholderForeColor = Color.White;
+            textBoxTimKiemGame.PlaceholderText = "Tìm kiếm game";
+            textBoxTimKiemGame.SelectedText = "";
+            textBoxTimKiemGame.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            textBoxTimKiemGame.Size = new Size(853, 36);
+            textBoxTimKiemGame.TabIndex = 11;
+            textBoxTimKiemGame.TextChanged += textBoxTimKiemGame_TextChanged;
             // 
             // MenuGames
             // 
@@ -101,7 +102,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(73, 85, 101);
             ClientSize = new Size(1048, 528);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(textBoxTimKiemGame);
             Controls.Add(bunifuLabel1);
             Controls.Add(CagetoryGames);
             Controls.Add(flowPanelGame);
@@ -124,6 +125,6 @@
         private FlowLayoutPanel CagetoryGames;
         private FlowLayoutPanel flowPanelGame;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox textBoxTimKiemGame;
     }
 }

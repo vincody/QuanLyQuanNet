@@ -23,27 +23,49 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
             SetupCategoryFilters();
             LoadGameMenu(); // Tải menu lần đầu
         }
-        private void LoadGameMenu(string filterCategory = "Tất cả")
+        private void LoadGameMenu(string filterCategory = "Tất cả", string searchKeyword = "") // <<< Thêm tham số searchKeyword
         {
-            // Xóa controls cũ trước khi tải lại
+            // Xóa controls cũ
             flowPanelGame.Controls.Clear();
 
             string query = "SELECT MaGameID, TenGame, DanhMuc, HinhAnhGamePath FROM Game";
 
-            // 1. Xây dựng mệnh đề WHERE (Nếu không phải là "Tất cả")
+            // --- XÂY DỰNG CÂU TRUY VẤN ĐỘNG ---
+            System.Collections.Generic.List<string> whereClauses = new System.Collections.Generic.List<string>();
+
+            // 1. Lọc theo Danh mục
             if (filterCategory != "Tất cả")
             {
-                query += " WHERE DanhMuc = @Category";
+                whereClauses.Add("DanhMuc = @Category");
             }
+
+            // 2. Lọc theo Tên Game (Tìm kiếm)
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                whereClauses.Add("TenGame LIKE @SearchKeyword");
+            }
+
+            // Ghép các điều kiện lại với nhau bằng AND
+            if (whereClauses.Count > 0)
+            {
+                query += " WHERE " + string.Join(" AND ", whereClauses);
+            }
+            // -----------------------------------
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // 2. Thêm tham số SQL
+                    // Thêm tham số SQL
                     if (filterCategory != "Tất cả")
                     {
                         command.Parameters.AddWithValue("@Category", filterCategory);
+                    }
+
+                    if (!string.IsNullOrEmpty(searchKeyword))
+                    {
+                        // Tìm kiếm tương đối (%)
+                        command.Parameters.AddWithValue("@SearchKeyword", "%" + searchKeyword + "%");
                     }
 
                     try
@@ -56,13 +78,11 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                             string tenGame = reader["TenGame"].ToString();
                             string hinhAnhPath = reader["HinhAnhGamePath"].ToString();
 
-                            // Tạo một instance của User Control (GameInfo.cs)
+                            // Tạo User Control GameInfo
                             GameInfo gameControl = new GameInfo();
-
-                            // Gán Tên Game
                             gameControl.bunifuLabelTenGame.Text = tenGame;
 
-                            // Tải hình ảnh
+                            // Tải hình ảnh (Code xử lý ảnh như đã làm trước đó)
                             if (!string.IsNullOrEmpty(hinhAnhPath))
                             {
                                 try
@@ -70,23 +90,21 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
                                     string fullPath = Path.Combine(Application.StartupPath, hinhAnhPath);
                                     if (File.Exists(fullPath))
                                     {
-                                        // Tải ảnh (Lưu ý: Bạn đang dùng Bunifu PictureBox, thường hỗ trợ ImageLocation)
                                         gameControl.bunifuPictureBoxHinhAnhGame.ImageLocation = fullPath;
                                     }
                                 }
-                                catch (Exception imgEx)
-                                {
-                                    Console.WriteLine("Lỗi tải ảnh game: " + imgEx.Message);
-                                }
+                                catch (Exception) { }
                             }
 
-                            // Thêm User Control vào FlowLayoutPanel
+                            // Xử lý Label xuống dòng (như đã làm trước đó)
+                            // AutoResizeLabelHeight(gameControl.bunifuLabelTenGame);
+
                             flowPanelGame.Controls.Add(gameControl);
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi tải thực đơn game: " + ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi tải game: " + ex.Message);
                     }
                 }
             }
@@ -129,20 +147,26 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormKhach
         // Xử lý sự kiện khi một nút phân loại được nhấn
         private void CategoryButton_Click(object sender, EventArgs e)
         {
-            // ✅ FIX LỖI: Kiểm tra đối tượng gửi sự kiện dưới dạng Control chung hoặc BunifuButton
             Control clickedControl = sender as Control;
-
             if (clickedControl != null)
             {
-                // Lấy giá trị Tag trực tiếp từ Control (vì Tag là thuộc tính chung)
                 string selectedCategory = clickedControl.Tag.ToString();
+                currentCategory = selectedCategory; // Lưu trạng thái
 
-                // Lưu trạng thái lọc hiện tại
-                currentCategory = selectedCategory;
+                // Lấy từ khóa đang có trong ô tìm kiếm
+                string currentKeyword = textBoxTimKiemGame.Text.Trim();
 
-                // Gọi hàm tải menu với tham số phân loại
-                LoadGameMenu(selectedCategory);
+                // Tải lại với Category MỚI và Keyword CŨ
+                LoadGameMenu(currentCategory, currentKeyword);
             }
+        }
+        private void textBoxTimKiemGame_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = textBoxTimKiemGame.Text.Trim();
+
+            // Gọi hàm tải lại với Category đang chọn và Keyword mới
+            // 'currentCategory' là biến bạn đã khai báo ở phần trước để lưu trạng thái nút bấm
+            LoadGameMenu(currentCategory, keyword);
         }
     }
 }
