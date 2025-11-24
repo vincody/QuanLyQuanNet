@@ -84,6 +84,7 @@
             btnHoanThanhDon.TabIndex = 4;
             btnHoanThanhDon.Text = "Hoành thành đơn";
             btnHoanThanhDon.UseVisualStyleBackColor = true;
+            btnHoanThanhDon.Click += btnHoanThanhDon_Click_1;
             // 
             // labelTongTien
             // 

@@ -31,7 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            dataGridViewMenu = new DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pictureBoxMenu = new PictureBox();
             textBoxTimKiem = new TextBox();
             btnThemMon = new Button();
@@ -44,57 +44,11 @@
             label1 = new Label();
             labelGia = new Label();
             labelPL = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMenu).BeginInit();
+            dataGridViewMenu = new Bunifu.UI.WinForms.BunifuDataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBoxMenu).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMenu).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridViewMenu
-            // 
-            dataGridViewMenu.AllowUserToAddRows = false;
-            dataGridViewMenu.AllowUserToDeleteRows = false;
-            dataGridViewMenu.AllowUserToResizeColumns = false;
-            dataGridViewMenu.AllowUserToResizeRows = false;
-            dataGridViewMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewMenu.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewMenu.BackgroundColor = Color.White;
-            dataGridViewMenu.BorderStyle = BorderStyle.None;
-            dataGridViewMenu.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewMenu.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(0, 0, 0, 10);
-            dataGridViewCellStyle1.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewMenu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewMenu.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewMenu.GridColor = Color.AliceBlue;
-            dataGridViewMenu.Location = new Point(12, 72);
-            dataGridViewMenu.Name = "dataGridViewMenu";
-            dataGridViewMenu.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewMenu.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewMenu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewMenu.Size = new Size(473, 418);
-            dataGridViewMenu.TabIndex = 0;
             // 
             // pictureBoxMenu
             // 
@@ -231,31 +185,102 @@
             labelPL.TabIndex = 0;
             labelPL.Text = "Phân loại";
             // 
+            // dataGridViewMenu
+            // 
+            dataGridViewMenu.AllowCustomTheming = false;
+            dataGridViewMenu.AllowUserToAddRows = false;
+            dataGridViewMenu.AllowUserToDeleteRows = false;
+            dataGridViewMenu.AllowUserToOrderColumns = true;
+            dataGridViewMenu.AllowUserToResizeColumns = false;
+            dataGridViewMenu.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewMenu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewMenu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewMenu.BorderStyle = BorderStyle.None;
+            dataGridViewMenu.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewMenu.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewMenu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewMenu.ColumnHeadersHeight = 40;
+            dataGridViewMenu.CurrentTheme.AlternatingRowsStyle.BackColor = Color.FromArgb(248, 251, 255);
+            dataGridViewMenu.CurrentTheme.AlternatingRowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewMenu.CurrentTheme.AlternatingRowsStyle.ForeColor = Color.Black;
+            dataGridViewMenu.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewMenu.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = Color.Black;
+            dataGridViewMenu.CurrentTheme.BackColor = Color.White;
+            dataGridViewMenu.CurrentTheme.GridColor = Color.FromArgb(221, 238, 255);
+            dataGridViewMenu.CurrentTheme.HeaderStyle.BackColor = Color.DodgerBlue;
+            dataGridViewMenu.CurrentTheme.HeaderStyle.Font = new Font("Segoe UI Semibold", 11.75F, FontStyle.Bold);
+            dataGridViewMenu.CurrentTheme.HeaderStyle.ForeColor = Color.White;
+            dataGridViewMenu.CurrentTheme.HeaderStyle.SelectionBackColor = Color.FromArgb(24, 115, 204);
+            dataGridViewMenu.CurrentTheme.HeaderStyle.SelectionForeColor = Color.White;
+            dataGridViewMenu.CurrentTheme.Name = null;
+            dataGridViewMenu.CurrentTheme.RowsStyle.BackColor = Color.White;
+            dataGridViewMenu.CurrentTheme.RowsStyle.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewMenu.CurrentTheme.RowsStyle.ForeColor = Color.Black;
+            dataGridViewMenu.CurrentTheme.RowsStyle.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewMenu.CurrentTheme.RowsStyle.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(210, 232, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewMenu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewMenu.EnableHeadersVisualStyles = false;
+            dataGridViewMenu.GridColor = Color.FromArgb(221, 238, 255);
+            dataGridViewMenu.HeaderBackColor = Color.DodgerBlue;
+            dataGridViewMenu.HeaderBgColor = Color.Empty;
+            dataGridViewMenu.HeaderForeColor = Color.White;
+            dataGridViewMenu.Location = new Point(12, 72);
+            dataGridViewMenu.Name = "dataGridViewMenu";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewMenu.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewMenu.RowHeadersVisible = false;
+            dataGridViewMenu.RowTemplate.Height = 40;
+            dataGridViewMenu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewMenu.Size = new Size(473, 418);
+            dataGridViewMenu.TabIndex = 7;
+            dataGridViewMenu.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            // 
             // MenuDA
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 493);
+            Controls.Add(dataGridViewMenu);
             Controls.Add(panel1);
             Controls.Add(btnXoaMonAn);
             Controls.Add(btnThemMon);
             Controls.Add(textBoxTimKiem);
             Controls.Add(pictureBoxMenu);
-            Controls.Add(dataGridViewMenu);
             Name = "MenuDA";
             Text = "Menu";
             Load += Menu_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxMenu).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMenu).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridViewMenu;
         private PictureBox pictureBoxMenu;
         private TextBox textBoxTimKiem;
         private Button btnThemMon;
@@ -268,5 +293,6 @@
         private Label label1;
         private Label labelGia;
         private Button btnSuaChiTietMon;
+        private Bunifu.UI.WinForms.BunifuDataGridView dataGridViewMenu;
     }
 }

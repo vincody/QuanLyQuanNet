@@ -135,7 +135,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             }
         }
         // Xử lý nút HOÀN THÀNH ĐƠN
-        private void btnHoanThanhDon_Click(object sender, EventArgs e)
+        private void btnHoanThanhDon_Click_1(object sender, EventArgs e)
         {
             string updateQuery = "UPDATE DonDatMon SET TrangThai = N'Đã xong' WHERE DonDatID = @ID";
 

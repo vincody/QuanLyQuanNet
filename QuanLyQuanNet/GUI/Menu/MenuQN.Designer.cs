@@ -68,7 +68,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(220, 614);
+            panel1.Size = new Size(220, 670);
             panel1.TabIndex = 0;
             // 
             // btnTrack
@@ -87,7 +87,6 @@
             btnTrack.TextAlign = ContentAlignment.MiddleLeft;
             btnTrack.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnTrack.UseVisualStyleBackColor = true;
-            btnTrack.Visible = false;
             btnTrack.Click += btnTrack_Click;
             // 
             // btnNV
@@ -125,7 +124,6 @@
             btnKho.TextAlign = ContentAlignment.MiddleLeft;
             btnKho.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnKho.UseVisualStyleBackColor = true;
-            btnKho.Visible = false;
             btnKho.Click += btnKho_Click;
             // 
             // btnVoucher
@@ -248,7 +246,7 @@
             panelTitle.Dock = DockStyle.Top;
             panelTitle.Location = new Point(220, 0);
             panelTitle.Name = "panelTitle";
-            panelTitle.Size = new Size(855, 119);
+            panelTitle.Size = new Size(1033, 119);
             panelTitle.TabIndex = 10;
             panelTitle.MouseDown += panelTitle_MouseDown;
             // 
@@ -259,7 +257,7 @@
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.AliceBlue;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(823, 3);
+            btnClose.Location = new Point(1001, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(27, 23);
             btnClose.TabIndex = 4;
@@ -274,7 +272,7 @@
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.ForeColor = Color.Transparent;
             btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
-            btnMaximize.Location = new Point(790, -2);
+            btnMaximize.Location = new Point(968, -2);
             btnMaximize.Name = "btnMaximize";
             btnMaximize.Size = new Size(27, 34);
             btnMaximize.TabIndex = 3;
@@ -288,7 +286,7 @@
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.ForeColor = Color.AliceBlue;
             btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
-            btnMinimize.Location = new Point(757, 3);
+            btnMinimize.Location = new Point(935, 3);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new Size(27, 23);
             btnMinimize.TabIndex = 2;
@@ -300,7 +298,7 @@
             lblTenDN.Anchor = AnchorStyles.None;
             lblTenDN.AutoSize = true;
             lblTenDN.Font = new Font("Segoe UI", 20F);
-            lblTenDN.Location = new Point(548, 41);
+            lblTenDN.Location = new Point(637, 41);
             lblTenDN.Name = "lblTenDN";
             lblTenDN.Size = new Size(62, 37);
             lblTenDN.TabIndex = 1;
@@ -311,7 +309,7 @@
             lblTitle.Anchor = AnchorStyles.None;
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 20F);
-            lblTitle.Location = new Point(34, 41);
+            lblTitle.Location = new Point(123, 41);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(173, 37);
             lblTitle.TabIndex = 0;
@@ -322,14 +320,14 @@
             panelCon.Dock = DockStyle.Fill;
             panelCon.Location = new Point(220, 119);
             panelCon.Name = "panelCon";
-            panelCon.Size = new Size(855, 495);
+            panelCon.Size = new Size(1033, 551);
             panelCon.TabIndex = 0;
             // 
             // MenuQN
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1075, 614);
+            ClientSize = new Size(1253, 670);
             Controls.Add(panelCon);
             Controls.Add(panelTitle);
             Controls.Add(panel1);
