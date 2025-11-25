@@ -22,23 +22,38 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         {
             LoadKhoData();
         }
-        private void LoadKhoData()
+        private void LoadKhoData(string searchKeyword = "")
         {
-            // 1. Truy vấn lấy dữ liệu theo thứ tự mong muốn
+            // 1. Truy vấn cơ bản
             string query = @"
-                SELECT 
-                    NguyenLieuID, 
-                    DanhMuc, 
-                    TenNguyenLieu, 
-                    GiaNhap, 
-                    DonViTinh, 
-                    SoLuongTon 
-                FROM NguyenLieu";
+        SELECT 
+            NguyenLieuID, 
+            DanhMuc, 
+            TenNguyenLieu, 
+            GiaNhap, 
+            DonViTinh, 
+            SoLuongTon 
+        FROM NguyenLieu";
+
+            // 2. Thêm điều kiện tìm kiếm nếu có từ khóa
+            if (!string.IsNullOrEmpty(searchKeyword))
+            {
+                // Sử dụng N'...' để hỗ trợ tìm kiếm tiếng Việt có dấu nếu bạn muốn hardcode,
+                // nhưng dùng tham số @Keyword là an toàn nhất.
+                query += " WHERE TenNguyenLieu LIKE @Keyword";
+            }
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    // 3. Thêm tham số SQL
+                    if (!string.IsNullOrEmpty(searchKeyword))
+                    {
+                        // Tìm kiếm tương đối (%)
+                        command.Parameters.AddWithValue("@Keyword", "%" + searchKeyword + "%");
+                    }
+
                     try
                     {
                         connection.Open();
@@ -46,11 +61,10 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // ✅ ĐÃ SỬA TÊN CONTROL
+                        // Gán dữ liệu
                         DatagridviewKhoQL.DataSource = dt;
 
-                        // 2. Định dạng hiển thị DataGridView
-                        FormatKhoGrid();
+                        FormatKhoGrid(); 
                     }
                     catch (Exception ex)
                     {
@@ -81,7 +95,6 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
             // 4. Giá (GiaNhap)
             DatagridviewKhoQL.Columns["GiaNhap"].HeaderText = "Giá nhập";
-            DatagridviewKhoQL.Columns["GiaNhap"].Width = 75;
             DatagridviewKhoQL.Columns["GiaNhap"].DefaultCellStyle.Format = "N0"; // Định dạng tiền tệ (ví dụ: 10,000)
 
             // 5. Đơn vị (DonViTinh)
@@ -129,6 +142,13 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             {
                 MessageBox.Show("Vui lòng chọn một dòng nguyên liệu để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        private void textBoxTimTheoTen_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = textBoxTimTheoTen.Text.Trim();
+
+            // Gọi hàm tải dữ liệu với từ khóa tìm kiếm
+            LoadKhoData(keyword);
         }
     }
 }
