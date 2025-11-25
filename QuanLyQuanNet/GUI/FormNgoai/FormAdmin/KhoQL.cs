@@ -70,7 +70,7 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
             // 1. ID (NguyenLieuID)
             DatagridviewKhoQL.Columns["NguyenLieuID"].HeaderText = "ID";
-            
+
 
             // 2. Nhóm (DanhMuc)
             DatagridviewKhoQL.Columns["DanhMuc"].HeaderText = "Nhóm";
@@ -90,6 +90,45 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
             // 6. Số lượng trong (SoLuongTon)
             DatagridviewKhoQL.Columns["SoLuongTon"].HeaderText = "Số lượng";
 
+        }
+
+        private void btnNhapKho_Click(object sender, EventArgs e)
+        {
+            NhapKho formNhap = new NhapKho();
+            formNhap.ShowDialog(); // Dùng ShowDialog để dừng Form cha lại
+
+            // Sau khi đóng form nhập, tải lại dữ liệu để thấy thay đổi
+            LoadKhoData();
+        }
+
+        private void btnSuaThongTin_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem có dòng nào được chọn không
+            if (DatagridviewKhoQL.SelectedRows.Count == 1)
+            {
+                // Lấy dữ liệu từ dòng đang chọn
+                DataGridViewRow row = DatagridviewKhoQL.SelectedRows[0];
+
+                // Đọc dữ liệu từ các cột (chú ý ép kiểu đúng)
+                // Lưu ý: Tên cột ("NguyenLieuID",...) phải khớp với DataPropertyName bạn đã đặt
+                int id = Convert.ToInt32(row.Cells["NguyenLieuID"].Value);
+                string ten = row.Cells["TenNguyenLieu"].Value.ToString();
+                string nhom = row.Cells["DanhMuc"].Value.ToString();
+                decimal gia = Convert.ToDecimal(row.Cells["GiaNhap"].Value);
+                string donVi = row.Cells["DonViTinh"].Value.ToString();
+                int soLuong = Convert.ToInt32(row.Cells["SoLuongTon"].Value);
+
+                // Mở Form Sửa và truyền dữ liệu
+                SuaThongTinKho formSua = new SuaThongTinKho(id, ten, nhom, gia, donVi, soLuong);
+                formSua.ShowDialog();
+
+                // Tải lại dữ liệu sau khi sửa
+                LoadKhoData();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng nguyên liệu để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
