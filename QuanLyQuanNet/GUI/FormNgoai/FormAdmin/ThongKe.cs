@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 {
@@ -22,24 +23,31 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
         private void ThongKe_Load(object sender, EventArgs e)
         {
-            LoadDoanhThuData();
+            btnHomNay.PerformClick();
         }
-        private void LoadDoanhThuData()
+        private void LoadDoanhThuData(DateTime fromDate, DateTime toDate)
         {
             decimal doanhThuMay = 0;
             decimal doanhThuDichVu = 0;
 
-            // 1. Truy vấn Tổng hợp Doanh thu
-            // Sử dụng ISNULL để tránh lỗi nếu bảng trống
+            // Cập nhật Query để lọc theo ngày
             string query = @"
-                SELECT 
-                    (SELECT ISNULL(SUM(TongTienThanhToan), 0) FROM SuDungMay WHERE ThoiGianKetThuc IS NOT NULL) AS TienMay,
-                    (SELECT ISNULL(SUM(TongTien), 0) FROM DonDatMon WHERE TrangThai = N'Đã xong') AS TienDichVu";
+        SELECT 
+            (SELECT ISNULL(SUM(TongTienThanhToan), 0) FROM SuDungMay 
+             WHERE ThoiGianKetThuc BETWEEN @FromDate AND @ToDate) AS TienMay,
+             
+            (SELECT ISNULL(SUM(TongTien), 0) FROM DonDatMon 
+             WHERE TrangThai = N'Đã xong' 
+             AND NgayDat BETWEEN @FromDate AND @ToDate) AS TienDichVu";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    // Thêm tham số ngày giờ
+                    command.Parameters.AddWithValue("@FromDate", fromDate);
+                    command.Parameters.AddWithValue("@ToDate", toDate);
+
                     try
                     {
                         connection.Open();
@@ -57,11 +65,15 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                     }
                 }
             }
-            // 2. HIỂN THỊ LÊN LABEL RIÊNG (THAY VÌ TRÊN CHART)
-            labelTienMay.Text = doanhThuMay.ToString("N0") + " đ"; // Ví dụ: 1,500,000 đ
+
+            // Cập nhật Label hiển thị khoảng thời gian (Tùy chọn, để biết đang xem ngày nào)
+            // labelTimeRange.Text = $"Từ: {fromDate:dd/MM/yyyy} - Đến: {toDate:dd/MM/yyyy}";
+
+            // Hiển thị lên Label riêng
+            labelTienMay.Text = doanhThuMay.ToString("N0") + " đ";
             labelDichVu.Text = doanhThuDichVu.ToString("N0") + " đ";
 
-            // 2. Vẽ biểu đồ với dữ liệu vừa lấy
+            // Vẽ lại biểu đồ
             DrawPieChart(doanhThuMay, doanhThuDichVu);
         }
         // Hàm vẽ biểu đồ (Gọi hàm này sau khi đã lấy dữ liệu thống kê)
@@ -130,6 +142,44 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                 // Hiển thị số tiền với định dạng phân cách hàng nghìn
                 labelDoanhThu.Text = $"{tongDoanhThu:N0} đ";
             }
+        }
+
+        private void btnHomNay_Click(object sender, EventArgs e)
+        {
+            // Từ 00:00:00 hôm nay đến hiện tại
+            DateTime today = DateTime.Now.Date; // Lấy 00:00:00
+            DateTime endOfDay = DateTime.Now;   // Lấy giờ hiện tại (hoặc today.AddDays(1).AddTicks(-1) cho hết ngày)
+
+            LoadDoanhThuData(today, endOfDay);
+        }
+
+        private void btnHomQua_Click(object sender, EventArgs e)
+        {
+            // Từ 00:00:00 hôm qua đến 23:59:59 hôm qua
+            DateTime yesterdayStart = DateTime.Now.Date.AddDays(-1);
+            DateTime yesterdayEnd = DateTime.Now.Date.AddTicks(-1); // 23:59:59 hôm qua
+
+            LoadDoanhThuData(yesterdayStart, yesterdayEnd);
+        }
+
+        private void btnBayNgay_Click(object sender, EventArgs e)
+        {
+            DateTime sevenDaysAgo = DateTime.Now.Date.AddDays(-6); // 6 ngày trước + hôm nay = 7 ngày
+            DateTime now = DateTime.Now;
+
+            LoadDoanhThuData(sevenDaysAgo, now);
+        }
+
+        private void btnThang_Click(object sender, EventArgs e)
+        {
+            // Cách 1: Lấy từ đầu tháng này
+            DateTime startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime now = DateTime.Now;
+
+            // Cách 2: Lấy 30 ngày gần nhất (dùng cách này nếu muốn xem xu hướng)
+            // DateTime startOf30Days = DateTime.Now.Date.AddDays(-29);
+
+            LoadDoanhThuData(startOfMonth, now);
         }
     }
 }
