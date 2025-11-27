@@ -174,6 +174,10 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
         // ✅ Xử lý nút HOÀN THÀNH ĐƠN (Đã bổ sung lại)
         private void btnHoanThanhDon_Click_1(object sender, EventArgs e)
         {
+            // 1. Lấy thông tin đơn hàng (Cần TenMay để gửi tin nhắn)
+            OrderInfo info = GetOrderInfo(currentDonDatID);
+            if (info == null) return;
+
             string updateQuery = "UPDATE DonDatMon SET TrangThai = N'Đã xong' WHERE DonDatID = @ID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -185,12 +189,17 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                     {
                         connection.Open();
                         command.ExecuteNonQuery();
-                        MessageBox.Show($"Đơn hàng #{currentDonDatID} đã được chuyển sang trạng thái 'Đã xong'.", "Hoàn thành", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close(); // Đóng Form sau khi hoàn thành
+
+                        // ✅ GỬI THÔNG BÁO CHO KHÁCH
+                        string message = "Đơn của bạn đang được chuẩn bị, vui lòng đợi.";
+                        TemporaryChatManager.AddMessage(info.TenMay, "Quản lý", message);
+
+                        MessageBox.Show($"Đơn hàng #{currentDonDatID} đã hoàn thành. Đã gửi thông báo tới {info.TenMay}.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Lỗi cập nhật trạng thái: " + ex.Message, "Lỗi DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi cập nhật: " + ex.Message, "Lỗi DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -198,6 +207,16 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
         private void HuyDonHang()
         {
+            // 1. Lấy thông tin đơn hàng
+            OrderInfo info = GetOrderInfo(currentDonDatID);
+            if (info == null) return;
+
+            if (info.TrangThai == "Đã hủy")
+            {
+                MessageBox.Show("Đơn hàng này đã được hủy trước đó.", "Thông báo");
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -205,52 +224,34 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
 
                 try
                 {
-                    string getInfoQuery = "SELECT TaiKhoanID, PhuongThucTT, TongTien, TrangThai FROM DonDatMon WHERE DonDatID = @DonDatID";
-                    SqlCommand cmdGetInfo = new SqlCommand(getInfoQuery, connection, transaction);
-                    cmdGetInfo.Parameters.AddWithValue("@DonDatID", currentDonDatID);
-
-                    SqlDataReader reader = cmdGetInfo.ExecuteReader();
-
-                    int taiKhoanID = 0;
-                    string phuongThucTT = "";
-                    decimal tongTien = 0;
-                    string trangThai = "";
-
-                    if (reader.Read())
-                    {
-                        taiKhoanID = reader.GetInt32(reader.GetOrdinal("TaiKhoanID"));
-                        phuongThucTT = reader["PhuongThucTT"].ToString();
-                        tongTien = reader.GetDecimal(reader.GetOrdinal("TongTien"));
-                        trangThai = reader["TrangThai"].ToString();
-                    }
-                    reader.Close();
-
-                    if (trangThai == "Đã hủy")
-                    {
-                        MessageBox.Show("Đơn hàng này đã được hủy trước đó.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        transaction.Rollback();
-                        return;
-                    }
-
+                    // 2. Cập nhật trạng thái đơn hàng thành "Đã hủy"
                     string updateStatusQuery = "UPDATE DonDatMon SET TrangThai = N'Đã hủy' WHERE DonDatID = @DonDatID";
                     SqlCommand cmdUpdateStatus = new SqlCommand(updateStatusQuery, connection, transaction);
                     cmdUpdateStatus.Parameters.AddWithValue("@DonDatID", currentDonDatID);
                     cmdUpdateStatus.ExecuteNonQuery();
 
-                    if (phuongThucTT == "Số dư")
+                    string notificationMsg = "";
+
+                    // 3. Hoàn tiền và tạo thông báo
+                    if (info.PhuongThucTT == "Số dư")
                     {
                         string updateBalanceQuery = "UPDATE TaiKhoan SET SoDu = SoDu + @TongTien WHERE TaiKhoanID = @TaiKhoanID";
                         SqlCommand cmdUpdateBalance = new SqlCommand(updateBalanceQuery, connection, transaction);
-                        cmdUpdateBalance.Parameters.AddWithValue("@TongTien", tongTien);
-                        cmdUpdateBalance.Parameters.AddWithValue("@TaiKhoanID", taiKhoanID);
+                        cmdUpdateBalance.Parameters.AddWithValue("@TongTien", info.TongTien);
+                        cmdUpdateBalance.Parameters.AddWithValue("@TaiKhoanID", info.TaiKhoanID);
                         cmdUpdateBalance.ExecuteNonQuery();
 
-                        MessageBox.Show($"Đã hủy đơn và hoàn {tongTien:N0} VNĐ vào tài khoản khách hàng.", "Hoàn tiền thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        notificationMsg = "Đơn của bạn đã được hủy do quán đã hết món bạn đặt. Tiền của bạn đã được hoàn về.";
+                        MessageBox.Show($"Đã hủy đơn và hoàn {info.TongTien:N0} VNĐ vào tài khoản khách hàng.", "Hoàn tiền thành công");
                     }
                     else
                     {
-                        MessageBox.Show("Đã hủy đơn hàng (Thanh toán tiền mặt).", "Hủy đơn thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        notificationMsg = "Đơn của bạn đã được hủy do quán đã hết món bạn đặt.";
+                        MessageBox.Show("Đã hủy đơn hàng (Thanh toán tiền mặt).", "Hủy đơn thành công");
                     }
+
+                    // ✅ GỬI THÔNG BÁO CHO KHÁCH
+                    TemporaryChatManager.AddMessage(info.TenMay, "Quản lý", notificationMsg);
 
                     transaction.Commit();
                     this.Close();
@@ -261,6 +262,51 @@ namespace QuanLyQuanNet.GUI.FormNgoai.FormAdmin
                     MessageBox.Show("Lỗi khi hủy đơn hàng: " + ex.Message, "Lỗi DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        // =================================================================================
+        // HÀM HỖ TRỢ LẤY THÔNG TIN ĐƠN HÀNG
+        // =================================================================================
+
+        // Class chứa thông tin cần thiết để xử lý
+        private class OrderInfo
+        {
+            public string TenMay { get; set; }
+            public int TaiKhoanID { get; set; }
+            public string PhuongThucTT { get; set; }
+            public decimal TongTien { get; set; }
+            public string TrangThai { get; set; }
+        }
+        private OrderInfo GetOrderInfo(int donDatID)
+        {
+            // Truy vấn thêm TenMay để biết gửi tin nhắn cho máy nào
+            string query = "SELECT TenMay, TaiKhoanID, PhuongThucTT, TongTien, TrangThai FROM DonDatMon WHERE DonDatID = @ID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", donDatID);
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        return new OrderInfo
+                        {
+                            TenMay = reader["TenMay"].ToString(),
+                            TaiKhoanID = reader.GetInt32(reader.GetOrdinal("TaiKhoanID")),
+                            PhuongThucTT = reader["PhuongThucTT"].ToString(),
+                            TongTien = reader.GetDecimal(reader.GetOrdinal("TongTien")),
+                            TrangThai = reader["TrangThai"].ToString()
+                        };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi lấy thông tin đơn: " + ex.Message);
+                }
+            }
+            return null;
         }
     }
 }
