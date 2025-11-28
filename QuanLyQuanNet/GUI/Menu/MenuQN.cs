@@ -112,7 +112,7 @@ namespace QuanLyQuanNet.GUI.Menu
         {
             // 1. Cập nhật label
             // Giả sử tên label của bạn là lblTenDN
-            lblTenDN.Text = "Xin chào, " + UserSession.TenDangNhap;
+            lblTenDN.Text = UserSession.TenDangNhap;
         }
         // Methods
         private Color SelectThemeColor()
@@ -129,8 +129,8 @@ namespace QuanLyQuanNet.GUI.Menu
             {
                 DisableButton();
                 Color themeColor = SelectThemeColor();
-                currentButton.BackColor = themeColor;
-                currentButton.ForeColor = Color.White;
+                currentButton.BackColor = Color.AliceBlue;
+                currentButton.ForeColor = Color.Navy;
             }
         }
         private void DisableButton()
@@ -139,8 +139,8 @@ namespace QuanLyQuanNet.GUI.Menu
             {
                 if (previousBtn.GetType() == typeof(Button))
                 {
-                    previousBtn.BackColor = Color.AliceBlue;
-                    previousBtn.ForeColor = Color.MidnightBlue;
+                    previousBtn.BackColor = Color.FromArgb(51, 67, 190);
+                    previousBtn.ForeColor = Color.FromArgb(224, 224, 224);
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace QuanLyQuanNet.GUI.Menu
             this.panelCon.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            lblTitle.Text = childForm.Text;
+            labelGanTen.Text = childForm.Text;
         }
 
         private void btnMay_Click(object sender, EventArgs e)
@@ -229,6 +229,11 @@ namespace QuanLyQuanNet.GUI.Menu
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
