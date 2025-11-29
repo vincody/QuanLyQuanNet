@@ -37,10 +37,10 @@
             panel1 = new Panel();
             dataGridViewTK = new Bunifu.UI.WinForms.BunifuDataGridView();
             panel2 = new Panel();
+            btnNapTien = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             btnSuaThongTin = new Button();
             btnThemTaiKhoan = new Button();
             textBoxSDT = new TextBox();
-            btnNapTien = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTK).BeginInit();
             panel2.SuspendLayout();
@@ -140,41 +140,6 @@
             panel2.Size = new Size(820, 50);
             panel2.TabIndex = 1;
             // 
-            // btnSuaThongTin
-            // 
-            btnSuaThongTin.BackColor = Color.AliceBlue;
-            btnSuaThongTin.Font = new Font("Segoe UI", 12F);
-            btnSuaThongTin.Location = new Point(464, 12);
-            btnSuaThongTin.Name = "btnSuaThongTin";
-            btnSuaThongTin.Size = new Size(192, 29);
-            btnSuaThongTin.TabIndex = 2;
-            btnSuaThongTin.Text = "Sửa thông tin";
-            btnSuaThongTin.UseVisualStyleBackColor = false;
-            btnSuaThongTin.Click += btnSuaThongTin_Click;
-            // 
-            // btnThemTaiKhoan
-            // 
-            btnThemTaiKhoan.BackColor = Color.AliceBlue;
-            btnThemTaiKhoan.Font = new Font("Segoe UI", 12F);
-            btnThemTaiKhoan.Location = new Point(266, 11);
-            btnThemTaiKhoan.Name = "btnThemTaiKhoan";
-            btnThemTaiKhoan.Size = new Size(192, 29);
-            btnThemTaiKhoan.TabIndex = 1;
-            btnThemTaiKhoan.Text = "Thêm tài khoản";
-            btnThemTaiKhoan.UseVisualStyleBackColor = false;
-            btnThemTaiKhoan.Click += btnThemTaiKhoan_Click;
-            // 
-            // textBoxSDT
-            // 
-            textBoxSDT.BackColor = Color.AliceBlue;
-            textBoxSDT.Font = new Font("Segoe UI", 12F);
-            textBoxSDT.Location = new Point(12, 12);
-            textBoxSDT.Name = "textBoxSDT";
-            textBoxSDT.PlaceholderText = "Tìm theo số điện thoại";
-            textBoxSDT.Size = new Size(248, 29);
-            textBoxSDT.TabIndex = 0;
-            textBoxSDT.TextChanged += textBoxSDT_TextChanged;
-            // 
             // btnNapTien
             // 
             btnNapTien.AllowAnimations = true;
@@ -266,10 +231,46 @@
             btnNapTien.UseDefaultRadiusAndThickness = true;
             btnNapTien.Click += btnNapTien_Click;
             // 
+            // btnSuaThongTin
+            // 
+            btnSuaThongTin.BackColor = Color.AliceBlue;
+            btnSuaThongTin.Font = new Font("Segoe UI", 12F);
+            btnSuaThongTin.Location = new Point(464, 12);
+            btnSuaThongTin.Name = "btnSuaThongTin";
+            btnSuaThongTin.Size = new Size(192, 29);
+            btnSuaThongTin.TabIndex = 2;
+            btnSuaThongTin.Text = "Sửa thông tin";
+            btnSuaThongTin.UseVisualStyleBackColor = false;
+            btnSuaThongTin.Click += btnSuaThongTin_Click;
+            // 
+            // btnThemTaiKhoan
+            // 
+            btnThemTaiKhoan.BackColor = Color.AliceBlue;
+            btnThemTaiKhoan.Font = new Font("Segoe UI", 12F);
+            btnThemTaiKhoan.Location = new Point(266, 11);
+            btnThemTaiKhoan.Name = "btnThemTaiKhoan";
+            btnThemTaiKhoan.Size = new Size(192, 29);
+            btnThemTaiKhoan.TabIndex = 1;
+            btnThemTaiKhoan.Text = "Thêm tài khoản";
+            btnThemTaiKhoan.UseVisualStyleBackColor = false;
+            btnThemTaiKhoan.Click += btnThemTaiKhoan_Click;
+            // 
+            // textBoxSDT
+            // 
+            textBoxSDT.BackColor = Color.AliceBlue;
+            textBoxSDT.Font = new Font("Segoe UI", 12F);
+            textBoxSDT.Location = new Point(12, 12);
+            textBoxSDT.Name = "textBoxSDT";
+            textBoxSDT.PlaceholderText = "Tìm theo số điện thoại";
+            textBoxSDT.Size = new Size(248, 29);
+            textBoxSDT.TabIndex = 0;
+            textBoxSDT.TextChanged += textBoxSDT_TextChanged;
+            // 
             // KHang
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(820, 450);
             Controls.Add(panel2);
             Controls.Add(panel1);

@@ -593,6 +593,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(1234, 645);
             Controls.Add(bunifuPanel3);
             Controls.Add(btnThang);

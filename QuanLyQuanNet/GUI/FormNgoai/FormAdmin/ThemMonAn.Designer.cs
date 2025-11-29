@@ -192,6 +192,7 @@
             Controls.Add(btnThemAnhMA);
             Controls.Add(pictureBoxAnhMonAn);
             Controls.Add(panel1);
+            ForeColor = Color.AliceBlue;
             Name = "ThemMonAn";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

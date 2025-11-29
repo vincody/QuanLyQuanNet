@@ -586,6 +586,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(847, 322);
             Controls.Add(bunifuGroupBox2);
             Controls.Add(bunifuGroupBox1);

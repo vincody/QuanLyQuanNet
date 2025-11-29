@@ -344,6 +344,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(800, 450);
             Controls.Add(guna2Panel1);
             Controls.Add(DatagridviewKhoQL);

@@ -180,6 +180,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(379, 380);
             Controls.Add(panel1);
             Controls.Add(textBoxSGiaMayTrenH);

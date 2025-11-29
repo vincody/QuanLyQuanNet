@@ -107,7 +107,7 @@
             btnTrack.ForeColor = Color.FromArgb(224, 224, 224);
             btnTrack.Image = (Image)resources.GetObject("btnTrack.Image");
             btnTrack.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTrack.Location = new Point(-1, 486);
+            btnTrack.Location = new Point(0, 486);
             btnTrack.Name = "btnTrack";
             btnTrack.Padding = new Padding(12, 0, 0, 0);
             btnTrack.Size = new Size(220, 45);
@@ -372,7 +372,7 @@
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.ForeColor = Color.AliceBlue;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
-            btnClose.Location = new Point(1000, 2);
+            btnClose.Location = new Point(1000, 6);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(29, 31);
             btnClose.TabIndex = 4;
@@ -387,7 +387,7 @@
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.ForeColor = Color.Transparent;
             btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
-            btnMaximize.Location = new Point(968, 1);
+            btnMaximize.Location = new Point(968, 5);
             btnMaximize.Name = "btnMaximize";
             btnMaximize.Size = new Size(27, 34);
             btnMaximize.TabIndex = 3;
@@ -401,7 +401,7 @@
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.ForeColor = Color.AliceBlue;
             btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
-            btnMinimize.Location = new Point(935, 11);
+            btnMinimize.Location = new Point(935, 15);
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new Size(27, 23);
             btnMinimize.TabIndex = 2;

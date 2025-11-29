@@ -516,6 +516,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(712, 324);
             Controls.Add(bunifuGroupBox1);
             Name = "NhapKho";

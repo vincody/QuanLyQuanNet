@@ -276,6 +276,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.AliceBlue;
             ClientSize = new Size(800, 482);
             Controls.Add(panel2);
             Controls.Add(flowPanelMayTinh);
